@@ -1,0 +1,51 @@
+{
+  "version": "2.0",
+  "title": "职高生毕业后面临的残酷现实",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/06_职高生毕业后的残酷现实.txt",
+  "word_count": 3203,
+  "genre_detected": "世情",
+  "genre_secondary": [
+    "底层职场实录",
+    "系统批判",
+    "第二人称口播"
+  ],
+  "created_at": "2026-09-03T15:30:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 4,
+    "character_archetypes": 2,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "前置宣告型（16%履带双关），兼结尾期待反写",
+  "plot_nodes": 22,
+  "pov": "第二人称",
+  "ending": "BE（数据化收束）",
+  "emotion_curve": "希望递减双倒V",
+  "peak": {
+    "max": 4,
+    "max_pos": 0.12,
+    "min": -8,
+    "min_pos": 0.64,
+    "reversals": 3
+  },
+  "burst_point": {
+    "pos": 0.93,
+    "quote": "你从来都不是这个世界的主角"
+  },
+  "template_family": "编年沉沦式（单主角人生弧）",
+  "template_siblings": [
+    "01_无辣不欢的一生",
+    "05_县城精神小伙的沉沦之路"
+  ]
+}
