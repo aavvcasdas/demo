@@ -1,0 +1,62 @@
+{
+  "version": "2.0",
+  "title": "世界上只剩下你一个人",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/12_世界上只剩下你一个人.txt",
+  "word_count": 3270,
+  "genre_detected": "沙雕脑洞",
+  "genre_secondary": [
+    "末世思想实验（科幻设定）",
+    "人生编年（末日变体）",
+    "第二人称口播（日记段切第一人称）"
+  ],
+  "created_at": "2026-09-03T19:00:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "前置标注型（17%绝对控制权副词雷+91%日记我以为我挣脱了牢笼自注合围）；副反转=食物链位置反转（掠食者→移动的蛋白质）；三级反转同轴（幻象点破→蛋白质→回音定义）",
+  "plot_nodes": 24,
+  "pov": "第二人称（末日受试者；91%日记段切换第一人称——全篇唯一的我）",
+  "ending": "释然收束（认知终局）+ POV 让渡（回音金句收束）",
+  "emotion_curve": "过山车→长平底（+8 系列最高峰 → 生存平台 → 双谷 -7 → 收束微光）",
+  "peak": {
+    "max": 8,
+    "max_pos": 0.11,
+    "min": -7,
+    "min_pos": 0.68,
+    "min_pos_2": 0.72,
+    "reversals": 4
+  },
+  "burst_point": {
+    "pos": 0.32,
+    "quote": "你的狂欢不过是寄生在人类文明余温上的幻象"
+  },
+  "burst_point_emotional": {
+    "pos": 0.72,
+    "quote": "当你把手放在它温热起伏的肚子上时 你竟然趴在地板上嚎啕大哭"
+  },
+  "template_family": "末日编年刻度盘（思想实验：文明剥离机）",
+  "template_siblings": [
+    "05_县城精神小伙的沉沦之路",
+    "06_职高生毕业后的残酷现实",
+    "07_精神小妹纹身找不到工作去做团播",
+    "10_一辈子不结婚的人生"
+  ],
+  "series_link": "文明机器四部曲终章：09 收割机器 / 10 默认设置 / 11 维持秩序 / 12 机器停转（牢笼与襁褓同体）",
+  "asr_notes": [
+    "罗辑告诉你（50%，疑逻辑误写，按逻辑解；恰与三体角色罗辑同形）"
+  ]
+}
