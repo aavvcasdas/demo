@@ -1,0 +1,50 @@
+{
+  "version": "2.0",
+  "title": "县城精神小伙的沉沦之路",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/05_县城精神小伙的沉沦之路.txt",
+  "word_count": 3043,
+  "genre_detected": "世情",
+  "genre_secondary": [
+    "底层沉沦寓言",
+    "系统批判",
+    "第二人称口播"
+  ],
+  "created_at": "2026-09-03T15:05:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 4,
+    "character_archetypes": 2,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "前置宣告型（20%绞肉机），兼结尾期待反写与报应结构",
+  "plot_nodes": 22,
+  "pov": "第二人称",
+  "ending": "BE（回环镜像）",
+  "emotion_curve": "双峰断崖下行",
+  "peak": {
+    "max": 7,
+    "max_pos": 0.15,
+    "min": -9,
+    "min_pos": 0.63,
+    "reversals": 3
+  },
+  "burst_point": {
+    "pos": 0.94,
+    "quote": "你只感到一种深不见底的虚无"
+  },
+  "template_family": "编年沉沦式（单主角人生弧）",
+  "template_siblings": [
+    "01_无辣不欢的一生"
+  ]
+}
