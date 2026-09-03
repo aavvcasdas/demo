@@ -1,0 +1,30 @@
+{
+  "version": "2.0",
+  "title": "中10亿彩票的人生",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/04_中10亿彩票的人生.txt",
+  "word_count": 1359,
+  "genre_detected": "世情",
+  "genre_secondary": ["暴富反写", "反鸡汤寓言", "第二人称口播"],
+  "created_at": "2026-09-03T11:15:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 5,
+    "setup_clues": 4,
+    "character_archetypes": 2,
+    "reusable_structures": 4,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "前置宣告型（13%处即明示方向），兼报应结构",
+  "plot_nodes": 16,
+  "episodes": 8,
+  "pov": "第二人称",
+  "ending": "BE（无回环）",
+  "emotion_curve": "窄峰倒V",
+  "peak": {"max": 7, "max_pos": 0.39, "min": -8, "min_pos": 0.99, "reversals": 3},
+  "burst_point": {"pos": 0.86, "quote": "你开始怀念吃14块钱炒饭的夜晚"},
+  "template_family": "八集升级-崩塌",
+  "template_siblings": ["02_外卖员的一生", "03_雇佣兵的一生"]
+}
