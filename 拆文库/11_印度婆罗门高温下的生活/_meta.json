@@ -1,0 +1,57 @@
+{
+  "version": "2.0",
+  "title": "印度婆罗门在高温下的生活",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/11_印度婆罗门高温下的生活.txt",
+  "word_count": 2886,
+  "genre_detected": "世情",
+  "genre_secondary": [
+    "异域阶级叙事（种姓×气候）",
+    "加害者视角（系列首例）",
+    "第二人称口播"
+  ],
+  "created_at": "2026-09-03T18:10:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "读者侧双重期待反写（施舍失效+裂缝弥合）；主角是反转绝缘体，被反转的只有读者；三重门槛前置（公立停电/私立5万/空调车）",
+  "plot_nodes": 22,
+  "pov": "第二人称（新德里婆罗门——系列首例加害者视角）",
+  "ending": "BE（倒置视位）：人物舒适复位=读者道德谷底（窗帘收束）",
+  "emotion_curve": "倒置心电图（双曲线反缠：人物舒适×读者寒意，救赎段三起三落）",
+  "peak": {
+    "max": 3,
+    "max_pos": 0.02,
+    "min": -8,
+    "min_pos": 0.75,
+    "min_pos_2": 0.99,
+    "reversals": 5
+  },
+  "burst_point": {
+    "pos": 0.75,
+    "quote": "连一滴水花都没有溅起 高温轻而易举的捏碎了底层生命的最后一点生机 也顺带嘲笑了你那高高在上的虚妄的施舍"
+  },
+  "template_family": "单日实时（双联画·加害者视角：对刻账本）",
+  "template_siblings": [
+    "08_印度贫民窟高温下的人生"
+  ],
+  "asr_notes": [
+    "手陀螺=首陀罗（种姓误写，按首陀罗解）",
+    "三年劳作时间（按月薪15,000计5万≈3.3个月，疑三个月误写或修辞）",
+    "结冰坚不可摧（疑冻结成坚不可摧）",
+    "广告位2505-2576（71字抖音CTA，系列首次正文内嵌，正文实约2815字）"
+  ]
+}
