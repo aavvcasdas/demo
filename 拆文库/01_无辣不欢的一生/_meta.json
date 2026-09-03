@@ -1,0 +1,26 @@
+{
+  "version": "2.0",
+  "title": "无辣不欢的一生",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/01_无辣不欢的一生.txt",
+  "word_count": 3254,
+  "genre_detected": "世情",
+  "genre_secondary": ["成瘾寓言", "亲情", "第二人称口播"],
+  "created_at": "2026-09-03T10:30:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 5,
+    "setup_clues": 4,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "plot_nodes": 22,
+  "pov": "第二人称",
+  "ending": "开放式偏HE",
+  "emotion_curve": "剪刀差波浪+V形回升",
+  "peak": {"max": 7, "max_pos": 0.22, "min": -8, "min_pos": 0.83, "reversals": 9},
+  "burst_point": {"pos": 0.91, "quote": "愣住了粥是甜的"}
+}

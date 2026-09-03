@@ -1,0 +1,30 @@
+{
+  "version": "2.0",
+  "title": "雇佣兵的一生",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/03_雇佣兵的一生.txt",
+  "word_count": 2204,
+  "genre_detected": "悬疑",
+  "genre_secondary": ["权力寓言", "升级流", "异化叙事", "时间线闭环", "第二人称口播"],
+  "created_at": "2026-09-03T11:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 4,
+    "setup_clues": 4,
+    "character_archetypes": 2,
+    "reusable_structures": 4,
+    "reversal_type": "时间线反转"
+  },
+  "pre_reversal": true,
+  "plot_nodes": 17,
+  "episodes": 8,
+  "pov": "第二人称",
+  "ending": "BE+时间线闭环",
+  "emotion_curve": "双轨反向（权力上行/情绪下行）",
+  "peak": {"max": 6, "max_pos": 0.66, "min": -8, "min_pos": 0.81, "reversals": 3},
+  "burst_point": {"pos": 0.90, "quote": "你面前的监控器亮了 / 画面里是一个潮湿的小巷 / 凌晨2点十三分"},
+  "template_family": "八集升级-崩塌",
+  "template_siblings": ["02_外卖员的一生", "04_中10亿彩票的人生"]
+}

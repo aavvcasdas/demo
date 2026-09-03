@@ -1,0 +1,13 @@
+# 运行时/缓存
+__pycache__/
+*.pyc
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+node_modules/
+# 部署标记
+.story-deployed
+# 打包产物
+*.zip
