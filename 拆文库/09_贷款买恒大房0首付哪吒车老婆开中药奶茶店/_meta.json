@@ -1,0 +1,56 @@
+{
+  "version": "2.0",
+  "title": "贷款买恒大房子、0首付买哪吒电车、老婆偷开中药奶茶店、爸妈被骗买保健品的人生",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/09_贷款买恒大房0首付哪吒车老婆开中药奶茶店.txt",
+  "word_count": 2907,
+  "genre_detected": "世情",
+  "genre_secondary": [
+    "家庭财务悲剧",
+    "时代切片（烂尾楼/加盟骗局/保健品骗局）",
+    "第二人称口播"
+  ],
+  "created_at": "2026-09-03T16:30:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "前置宣告极端形态（倒叙框架本身即宣告，20%回溯开关）；副反转=死局第三解（90%连续双否定弃权）",
+  "plot_nodes": 22,
+  "pov": "第二人称（中国城市家庭顶梁柱）",
+  "ending": "BE（半句收束）",
+  "emotion_curve": "环形闸门（谷-峰-谷）",
+  "peak": {
+    "max": 4,
+    "max_pos": 0.35,
+    "min": -8,
+    "min_pos": 0.14,
+    "min_pos_2": 0.83,
+    "reversals": 2
+  },
+  "burst_point": {
+    "pos": 0.83,
+    "quote": "你根本找不到一个具体的实体去挥拳 所有的掠夺都是合法且符合流程的"
+  },
+  "template_family": "倒叙死局框架（家庭群像）",
+  "template_siblings": [],
+  "asr_notes": [
+    "李成冷笑（70.8%，疑车贩子名或误写，按车贩子处理）",
+    "脂脂墨（N2 围裙污渍名）",
+    "N19 转给他实指妻子（源文代词原貌）",
+    "金不老保健店（专名原貌）",
+    "结尾半句你心里不再有（ASR截断，客观效果保留）"
+  ]
+}
