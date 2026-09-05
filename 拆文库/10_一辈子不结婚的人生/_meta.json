@@ -1,0 +1,56 @@
+{
+  "version": "2.0",
+  "title": "一辈子不结婚的人生",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/10_一辈子不结婚的人生.txt",
+  "word_count": 2748,
+  "genre_detected": "世情",
+  "genre_secondary": [
+    "人生编年（不婚主义议题）",
+    "社会观察",
+    "第二人称口播"
+  ],
+  "created_at": "2026-09-03T17:20:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "双前置标注型（23%你以为+35%错觉）；副反转=结尾期待反写（没有后悔，审判庭解散）",
+  "plot_nodes": 25,
+  "pov": "第二人称（终身未婚的城市独身者）",
+  "ending": "BE/NE 边界（拒绝悔恨收束）",
+  "emotion_curve": "利息曲线（红利前置于账单长降）",
+  "peak": {
+    "max": 4,
+    "max_pos": 0.21,
+    "min": -8,
+    "min_pos": 0.58,
+    "min_pos_2": 0.83,
+    "reversals": 3
+  },
+  "burst_point": {
+    "pos": 0.58,
+    "quote": "家属呢去把费交了 把字签了 我自己签 全麻手术必须有直系亲属签字 万一出了事 我们找谁"
+  },
+  "template_family": "编年沉沦式（单主角人生弧·反向变体：不入局编年）",
+  "template_siblings": [
+    "05_县城精神小伙的沉沦之路",
+    "06_职高生毕业后的残酷现实",
+    "07_精神小妹纹身找不到工作去做团播"
+  ],
+  "asr_notes": [
+    "清源网络（47%，疑为亲缘网络误写，按亲缘网络解）"
+  ]
+}

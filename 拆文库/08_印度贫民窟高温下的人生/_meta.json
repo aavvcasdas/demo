@@ -1,0 +1,51 @@
+{
+  "version": "2.0",
+  "title": "在印度贫民窟经历高温的人生",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/08_印度贫民窟高温下的人生.txt",
+  "word_count": 3218,
+  "genre_detected": "世情",
+  "genre_secondary": [
+    "异域劳动实录",
+    "气候叙事",
+    "第二人称口播"
+  ],
+  "created_at": "2026-09-03T16:00:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 2,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "前置标注型（13-18%双你以为），兼温度反写与阀门所有权反转",
+  "plot_nodes": 22,
+  "pov": "第二人称（印度移民骑手）",
+  "ending": "BE（休眠收束）",
+  "emotion_curve": "微光双闪+阶梯下行至耗尽平台",
+  "peak": {
+    "max": 3,
+    "max_pos": 0.14,
+    "min": -8,
+    "min_pos": 0.75,
+    "reversals": 4
+  },
+  "burst_point": {
+    "pos": 0.81,
+    "quote": "最终的结局是倒贴45卢比 换来了半桶需要沉淀泥沙才能下咽的脏水"
+  },
+  "template_family": "单日实时劳动（温度计当钟表）",
+  "template_siblings": [
+    "02_外卖员的一生",
+    "06_职高生毕业后的残酷现实"
+  ]
+}

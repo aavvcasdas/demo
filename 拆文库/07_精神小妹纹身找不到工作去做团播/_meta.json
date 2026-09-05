@@ -1,0 +1,52 @@
+{
+  "version": "2.0",
+  "title": "精神小妹技校毕业因为纹身找不到工作去做团播的人生",
+  "series": "剧本人生（抖音口播短剧）",
+  "source_file": "分篇/07_精神小妹纹身找不到工作去做团播.txt",
+  "word_count": 2753,
+  "genre_detected": "世情",
+  "genre_secondary": [
+    "直播行业实录",
+    "情感劳动",
+    "第二人称口播（女性主角）"
+  ],
+  "created_at": "2026-09-03T15:45:00Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_note": "叠加身份反转（受害→加害→囚徒三段）；一串零伏笔23%→81%",
+  "plot_nodes": 21,
+  "pov": "第二人称（女性主角）",
+  "ending": "BE（程序化收束）",
+  "emotion_curve": "假峰递增倒V+套牢平台",
+  "peak": {
+    "max": 5,
+    "max_pos": 0.53,
+    "min": -8,
+    "min_pos": 0.85,
+    "reversals": 6
+  },
+  "burst_point": {
+    "pos": 0.9,
+    "quote": "而你只是挂在钩子上的一块涂满香精的饵料"
+  },
+  "template_family": "编年沉沦式（单主角人生弧）",
+  "template_siblings": [
+    "01_无辣不欢的一生",
+    "05_县城精神小伙的沉沦之路",
+    "06_职高生毕业后的残酷现实"
+  ]
+}
