@@ -1,4 +1,4 @@
-import re, json
+import re
 
 text = """谈了个极度反差的闷骚漂亮女友
 
@@ -1292,81 +1292,13 @@ text = """谈了个极度反差的闷骚漂亮女友
 
 刚好只有你一个人能看到"""
 
-parts = re.split(r'(?=你能想象谈到一个顶级|刚开学\n\n你就谈了个顶级闷骚的漂亮女友)', text)
-
-paths = [
-    "拆文库/48a_大一军训闷骚女友",
-    "拆文库/48b_高中同桌闷骚女友",
-    "拆文库/48c_大学洗稿闷骚女友"
-]
-
-for idx, p in enumerate(parts):
-    with open(f"{paths[idx]}/原文/原文.txt", "w", encoding="utf-8") as f:
-        f.write(p.strip())
-        
-meta_base = {
-  "genre_detected": "甜宠 / 恋爱日常（反差萌型）",
-  "structure_counts": {
-    "reversal_type": "甜度递进型",
-    "reversals": 0,
-    "hooks": 1
-  }
-}
-
-# Write meta.json and empty structural files so they exist
-for idx, path in enumerate(paths):
-    meta = meta_base.copy()
-    meta["word_count"] = len(parts[idx])
-    with open(f"{path}/_meta.json", "w", encoding="utf-8") as f:
-        json.dump(meta, f, ensure_ascii=False, indent=2)
-
-report_a = """# 拆文报告：大一军训闷骚女友（三部曲之一：神级推拉篇）
-
-字数 1279字 | 节数 1 | 平台 抖音口播 | 类型 甜宠 / 恋爱日常
-
-### 故事核
-- **核心**：你发现军训认识的冰山高冷女孩其实是个内心弹幕极多、极度闷骚的甜妹，恋爱后她把最粘人的一面变成了对你一个人的仅可见。
-- **差异化分析**：这篇是三篇中**结构最完整、拉扯细节最好**的母版。
-
-### 结构划分
-- **开端**：大一军训，破冰试探发现"你要去买吗"的尾巴。
-- **发展**：防诈骗借口、提前买黄焖鸡（**插好吸管的冰柠茶**）、操场**顺拐**。
-- **高潮**：电影院**咬满牙印的吸管**，表白时的"你怎么现在才说"。
-- **结局**：恋爱后人后反手牵手，主动买票，点题专属隐藏版本。
-"""
-
-report_b = """# 拆文报告：高中同桌闷骚女友（三部曲之二：性张力直给篇）
-
-字数 1161字 | 节数 1 | 平台 抖音口播 | 类型 甜宠 / 恋爱日常
-
-### 故事核
-- **核心**：高中打闹泼水结缘的透明女生，其实默默关注着你，恋爱后极度粘人。
-- **差异化分析**：这篇把重头戏放在了**“恋爱后的倒贴与福利发放”**。
-
-### 结构划分
-- **开端**：高中打闹泼水，强行加微信赔钱。
-- **发展**：聊天秒回，逗她“是不是暗恋我”直接脸红到耳朵。
-- **高潮**：恋爱后极度粘人，睡觉从后面抱住，**偷偷换上性感睡衣**给男主福利。
-- **结局**：行动替她承认一切，满足了男频爽文里最高级的征服欲。
-"""
-
-report_c = """# 拆文报告：大学洗稿闷骚女友（三部曲之三：平庸降级篇）
-
-字数 1475字 | 节数 1 | 平台 抖音口播 | 类型 甜宠 / 恋爱日常
-
-### 故事核
-- **核心**：同第一篇。
-- **差异化分析**：这篇是第一篇的**洗稿平替版**，骨架完全照搬，但神级细节全部降级。
-
-### 结构划分
-- **平替对比**：
-  - 借口：“防诈骗”降级为“群文件”。
-  - 奶茶：“捏变形、咬满牙印”降级为“喝掉1/3”。
-  - 肢体：“差点顺拐”降级为“手拧不开瓶盖”。
-- **结论**：流水线同题改写的典型案例，验证了细节才是短篇甜文的核心。
-"""
-
-with open(f"{paths[0]}/拆文报告.md", "w", encoding="utf-8") as f: f.write(report_a)
-with open(f"{paths[1]}/拆文报告.md", "w", encoding="utf-8") as f: f.write(report_b)
-with open(f"{paths[2]}/拆文报告.md", "w", encoding="utf-8") as f: f.write(report_c)
+sections = re.split(r'(?=你能想象谈到一个顶级|刚开学\n\n你就谈了个顶级闷骚的漂亮女友)', text)
+with open("拆文库/48_谈了个极度反差的闷骚漂亮女友/原文/01_大一军训篇.txt", "w") as f:
+    f.write(sections[0].strip())
+if len(sections) > 1:
+    with open("拆文库/48_谈了个极度反差的闷骚漂亮女友/原文/02_高中倒水篇.txt", "w") as f:
+        f.write(sections[1].strip())
+if len(sections) > 2:
+    with open("拆文库/48_谈了个极度反差的闷骚漂亮女友/原文/03_大学洗稿篇.txt", "w") as f:
+        f.write(sections[2].strip())
 
