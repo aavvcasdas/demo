@@ -17,7 +17,7 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完整读取（分块直到 EOF；`rg` 检索或局部摘读不算读完）：
 
 1. `references/writing-workflow.md`、`references/submission-craft.md`、`references/short-craft.md`、`references/short-reversal.md`
-2. 核心 10 题材再读取一个精确的 `references/genre-styles/{题材}.md`；冷门题材改读 `references/genre-writing-formulas.md`
+2. 核心 10 题材再读取一个精确的 `references/genre-styles/{题材}.md`；抖音口播「人生副本 / 沉沦实录」赛道改读 `references/genre-styles/人生副本实录.md`；其余冷门题材改读 `references/genre-writing-formulas.md`
 3. 有反派或真相揭露设计时再读 `references/villain-and-reveal.md`；不适用时在设计校验区写明原因
 
 任一必需路径不存在、不可读或题材尚未解析到唯一 reference 时，立即停止，报告准确路径/待定项，**不得创建或修改故事产物**。不要把“已读 references”的回执写进故事文件；要把选出的题材招式、反转计算等应用证据写进正常设计字段。Phase 3/4 的按需加载仍分别服从下文“写前准备”和精修检查，不得用早先读过代替当前任务完整回读。
@@ -50,7 +50,7 @@ Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完
 除了上面的执行规则，构思和写作时遵循：
 
 - **从验证过的模式出发**：有对标书就先拆解，没有就从 `genre-styles/{题材}.md`（核心 10 题材）或 `genre-writing-formulas.md`（冷门题材）找对应的短篇剧情模式
-- **定方向就换风格**：题材方向一旦确定（如追妻火葬场），立刻加载 `references/genre-styles/{题材}.md`——正文的腔调、开篇、钩子、情绪烈度、对话金句、招式、收尾全部切到该题材。核心 10 题材（追妻火葬场 / 世情打脸 / 复仇打脸 / 总裁豪门 / 宅斗宫斗 / 民俗怪谈 / 悬疑 / 甜宠 / 双男主 / 沙雕脑洞）有专属风格包，其中追妻含 现代/古代/民国 时代变体与 小三文学/死人文学 流派分支；冷门题材用 `genre-writing-formulas.md` 的结构骨架兜底，腔调仍按 `short-craft.md` 通用底座
+- **定方向就换风格**：题材方向一旦确定（如追妻火葬场），立刻加载 `references/genre-styles/{题材}.md`——正文的腔调、开篇、钩子、情绪烈度、对话金句、招式、收尾全部切到该题材。核心 10 题材（追妻火葬场 / 世情打脸 / 复仇打脸 / 总裁豪门 / 宅斗宫斗 / 民俗怪谈 / 悬疑 / 甜宠 / 双男主 / 沙雕脑洞）有专属风格包，其中追妻含 现代/古代/民国 时代变体与 小三文学/死人文学 流派分支；另设专项包 `genre-styles/人生副本实录.md` 专供抖音口播「人生副本 / 体验 X 种人生」赛道（第二人称沉沦 / 清算 / 实录），凡识别为该赛道的项目必须加载它而不回退世情打脸；冷门题材用 `genre-writing-formulas.md` 的结构骨架兜底，腔调仍按 `short-craft.md` 通用底座
 - **只加载必需信息**：写每节前明确目标情绪和要用的技法，答不出就先回读参考
 - **复用作者习惯**：若作者记忆 state 已存在，正文前用 `scripts/author_memory_commit.py query --kind prose_style --kind story_design` 获取相关 active 条目（总输出 ≤2KB），传给实际正文/改写 agent 作为自然倾向，不逐条展示或最大化命中，不牺牲连贯、节奏和字数；硬门禁、当前请求和本篇设定优先。明确长期声明在收尾用 `record` 写入并回传回执，细则见 [references/author-memory.md](references/author-memory.md)。
 
@@ -121,7 +121,7 @@ Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完
    |---|---|
    | 追妻（现代 / 古代 / 民国） | `追妻火葬场.md`（按「时代变体」节切换身份词与招式） |
    | 小三 / 死人文学 | `追妻火葬场.md`（「流派分支」节） |
-   | 世情 / 打脸爽文 / 家庭伦理 | `世情打脸.md` |
+   | 世情 / 打脸爽文 / 家庭伦理 | `世情打脸.md`（若满足下方「人生副本实录」识别器则改载 `人生副本实录.md`） |
    | 重生复仇 | `复仇打脸.md` |
    | 豪门 / 总裁（豪门联姻虐恋） | `总裁豪门.md` |
    | 宫斗宅斗 / 宫斗 / 宅斗 / 古言重生 | `宅斗宫斗.md` |
@@ -130,6 +130,7 @@ Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完
    | 甜宠 / 先虐后甜 / 先婚后爱 | `甜宠.md` |
    | 双男主 | `双男主.md` |
    | 沙雕 / 脑洞 / 弹幕 / 系统 | `沙雕脑洞.md` |
+   | **人生副本 / 剧本人生 / 沉沦实录 / 第二人称口播 / 志类沉沦**（抖音口播「体验 X 种人生」赛道） | `人生副本实录.md`（**优先于「世情→世情打脸」默认路由**：当对标拆文 `genre_secondary` 含「第二人称口播 / 实录 / 沉沦 / 清算」，或稿件以「今天体验的人生副本是……」开场，或用途是抖音口播人生副本号时改载本包） |
    | 仙侠 / 通用 | 无专属包 → `short-craft.md` 底座 + `genre-writing-formulas.md` 兜底 |
 
 4. 读取核心发现：结构段落、情绪曲线、反转位置、铺垫方式、句式节奏、可借鉴技法。**把拆文报告里的具体招式对到题材包招式库**：拆文给「这一篇怎么做的」，题材包给「这一类通用怎么做」，两者合用——拆文是当前对标书的实证，题材包是该题材的通法
@@ -409,7 +410,7 @@ Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完
 | [references/short-format.md](references/short-format.md) | 写作前必读（短篇正文格式，两平台模板） |
 | [references/submission-craft.md](references/submission-craft.md) | 投稿前必读（平台基调 知乎/小程序/番茄 · 导语门面 · 付费点断点） |
 | [references/short-craft.md](references/short-craft.md) | 写作全程参考（短篇通用底座：情绪直接写+后接具体反应、在场叙述、超短章节制） |
-| [references/genre-styles/](references/genre-styles/) | **定方向后必读**：按题材加载对应风格包（追妻火葬场 / 世情打脸 / 复仇打脸 / 总裁豪门 / 宅斗宫斗 / 民俗怪谈 / 悬疑 / 甜宠 / 双男主 / 沙雕脑洞），正文风格随之切换 |
+| [references/genre-styles/](references/genre-styles/) | **定方向后必读**：按题材加载对应风格包（追妻火葬场 / 世情打脸 / 复仇打脸 / 总裁豪门 / 宅斗宫斗 / 民俗怪谈 / 悬疑 / 甜宠 / 双男主 / 沙雕脑洞 + 抖音口播专项 人生副本实录），正文风格随之切换 |
 | [references/short-deslop.md](references/short-deslop.md) | 去AI味时必读（短篇专属，只杀真·AI腔，不杀情绪烈度） |
 | [references/writing-workflow.md](references/writing-workflow.md) | Phase 2 设计任务 + Phase 4 精修 |
 | [references/genre-writing-formulas.md](references/genre-writing-formulas.md) | 冷门题材结构骨架补充（核心 10 题材直接用 genre-styles/） |
