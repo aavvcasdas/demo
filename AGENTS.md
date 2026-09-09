@@ -9,7 +9,7 @@
 | 意图 | Skill | 说明 |
 |------|-------|------|
 | 写长篇 / 开书 / 续写 | story-long-write | 长篇网文写作（逐章推进） |
-| 写短篇 | story-short-write | 短篇网文写作（情绪驱动） |
+| 写短篇 | story-short-write | 短篇网文写作（情绪驱动）。**本仓库「人生副本/剧本人生」口播仿写项目须让该 skill 加载专项包 `references/genre-styles/人生副本实录.md`**（第二人称沉沦/清算/实录，勿回退到世情打脸/糖水），详见该包识别器 |
 | 长篇拆文 | story-long-analyze | 长篇小说深度拆解 |
 | 短篇拆文 | story-short-analyze | 短篇小说拆文分析 |
 | 长篇扫榜 | story-long-scan | 长篇小说榜单与市场趋势 |
