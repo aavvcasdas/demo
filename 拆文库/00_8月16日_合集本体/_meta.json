@@ -1,4 +1,5 @@
 {
+  "version": "2.0",
   "piece_id": "00",
   "title": "8月16日（合集本体）",
   "genre": "合集·人生副本连续体",
@@ -32,7 +33,28 @@
     "结尾余韵": 4
   },
   "total_score": 23,
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
-  "notes": "本条目拆「合集作为一个作品」的容器与架构；39 个单篇的逐篇深拆见各自目录，系列内容层见 _系列总拆书.md，容器层速览见 _合集原稿拆解.md（本目录为其五件套扩展版）"
+  "notes": "本条目拆「合集作为一个作品」的容器与架构；39 个单篇的逐篇深拆见各自目录，系列内容层见 _系列总拆书.md，容器层速览见 _合集原稿拆解.md（本目录为其五件套扩展版）",
+  "genre_detected": "合集·人生副本连续体",
+  "genre_secondary": [
+    "合集容器级拆解（非单篇）",
+    "第二人称口播"
+  ],
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 8,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 11,
+    "reversal_type": "无反转"
+  },
+  "created_at": "2026-09-10T00:00:00Z",
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
 }

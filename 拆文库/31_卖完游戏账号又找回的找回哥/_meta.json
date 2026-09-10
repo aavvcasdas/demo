@@ -1,4 +1,5 @@
 {
+  "version": "2.0",
   "title": "卖完游戏账号又找回的找回哥",
   "source_file": "分篇/31_卖完游戏账号又找回的找回哥.txt（剧本人生 合集《8月16日》第 32 段，源文件第 9969-10231 行）",
   "word_count": 2547,
@@ -88,5 +89,19 @@
     4,
     5,
     6
-  ]
+  ],
+  "reversal_type_original": "对称清算曲线（双峰双谷）",
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 10,
+    "setup_clues": 6,
+    "character_archetypes": 4,
+    "reusable_structures": 11,
+    "reversal_type": "信息反转"
+  },
+  "acceptance": {
+    "status": "not_run",
+    "note": "报告为「类型识别/结构节奏/视角人物/语言/方法论/系列坐标」六段体，未按 skill Stage 2-6 模板产出；缺 故事核/情感曲线/爆点 6 维/话题性/共鸣≥3层/节奏速报 等 [BLOCK] 段，见报告末尾「待补」"
+  },
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
 }

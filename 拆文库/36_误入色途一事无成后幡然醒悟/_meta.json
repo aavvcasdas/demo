@@ -1,4 +1,5 @@
 {
+  "version": "2.0",
   "title": "误入色途一事无成后幡然醒悟",
   "source_file": "分篇/36_误入色途一事无成后幡然醒悟.txt（剧本人生 合集《8月16日》第 37 段，源文件第 11536-11799 行）",
   "word_count": 2398,
@@ -92,5 +93,19 @@
     4,
     5,
     6
-  ]
+  ],
+  "reversal_type_original": "U 型深谷曲线（下行慢/回弹快：忏悔录的曲线纪律）",
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 10,
+    "setup_clues": 10,
+    "character_archetypes": 5,
+    "reusable_structures": 11,
+    "reversal_type": "认知反转"
+  },
+  "acceptance": {
+    "status": "not_run",
+    "note": "报告为「类型识别/结构节奏/视角人物/语言/方法论/系列坐标」六段体，未按 skill Stage 2-6 模板产出；缺 故事核/情感曲线/爆点 6 维/话题性/共鸣≥3层/节奏速报 等 [BLOCK] 段，见报告末尾「待补」"
+  },
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
 }
