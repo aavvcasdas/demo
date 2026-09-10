@@ -1,31 +1,29 @@
 {
   "version": "2.0",
+  "title": "赚够200万回小县城",
+  "series": "剧本人生（抖音口播）· 合集外新篇",
+  "source_file": "原文/原文.txt",
   "word_count": 1765,
   "genre_detected": "世情",
+  "genre_secondary": ["逃离编年 / 治愈清单", "第二人称口播", "人生副本实录（开场句「今天你要体验的人生副本是」）", "原标注：治愈向爽文 / 男频生活流"],
+  "created_at": "2026-09-10T00:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
   "structure_counts": {
-    "beats": 4,
-    "hooks": 1,
-    "setup_clues": 0,
-    "character_archetypes": 0,
-    "reusable_structures": 0,
+    "beats": 6,
+    "hooks": 5,
+    "setup_clues": 3,
+    "character_archetypes": 2,
+    "reusable_structures": 5,
     "reversal_type": "无反转"
   },
-  "score": "19/25",
-  "reversal_type_original": "无反转型",
-  "genre_detected_original": "治愈向爽文 / 男频生活流",
-  "genre_secondary": [
-    "治愈向爽文 / 男频生活流",
-    "第二人称口播",
-    "人生副本实录（开场句「今天体验的人生副本是」）"
-  ],
-  "created_at": "2026-09-10T00:00:00Z",
-  "last_stage_in_progress": null,
-  "stages_completed": [
-    2
-  ],
-  "acceptance": {
-    "status": "not_run",
-    "note": "未走 story-short-analyze 管道：报告仅数百字；structure_counts 未达阈值，须重跑 Stage 2-6"
-  },
-  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
+  "plot_nodes": 29,
+  "pov": "第二人称",
+  "ending": "HE / 判词收束",
+  "emotion_curve": "低起点单峰平台（-3 → +3~+5 平台，79% 浅坑 +2，尾部 +5）",
+  "five_dim": {"开头吸引力": 4, "情感拉扯力": 2, "反转设计": 2, "节奏控制": 4, "结尾余韵": 4, "total": 16},
+  "burst_point": {"pos": 0.97, "quote": "我这叫通关了"},
+  "template_family": "无坠落体验文（逃离编年·治愈清单）",
+  "acceptance": {"report_style_check": "passed", "structure_counts_check": "passed", "block_scan": "passed", "run_at": "2026-09-10"},
+  "rerun_note": "2026-09-10 方案2 全量重跑；原 800 字简版归档于 _archive_20260910/"
 }

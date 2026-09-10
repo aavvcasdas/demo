@@ -1,0 +1,28 @@
+{
+  "version": "2.0",
+  "genre_detected": "世情",
+  "structure_counts": {
+    "beats": 4,
+    "hooks": 1,
+    "setup_clues": 0,
+    "character_archetypes": 0,
+    "reusable_structures": 0,
+    "reversal_type": "无反转"
+  },
+  "word_count": 1645,
+  "reversal_type_original": "甜度递进型",
+  "genre_detected_original": "甜宠 / 恋爱日常（反差萌型）",
+  "genre_secondary": [
+    "甜宠 / 恋爱日常（反差萌型）",
+    "第二人称口播",
+    "人生副本实录（开场句「今天体验的人生副本是」）"
+  ],
+  "created_at": "2026-09-10T00:00:00Z",
+  "last_stage_in_progress": null,
+  "stages_completed": [],
+  "acceptance": {
+    "status": "not_run",
+    "note": "未走 story-short-analyze 管道：报告仅数百字，缺 情节节点.md / 写作手法.md；structure_counts 未达阈值，须重跑 Stage 2-6"
+  },
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
+}

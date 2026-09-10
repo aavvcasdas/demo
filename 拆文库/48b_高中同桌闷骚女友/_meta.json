@@ -1,28 +1,30 @@
 {
   "version": "2.0",
+  "title": "高中同桌闷骚女友",
+  "series": "剧本人生（抖音口播）· 合集外新篇 · 闷骚女友同型三篇之二",
+  "source_file": "原文/原文.txt",
+  "word_count": 1645,
   "genre_detected": "世情",
+  "genre_secondary": ["甜宠展示 / 闷骚人设（恋后长段）", "第二人称口播", "人生副本实录（开场句「今天你要体验的副本是」）", "原标注：甜宠 / 恋爱日常（反差萌型）"],
+  "created_at": "2026-09-10T00:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
   "structure_counts": {
-    "beats": 4,
-    "hooks": 1,
-    "setup_clues": 0,
-    "character_archetypes": 0,
-    "reusable_structures": 0,
+    "beats": 5,
+    "hooks": 5,
+    "setup_clues": 3,
+    "character_archetypes": 2,
+    "reusable_structures": 5,
     "reversal_type": "无反转"
   },
-  "word_count": 1645,
-  "reversal_type_original": "甜度递进型",
-  "genre_detected_original": "甜宠 / 恋爱日常（反差萌型）",
-  "genre_secondary": [
-    "甜宠 / 恋爱日常（反差萌型）",
-    "第二人称口播",
-    "人生副本实录（开场句「今天体验的人生副本是」）"
-  ],
-  "created_at": "2026-09-10T00:00:00Z",
-  "last_stage_in_progress": null,
-  "stages_completed": [],
-  "acceptance": {
-    "status": "not_run",
-    "note": "未走 story-short-analyze 管道：报告仅数百字，缺 情节节点.md / 写作手法.md；structure_counts 未达阈值，须重跑 Stage 2-6"
-  },
-  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
+  "plot_nodes": 14,
+  "pov": "第二人称",
+  "ending": "HE / 「嘴/行动」对句判词",
+  "emotion_curve": "两段式阶梯（恋前 0→+4 四级；恋后 +4~+5 糖水平台，无负值）",
+  "five_dim": {"开头吸引力": 2, "情感拉扯力": 2, "反转设计": 2, "节奏控制": 4, "结尾余韵": 3, "total": 13},
+  "burst_point": {"pos": 0.64, "quote": "宝宝你问他干嘛 / 他抱着你的腰不撒手想你了"},
+  "template_family": "露馅短链 + 恋后粘人展示（甜宠展示型）",
+  "sibling_versions": {"48a": "军训母版（推拉型）", "48c": "大学洗稿版"},
+  "acceptance": {"report_style_check": "passed", "structure_counts_check": "passed", "block_scan": "passed", "run_at": "2026-09-10"},
+  "rerun_note": "2026-09-10 方案2 全量重跑；原 310 字简版归档于 _archive_20260910/"
 }

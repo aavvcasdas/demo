@@ -97,8 +97,11 @@
     "reversal_type": "身份反转"
   },
   "acceptance": {
-    "status": "not_run",
-    "note": "报告为「类型识别/结构节奏/视角人物/语言/方法论/系列坐标」六段体，未按 skill Stage 2-6 模板产出；缺 故事核/情感曲线/爆点 6 维/话题性/共鸣≥3层/节奏速报 等 [BLOCK] 段，见报告末尾「待补」"
+    "step1_style_check": "passed",
+    "step2_structure_counts": "passed",
+    "step3_block_scan": "passed",
+    "run_at": "2026-09-10"
   },
-  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改",
+  "rerun_note": "2026-09-10 方案2 重跑：拆文报告.md 按 v3.1.0 补齐 Stage 2/3/6 的 故事核·情感曲线·爆点性·话题性·共鸣 独立段（原六段体报告归档 _archive_20260910/）；情节节点.md/写作手法.md 核验合规保留。"
 }

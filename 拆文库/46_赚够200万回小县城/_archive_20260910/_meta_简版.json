@@ -1,0 +1,31 @@
+{
+  "version": "2.0",
+  "word_count": 1765,
+  "genre_detected": "世情",
+  "structure_counts": {
+    "beats": 4,
+    "hooks": 1,
+    "setup_clues": 0,
+    "character_archetypes": 0,
+    "reusable_structures": 0,
+    "reversal_type": "无反转"
+  },
+  "score": "19/25",
+  "reversal_type_original": "无反转型",
+  "genre_detected_original": "治愈向爽文 / 男频生活流",
+  "genre_secondary": [
+    "治愈向爽文 / 男频生活流",
+    "第二人称口播",
+    "人生副本实录（开场句「今天体验的人生副本是」）"
+  ],
+  "created_at": "2026-09-10T00:00:00Z",
+  "last_stage_in_progress": null,
+  "stages_completed": [
+    2
+  ],
+  "acceptance": {
+    "status": "not_run",
+    "note": "未走 story-short-analyze 管道：报告仅数百字；structure_counts 未达阈值，须重跑 Stage 2-6"
+  },
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
+}

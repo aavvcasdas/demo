@@ -1,28 +1,31 @@
 {
   "version": "2.0",
+  "title": "大学洗稿闷骚女友",
+  "series": "剧本人生（抖音口播）· 合集外新篇 · 闷骚女友同型三篇之三（48a 逐拍改写）",
+  "source_file": "原文/原文.txt",
+  "word_count": 2039,
   "genre_detected": "世情",
+  "genre_secondary": ["甜宠推拉 / 闷骚人设（改写稿）", "第二人称口播", "人生副本实录（开场句「今天体验的人生副本是」）", "原标注：甜宠 / 恋爱日常（反差萌型）"],
+  "created_at": "2026-09-10T00:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
   "structure_counts": {
-    "beats": 4,
-    "hooks": 1,
-    "setup_clues": 0,
-    "character_archetypes": 0,
-    "reusable_structures": 0,
+    "beats": 6,
+    "hooks": 5,
+    "setup_clues": 4,
+    "character_archetypes": 2,
+    "reusable_structures": 5,
     "reversal_type": "无反转"
   },
-  "word_count": 2039,
-  "reversal_type_original": "甜度递进型",
-  "genre_detected_original": "甜宠 / 恋爱日常（反差萌型）",
-  "genre_secondary": [
-    "甜宠 / 恋爱日常（反差萌型）",
-    "第二人称口播",
-    "人生副本实录（开场句「今天体验的人生副本是」）"
-  ],
-  "created_at": "2026-09-10T00:00:00Z",
-  "last_stage_in_progress": null,
-  "stages_completed": [],
-  "acceptance": {
-    "status": "not_run",
-    "note": "未走 story-short-analyze 管道：报告仅数百字，缺 情节节点.md / 写作手法.md；structure_counts 未达阈值，须重跑 Stage 2-6"
-  },
-  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
+  "plot_nodes": 16,
+  "pov": "第二人称",
+  "ending": "HE / 否认词清单回收 + 「隐藏版本」判词",
+  "emotion_curve": "阶梯上行（同 48a 形态，N6/N10 两级各低 1 格）",
+  "five_dim": {"开头吸引力": 3, "情感拉扯力": 3, "反转设计": 2, "节奏控制": 3, "结尾余韵": 3, "total": 14},
+  "burst_point": {"pos": 0.58, "quote": "你怎么现在才说 / 我还以为你不会说了"},
+  "template_family": "露馅递进志（48a 同骨架改写·物证降级样本）",
+  "sibling_versions": {"48a": "军训母版", "48b": "高中同桌版"},
+  "rewrite_audit": {"beats_preserved": "100%", "evidence_downgraded": 5, "callback_chains_broken": 2.5, "explanatory_chars_added": 247, "net_gain_lines": ["以前我哪好意思说", "你刚才为什么不牵我"]},
+  "acceptance": {"report_style_check": "passed", "structure_counts_check": "passed", "block_scan": "passed", "run_at": "2026-09-10"},
+  "rerun_note": "2026-09-10 方案2 全量重跑；原 280 字简版归档于 _archive_20260910/"
 }
