@@ -20,5 +20,18 @@ def check(path):
     for k,v,ok,th in rows:
         print(f"{'OK ' if ok else 'BAD'} {k:10} {v}  (门槛 {th})"); bad+= not ok
     print('RESULT:', 'PASS' if not bad else f'FAIL {bad}项'); return bad
+def check_comedy(path):
+    t=open(path,encoding='utf-8').read()
+    lines=[l for l in t.split('\n') if l.strip() and not l.startswith('#')]
+    txt=''.join(lines); n=len(txt); meme=re.findall(MEME,txt)
+    # 笑点节点近似：含数字/制度词/误会词/反差词的行
+    nodes=sum(1 for l in lines if re.search(r'\d|规定|表格|Excel|公告|举报|以为|其实|居然|一模一样|默认|流程|条例|评分|投票|截图|收到',l))
+    rows=[('字数',n,2100<=n<=3900,'2100–3900'),('制度/数字行占比(advisory)',round(nodes/n*1000,1),True,'参考: 32=3.3 39=11 29=7.6'),('热梗',len(meme),len(meme)==0,'=0')]
+    bad=0
+    for k,v,ok,th in rows:
+        print(f"{'OK ' if ok else 'BAD'} {k:10} {v}  (门槛 {th})"); bad+= not ok
+    print('RESULT:', 'PASS' if not bad else f'FAIL {bad}项'); return bad
 if __name__=='__main__':
-    sys.exit(min(1,sum(check(p) for p in sys.argv[1:])))
+    args=[a for a in sys.argv[1:] if a!='--mode' and a!='comedy']
+    fn=check_comedy if 'comedy' in sys.argv else check
+    sys.exit(min(1,sum(fn(p) for p in args)))
