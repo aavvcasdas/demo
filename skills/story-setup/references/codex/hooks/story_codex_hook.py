@@ -174,7 +174,6 @@ def hook_context(event: str, text: str) -> dict[str, Any]:
 # 】 是章尾系统播报模板的收束符（agent-references/long-chapter-hooks.md 章尾实战模板一/四），ASCII "
 # 是 normalize-punctuation.js --quote-mode ascii 的合法收引号，两者都不该被判「疑似截断」。
 _NET_TERMINAL = set("。！？…”』」）)!?.~—】\"")
-_NET_QUOTE_OPENERS = ("「", "“", "‘", "『", '"')
 _NET_SOFT_PATTERNS = [
     # 型号后缀（AI语言模型/AI助手/人工智能语言模型/AI模型/AI大模型）必须可选吃掉：否则前视断言
     # 紧跟在「AI」后面看到的是「语」/「助」/「模」，最典型的退化开场整类漏检。
@@ -209,7 +208,8 @@ def _net_is_skippable(stripped: str) -> bool:
 # 占位后仍残留引号字符（跨行对话/未闭合）的行整行跳过。
 # js↔py 由 scripts/check-hook-regex-sync.sh（规范串逐字锁）与
 # scripts/test-prose-net-parity.sh（fixture 逐字 diff）锁 parity。
-_TOXIC_QUOTE_SPANS = [re.compile(r"「[^」]*」"), re.compile(r"『[^』]*』"), re.compile(r"【[^】]*】"), re.compile(r"“[^”]*”"), re.compile(r"‘[^’]*’"), re.compile(r'"[^"]*"'), re.compile(r"'[^']*'")]
+# 单引号须成对；词内撇号（don't、O’Connor）不作为开闭引号。
+_TOXIC_QUOTE_SPANS = [re.compile(r"「[^」]*」"), re.compile(r"『[^』]*』"), re.compile(r"【[^】]*】"), re.compile(r"“[^”]*”"), re.compile(r"(?<![A-Za-z0-9_])‘(?:[^’]|(?<=[A-Za-z0-9_])’(?=[A-Za-z0-9_]))*(?!(?<=[A-Za-z0-9_])’[A-Za-z0-9_])’"), re.compile(r'"[^"]*"'), re.compile(r"(?<![A-Za-z0-9_])'(?:[^']|(?<=[A-Za-z0-9_])'(?=[A-Za-z0-9_]))*(?!(?<=[A-Za-z0-9_])'[A-Za-z0-9_])'")]
 _TOXIC_QUOTE_CHARS = set("「」『』【】“”‘’\"'")
 # 分句起点边界（前一字符属于它才认「是A，不是B」的分句首「是」）；同时用作确认语的右边界。
 _TOXIC_CLAUSE_BOUNDARY = set("，,。.！!？?；;：:、…—~ \t　")
@@ -293,14 +293,34 @@ def _toxic_match_sentence(line: str) -> tuple[str, str, str] | None:
     return None
 
 
-def toxic_phrase_findings(text: str) -> list[str]:
+def load_style_whitelist(file: Path) -> list[str]:
+    parent = file.resolve().parent
+    book = parent.parent if parent.name == "正文" else parent
+    try:
+        lines = (book / ".deslop-whitelist").read_text(encoding="utf-8").splitlines()
+    except FileNotFoundError:
+        return []
+    return sorted((line.strip() for line in lines if line.strip() and not line.strip().startswith("#")), key=len, reverse=True)
+
+
+def mask_style_text(text: str, whitelist: list[str]) -> str:
+    chars = list(text)
+    for literal in whitelist:
+        at = text.find(literal)
+        while at != -1:
+            chars[at:at + len(literal)] = ["？"] * len(literal)
+            at = text.find(literal, at + 1)
+    return "".join(chars)
+
+
+def toxic_phrase_findings(text: str, whitelist=()) -> list[str]:
     findings: list[str] = []
     content: list[tuple[int, str]] = []
     for i, raw in enumerate(text.split("\n"), 1):
         s = raw.strip()
         if _net_is_skippable(s):
             continue
-        masked = _toxic_mask_quoted(s)
+        masked = _toxic_mask_quoted(mask_style_text(s, whitelist))
         if any(ch in _TOXIC_QUOTE_CHARS for ch in masked):
             continue
         content.append((i, masked))
@@ -326,7 +346,7 @@ def toxic_phrase_findings(text: str) -> list[str]:
     return findings
 
 
-def prose_net_findings(text: str) -> list[str]:
+def prose_net_findings(text: str, whitelist=()) -> list[str]:
     findings: list[str] = []
     content: list[tuple[int, str]] = []
     for i, raw in enumerate(text.split("\n"), 1):
@@ -334,15 +354,15 @@ def prose_net_findings(text: str) -> list[str]:
         if _net_is_skippable(s):
             continue
         content.append((i, s))
-        is_dialogue = s[0] in _NET_QUOTE_OPENERS
         hit = False
-        if not is_dialogue:
-            for rx, label in _NET_SOFT_PATTERNS:
-                m = rx.search(s)
-                if m:
-                    findings.append(f"第{i}行 元信息泄漏（{label}）：「{m.group(0)[:20]}」")
-                    hit = True
-                    break
+        # 只豁免成对引号内的内容，继续检查引号外叙述。
+        outside_quotes = _toxic_mask_quoted(s)
+        for rx, label in _NET_SOFT_PATTERNS:
+            m = rx.search(outside_quotes)
+            if m:
+                findings.append(f"第{i}行 元信息泄漏（{label}）：「{m.group(0)[:20]}」")
+                hit = True
+                break
         if hit:
             continue
         for rx, label in _NET_HARD_PATTERNS:
@@ -361,7 +381,7 @@ def prose_net_findings(text: str) -> list[str]:
     # 其余网（元信息/占位/复读/截断）照常——否则按拦截提示加标记的那次 Edit 会把
     # 已豁免的毒句式再次当硬信号推回。
     if not re.search(r"去味(：|:)跳过", "\n".join(re.split(r"\r?\n", text)[:6])):
-        findings.extend(toxic_phrase_findings(text))
+        findings.extend(toxic_phrase_findings(text, whitelist))
     return findings
 
 
@@ -1266,7 +1286,7 @@ def prose_block_reason(root: Path, abs_path: Path) -> str | None:
             except OSError:
                 prev_text = None
             if prev_text is not None and not re.search(r"去味(：|:)跳过", "\n".join(re.split(r"\r?\n", prev_text)[:6])):
-                hits = [ln for ln in toxic_phrase_findings(prev_text) if ln.startswith("第")]
+                hits = [ln for ln in toxic_phrase_findings(prev_text, load_style_whitelist(prev_file)) if ln.startswith("第")]
                 if hits:
                     shown = hits[:6]
                     more = len(hits) - len(shown)
@@ -1511,7 +1531,7 @@ def stop_event() -> None:
                 text = abs_path.read_text(encoding="utf-8")
             except Exception:
                 continue
-            findings = prose_net_findings(text)
+            findings = prose_net_findings(text, load_style_whitelist(abs_path))
             if findings:
                 blocks.append(f"=== {safe_rel(root, abs_path)} ===\n" + "\n".join(findings))
         if blocks:
