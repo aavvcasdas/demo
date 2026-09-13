@@ -70,7 +70,7 @@ def draft(d):
         if not any(k in tail for k in kws[:6]): miss.append(payoff.strip()[:14])
     need('呼应回收到位', len(rows) >= 8 and not miss, f'{len(rows)}对, 未在后半找到: {miss}' if miss else f'{len(rows)}对')
     inner = [l for l in lines if re.search(INNER, l)]
-    need('主角内心≤3', len(inner) <= 3, f'{len(inner)}: ' + ' / '.join(x[:12] for x in inner[:5]))
+    need('主角内心≤6(37原文=6)', len(inner) <= 6, f'{len(inner)}: ' + ' / '.join(x[:12] for x in inner[:5]))
     ver = [l for l in lines if re.search(VERDICT, l)]
     need('叙述者不宣判', not ver, ' / '.join(x[:16] for x in ver[:3]))
     dlg = [l for l in lines if re.search(r'(^|\s)(你|他|她)说\s|^\s*[「"]', l)]
