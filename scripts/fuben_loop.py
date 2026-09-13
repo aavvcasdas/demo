@@ -32,7 +32,8 @@ def design(path):
     need('原型清单≥5条', len(re.findall(r'^\s*\d+\.\s', t, re.M)) >= 5, '搜到的原型逐条列出并标落点')
     need('放大事件（开篇）', bool(re.search(r'(开篇|放大|巅峰|11%)', t)), '指定哪一个事件占开篇 10–15%')
     need('戳穿机关', bool(re.search(r'(戳穿|机关|证据|截图|对账|翻转)', t)), '写清「外圈第一次看见人后」是什么物证')
-    pairs = len(re.findall(r'^\|\s*\d+\s*\|', t, re.M))
+    sec = re.search(r'##[^\n]*呼应[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S)
+    pairs = len(re.findall(r'^\|\s*\d+\s*\|', sec.group(1) if sec else '', re.M))
     need('呼应表≥8对', pairs >= 8, f'现有 {pairs} 对（合集均值 8–10）')
     need('侧面四通道', all(k in t for k in ['旁观者', '环境', '器物', '不作为']) or '侧面' in t, '旁观者身体/旁观者的话/环境规格/权力者不作为')
     if re.search(r'(双面|人前|表面|老好人|人畜无害|塑料)', t):
@@ -60,7 +61,8 @@ def draft(d):
         if not ok: bad.append(name)
     need("字数 2000–3000", 2000 <= n <= 3000, n)
     # 呼应回收：设定.md 呼应表第 3 列的关键词要能在正文后 40% 找到
-    rows = re.findall(r'^\|\s*\d+\s*\|([^|]+)\|([^|]+)\|', setting, re.M)
+    sec = re.search(r'##[^\n]*呼应[^\n]*\n(.*?)(?=\n## |\Z)', setting, re.S)
+    rows = re.findall(r'^\|\s*\d+\s*\|([^|]+)\|([^|]+)\|', sec.group(1) if sec else setting, re.M)
     tail = ''.join(lines[int(len(lines) * .55):]); head = ''.join(lines[:int(len(lines) * .6)])
     miss = []
     for setup, payoff in rows:
