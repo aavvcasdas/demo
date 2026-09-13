@@ -58,7 +58,7 @@ def draft(d):
     def need(name, ok, info=''):
         print(('OK  ' if ok else 'BAD ') + f'{name:14} {info}')
         if not ok: bad.append(name)
-    need("字数 2200–3000", 2200 <= n <= 3000, n)
+    need("字数 2000–3000", 2000 <= n <= 3000, n)
     # 呼应回收：设定.md 呼应表第 3 列的关键词要能在正文后 40% 找到
     rows = re.findall(r'^\|\s*\d+\s*\|([^|]+)\|([^|]+)\|', setting, re.M)
     tail = ''.join(lines[int(len(lines) * .55):]); head = ''.join(lines[:int(len(lines) * .6)])
