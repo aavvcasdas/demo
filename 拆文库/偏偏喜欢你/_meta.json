@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 10619,
+  "genre_detected": "甜宠",
+  "created_at": "2026-09-14T00:20:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "信息反转"
+  }
+}
