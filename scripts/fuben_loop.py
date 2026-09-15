@@ -38,6 +38,10 @@ def design(path):
     need('侧面四通道', all(k in t for k in ['旁观者', '环境', '器物', '不作为']) or '侧面' in t, '旁观者身体/旁观者的话/环境规格/权力者不作为')
     if re.search(r'(双面|人前|表面|老好人|人畜无害|塑料)', t):
         need('双面配比表', '人前' in t and '人后' in t and len(re.findall(r'^\|', t, re.M)) >= 10, '§15.10：每个人后恶行前有一个有观众的人前善举')
+    tsec = re.search(r'##[^\n]*移植[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S)
+    trows = len(re.findall(r'^\|\s*[^|]*(N\d+|P\d+|EM-\d+)', tsec.group(1) if tsec else '', re.M))
+    num = re.search(r'/(\d+)[a-z]?_', path); legacy = num and int(num.group(1)) < 66
+    need('移植节点表≥5(§16)' + (' [advisory<66]' if legacy else ''), trows >= 5 or bool(legacy), f'现有 {trows} 条：源篇 N# | 原文摘句 | 机制 | 落点')
     need('收束=器物/动作', bool(re.search(r'(收束|结尾).{0,80}(器物|动作|赞|鞋|碗|门|票|一个|空)', t, re.S)), '结尾落到一件东西，不落到抒情')
     # 同题撞正主
     title = re.search(r'#\s*\d+\s*[·・]\s*([^（(\n]+)', t)
