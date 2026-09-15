@@ -78,14 +78,26 @@ def draft(d):
     ver = [l for l in lines if re.search(VERDICT, l)]
     need('叙述者不宣判', not ver, ' / '.join(x[:16] for x in ver[:3]))
     dlg = [l for l in lines if re.search(r'(^|\s)(你|他|她)说\s|^\s*[「"]', l)]
-    need('正面台词≤3行', len(dlg) <= 3, len(dlg))
+    dlg = [l for l in lines if re.match(r'^\s*[「"]', l)]
+    need('引号问答体≤3行', len(dlg) <= 3, len(dlg))
     end = lines[-6:]
     need('收束不抒情', not any(re.search(LYRIC_END, l) for l in end[:-1]), ' / '.join(end[-3:])[:60])
     need('末句≤25字', HAN(end[-1]) <= 25, end[-1][:30])
     brands = re.findall(r'(资生堂|Mac|MAC|空军一号|AJ|耐克|阿迪|苹果|iPhone|华为|小米|星巴克|瑞幸|喜茶|优衣库|ZARA)', body)
     need('无品牌', not brands, set(brands))
     misread = [l for l in lines if re.search(r'(你把.{0,6}归给|你觉得.{0,6}(不礼貌|关系好|正常|没事)|你没听清|你没在意|你没注意)', l)]
-    need('主角误读≥2', len(misread) >= 2, len(misread))
+    comedy = bool(re.search(r'(迷因志|荒诞志|喜剧支线)', setting))
+    need('主角误读≥2' + (' [comedy:skip]' if comedy else ''), len(misread) >= 2 or comedy, len(misread))
+    # §17 反流水账
+    stamps = [l for l in lines if re.match('^(大[一二三四](上|下)?|第[一二三四五六七八九十]+(周|个月|学期|年)|高[一二三]|初[一二三]|那年|[一二三四五六七八九十]+月)', l)]
+    need('时间标签≤6(§17)' + (' [comedy:≤12]' if comedy else ''), len(stamps) <= (12 if comedy else 6), len(stamps))
+    runs = 0; k = 0
+    for l in lines:
+        k = k + 1 if re.match(r'^你[\u4e00-\u9fff]', l) else 0
+        if k == 3: runs += 1
+    need('连续动作段≥4(§17)', runs >= 4, runs)
+    speech = [l for l in lines if re.search(r'(你说|他说|她说|问你|说了句|喊|嘟囔|说 |问 )', l)]
+    need('内联说话≥15行(§17)', len(speech) >= 15, len(speech))
     print('\nDRAFT:', 'PASS' if not bad else f'FAIL {len(bad)}')
     return len(bad)
 
