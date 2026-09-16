@@ -30,6 +30,10 @@ def design(path):
     m = re.search(r'(拆文库/|对位\s*)(\d+\w*)', t)
     need('模板篇已指定', bool(m), '写「模板 = 拆文库/NN」或「对位 NN 骨架」')
     if v2card:
+        msec = re.search(r'##[^\n]*主线[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S); mt = msec.group(1) if msec else ''
+        need('主线四行(设定/核心行动/悬念/一句话)', all(k in mt for k in ['设定', '核心行动', '悬念', '一句话']), '人物类必须；来源=拆文报告 故事核')
+        need('主线来源已标', bool(re.search(r'(来源|借自|←)', mt)), '拆文库故事核 / 情节节点 / 搜索第几轮')
+        need('八拍主线动作≥6', len(re.findall(r'^\|\s*[一二三四五六七八]\s*\|[^\n]*(推进|受阻|揭示)', t, re.M)) >= 6, '八拍表加「主线动作」列，≥6 拍为 推进/受阻/揭示')
         need('八拍字数行', bool(re.search(r'一\s*\d+\s*/\s*二\s*\d+', t)), '八拍各字数配额')
         need('原型=事件(L0 生态行)', bool(re.search(r'^\|\s*人群生态\s*\|[^|]{40,}', t, re.M)), 'L0 人群生态行 ≥40 字，每条原型=正文一个事件')
         need('齿轮场景已定', bool(re.search(r'齿轮瞬间[:：]', t)), '第二拍场景')
@@ -132,6 +136,13 @@ def draft(d):
     need('生理化≥12处' + tag, physio >= 12 or not v2, physio)
     slogans = re.findall(r'(首先|其次|最后[，,]|综上所述|让我们一起|希望你|愿你|加油)', body)
     need('无口号禁词', not slogans, set(slogans))
+    mk = re.search(r'主线关键词[:：]\s*([^\n]+)', setting)
+    if mk:
+        kws = [k.strip() for k in re.split(r'[/、,，\s]+', mk.group(1)) if k.strip()]
+        seg = 8; hit = [any(k in ''.join(lines[i*len(lines)//seg:(i+1)*len(lines)//seg]) for k in kws) for i in range(seg)]
+        need('主线贯穿≥6/8段', sum(hit) >= 6, f'{sum(hit)}/8 段含主线关键词 {kws}')
+    else:
+        need('主线关键词已定义', False, '设定.md 写「主线关键词: A/B/C」（核心行动的物证/动作词）')
     longl = [l for l in lines if HAN(l) > 18]
     need('行构造 ≥280行且无>18字行(骨架)' + tag, (len(lines) >= 280 and not longl) or not v2, f'{len(lines)}行, 长行{len(longl)}')
     need('字数 2800–3500 (v2)' + tag, 2800 <= n <= 3500 or not v2, n)
