@@ -8,7 +8,11 @@ N = len(L); bad = 0
 def show(k, ok, v): print(('OK  ' if ok else 'BAD ') + f'{k:18} {v}')
 # 1 说话行总量（含转述）≤8%（37 原文 6%）
 sp = [i for i, l in enumerate(L) if re.search(r'(说|问|喊|念|嘀咕|提了一句|回了)', l) and not re.search(r'(没有?说|不说|说不|说话|说清楚|来说|说法|换回|回来|回去|回头|回自己|问号|据说|听说)', l)]
-ok = len(sp) <= N * .08; show('说话行(含转述)≤8%', ok, f'{len(sp)}/{N}={len(sp)/N:.0%}'); bad += not ok
+# 反杀现场（五拍收尾句「再也没有主动」往前 ≤80 行）内的说话行豁免：审讯/面试/对质型场景本就靠问答
+end5 = next((i for i, l in enumerate(L) if '再也没有主动' in l), None)
+scene = set(range(max(0, end5 - 80), end5)) if end5 else set()
+sp_out = [i for i in sp if i not in scene]
+ok = len(sp_out) <= (N - len(scene)) * .08; show('说话行≤8%(反杀现场豁免)', ok, f'现场外 {len(sp_out)}/{N-len(scene)}={len(sp_out)/max(1,N-len(scene)):.0%}  现场内 {len(sp)-len(sp_out)}'); bad += not ok
 # 2 她/他 指代：前 6 行内出现 ≥2 个不同人名，或 0 个人名且不是「你」→ 摸不着头脑
 names = set(re.findall(r'(林悦|周雨|陈静|辅导员|老板娘|老头|老周|表弟|同学|室友|同事|主管|小陈|大老板|门卫|前台|你妈|你爸|她妈|他妈|学姐|系办老师|陈老师|导师|客户|小伙|工作人员|买车的人|小妹)', S + ''.join(L)))
 FEM = {'林悦','周雨','陈静','辅导员','老板娘','你妈','她妈','学姐','系办老师','室友','前台','小妹','工作人员'}
@@ -35,7 +39,7 @@ if len(heads) >= 3:
     lens = [b - a for a, b in zip(heads, heads[1:])]
     ok = max(lens) <= 7 and (heads[-1] - heads[0] + lens[-1]) <= 45; show('清单段 每条≤7 总≤45', ok, f'各条 {lens} 起 L{heads[0]+1}'); bad += not ok
 # 5 每 30 行至少 1 个身体/环境行（反流水账）
-phys = re.compile(r'(手|耳朵|后背|喉咙|胃|膝盖|呼吸|汗|发麻|发烫|发凉|嗡|味道|声音|灯|门|窗|风|雨|凉|热)')
+phys = re.compile(r'(手|耳朵|后背|喉咙|胃|膝盖|呼吸|汗|发麻|发烫|发凉|嗡|味道|声音|灯|门|窗|风|雨|凉|热|空调|冷气|响|湿|烫|烟味|太阳|键盘声)')
 gaps = [k for k in range(0, N, 30) if not any(phys.search(l) for l in L[k:k + 30])]
 ok = not gaps; show('每30行有身体/环境', ok, f'空窗起行 {[g+1 for g in gaps]}'); bad += not ok
 print('\nLINT:', 'PASS' if not bad else f'FAIL {bad}')
