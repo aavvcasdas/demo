@@ -25,25 +25,34 @@ def design(path):
     def need(name, ok, why=''):
         print(('OK  ' if ok else 'BAD ') + name + ('' if ok else '  ← ' + why))
         if not ok: bad.append(name)
-    need('志/曲线已选', bool(re.search(r'(志|曲线)', t)) and bool(re.search(r'(清算|沉沦|实录|代价|迷因|荒诞|加冕|逆袭|身体|温情)', t)), '设定.md 首屏写明 志 + 曲线')
-    m = re.search(r'拆文库/(\d+\w*)', t)
-    need('模板篇已指定', bool(m), '写「模板 = 拆文库/NN」并抄其六段占比表')
-    need('六段占比表', len(re.findall(r'\|\s*\d{1,2}%', t)) >= 5, '六段各占比')
-    need('原型清单≥5条', len(re.findall(r'^\s*\d+\.\s', t, re.M)) >= 5, '搜到的原型逐条列出并标落点')
-    need('放大事件（开篇）', bool(re.search(r'(开篇|放大|巅峰|11%)', t)), '指定哪一个事件占开篇 10–15%')
-    need('戳穿机关', bool(re.search(r'(戳穿|机关|证据|截图|对账|翻转)', t)), '写清「外圈第一次看见人后」是什么物证')
+    v2card = bool(re.search(r'八拍', t)) and bool(re.search(r'事实核查', t))  # skill v2 设定卡：八拍 + L0 表
+    need('志/曲线或引擎已选', bool(re.search(r'(志|曲线|引擎)', t)) and bool(re.search(r'(清算|沉沦|实录|代价|迷因|荒诞|加冕|逆袭|身体|温情|性格缺陷|成瘾溃败|习惯溃败)', t)), '设定.md 首屏写明 志/曲线 或 引擎')
+    m = re.search(r'(拆文库/|对位\s*)(\d+\w*)', t)
+    need('模板篇已指定', bool(m), '写「模板 = 拆文库/NN」或「对位 NN 骨架」')
+    if v2card:
+        need('八拍字数行', bool(re.search(r'一\s*\d+\s*/\s*二\s*\d+', t)), '八拍各字数配额')
+        need('原型=事件(L0 生态行)', bool(re.search(r'^\|\s*人群生态\s*\|[^|]{40,}', t, re.M)), 'L0 人群生态行 ≥40 字，每条原型=正文一个事件')
+        need('齿轮场景已定', bool(re.search(r'齿轮瞬间[:：]', t)), '第二拍场景')
+        need('揭底物证', bool(re.search(r'(三物证|物证)[:：]', t)), '一新一旧/带数字的物证')
+    else:
+        need('六段占比表', len(re.findall(r'\|\s*\d{1,2}%', t)) >= 5, '六段各占比')
+        need('原型清单≥5条', len(re.findall(r'^\s*\d+\.\s', t, re.M)) >= 5, '搜到的原型逐条列出并标落点')
+        need('放大事件（开篇）', bool(re.search(r'(开篇|放大|巅峰|11%)', t)), '指定哪一个事件占开篇 10–15%')
+        need('戳穿机关', bool(re.search(r'(戳穿|机关|证据|截图|对账|翻转)', t)), '写清「外圈第一次看见人后」是什么物证')
     sec = re.search(r'##[^\n]*呼应[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S)
     pairs = len(re.findall(r'^\|\s*\d+\s*\|', sec.group(1) if sec else '', re.M))
     need('呼应表≥8对', pairs >= 8, f'现有 {pairs} 对（合集均值 8–10）')
-    need('侧面四通道', all(k in t for k in ['旁观者', '环境', '器物', '不作为']) or '侧面' in t, '旁观者身体/旁观者的话/环境规格/权力者不作为')
-    if re.search(r'(双面|人前|表面|老好人|人畜无害|塑料)', t):
+    need('侧面四通道', all(k in t for k in ['旁观者', '环境', '器物', '不作为']) or '侧面' in t or (v2card and '社死台词' in t), '旁观者身体/旁观者的话/环境规格/权力者不作为（v2：社死场景内含）')
+    if re.search(r'(双面|人前|表面|老好人|人畜无害|塑料)', t) and not v2card:
         need('双面配比表', '人前' in t and '人后' in t and len(re.findall(r'^\|', t, re.M)) >= 10, '§15.10：每个人后恶行前有一个有观众的人前善举')
+    if v2card and re.search(r'(双面|心机|表演|讨好)', t):
+        need('双坐标≥3处', len(re.findall(r'双坐标', t)) >= 1 and len(re.findall(r'/', re.search(r'双坐标[^\n]*', t).group(0))) >= 2, '名义功能/实际舞台/暴露道具 ≥3 处')
     tsec = re.search(r'##[^\n]*移植[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S)
-    trows = len(re.findall(r'^\|\s*[^|]*(N\d+|P\d+|EM-\d+)', tsec.group(1) if tsec else '', re.M))
+    trows = len(re.findall(r'^\|\s*[^|]*(N\d+|P\d+|EM-\d+|隐娘|乱葬岗|掌控|泠泠|偏偏|朕|原型)', tsec.group(1) if tsec else '', re.M))
     num = re.search(r'/(\d+)[a-z]?_', path); legacy = num and int(num.group(1)) < 66
     need('移植节点表≥5(§16)' + (' [advisory<66]' if legacy else ''), trows >= 5 or bool(legacy), f'现有 {trows} 条：源篇 N# | 原文摘句 | 机制 | 落点')
     v2 = not (num and int(num.group(1)) < 72); tag = '' if v2 else ' [advisory<72]'
-    fsec = re.search(r'##[^\n]*事实核查[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S); frows = len(re.findall(r'^\|\s*(时间线|价格|集体记忆|生态|年龄)', fsec.group(1) if fsec else '', re.M))
+    fsec = re.search(r'##[^\n]*事实核查[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S); frows = len(re.findall(r'^\|\s*(时间线|价格|数字|集体记忆|记忆锚点|生态|人群生态|年龄)', fsec.group(1) if fsec else '', re.M))
     need('L0 事实核查表5类' + tag, frows >= 5 or not v2, f'现有 {frows}/5（时间线/价格/集体记忆/生态/年龄闭环 各≥1 带来源）')
     need('引擎已锁' + tag, bool(re.search(r'(成瘾溃败|性格缺陷|习惯溃败|加冕)型', t)) or not v2, '选题基因四选一')
     need('齿轮瞬间' + tag, '齿轮' in t or not v2, '真实年份+集体记忆物+关键抉择')
@@ -51,7 +60,7 @@ def design(path):
     need('社死台词' + tag, bool(re.search(r'社死.{0,200}「', t, re.S)) or not v2, '第三者在场+一句短狠台词，写进设定')
     need('对照组数字+审判金句' + tag, ('对照组' in t and '审判' in t) or not v2, '同起点的人+精确数字；亲密的人一段实话（否定人不否定钱）')
     need('八拍字数表' + tag, len(re.findall(r'第[一二三四五六七八]拍', t)) >= 8 or not v2, '八拍各字数配额')
-    need('收束=器物/动作', bool(re.search(r'(收束|结尾).{0,80}(器物|动作|赞|鞋|碗|门|票|一个|空)', t, re.S)), '结尾落到一件东西，不落到抒情')
+    need('收束=器物/动作', bool(re.search(r'(收束|结尾|末句).{0,80}(器物|动作|赞|鞋|碗|门|票|一个|空|摆正|窗|杯|伞|桌|打印机|本子)', t, re.S)), '结尾落到一件东西，不落到抒情')
     # 同题撞正主
     title = re.search(r'#\s*\d+\s*[·・]\s*([^（(\n]+)', t)
     if title:
