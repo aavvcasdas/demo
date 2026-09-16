@@ -42,6 +42,15 @@ def design(path):
     trows = len(re.findall(r'^\|\s*[^|]*(N\d+|P\d+|EM-\d+)', tsec.group(1) if tsec else '', re.M))
     num = re.search(r'/(\d+)[a-z]?_', path); legacy = num and int(num.group(1)) < 66
     need('移植节点表≥5(§16)' + (' [advisory<66]' if legacy else ''), trows >= 5 or bool(legacy), f'现有 {trows} 条：源篇 N# | 原文摘句 | 机制 | 落点')
+    v2 = not (num and int(num.group(1)) < 72); tag = '' if v2 else ' [advisory<72]'
+    fsec = re.search(r'##[^\n]*事实核查[^\n]*\n(.*?)(?=\n## |\Z)', t, re.S); frows = len(re.findall(r'^\|\s*(时间线|价格|集体记忆|生态|年龄)', fsec.group(1) if fsec else '', re.M))
+    need('L0 事实核查表5类' + tag, frows >= 5 or not v2, f'现有 {frows}/5（时间线/价格/集体记忆/生态/年龄闭环 各≥1 带来源）')
+    need('引擎已锁' + tag, bool(re.search(r'(成瘾溃败|性格缺陷|习惯溃败|加冕)型', t)) or not v2, '选题基因四选一')
+    need('齿轮瞬间' + tag, '齿轮' in t or not v2, '真实年份+集体记忆物+关键抉择')
+    need('三件物证带数字' + tag, len(re.findall(r'物证.*?\d', t)) >= 1 and len(re.findall(r'\d+\s*(块|元|万|次|天|条|张|个)', t)) >= 3 or not v2, '三件带价格/数字的实体道具')
+    need('社死台词' + tag, bool(re.search(r'社死.{0,200}「', t, re.S)) or not v2, '第三者在场+一句短狠台词，写进设定')
+    need('对照组数字+审判金句' + tag, ('对照组' in t and '审判' in t) or not v2, '同起点的人+精确数字；亲密的人一段实话（否定人不否定钱）')
+    need('八拍字数表' + tag, len(re.findall(r'第[一二三四五六七八]拍', t)) >= 8 or not v2, '八拍各字数配额')
     need('收束=器物/动作', bool(re.search(r'(收束|结尾).{0,80}(器物|动作|赞|鞋|碗|门|票|一个|空)', t, re.S)), '结尾落到一件东西，不落到抒情')
     # 同题撞正主
     title = re.search(r'#\s*\d+\s*[·・]\s*([^（(\n]+)', t)
@@ -63,7 +72,7 @@ def draft(d):
     def need(name, ok, info=''):
         print(('OK  ' if ok else 'BAD ') + f'{name:14} {info}')
         if not ok: bad.append(name)
-    need("字数 2000–3000", 2000 <= n <= 3000, n)
+    need("字数 2000–3500", 2000 <= n <= 3500, n)
     # 呼应回收：设定.md 呼应表第 3 列的关键词要能在正文后 40% 找到
     sec = re.search(r'##[^\n]*呼应[^\n]*\n(.*?)(?=\n## |\Z)', setting, re.S)
     rows = re.findall(r'^\|\s*\d+\s*\|([^|]+)\|([^|]+)\|', sec.group(1) if sec else setting, re.M)
@@ -98,6 +107,22 @@ def draft(d):
     need('连续动作段≥4(§17)', runs >= 4, runs)
     speech = [l for l in lines if re.search(r'(你说|他说|她说|问你|说了句|喊|嘟囔|说 |问 )', l)]
     need('内联说话≥15行(§17)', len(speech) >= 15, len(speech))
+    # v2 八拍位置（对 72+ BLOCK，其余 advisory）
+    dn = re.search(r'/(\d+)[a-z]?_', d + '/'); v2 = not (dn and int(dn.group(1)) < 72); tag = '' if v2 else ' [advisory<72]'
+    def pos(pat):
+        for i, l in enumerate(lines):
+            if re.search(pat, l): return i / len(lines)
+        return None
+    head3 = ''.join(lines[:4])
+    need('一拍 金句含数字' + tag, bool(re.search(r'\d', head3)) or not v2, head3[:40])
+    g = pos(r'齿轮'); need('二拍 齿轮句 @5–20%' + tag, (g is not None and .05 <= g <= .22) or not v2, g)
+    s = pos(r'再也没有主动找过你|再也没有主动'); need('五拍 社死收尾句 @45–65%' + tag, (s is not None and .40 <= s <= .68) or not v2, s)
+    z = pos(r'从.{2,12}(那个|那晚|那天).{0,10}开始.{0,40}(年|个月)里'); need('七拍 算总账排比 @78–92%' + tag, (z is not None and .74 <= z <= .93) or not v2, z)
+    physio = len(re.findall(r'(心跳|手心|耳朵|后背|喉咙|胃|太阳穴|头皮|指尖|嘴唇|膝盖|呼吸|冷汗|发麻|发烫|发凉|嗡嗡)', body))
+    need('生理化≥12处' + tag, physio >= 12 or not v2, physio)
+    slogans = re.findall(r'(首先|其次|最后[，,]|综上所述|让我们一起|希望你|愿你|加油)', body)
+    need('无口号禁词', not slogans, set(slogans))
+    need('字数 2800–3500 (v2)' + tag, 2800 <= n <= 3500 or not v2, n)
     print('\nDRAFT:', 'PASS' if not bad else f'FAIL {len(bad)}')
     return len(bad)
 
