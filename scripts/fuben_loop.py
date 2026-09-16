@@ -127,6 +127,8 @@ def draft(d):
     quote = [l for l in lines if re.search(r'(^|\s)[\u4e00-\u9fff]{0,3}(说|问|喊|回)\s+\S', l) or re.match(r'^\s*[「\"]', l)]
     ack = [l for l in quote if re.search(r'(说|回)\s+(好|行|嗯|哦|是|知道|好的|没有|没什么)\s*$', l)]
     need('对白≤12行且≤3%(§4.5)', len(quote) <= max(12, int(len(lines) * .03)) , f'{len(quote)} 行 / {len(quote)/len(lines):.0%}：' + ' | '.join(x[:10] for x in quote[:4]))
+    hsw = ''.join(re.findall(r'^\|\s*换手\s*\|[^\n]*', setting, re.M))
+    ack = [l for l in ack if not any(k in hsw for k in re.findall(r'[\u4e00-\u9fff]{1,2}$', l))]  # 换手表登记的一字应答放行
     need('应答行=0(说 好/行/嗯)', not ack, f'{len(ack)}：' + ' | '.join(x[:10] for x in ack[:4]))
     # v2 八拍位置（对 72+ BLOCK，其余 advisory）
     dn = re.search(r'/(\d+)[a-z]?_', d + '/'); v2 = not (dn and int(dn.group(1)) < 72); tag = '' if v2 else ' [advisory<72]'
