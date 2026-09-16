@@ -123,8 +123,11 @@ def draft(d):
         k = k + 1 if (re.match(r'^你[\u4e00-\u9fff]', l) or (k and HAN(l) <= 12 and not re.search(r'(他|她|你|说)', l[:1]))) else 0
         if k == 3: runs += 1
     need('连续动作段≥4(§17)', runs >= 4, runs)
-    speech = [l for l in lines if re.search(r'(你说|他说|她说|问你|说了句|喊|嘟囔|说 |问 )', l)]
-    need('内联说话≥15行(§17)', len(speech) >= 15, len(speech))
+    # §4.5 对白稀缺：直接引语行（X说 + 空格 + 内容 / 引号行）≤12 且 ≤3%；「说 好/行/嗯」应答行零容忍
+    quote = [l for l in lines if re.search(r'(^|\s)[\u4e00-\u9fff]{0,3}(说|问|喊|回)\s+\S', l) or re.match(r'^\s*[「\"]', l)]
+    ack = [l for l in quote if re.search(r'(说|回)\s+(好|行|嗯|哦|是|知道|好的|没有|没什么)\s*$', l)]
+    need('对白≤12行且≤3%(§4.5)', len(quote) <= max(12, int(len(lines) * .03)) , f'{len(quote)} 行 / {len(quote)/len(lines):.0%}：' + ' | '.join(x[:10] for x in quote[:4]))
+    need('应答行=0(说 好/行/嗯)', not ack, f'{len(ack)}：' + ' | '.join(x[:10] for x in ack[:4]))
     # v2 八拍位置（对 72+ BLOCK，其余 advisory）
     dn = re.search(r'/(\d+)[a-z]?_', d + '/'); v2 = not (dn and int(dn.group(1)) < 72); tag = '' if v2 else ' [advisory<72]'
     def pos(pat):  # 短行体：按 3 行滑窗匹配
