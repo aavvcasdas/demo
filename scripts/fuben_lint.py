@@ -37,7 +37,7 @@ heads = [i for i, l in enumerate(L) if re.match(r'^第[一二三四五六七八�
 heads = [h for k, h in enumerate(heads) if (k and h - heads[k-1] <= 15) or (k + 1 < len(heads) and heads[k+1] - h <= 15)]
 if len(heads) >= 3:
     lens = [b - a for a, b in zip(heads, heads[1:])]
-    ok = max(lens) <= 7 and (heads[-1] - heads[0] + lens[-1]) <= 45; show('清单段 每条≤7 总≤45', ok, f'各条 {lens} 起 L{heads[0]+1}'); bad += not ok
+    ok = max(lens) <= 16 and (heads[-1] - heads[0] + lens[-1]) <= 80; show('清单段 每条≤16 总≤80(每条必须闭环:告什么/证据/为何反加分)', ok, f'各条 {lens} 起 L{heads[0]+1}'); bad += not ok
 # 5 每 30 行至少 1 个身体/环境行（反流水账）
 phys = re.compile(r'(手|耳朵|后背|喉咙|胃|膝盖|呼吸|汗|发麻|发烫|发凉|嗡|味道|声音|灯|门|窗|风|雨|凉|热|空调|冷气|响|湿|烫|烟味|太阳|键盘声)')
 gaps = [k for k in range(0, N, 30) if not any(phys.search(l) for l in L[k:k + 30])]
