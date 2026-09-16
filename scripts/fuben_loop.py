@@ -96,22 +96,23 @@ def draft(d):
     need('无品牌', not brands, set(brands))
     misread = [l for l in lines if re.search(r'(你把.{0,6}归给|你觉得.{0,6}(不礼貌|关系好|正常|没事)|你没听清|你没在意|你没注意)', l)]
     comedy = bool(re.search(r'(迷因志|荒诞志|喜剧支线)', setting))
-    need('主角误读≥2' + (' [comedy:skip]' if comedy else ''), len(misread) >= 2 or comedy, len(misread))
+    perp = bool(re.search(r'(加害者视角|当事人视角|翻转成当事人)', setting))
+    need('主角误读≥2' + (' [comedy/加害者:skip]' if comedy or perp else ''), len(misread) >= 2 or comedy or perp, len(misread))
     # §17 反流水账
     stamps = [l for l in lines if re.match('^(大[一二三四](上|下)?|第[一二三四五六七八九十]+(周|个月|学期|年)|高[一二三]|初[一二三]|那年|[一二三四五六七八九十]+月)', l)]
     need('时间标签≤6(§17)' + (' [comedy:≤12]' if comedy else ''), len(stamps) <= (12 if comedy else 6), len(stamps))
-    runs = 0; k = 0
+    runs = 0; k = 0  # 短行体：你开头行 + 其后 ≤12 字的动作短行 视为同一动作段
     for l in lines:
-        k = k + 1 if re.match(r'^你[\u4e00-\u9fff]', l) else 0
+        k = k + 1 if (re.match(r'^你[\u4e00-\u9fff]', l) or (k and HAN(l) <= 12 and not re.search(r'(他|她|你|说)', l[:1]))) else 0
         if k == 3: runs += 1
     need('连续动作段≥4(§17)', runs >= 4, runs)
     speech = [l for l in lines if re.search(r'(你说|他说|她说|问你|说了句|喊|嘟囔|说 |问 )', l)]
     need('内联说话≥15行(§17)', len(speech) >= 15, len(speech))
     # v2 八拍位置（对 72+ BLOCK，其余 advisory）
     dn = re.search(r'/(\d+)[a-z]?_', d + '/'); v2 = not (dn and int(dn.group(1)) < 72); tag = '' if v2 else ' [advisory<72]'
-    def pos(pat):
-        for i, l in enumerate(lines):
-            if re.search(pat, l): return i / len(lines)
+    def pos(pat):  # 短行体：按 3 行滑窗匹配
+        for i in range(len(lines)):
+            if re.search(pat, ''.join(lines[i:i + 3])): return i / len(lines)
         return None
     head3 = ''.join(lines[:4])
     need('一拍 金句含数字' + tag, bool(re.search(r'\d', head3)) or not v2, head3[:40])
@@ -122,6 +123,8 @@ def draft(d):
     need('生理化≥12处' + tag, physio >= 12 or not v2, physio)
     slogans = re.findall(r'(首先|其次|最后[，,]|综上所述|让我们一起|希望你|愿你|加油)', body)
     need('无口号禁词', not slogans, set(slogans))
+    longl = [l for l in lines if HAN(l) > 18]
+    need('行构造 ≥280行且无>18字行(骨架)' + tag, (len(lines) >= 280 and not longl) or not v2, f'{len(lines)}行, 长行{len(longl)}')
     need('字数 2800–3500 (v2)' + tag, 2800 <= n <= 3500 or not v2, n)
     print('\nDRAFT:', 'PASS' if not bad else f'FAIL {len(bad)}')
     return len(bad)
