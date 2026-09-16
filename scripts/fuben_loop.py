@@ -172,6 +172,8 @@ def review(d):
     s = pos(r'再也没有主动'); z = pos(r'(你终于意识到|从.{2,12}开始.{0,30}里)')
     seg = lines[s:z] if s is not None and z is not None and z > s else []
     ok = len(seg) >= 40; show('反杀场景行数≥40', len(seg), ok); bad += not ok
+    gap = (z - s) if (s is not None and z is not None) else None
+    print(('OK  ' if gap and gap >= 40 else 'ADV ') + f'{"五末→七起≥40行":16} {gap}  [advisory]')
     end = ''.join(lines[-3:]); et = re.search(r'结局[:：]\s*(爽|荒诞|甜)', setting)
     ok = bool(et) and not re.search(r'接受了', end); show('结局≠平静接受', (et.group(1) if et else None, end[:24]), ok); bad += not ok
     ok = bool(re.search(r'(他|她|主管|林悦|周雨|你妈|你爸|客户)[^你]{0,12}(停|没敢|转|缩|愣|低下头|收回|手.{0,4}半空)', end)); show('对手末动作', end[-30:], ok); bad += not ok

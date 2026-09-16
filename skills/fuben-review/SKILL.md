@@ -1,0 +1,70 @@
+---
+name: fuben-review
+version: 1.0.0
+description: "人生副本成稿三方审核：拆书库对照 + 联网搜索复核 + story-review rubric。触发：/fuben-review 作品/NN_xxx/。出稿后必跑，VERDICT: PASS 前不交付。"
+---
+# fuben-review：人生副本三方审核
+
+你是审核员，不是作者。**审核是找问题，不是验证正确性。** 报告格式沿用 `skills/story-review` 的 Findings（severity S1/S2/S3 / category / location / evidence / issue / fix），rubric 用 `story-review/references/rubrics/zhihu.md` 的口播改编项（见 §4）。
+
+## 输入
+`作品/NN_xxx/` 下的 `设定.md` + `正文.md`。设定卡缺 `## 主线` / `## 信息差表` / `## 审核` 任一节 → 直接 `VERDICT: BLOCK`，退回 story-short-write。
+
+## Phase 0：机械预检（全部跑完再人工）
+```
+python3 scripts/fuben_loop.py design 作品/NN_xxx/设定.md
+python3 scripts/fuben_loop.py draft  作品/NN_xxx/
+python3 scripts/fuben_loop.py review 作品/NN_xxx/
+node skills/story-review/scripts/check-ai-patterns.js --check 作品/NN_xxx/正文.md   # 「不是…而是」清算句允许 1 处
+```
+任一 FAIL → 报告里原样贴 BAD 行，severity 至少 S2。
+
+## Phase 1：拆书库对照（三张表，必须引用行号）
+1. **模板篇骨架对照**：设定卡「对位 NN」→ 读 `拆文库/NN_*/原文/原文.txt`。对齐八拍：本篇每拍起止行号 vs 模板篇；差 >15 个百分点的拍列出。
+2. **供体手法落地表**：设定卡「来源 ←」列出的每个供体（隐娘/乱葬岗/掌控/泠泠/偏偏/朕），打开其 `写作手法.md`「核心手法 Top3」，逐条回答：本篇哪一行用了？没用 → S2「借了名没借法」。
+3. **情节节点移植表**：设定卡「拆书情节移植」每行的落点，在正文里找到对应行；找不到 → S3。
+
+## Phase 2：联网搜索复核（≥2 次搜索，≤4 次）
+1. **事实复核**：L0 表里每条带来源的数字 / 时间线，抽 3 条搜一次核对；错 → S1（时间线）/ S2（价格）。
+2. **同题对比**：用标题关键词搜抖音 / 小红书 / 知乎同题内容 1–2 次，取 1 篇高赞样本，回答两问：它的钩子是什么 / 它的结局怎么收；本篇钩子与结局有没有比它更具体（数字、动作、对手反应）。没有 → S2「同题不占优」。
+3. 搜索结果只进报告，不进正文。
+
+## Phase 3：rubric 人工项（zhihu rubric 口播改编）
+| 项 | PASS | FAIL 级别 |
+|---|---|---|
+| 第二人称「你」全程 | 无「我」叙述 | S1 |
+| 开头钩子 | 前 4 行含数字 + 结果半剧透 | S2 |
+| 主线可复述 | 读完能用一句话说出「你在做什么、等什么」 | S1 |
+| 坑与反杀 | 对手自己挖的坑 + 你不动手对手自己掉进去；反杀现场 ≥40 行 | S2 |
+| 悬念 | 中段有一次「对手知道到三成」 | S2 |
+| 侧面细节 | 反转物证由旁人碰到 ≥2 次 | S2 |
+| 情绪拉扯 | 连续 3 个场景情绪同向 → FAIL | S3 |
+| 结尾 | 落在对手身体反应 + 一件器物；无「希望/愿你/加油」 | S2 |
+| 句长节奏 | 短行体（≤18 字/行）是本赛道格式，**不按 rubric 电报体扣分**；但连续 ≥8 行全是「你 + 动词」→ S3 单调 |
+| 设定一致性 | 年龄 / 年份 / 金额闭环 | S1 |
+
+## 输出（写入 `作品/NN_xxx/审核报告.md`，并把 VERDICT 一行追加到 设定.md `## 审核`）
+```
+=== 人生副本三方审核 ===
+Target: 作品/NN_xxx/
+Template: 拆文库/NN | Donors: …
+Rubric: zhihu(口播改编) | Rubric Source: file
+Search: N 次
+
+## Phase 0 机械预检
+(design/draft/review/ai-patterns 结果各一行)
+
+## Phase 1 拆书库对照
+(三张表)
+
+## Phase 2 搜索复核
+(事实 3 条 + 同题 1 篇)
+
+## Phase 3 Findings
+- severity / category / location / evidence / issue / fix
+
+## VERDICT: PASS | FIX(拍号列表) | BLOCK
+```
+- 任一 S1 → BLOCK；S2 ≥2 → FIX；否则 PASS。
+- FIX 只允许改列出的拍，不整篇重写；改后重跑本 skill。
+- 审核发现的**规律性问题**（同一问题 ≥2 篇）→ 追加到 `人生副本实录.md` §10 advisory 池，不直接改条款。
