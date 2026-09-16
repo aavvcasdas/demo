@@ -34,6 +34,10 @@ def design(path):
         need('主线四行(设定/核心行动/悬念/一句话)', all(k in mt for k in ['设定', '核心行动', '悬念', '一句话']), '人物类必须；来源=拆文报告 故事核')
         need('主线来源已标', bool(re.search(r'(来源|借自|←)', mt)), '拆文库故事核 / 情节节点 / 搜索第几轮')
         need('八拍主线动作≥6', len(re.findall(r'^\|\s*[一二三四五六七八]\s*\|[^\n]*(推进|受阻|揭示)', t, re.M)) >= 6, '八拍表加「主线动作」列，≥6 拍为 推进/受阻/揭示')
+        need('信息差表三列', bool(re.search(r'读者知道.*你.{0,3}知道.*对手知道', t, re.S)), '读者 / 你 / 对手 三列 + 一次「对手知道到三成」升级')
+        need('换手复现≥2对', len(re.findall(r'换手[:：]?[^\n]*', t)) >= 1 and len(re.findall(r'^\|\s*换手', t, re.M)) >= 2, '开头对手的动作/话 → 结尾由你做回去，列 ≥2 对')
+        need('结局类型已选', bool(re.search(r'结局[:：]\s*(爽|荒诞|甜)', t)), '爽 / 荒诞 / 甜 三选一（默认不用平静接受）')
+        need('反杀物证埋伏≥2次', bool(re.search(r'埋伏[:：][^\n]*(2|两|3|三)', t)), '反转物证前面由旁人碰到 ≥2 次')
         need('八拍字数行', bool(re.search(r'一\s*\d+\s*/\s*二\s*\d+', t)), '八拍各字数配额')
         need('原型=事件(L0 生态行)', bool(re.search(r'^\|\s*人群生态\s*\|[^|]{40,}', t, re.M)), 'L0 人群生态行 ≥40 字，每条原型=正文一个事件')
         need('齿轮场景已定', bool(re.search(r'齿轮瞬间[:：]', t)), '第二拍场景')
@@ -149,6 +153,37 @@ def draft(d):
     print('\nDRAFT:', 'PASS' if not bad else f'FAIL {len(bad)}')
     return len(bad)
 
+# ---------- L2.5 对照审核 ----------
+def review(d):
+    d = d.rstrip('/'); body = read(os.path.join(d, '正文.md')); setting = read(os.path.join(d, '设定.md'))
+    lines = [l for l in body.split('\n') if l.strip() and not l.startswith('#')]; N = len(lines)
+    def pos(pat):
+        for i in range(N):
+            if re.search(pat, ''.join(lines[i:i + 3])): return i
+        return None
+    def show(k, v, ok): print(('OK  ' if ok else 'BAD ') + f'{k:16} {v}')
+    bad = 0
+    p = pos(r'(结果|后来|最后|直到|换来|一个字|成了)'); ok = p is not None and p <= 6; show('结果前置(≤6行)', p, ok); bad += not ok
+    hs = re.findall(r'^\|\s*换手\s*\|([^|]+)\|([^|]+)\|', setting, re.M)
+    found = [(a.strip(), b.strip()) for a, b in hs if any(k in ''.join(lines[N*6//10:]) for k in re.findall(r'[\u4e00-\u9fff]{2,5}', b))]
+    ok = len(found) >= 2; show('换手复现回收', f'{len(found)}/{len(hs)}', ok); bad += not ok
+    up = re.search(r'三成[^\n]*?[（(]?(\d{1,2})%', setting); u = pos(r'(她知道|他知道|发现了|看见了|问了一句|看了一眼你的)')
+    ok = u is not None and .3 <= u/N <= .6; show('对手知晓升级@30–60%', round(u/N,2) if u is not None else None, ok); bad += not ok
+    s = pos(r'再也没有主动'); z = pos(r'(你终于意识到|从.{2,12}开始.{0,30}里)')
+    seg = lines[s:z] if s is not None and z is not None and z > s else []
+    ok = len(seg) >= 40; show('反杀场景行数≥40', len(seg), ok); bad += not ok
+    end = ''.join(lines[-3:]); et = re.search(r'结局[:：]\s*(爽|荒诞|甜)', setting)
+    ok = bool(et) and not re.search(r'接受了', end); show('结局≠平静接受', (et.group(1) if et else None, end[:24]), ok); bad += not ok
+    ok = bool(re.search(r'(他|她|主管|林悦|周雨|你妈|你爸|客户)[^你]{0,12}(停|没敢|转|缩|愣|低下头|收回|手.{0,4}半空)', end)); show('对手末动作', end[-30:], ok); bad += not ok
+    tpl = re.search(r'(拆文库/|对位\s*)(\d+\w*)', setting)
+    if tpl:
+        f = glob.glob(f'拆文库/{tpl.group(2)}_*/原文/*')
+        if f:
+            L = [l.strip() for l in open(f[0], encoding='utf-8') if l.strip() and not l.startswith('#')]
+            print(f'\n对照模板 {tpl.group(2)}: 行 {len(L)} vs {N} | 均字 {sum(map(len,L))/len(L):.1f} vs {sum(map(HAN,lines))/N:.1f} | 说话行 {sum(bool(re.search(r"(说|问|喊)", l)) for l in L)} vs {sum(bool(re.search(r"(说|问|喊)", l)) for l in lines)}')
+    print('\nREVIEW:', 'PASS' if not bad else f'FAIL {bad} → 回对应拍改，写进 设定.md ## 审核')
+    return bad
+
 # ---------- L3 数据回流 ----------
 def features(d):
     body = read(os.path.join(d, '正文.md')); setting = read(os.path.join(d, '设定.md'))
@@ -201,6 +236,7 @@ def report():
 if __name__ == '__main__':
     if len(sys.argv) < 2: sys.exit(__doc__)
     cmd, args = sys.argv[1], sys.argv[2:]
+    if cmd == 'review': sys.exit(review(args[0]))
     if cmd == 'design': sys.exit(design(args[0]))
     if cmd == 'draft': sys.exit(draft(args[0]))
     if cmd == 'record': record(args)
