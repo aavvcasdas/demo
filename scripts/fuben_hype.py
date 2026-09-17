@@ -26,6 +26,8 @@ v3 的事实闸证明了「没有事实错误」不等于「好看」：新 72 �
   锚点必须命中正文（习惯原样运行、内容换掉；不许写成「他戒了」）
 - v7 钱的去向重排：类别改为 补欠 / 场面 / 给自己人 / 借出 / 亏 / 被骗；表 ≥8 笔，
   **补欠+场面 ≥50%**、**借出 ≤20%**（钱不是借完的）、被骗 ≤1、亏 ≤15%；账仍要平
+- v9 花光的底气：`## 花光的底气` 表 ≥2 行 + 锚点命中；正文信念句（还会中/下一期/再中）≥2 处，
+  一次落在花钱中段、一次落在结尾习惯段；「换了号以后一次都没中过」必须明写
 - v8 钱的去向定稿：**补欠+场面 ≥70%**、**补欠 ≥4 笔**（旅游 / 想买没买的 / 请自己的朋友）、
   **借出 = 0 笔**（亲戚借钱只写拒绝现场）；新增 `## 忘本（拒绝与筛选）` 表 ≥3 行 + 锚点命中正文
 - v7 转场：跨度题必须写 `## 转场表`（压缩段 → 回位句 → 正文锚点），回位句必须命中正文
@@ -204,6 +206,8 @@ def main() -> int:
     FULFILL = re.compile(r"中奖|奖金|到账|彩票|拆迁|遗产|继承|暴富|分红|赔款")
     MONEY_KINDS = ("给自己人", "被骗", "补欠", "场面", "借出", "亏")
     SAD_END = re.compile(r"报案|报警|跑路|卷走|办公室空|空壳|假合同|被骗|骗走|要不回来")
+    # v9：花光的底气——他敢花，是因为他信还会再中（不是抽象上瘾，也不是被骗）。
+    BELIEF = re.compile(r"还会中|还能中|再中一次|下一期|下期|再中一回")
     HABIT = re.compile(r"每天一张|天天|每天买|守号|日复一日|每天都要")
 
     def parse_money(block: str):
@@ -237,6 +241,22 @@ def main() -> int:
         return rows
 
     if len(FULFILL.findall(setting)) >= 4:
+        base = section(setting, "花光的底气", "底气")
+        show("花光的底气表存在", bool(base), "兑现/暴富题必须写「## 花光的底气」：他的底气（一句话）/ 依据 / 正文锚点")
+        if base:
+            brows = []
+            for line in base.splitlines():
+                if not line.startswith("|") or re.match(r"^\|\s*:?-", line):
+                    continue
+                cells = [c.strip().strip("*").strip() for c in line.strip("|").split("|")]
+                if len(cells) < 3 or any("底气" in c or c in {"依据", "正文锚点", "他的底气"} for c in cells):
+                    continue
+                brows.append(cells[-1])
+            show("底气表≥2行", len(brows) >= 2, f"{len(brows)} 行")
+            miss_b = [a for a in brows if a and a not in text]
+            show("底气锚点命中正文", not miss_b, "缺失:" + "、".join(m[:12] for m in miss_b[:3]))
+        belief = [line for line in lines if BELIEF.search(line)]
+        show("正文底气≥2处", len(belief) >= 2, f"{len(belief)} 处：" + " / ".join(line[:14] for line in belief[:3]))
         wang = section(setting, "忘本")
         show("忘本（拒绝与筛选）表", bool(wang), "兑现/暴富题必须写「## 忘本（拒绝与筛选）」：谁来 / 怎么开口 / 你怎么拒 / 他后来 / 正文锚点")
         if wang:
