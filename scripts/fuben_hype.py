@@ -24,6 +24,10 @@ v3 的事实闸证明了「没有事实错误」不等于「好看」：新 72 �
   正文「憋屈结算词」（报案/跑路/卷走/办公室空了…）≤2 处
 - v6 习惯漂移（习惯/成瘾题）：`## 习惯漂移` ≥2 行，旧做法 → 新做法 → 他的说法 → 正文锚点，
   锚点必须命中正文（习惯原样运行、内容换掉；不许写成「他戒了」）
+- v7 钱的去向重排：类别改为 补欠 / 场面 / 给自己人 / 借出 / 亏 / 被骗；表 ≥8 笔，
+  **补欠+场面 ≥50%**、**借出 ≤20%**（钱不是借完的）、被骗 ≤1、亏 ≤15%；账仍要平
+- v7 转场：跨度题必须写 `## 转场表`（压缩段 → 回位句 → 正文锚点），回位句必须命中正文
+- v7 习惯漂移加严：至少一行要「新做法里的数字 > 旧做法」（号码换 + 买得更多）
 """
 from __future__ import annotations
 
@@ -38,6 +42,28 @@ if os.path.join(ROOT, "scripts") not in sys.path:
 from fuben_consistency import read, section  # noqa: E402
 
 HAN = lambda text: len(re.findall(r"[\u4e00-\u9fff]", text))
+CN_DIGITS = {"零": 0, "一": 1, "二": 2, "两": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
+
+
+def _cn_value(token: str) -> int:
+    if token in CN_DIGITS:
+        return CN_DIGITS[token]
+    if "十" in token:
+        head, _, tail = token.partition("十")
+        tens = CN_DIGITS.get(head, 1) if head else 1
+        ones = CN_DIGITS.get(tail, 0) if tail else 0
+        return tens * 10 + ones
+    return CN_DIGITS.get(token[0], 0)
+
+
+def scale_signature(text: str):
+    """取「金额（元/块）」与「注数」两组规模指标，用于核对习惯漂移是否买了更多。"""
+    def amount(token: str) -> int:
+        return int(token) if token.isdigit() else _cn_value(token)
+
+    money = max([amount(m) for m in re.findall(r"(\d+|[零一二两三四五六七八九十]+)\s*(?:元|块)", text)] or [0])
+    notes = max([amount(m) for m in re.findall(r"(\d+|[零一二两三四五六七八九十]+)\s*注", text)] or [0])
+    return money, notes
 RITUAL = re.compile(r"铁盒|账本|账|药盒|药单|票|凳子|柜台|短信|手机|照片|抽屉|钥匙|门|碗|面|盒子|卡|收据|兑奖单|沙发|车|文件夹|档案|本子|课件")
 
 
@@ -174,7 +200,7 @@ def main() -> int:
 
     # ---------- v6：钱的去向（兑现/暴富题） ----------
     FULFILL = re.compile(r"中奖|奖金|到账|彩票|拆迁|遗产|继承|暴富|分红|赔款")
-    MONEY_KINDS = ("被骗", "花", "给", "亏")
+    MONEY_KINDS = ("给自己人", "被骗", "补欠", "场面", "借出", "亏")
     SAD_END = re.compile(r"报案|报警|跑路|卷走|办公室空|空壳|假合同|被骗|骗走|要不回来")
     HABIT = re.compile(r"每天一张|天天|每天买|守号|日复一日|每天都要")
 
@@ -204,7 +230,7 @@ def main() -> int:
                 continue
             if not any(cells):
                 continue
-            rows.append({"anchor": cells[-1]})
+            rows.append({"anchor": cells[-1], "cells": cells})
         return rows
 
     if len(FULFILL.findall(setting)) >= 4:
@@ -212,15 +238,17 @@ def main() -> int:
         show("钱的去向表存在", bool(flow), "兑现/暴富题必须写「## 钱的去向表」：笔数 / 金额 / 类别 / 他人反应 / 正文锚点")
         if flow:
             money = parse_money(flow)
-            show("去向表≥6笔", len(money) >= 6, f"{len(money)} 笔")
+            show("去向表≥8笔", len(money) >= 8, f"{len(money)} 笔（类别：补欠 / 场面 / 给自己人 / 借出 / 亏 / 被骗）")
             kinds = Counter(r["kind"] for r in money)
             if money:
-                share = (kinds["花"] + kinds["给"]) / len(money)
-                show("花+给≥60%", share >= 0.6, f"花{kinds['花']}+给{kinds['给']}={kinds['花'] + kinds['给']}/{len(money)}（{share:.0%}）；亏{kinds['亏']}、被骗{kinds['被骗']}")
+                total_pen = len(money)
+                care = (kinds["补欠"] + kinds["场面"]) / total_pen
+                show("补欠+场面≥50%", care >= 0.5, f"补欠{kinds['补欠']}+场面{kinds['场面']}={kinds['补欠'] + kinds['场面']}/{total_pen}（{care:.0%}）")
+                show("借出≤20%", kinds["借出"] / total_pen <= 0.2, f"借出 {kinds['借出']}/{total_pen}（{kinds['借出'] / total_pen:.0%}）")
                 show("被骗≤1笔", kinds["被骗"] <= 1, f"{kinds['被骗']} 笔（被骗不能是归零主因）")
+                show("亏≤15%", kinds["亏"] / total_pen <= 0.15, f"亏 {kinds['亏']}/{total_pen}")
                 missing = [r["anchor"] for r in money if r["anchor"] and r["anchor"] not in text]
                 show("去向锚点命中正文", not missing, "缺失:" + "、".join(m[:12] for m in missing[:3]))
-            # 钱账：到账 + 变卖 − 去向 = 余额，误差必须为 0
             account = re.search(
                 r"到账\s*([\d,]+)\s*\+\s*[^+\n]*?([\d,]+)\s*[-−]\s*[^=\n]*?([\d,]+)\s*=\s*[^=\n]*?([\d,]+)",
                 flow,
@@ -235,6 +263,25 @@ def main() -> int:
     else:
         print("---- 非兑现/暴富题，跳过「钱的去向」门")
 
+    # ---------- v7：转场表（压缩段回位句） ----------
+    if "跨度图" in setting:
+        trans = section(setting, "转场表")
+        show("转场表存在", bool(trans), "长期跨度题必须写「## 转场表」：压缩段 → 回位句 → 正文锚点")
+        if trans:
+            trows = []
+            for line in trans.splitlines():
+                if not line.startswith("|") or re.match(r"^\|\s*:?-", line):
+                    continue
+                cells = [c.strip().strip("*").strip() for c in line.strip("|").split("|")]
+                if len(cells) < 3 or any(c in {"压缩段", "回位句", "正文锚点"} for c in cells):
+                    continue
+                trows.append(cells[-1])
+            show("转场表≥2行", len(trows) >= 2, f"{len(trows)} 行")
+            miss_t = [a for a in trows if a and a not in text]
+            show("回位句命中正文", not miss_t, "缺失:" + "、".join(m[:12] for m in miss_t[:3]))
+    else:
+        print("---- 非长期跨度题，跳过「转场表」门")
+
     # ---------- v6：习惯漂移（习惯/成瘾题） ----------
     if len(HABIT.findall(setting)) >= 3:
         drift_block = section(setting, "习惯漂移")
@@ -244,6 +291,16 @@ def main() -> int:
             show("习惯漂移≥2行", len(drift_rows) >= 2, f"{len(drift_rows)} 行")
             miss = [r["anchor"] for r in drift_rows if r["anchor"] and r["anchor"] not in text]
             show("漂移锚点命中正文", not miss, "缺失:" + "、".join(m[:12] for m in miss[:3]))
+            # v7：规模必须变（新做法 > 旧做法），只换号码不算漂移。
+            grew = []
+            for row in drift_rows:
+                cells = row.get("cells", [])
+                if len(cells) < 2:
+                    continue
+                old_scale, new_scale = scale_signature(cells[0]), scale_signature(cells[1])
+                if (old_scale[0] and new_scale[0] > old_scale[0]) or (old_scale[1] and new_scale[1] > old_scale[1]):
+                    grew.append((f"金额{old_scale[0]}→{new_scale[0]}", f"注数{old_scale[1]}→{new_scale[1]}"))
+            show("漂移含规模变大", bool(grew), f"{grew[:2]}（旧做法数字 → 新做法数字）")
     else:
         print("---- 非习惯/成瘾题，跳过「习惯漂移」门")
 

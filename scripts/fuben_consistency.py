@@ -17,6 +17,9 @@ from typing import Dict, Iterable, List, Optional, Tuple
 
 SEVERITY = {"S1": 0, "S2": 1, "S3": 2}
 NEGATION = re.compile(r"(?:没有|没|未|不再|不因|不是|不能|禁止|无|从不|并不|也不|不靠|不写|不出现|不会|未曾|不)")
+# v7：事实锁若声明「中奖后」的号码与注数漂移（换号、由一注变多注），
+# 带漂移标记的行不再算金额/频率越界——否则观众要的「天天买但换号、买得更多」会被误判。
+DRIFT_MARK = re.compile(r"中奖后|中奖以后|中奖之后|改成|改买|改选|换号|换一组|换七个|后来|不再|一次买")
 
 
 def read(path: str) -> str:
@@ -145,6 +148,9 @@ def facts_from(setting: str) -> Dict[str, object]:
     if prize:
         facts["prize"] = prize.group(1)
     facts["no_omen"] = bool(re.search(r"不写.*(?:预感|感觉)|随机|官方结果|不能靠.*(?:感觉|预感)", source))
+    facts["post_win_change"] = bool(
+        re.search(r"中奖(?:后|以后|之后)[^\n]{0,80}?(?:五注|多注|加注|改买|换号|换一组|号码变多|十元|10\s*元)", source)
+    )
     facts["one_ticket_only"] = bool(re.search(r"不(?:因|因为).{0,10}(?:追加|第二张|多买)|一张.*不变|不出现.*(?:加倍|多注)", source))
     # 允许在事实锁中写「起始日期：2019-09-17 / 第2557张日期：2026-09-16」。
     exact = re.findall(r"(?:起始日期|开始日期|第一张日期|第一张)\s*[：:]\s*(20\d{2}-\d{1,2}-\d{1,2})", source)
@@ -192,21 +198,38 @@ def check_directory(directory: str) -> List[Tuple[str, str, str]]:
         bad_game = [(i + 1, l) for i, l in enumerate(body_lines) if _has_positive(l, r"红球|蓝球|六个红球|一个蓝球|双色球")]
         if bad_game:
             _issue(issues, "S1", "GAME_MIX", "事实锁是福彩3D，但正文出现双色球的红球/蓝球结构：" + "; ".join(f"L{n} {line[:24]}" for n, line in bad_game[:3]))
+    allow_drift = bool(facts.get("post_win_change"))
+
+    def _drift_ok(line: str) -> bool:
+        return allow_drift and bool(DRIFT_MARK.search(line))
+
     if facts.get("unit_cost") == 2:
         unit_patterns = r"(?:每天|每日|一张|每注|每票).{0,12}(?:10\s*元|十元|10\s*块|十块|20\s*元|两万|四万|八万|五注|一百倍|两百倍|加倍|倍投|重仓)"
-        bad_unit = [(i + 1, l) for i, l in enumerate(body_lines) if _has_positive(l, unit_patterns)]
+        bad_unit = [(i + 1, l) for i, l in enumerate(body_lines) if _has_positive(l, unit_patterns) and not _drift_ok(l)]
         if bad_unit:
             _issue(issues, "S1", "UNIT_DRIFT", "事实锁要求单张/单注2元，正文却升级了金额、注数或倍数：" + "; ".join(f"L{n} {line[:28]}" for n, line in bad_unit[:5]))
         # 也检查设定卡自己的数字反向表，防止事实锁和大纲互相打架。
-        card_bad = [(i + 1, l) for i, l in enumerate(setting_lines) if _has_positive(l, r"(?:每天|每张|单注).{0,14}(?:10\s*元|十元|十块|20\s*元|两万|四万|八万|倍投|重仓)")]
+        card_bad = [
+            (i + 1, l)
+            for i, l in enumerate(setting_lines)
+            if _has_positive(l, r"(?:每天|每张|单注).{0,14}(?:10\s*元|十元|十块|20\s*元|两万|四万|八万|倍投|重仓)") and not _drift_ok(l)
+        ]
         if card_bad:
             _issue(issues, "S1", "CARD_UNIT_DRIFT", "设定卡同时写了2元硬事实和金额升级：" + "; ".join(f"L{n} {line[:28]}" for n, line in card_bad[:4]))
     if facts.get("frequency") == "daily_one":
-        multi = [(i + 1, l) for i, l in enumerate(body_lines) if _has_positive(l, r"(?:每天|每日).{0,14}(?:第二张|多买|五注|多注|加倍|倍投|十元|十块)")]
+        multi = [
+            (i + 1, l)
+            for i, l in enumerate(body_lines)
+            if _has_positive(l, r"(?:每天|每日).{0,14}(?:第二张|多买|五注|多注|加倍|倍投|十元|十块)") and not _drift_ok(l)
+        ]
         if multi:
             _issue(issues, "S1", "FREQUENCY_DRIFT", "事实锁是每天一张新票，正文出现同日追加/多注/金额改变：" + "; ".join(f"L{n} {line[:28]}" for n, line in multi[:5]))
     if facts.get("fixed_number"):
-        changed = [(i + 1, l) for i, l in enumerate(body_lines) if _has_positive(l, r"(?:换号|改号|号码改|号码换|改了号码)")]
+        changed = [
+            (i + 1, l)
+            for i, l in enumerate(body_lines)
+            if _has_positive(l, r"(?:换号|改号|号码改|号码换|改了号码)") and not _drift_ok(l)
+        ]
         if changed:
             _issue(issues, "S2", "NUMBER_DRIFT", "事实锁要求固定号码，但正文出现换号动作：" + "; ".join(f"L{n} {line[:28]}" for n, line in changed[:3]))
     if facts.get("no_omen"):
