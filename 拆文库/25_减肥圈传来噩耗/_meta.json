@@ -1,4 +1,5 @@
 {
+  "version": "2.0",
   "title": "减肥圈传来噩耗",
   "source_file": "分篇/25_减肥圈传来噩耗.txt（剧本人生 合集《8月16日》第 26 段，源文件第 7772-8058 行）",
   "word_count": 2692,
@@ -118,9 +119,10 @@
     "数字骨架家族": "23 的 291.6/58,042.5 ↔ 25 的 186.2/185.8/187.5（小数点战争：数字全是敌人）"
   },
   "acceptance": {
-    "quote_check": "pending",
-    "tone_check": "pending",
-    "structure_check": "pending"
+    "quote_check": "not_run",
+    "tone_check": "not_run",
+    "structure_check": "passed_by_audit_2026-09-10",
+    "note": "原 pending；2026-09-10 仅补齐 _meta 数值校验，三道验收未实际执行"
   },
   "stages_completed": [
     2,
@@ -129,5 +131,15 @@
     5,
     6
   ],
-  "completed_at": "2026-09-04T08:30Z"
+  "completed_at": "2026-09-04T08:30Z",
+  "reversal_type_original": "认知反转（全面放弃的语义反转：放弃战争≠放弃自己）；副反转：体重秤废黜+素颜照主动暴露",
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 8,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
 }

@@ -1,4 +1,5 @@
 {
+  "version": "2.0",
   "title": "班级里那个没有边界感的女生",
   "source_file": "分篇/37_班级里那个没有边界感的女生.txt（剧本人生 合集《8月16日》第 38 段，源文件第 11800-12120 行）",
   "word_count": 2999,
@@ -93,5 +94,22 @@
     4,
     5,
     6
-  ]
+  ],
+  "reversal_type_original": "高开缓降+断崖曲线（全程无回升：批判文的曲线纪律）",
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 10,
+    "setup_clues": 10,
+    "character_archetypes": 5,
+    "reusable_structures": 11,
+    "reversal_type": "身份反转"
+  },
+  "acceptance": {
+    "step1_style_check": "passed",
+    "step2_structure_counts": "passed",
+    "step3_block_scan": "passed",
+    "run_at": "2026-09-10"
+  },
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改",
+  "rerun_note": "2026-09-10 方案2 重跑：拆文报告.md 按 v3.1.0 补齐 Stage 2/3/6 的 故事核·情感曲线·爆点性·话题性·共鸣 独立段（原六段体报告归档 _archive_20260910/）；情节节点.md/写作手法.md 核验合规保留。"
 }

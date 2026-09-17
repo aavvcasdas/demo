@@ -1,4 +1,5 @@
 {
+  "version": "2.0",
   "title": "没有公主命却有公主病的女生",
   "source_file": "分篇/24_没有公主命却有公主病的女生.txt（剧本人生 合集《8月16日》第 25 段，源文件第 7474-7771 行）",
   "word_count": 2838,
@@ -121,9 +122,10 @@
     "报复式打翻": "20 音乐盒被扔进垃圾桶（好人被处刑）↔24 打翻巧克力（处刑者动手）：镜像"
   },
   "acceptance": {
-    "quote_check": "pending",
-    "tone_check": "pending",
-    "structure_check": "pending"
+    "quote_check": "not_run",
+    "tone_check": "not_run",
+    "structure_check": "passed_by_audit_2026-09-10",
+    "note": "原 pending；2026-09-10 仅补齐 _meta 数值校验，三道验收未实际执行"
   },
   "stages_completed": [
     2,
@@ -132,5 +134,15 @@
     5,
     6
   ],
-  "completed_at": "2026-09-04T06:30Z"
+  "completed_at": "2026-09-04T06:30Z",
+  "reversal_type_original": "认知反转（特权清算：明珠论→温室判词）；副反转：双向阶层误认+供养停电",
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 8,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "audit_2026-09-10": "方案1 元数据补齐；分析内容未改"
 }

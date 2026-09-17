@@ -696,7 +696,7 @@ function proseBlockReason(root, absolute) {
       let prevText = null
       try { prevText = fs.readFileSync(prevFile, "utf8") } catch {}
       if (prevText !== null && !/去味(：|:)跳过/.test(prevText.split(/\r?\n/).slice(0, 6).join("\n"))) {
-        const hits = toxicPhraseFindings(prevText).filter((line) => line.startsWith("第"))
+        const hits = toxicPhraseFindings(prevText, loadStyleWhitelist(prevFile)).filter((line) => line.startsWith("第"))
         if (hits.length) {
           const shown = hits.slice(0, 6)
           const more = hits.length - shown.length
@@ -714,6 +714,7 @@ function proseBlockReason(root, absolute) {
 // 】 是章尾系统播报模板的收束符（agent-references/long-chapter-hooks.md 章尾实战模板一/四），ASCII "
 // 是 normalize-punctuation.js --quote-mode ascii 的合法收引号，两者都不该被判「疑似截断」。
 const TERMINAL = new Set(Array.from("。！？…”』」）)!?.~—】\""))
+// 保留导出以兼容 adapter。
 const QUOTE_OPENERS = new Set(["「", "“", "‘", "『", '"'])
 const SOFT_PATTERNS = [
   // 型号后缀（AI语言模型/AI助手/人工智能语言模型/AI模型/AI大模型）必须可选吃掉：否则前视断言
@@ -742,7 +743,8 @@ function skippableLine(line) {
 // 的行整行跳过。js↔py 同构实现（codex
 // story_codex_hook.py）由 scripts/check-hook-regex-sync.sh（规范串逐字锁）与
 // scripts/test-prose-net-parity.sh（fixture 逐字 diff）锁 parity，文案以本核为准。
-const TOXIC_QUOTE_SPANS = [/「[^」]*」/g, /『[^』]*』/g, /【[^】]*】/g, /“[^”]*”/g, /‘[^’]*’/g, /"[^"]*"/g, /'[^']*'/g]
+// 单引号须成对；词内撇号（don't、O’Connor）不作为开闭引号。
+const TOXIC_QUOTE_SPANS = [/「[^」]*」/g, /『[^』]*』/g, /【[^】]*】/g, /“[^”]*”/g, /(?<![A-Za-z0-9_])‘(?:[^’]|(?<=[A-Za-z0-9_])’(?=[A-Za-z0-9_]))*(?!(?<=[A-Za-z0-9_])’[A-Za-z0-9_])’/g, /"[^"]*"/g, /(?<![A-Za-z0-9_])'(?:[^']|(?<=[A-Za-z0-9_])'(?=[A-Za-z0-9_]))*(?!(?<=[A-Za-z0-9_])'[A-Za-z0-9_])'/g]
 const TOXIC_QUOTE_CHARS = new Set(Array.from("「」『』【】“”‘’\"'"))
 // 分句起点边界（前一字符属于它才认「是A，不是B」的分句首「是」）；同时用作确认语的右边界。
 const TOXIC_CLAUSE_BOUNDARY = new Set(Array.from("，,。.！!？?；;：:、…—~ \t　"))
@@ -821,13 +823,47 @@ function codePointSlice(value, start, end) {
   return Array.from(value).slice(start, end).join("")
 }
 
-function toxicPhraseFindings(text) {
+// Book-local only: never inherit an unrelated workspace or another book's choices.
+function loadStyleWhitelist(file) {
+  const parent = path.dirname(path.resolve(file));
+  const book = path.basename(parent) === '正文' ? path.dirname(parent) : parent;
+  try {
+    return fs.readFileSync(path.join(book, '.deslop-whitelist'), 'utf8')
+      .split(/\r?\n/).map(line => line.trim())
+      .filter(line => line && !line.startsWith('#'))
+      .sort((a, b) => b.length - a.length);
+  } catch (error) {
+    if (error.code === 'ENOENT') return [];
+    throw error;
+  }
+}
+
+function styleSpans(text, whitelist) {
+  const spans = [];
+  for (const literal of whitelist) {
+    for (let at = text.indexOf(literal); at !== -1; at = text.indexOf(literal, at + 1)) {
+      spans.push([at, at + literal.length]);
+    }
+  }
+  return spans;
+}
+
+function maskStyleText(text, whitelist) {
+  const chars = text.split('');
+  for (const [start, end] of styleSpans(text, whitelist)) {
+    chars.fill('？', start, end);
+  }
+  return chars.join('');
+}
+
+
+function toxicPhraseFindings(text, whitelist = []) {
   const findings = []
   const content = []
   text.split("\n").forEach((raw, index) => {
     const line = raw.trim()
     if (skippableLine(line)) return
-    const masked = maskQuotedSpans(line)
+    const masked = maskQuotedSpans(maskStyleText(line, whitelist))
     for (const ch of masked) {
       if (TOXIC_QUOTE_CHARS.has(ch)) return
     }
@@ -855,7 +891,7 @@ function toxicPhraseFindings(text) {
   return findings
 }
 
-function proseNetFindings(text) {
+function proseNetFindings(text, whitelist = []) {
   const findings = []
   const content = []
   text.split("\n").forEach((raw, index) => {
@@ -864,14 +900,14 @@ function proseNetFindings(text) {
     const lineNo = index + 1
     content.push([lineNo, line])
     let hit = false
-    if (!QUOTE_OPENERS.has(line[0])) {
-      for (const [regex, label] of SOFT_PATTERNS) {
-        const match = line.match(regex)
-        if (match) {
-          findings.push(`第${lineNo}行 元信息泄漏（${label}）：「${codePointSlice(match[0], 0, 20)}」`)
-          hit = true
-          break
-        }
+    // 只豁免成对引号内的内容，继续检查引号外叙述。
+    const outsideQuotes = maskQuotedSpans(line)
+    for (const [regex, label] of SOFT_PATTERNS) {
+      const match = outsideQuotes.match(regex)
+      if (match) {
+        findings.push(`第${lineNo}行 元信息泄漏（${label}）：「${codePointSlice(match[0], 0, 20)}」`)
+        hit = true
+        break
       }
     }
     if (hit) return
@@ -897,7 +933,7 @@ function proseNetFindings(text) {
   // 其余网（元信息/占位/复读/截断）照常——否则按拦截提示加标记的那次 Edit 会把
   // 已豁免的毒句式再次当硬信号推回。
   if (!/去味(：|:)跳过/.test(text.split(/\r?\n/).slice(0, 6).join("\n"))) {
-    findings.push(...toxicPhraseFindings(text))
+    findings.push(...toxicPhraseFindings(text, whitelist))
   }
   return findings
 }
@@ -939,7 +975,7 @@ function proseAfterWrite(root, absolute) {
     const bytes = fs.statSync(absolute).size
     if (bytes < 200) findings.push(`【落盘】正文仅 ${bytes} 字节，疑似未写完/落盘失败（quota/超时中断？），请核对并补写。`)
     const text = fs.readFileSync(absolute, "utf8")
-    findings.push(...proseNetFindings(text))
+    findings.push(...proseNetFindings(text, loadStyleWhitelist(absolute)))
   } catch {
     return ""
   }
