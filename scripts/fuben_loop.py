@@ -197,6 +197,13 @@ def review(d):
     ok = (bool(et) and not re.search(r'接受了', end)) or (sink and bool(re.search(r'结局[:：]\s*(接受\+回环|回环)', setting))); show('结局≠平静接受', (et.group(1) if et else None, end[:24]), ok); bad += not ok
     pat = r'(机器|老板娘|站主|屏幕|打印机|票|走势图|凳子)[^你]{0,12}(吐|递|跳|响|亮|滚|出来|推过来|放在)' if sink else r'(他|她|主管|林悦|周雨|你妈|你爸|客户)[^你]{0,12}(停|没敢|转|缩|愣|低下头|收回|手.{0,4}半空)'
     ok = bool(re.search(pat, end)); show('系统末动作' if sink else '对手末动作', end[-30:], ok); bad += not ok
+    # §13 报应表「还回来的」≥5 行落在 40–75% 反杀现场
+    bt = re.search(r'##[^\n]*报应表[^\n]*\n(.*?)(?=\n## |\Z)', setting, re.S)
+    if bt:
+        rows = re.findall(r'^\|\s*\d+\s*\|[^|]*\|([^|]+)\|', bt.group(1), re.M)
+        mid = ''.join(lines[int(N*.40):int(N*.75)])
+        hit = [r for r in rows if any(k in mid for k in re.findall(r'[\u4e00-\u9fff]{2,4}', r)[:8])]
+        ok = len(hit) >= min(5, -(-len(rows)*2//3)); show('§13 报应在现场落地≥2/3', f'{len(hit)}/{len(rows)}', ok); bad += not ok
     if sink:
         rb = sum(bool(re.search(r'(中了就|回本|最后一次|再买.{0,3}(次|期|天)|等.{0,4}就停)', l)) for l in lines)
         ok = rb >= 3; show('回本三部曲≥3', rb, ok); bad += not ok
