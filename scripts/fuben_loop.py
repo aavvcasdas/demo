@@ -243,6 +243,19 @@ def draft(directory: str) -> int:
     need("时间顺序不倒退", not backwards, str(backwards[:2]))
     need("时间锚点不过载", unique_years <= 12, f"{unique_years} 个年份锚点")
 
+    # v6 跨度检查：长期题不许写成「第一年…第二年…」的年表。
+    # 观众反馈「第 1 年到第 7 年跳转生硬」的机械特征就是这一串编号行——
+    # 压时间要靠「同一动作重复 + 细节漂移」，不是按年列条目（拆文库 01/05 时间操控）。
+    YEAR_LEDGER = re.compile(r"^第\s*[一二三四五六七八九十\d]+\s*个?年")
+    ledger_lines = [i + 1 for i, line in enumerate(lines) if YEAR_LEDGER.match(line)]
+    consecutive = any(ledger_lines[i + 1] - ledger_lines[i] == 1 for i in range(len(ledger_lines) - 1))
+    need(
+        "跨度不用年表罗列",
+        len(ledger_lines) <= 2 and not consecutive,
+        f"{len(ledger_lines)} 行以「第N年」开头{'（含连续）' if consecutive else ''}："
+        + " / ".join(lines[i - 1][:14] for i in ledger_lines[:4]),
+    )
+
     # 以设定里的主线关键词做覆盖提醒；没有关键词则以核心行动的显性名词为后备。
     key_match = re.search(r"主线关键词[:：]\s*([^\n]+)", setting)
     if key_match:

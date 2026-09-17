@@ -19,12 +19,18 @@ v3 的事实闸证明了「没有事实错误」不等于「好看」：新 72 �
 - 结尾锚点落在 ≥85%，且最后 12 行里要有一个数字或器物判词
 - v5 快推结构：首个大事件（≥+5 或 对质/兑现/翻车）≤ 32%，其后仍要有 ≥4 个情绪节点，
   >50% 处已有 ≥3 个节点；相邻节点间距 ≤ 22%（不许把对质留到 75%）
+- v6 钱的去向（兑现/暴富题）：`## 钱的去向表` ≥6 笔；类别只有 花/给/亏/被骗；
+  **花+给 ≥60%**，**被骗 ≤1 笔**（被骗不是归零主因）；锚点命中正文；钱账误差 0；
+  正文「憋屈结算词」（报案/跑路/卷走/办公室空了…）≤2 处
+- v6 习惯漂移（习惯/成瘾题）：`## 习惯漂移` ≥2 行，旧做法 → 新做法 → 他的说法 → 正文锚点，
+  锚点必须命中正文（习惯原样运行、内容换掉；不许写成「他戒了」）
 """
 from __future__ import annotations
 
 import os
 import re
 import sys
+from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if os.path.join(ROOT, "scripts") not in sys.path:
@@ -165,6 +171,81 @@ def main() -> int:
     second_half = [r for r in valid if r["actual"] > 50]
     show("后半(>50%)≥3节点", len(second_half) >= 3, f"{len(second_half)} 个：{'、'.join(r['event'][:8] for r in second_half[:4])}")
     show("结尾锚点≥85%", ordered[-1]["actual"] >= 85, f"{ordered[-1]['actual']:.0f}% {ordered[-1]['event'][:18]}")
+
+    # ---------- v6：钱的去向（兑现/暴富题） ----------
+    FULFILL = re.compile(r"中奖|奖金|到账|彩票|拆迁|遗产|继承|暴富|分红|赔款")
+    MONEY_KINDS = ("被骗", "花", "给", "亏")
+    SAD_END = re.compile(r"报案|报警|跑路|卷走|办公室空|空壳|假合同|被骗|骗走|要不回来")
+    HABIT = re.compile(r"每天一张|天天|每天买|守号|日复一日|每天都要")
+
+    def parse_money(block: str):
+        rows = []
+        for line in block.splitlines():
+            if not line.startswith("|") or re.match(r"^\|\s*:?-", line):
+                continue
+            cells = [c.strip().strip("*").strip() for c in line.strip("|").split("|")]
+            if len(cells) < 4 or re.fullmatch(r"[笔序]\s*数?|序号|#|合计", cells[0]):
+                continue
+            kind = next((k for k in MONEY_KINDS if any(c == k or c.startswith(k) for c in cells)), None)
+            if not kind:
+                continue
+            rows.append({"kind": kind, "cells": cells, "anchor": cells[-1]})
+        return rows
+
+    def parse_drift(block: str):
+        rows = []
+        for line in block.splitlines():
+            if not line.startswith("|") or re.match(r"^\|\s*:?-", line):
+                continue
+            cells = [c.strip().strip("*").strip() for c in line.strip("|").split("|")]
+            if len(cells) < 4 or re.fullmatch(r"序|序号|#|维度|项目", cells[0]):
+                continue
+            if any(c in {"旧做法", "新做法", "他的说法", "正文锚点", "类别", "他人反应", "金额"} for c in cells):
+                continue
+            if not any(cells):
+                continue
+            rows.append({"anchor": cells[-1]})
+        return rows
+
+    if len(FULFILL.findall(setting)) >= 4:
+        flow = section(setting, "钱的去向表", "钱的去向", "去向表")
+        show("钱的去向表存在", bool(flow), "兑现/暴富题必须写「## 钱的去向表」：笔数 / 金额 / 类别 / 他人反应 / 正文锚点")
+        if flow:
+            money = parse_money(flow)
+            show("去向表≥6笔", len(money) >= 6, f"{len(money)} 笔")
+            kinds = Counter(r["kind"] for r in money)
+            if money:
+                share = (kinds["花"] + kinds["给"]) / len(money)
+                show("花+给≥60%", share >= 0.6, f"花{kinds['花']}+给{kinds['给']}={kinds['花'] + kinds['给']}/{len(money)}（{share:.0%}）；亏{kinds['亏']}、被骗{kinds['被骗']}")
+                show("被骗≤1笔", kinds["被骗"] <= 1, f"{kinds['被骗']} 笔（被骗不能是归零主因）")
+                missing = [r["anchor"] for r in money if r["anchor"] and r["anchor"] not in text]
+                show("去向锚点命中正文", not missing, "缺失:" + "、".join(m[:12] for m in missing[:3]))
+            # 钱账：到账 + 变卖 − 去向 = 余额，误差必须为 0
+            account = re.search(
+                r"到账\s*([\d,]+)\s*\+\s*[^+\n]*?([\d,]+)\s*[-−]\s*[^=\n]*?([\d,]+)\s*=\s*[^=\n]*?([\d,]+)",
+                flow,
+            )
+            if account:
+                cash = [int(x.replace(",", "")) for x in account.groups()]
+                show("钱账误差0", cash[0] + cash[1] - cash[2] == cash[3], f"{cash[0]}+{cash[1]}-{cash[2]}={cash[0] + cash[1] - cash[2]}，表内余额 {cash[3]}")
+            else:
+                show("钱账误差0", False, "去向表下必须有「到账 X + 变卖 Y − 去向 Z = 余额 W」一行")
+            sad = [line for line in lines if SAD_END.search(line)]
+            show("憋屈结算≤2处", len(sad) <= 2, f"{len(sad)} 处：" + " / ".join(line[:14] for line in sad[:3]))
+    else:
+        print("---- 非兑现/暴富题，跳过「钱的去向」门")
+
+    # ---------- v6：习惯漂移（习惯/成瘾题） ----------
+    if len(HABIT.findall(setting)) >= 3:
+        drift_block = section(setting, "习惯漂移")
+        show("习惯漂移表存在", bool(drift_block), "习惯/成瘾题必须写「## 习惯漂移」：旧做法 → 新做法 → 他的说法 → 正文锚点")
+        if drift_block:
+            drift_rows = parse_drift(drift_block)
+            show("习惯漂移≥2行", len(drift_rows) >= 2, f"{len(drift_rows)} 行")
+            miss = [r["anchor"] for r in drift_rows if r["anchor"] and r["anchor"] not in text]
+            show("漂移锚点命中正文", not miss, "缺失:" + "、".join(m[:12] for m in miss[:3]))
+    else:
+        print("---- 非习惯/成瘾题，跳过「习惯漂移」门")
 
     drift = [r for r in valid if abs(r["actual"] - r["pos"]) > 8]
     show("声明位置与正文一致", not drift, " / ".join(f"#{r['no']} 声明{r['pos']}% 实际{r['actual']:.0f}%" for r in drift[:4]))
