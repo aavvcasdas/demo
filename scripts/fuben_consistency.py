@@ -43,8 +43,14 @@ def section(text: str, *names: str) -> str:
 
 
 def _has_positive(line: str, pattern: str) -> bool:
+    """命中即算越界，除非命中片段本身或紧邻前文已经否定它。
+
+    「单注 2 元，不倍投」这类句子以前会被判成金额漂移，因为否定词写在
+    命中片段里面；现在把 match 文本一并纳入否定窗口。
+    """
     for match in re.finditer(pattern, line):
-        if not NEGATION.search(line[max(0, match.start() - 8):match.start()]):
+        window = line[max(0, match.start() - 8):match.start()] + match.group(0)
+        if not NEGATION.search(window):
             return True
     return False
 
@@ -97,16 +103,37 @@ def event_years(text: str) -> List[Tuple[int, int, str]]:
     return found
 
 
+def _locked_game(source: str, all_text: str) -> Optional[str]:
+    """先看事实锁自己写的「规则/玩法」格，再看没有被否定的正文描述。
+
+    旧写法只要全文出现「福彩3D」四个字就把玩法判成 3D，连「不是福彩3D」
+    这种反事实清单也会被当成事实，于是把双色球稿误判成玩法混用。
+    """
+    for line in source.splitlines():
+        if "|" not in line or not re.search(r"规则|玩法|彩种", line):
+            continue
+        if re.search(r"福彩\s*3D", line):
+            return "福彩3D"
+        if re.search(r"双色球", line):
+            return "双色球"
+    positive = "\n".join(
+        line for line in all_text.splitlines()
+        if not re.search(r"禁止|不写|不得|不能|不出现|反事实|不是|不借|不把", line)
+    )
+    if re.search(r"福彩\s*3D", positive):
+        return "福彩3D"
+    if re.search(r"双色球", positive):
+        return "双色球"
+    return None
+
+
 def facts_from(setting: str) -> Dict[str, object]:
     lock = section(setting, "事实锁", "事实账", "事实底座")
     l0 = section(setting, "L0 事实核查", "事实核查表")
     source = lock or l0
     all_text = source + "\n" + setting
     facts: Dict[str, object] = {"lock": bool(lock), "source": source}
-    if re.search(r"福彩\s*3D|福彩3D", all_text):
-        facts["game"] = "福彩3D"
-    elif re.search(r"双色球", all_text):
-        facts["game"] = "双色球"
+    facts["game"] = _locked_game(source, all_text)
     if re.search(r"(?:每注|每张|每票)[^\n]{0,16}(?:2\s*元|2\s*块|两元|两块)", source):
         facts["unit_cost"] = 2
     if re.search(r"每天一张|每日一张|每天只买一张|一张新", source):

@@ -1,15 +1,17 @@
 ---
 name: fuben-review
-version: 2.0.0
-description: "人生副本成稿三方审核：事实锁/因果台账 + 拆书机制 + 联网事实复核 + 普通观众可读性。VERDICT: PASS 前不交付。"
+version: 3.0.0
+description: "人生副本成稿三方审核：事实锁/因果台账 + 爽点密度与节奏 + 拆书机制 + 联网事实复核 + 普通观众可读性。VERDICT: PASS 前不交付。"
 ---
-# fuben-review：人生副本三方审核 v2
+# fuben-review：人生副本三方审核 v3
 
-你是审核员，不是作者。审核的第一目标是找出「观众无法一遍读懂」和「前后事实不一致」，不是把所有稿子压成同一种八拍。
+你是审核员，不是作者。审核的第一目标是找出「前后事实不一致」和「观众看不下去（没有爽点、节奏太慢）」，不是把所有稿子压成同一种八拍。
+
+**v3 新增**：事实全绿但零爽点的稿子＝失败稿。没有 `## 爽点表`、或爽点表锚点无法在正文定位、或密度/峰值位置不达标的，直接 `VERDICT: FIX`，不得因为「事实严谨」放行。
 
 ## 输入与硬门
 
-输入是 `作品/NN_xxx/设定.md` + `正文.md`。设定缺 `## 事实锁`、`## 主线`、`## 因果/状态台账`、`## 结构验收` 任一节，直接 `VERDICT: BLOCK`。如果是规则/习惯题，`反派设计: 不适用` 可以不写报应表；不能因此跳过事实和状态检查。
+输入是 `作品/NN_xxx/设定.md` + `正文.md`。设定缺 `## 事实锁`、`## 主线`、`## 因果/状态台账`、`## 爽点表`、`## 结构验收` 任一节，直接 `VERDICT: BLOCK`。规则/习惯题可以不写报应表，但必须有见证人/对照者，不能因此跳过事实、状态和爽点检查。
 
 ## Phase 0：机械预检
 
@@ -20,6 +22,7 @@ python3 scripts/fuben_loop.py design 作品/NN_xxx/设定.md
 python3 scripts/fuben_loop.py facts 作品/NN_xxx/
 python3 scripts/fuben_loop.py draft 作品/NN_xxx/
 python3 scripts/fuben_loop.py review 作品/NN_xxx/
+python3 scripts/fuben_hype.py 作品/NN_xxx/
 python3 scripts/fuben_lint.py 作品/NN_xxx/ --fix-list
 node skills/story-review/scripts/check-ai-patterns.js --check 作品/NN_xxx/正文.md
 ```
@@ -43,7 +46,7 @@ node skills/story-review/scripts/check-ai-patterns.js --check 作品/NN_xxx/正�
 
 ### 2.1 人生副本骨架
 
-读取 `skills/story-short-write/references/genre-styles/人生副本_通用骨架.md`，逐拍列：正文行号、触发、状态变化、拍尾动作。不得只写「都是八拍所以像」。
+读取 `skills/story-short-write/references/genre-styles/人生副本_通用骨架.md` v3 与 `人生副本实录.md` v4，逐节列：位置%、情绪值、正文行号、触发、状态变化、拍尾动作。**逐条核对爽点表**：锚点是否真的落在那句话上、声明位置与实际位置是否相差 ≤8%、第一个爽点是否 ≤22%、峰值（≥+5）是否落在 25%–48%、相邻爽点间距是否 ≤30%、结尾是否落在数字或器物判词上。不得只写「都是八拍所以像」，也不得只写「参考了 04」而没有机制落地行号。
 
 ### 2.2 供体手法
 
@@ -80,7 +83,9 @@ node skills/story-review/scripts/check-ai-patterns.js --check 作品/NN_xxx/正�
 | 事实 | 玩法、频率、单位、号码、日期、数量可对账 | S1 |
 | 对白 | 只保留改变动作的句子；旁白稿对白稀缺 | S2 |
 | 称呼 | 人物、物件、事件首次有明确称呼 | S2 |
-| 高潮 | 按题材选择客观核对、账本对账、停止或人物对质；不强行社死 | S2 |
+| 爽点 | 情绪节点 ≥4.0/千字、正向爽点 ≥2.0/千字、峰值 25%–48%、无 >30% 死区 | S1 |
+| 节奏 | 前 22% 内出现第一个爽点；没有连续两节只换年份不换状态 | S1 |
+| 高潮 | 按题材选择客观核对、账本对账、兑现围观、停止或人物对质；不许以「这题不该有高潮」为由留白 | S1 |
 | 结尾 | 落在新状态和一个动作/物件，不是作者宣判 | S2 |
 
 ## 输出格式

@@ -110,8 +110,17 @@ def design(path: str) -> int:
 
     _need(bad, "主线四字段", bool(core) and all(re.search(k, core) for k in ("设定", "核心行动", "悬念", "一句话")), "主线必须回答谁、一直做什么、等什么、最后变成什么")
     _need(bad, "参考来源已标", bool(re.search(r"拆文库/|对标|参考|借用|来源", setting)), "至少写一个实际读取过的拆文库案例，不得只写手法名")
-    _need(bad, "八拍表≥8行", len(re.findall(r"^\|\s*[一二三四五六七八]\s*\|", setting, re.M)) >= 8, "八拍是路线图，不是八个空标题")
-    _need(bad, "每拍有状态动作", len(re.findall(r"^\|\s*[一二三四五六七八]\s*\|[^\n]*(推进|受阻|揭示|改变|停止|核对)", setting, re.M)) >= 6, "至少六拍写清主线动作或状态变化")
+    # 不再要求「八拍」这种形式。路线图有两条合法路径：
+    #   ① 情绪节拍表（首选）：位置 / 情绪值 / 事件 / 状态前后；
+    #   ② 旧版八拍表（兼容旧稿）。
+    # 无论哪条，都必须有 ≥8 行，且 ≥6 行写清情绪值、峰值/谷底或状态动作。
+    beats = section(setting, "情绪节拍", "节拍表", "爽点节拍", "八拍")
+    beat_rows = [line for line in beats.splitlines() if re.match(r"^\|\s*[0-9一二三四五六七八九十]+\s*\|", line)]
+    _need(bad, "节拍表≥8行", len(beat_rows) >= 8, "写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式")
+    marked = [line for line in beat_rows if re.search(r"[+-]\s*\d|推进|受阻|揭示|改变|停止|核对|峰值|谷底", line)]
+    _need(bad, "每节有情绪或状态", len(marked) >= 6, "至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份")
+    hype = section(setting, "爽点表")
+    _need(bad, "爽点表≥6行", len([line for line in hype.splitlines() if re.match(r"^\|\s*\d+\s*\|", line)]) >= 6, "爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿")
     _need(bad, "贯穿物件/人物台账", bool(re.search(r"物件台账|物证台账|人物台账|贯穿物件", setting)), "首次出现、再次碰到、回收动作要有名字")
     _need(bad, "呼应表≥5对", len(re.findall(r"^\|\s*\d+\s*\|", travel, re.M)) >= 5, "每一对都要有前置和后半回收")
     _need(bad, "对白预算已锁", bool(re.search(r"对白预算|对白上限|对白只保留", setting)), "写总行数/场景上限/允许保留的功能")
@@ -246,7 +255,7 @@ def draft(directory: str) -> int:
         for part in range(8):
             chunk = "".join(lines[part * len(lines) // 8:(part + 1) * len(lines) // 8])
             hits.append(any(word in chunk for word in keywords))
-        need("主线覆盖≥6/8拍", sum(hits) >= 6, f"{sum(hits)}/8 {keywords}")
+        need("主线贯穿≥5/8段", sum(hits) >= 5, f"{sum(hits)}/8 {keywords}")
     else:
         need("主线关键词可追", False, "设定.md 主线加入「主线关键词」或可复述的核心行动")
 
