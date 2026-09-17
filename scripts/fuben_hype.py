@@ -26,6 +26,8 @@ v3 的事实闸证明了「没有事实错误」不等于「好看」：新 72 �
   锚点必须命中正文（习惯原样运行、内容换掉；不许写成「他戒了」）
 - v7 钱的去向重排：类别改为 补欠 / 场面 / 给自己人 / 借出 / 亏 / 被骗；表 ≥8 笔，
   **补欠+场面 ≥50%**、**借出 ≤20%**（钱不是借完的）、被骗 ≤1、亏 ≤15%；账仍要平
+- v8 钱的去向定稿：**补欠+场面 ≥70%**、**补欠 ≥4 笔**（旅游 / 想买没买的 / 请自己的朋友）、
+  **借出 = 0 笔**（亲戚借钱只写拒绝现场）；新增 `## 忘本（拒绝与筛选）` 表 ≥3 行 + 锚点命中正文
 - v7 转场：跨度题必须写 `## 转场表`（压缩段 → 回位句 → 正文锚点），回位句必须命中正文
 - v7 习惯漂移加严：至少一行要「新做法里的数字 > 旧做法」（号码换 + 买得更多）
 """
@@ -212,7 +214,8 @@ def main() -> int:
             cells = [c.strip().strip("*").strip() for c in line.strip("|").split("|")]
             if len(cells) < 4 or re.fullmatch(r"[笔序]\s*数?|序号|#|合计", cells[0]):
                 continue
-            kind = next((k for k in MONEY_KINDS if any(c == k or c.startswith(k) for c in cells)), None)
+            # 类别只认第 3 列，避免「他人反应」里出现「给朋友」被误判成类别。
+            kind = cells[2] if len(cells) > 2 and cells[2] in MONEY_KINDS else None
             if not kind:
                 continue
             rows.append({"kind": kind, "cells": cells, "anchor": cells[-1]})
@@ -234,6 +237,20 @@ def main() -> int:
         return rows
 
     if len(FULFILL.findall(setting)) >= 4:
+        wang = section(setting, "忘本")
+        show("忘本（拒绝与筛选）表", bool(wang), "兑现/暴富题必须写「## 忘本（拒绝与筛选）」：谁来 / 怎么开口 / 你怎么拒 / 他后来 / 正文锚点")
+        if wang:
+            wrows = []
+            for line in wang.splitlines():
+                if not line.startswith("|") or re.match(r"^\|\s*:?-", line):
+                    continue
+                cells = [c.strip().strip("*").strip() for c in line.strip("|").split("|")]
+                if len(cells) < 4 or any(c in {"谁来", "怎么开口", "你怎么拒", "他后来", "正文锚点"} for c in cells):
+                    continue
+                wrows.append(cells[-1])
+            show("忘本表≥3行", len(wrows) >= 3, f"{len(wrows)} 行")
+            miss_w = [a for a in wrows if a and a not in text]
+            show("拒借锚点命中正文", not miss_w, "缺失:" + "、".join(m[:12] for m in miss_w[:3]))
         flow = section(setting, "钱的去向表", "钱的去向", "去向表")
         show("钱的去向表存在", bool(flow), "兑现/暴富题必须写「## 钱的去向表」：笔数 / 金额 / 类别 / 他人反应 / 正文锚点")
         if flow:
@@ -243,8 +260,9 @@ def main() -> int:
             if money:
                 total_pen = len(money)
                 care = (kinds["补欠"] + kinds["场面"]) / total_pen
-                show("补欠+场面≥50%", care >= 0.5, f"补欠{kinds['补欠']}+场面{kinds['场面']}={kinds['补欠'] + kinds['场面']}/{total_pen}（{care:.0%}）")
-                show("借出≤20%", kinds["借出"] / total_pen <= 0.2, f"借出 {kinds['借出']}/{total_pen}（{kinds['借出'] / total_pen:.0%}）")
+                show("补欠+场面≥70%", care >= 0.7, f"补欠{kinds['补欠']}+场面{kinds['场面']}={kinds['补欠'] + kinds['场面']}/{total_pen}（{care:.0%}）")
+                show("补欠≥4笔", kinds["补欠"] >= 4, f"补欠 {kinds['补欠']} 笔（旅游 / 想买没买的 / 请自己的朋友）")
+                show("借出=0笔", kinds["借出"] == 0, f"借出 {kinds['借出']} 笔（钱不能是借完的；亲戚借钱只写拒绝现场）")
                 show("被骗≤1笔", kinds["被骗"] <= 1, f"{kinds['被骗']} 笔（被骗不能是归零主因）")
                 show("亏≤15%", kinds["亏"] / total_pen <= 0.15, f"亏 {kinds['亏']}/{total_pen}")
                 missing = [r["anchor"] for r in money if r["anchor"] and r["anchor"] not in text]
