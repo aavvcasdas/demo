@@ -26,8 +26,9 @@ v3 的事实闸证明了「没有事实错误」不等于「好看」：新 72 �
   锚点必须命中正文（习惯原样运行、内容换掉；不许写成「他戒了」）
 - v7 钱的去向重排：类别改为 补欠 / 场面 / 给自己人 / 借出 / 亏 / 被骗；表 ≥8 笔，
   **补欠+场面 ≥50%**、**借出 ≤20%**（钱不是借完的）、被骗 ≤1、亏 ≤15%；账仍要平
-- v9 花光的底气：`## 花光的底气` 表 ≥2 行 + 锚点命中；正文信念句（还会中/下一期/再中）≥2 处，
-  一次落在花钱中段、一次落在结尾习惯段；「换了号以后一次都没中过」必须明写
+- v9 花光的底气：`## 花光的底气` 表 ≥2 行 + 锚点命中；正文信念句（还会中/下一期/再中）≥2 处
+- v10 底气引擎：信念句 ≥3 处（每个花钱阶段至少一处）；`## 加注阶梯` ≥3 行且金额逐级变大 + 锚点命中；
+  小奖是燃料（写「五块十块中过不少、大的没有」），不许写「一次都没中过」
 - v8 钱的去向定稿：**补欠+场面 ≥70%**、**补欠 ≥4 笔**（旅游 / 想买没买的 / 请自己的朋友）、
   **借出 = 0 笔**（亲戚借钱只写拒绝现场）；新增 `## 忘本（拒绝与筛选）` 表 ≥3 行 + 锚点命中正文
 - v7 转场：跨度题必须写 `## 转场表`（压缩段 → 回位句 → 正文锚点），回位句必须命中正文
@@ -204,7 +205,7 @@ def main() -> int:
 
     # ---------- v6：钱的去向（兑现/暴富题） ----------
     FULFILL = re.compile(r"中奖|奖金|到账|彩票|拆迁|遗产|继承|暴富|分红|赔款")
-    MONEY_KINDS = ("给自己人", "被骗", "补欠", "场面", "借出", "亏")
+    MONEY_KINDS = ("给自己人", "被骗", "补欠", "场面", "借出", "亏", "花")
     SAD_END = re.compile(r"报案|报警|跑路|卷走|办公室空|空壳|假合同|被骗|骗走|要不回来")
     # v9：花光的底气——他敢花，是因为他信还会再中（不是抽象上瘾，也不是被骗）。
     BELIEF = re.compile(r"还会中|还能中|再中一次|下一期|下期|再中一回")
@@ -256,7 +257,24 @@ def main() -> int:
             miss_b = [a for a in brows if a and a not in text]
             show("底气锚点命中正文", not miss_b, "缺失:" + "、".join(m[:12] for m in miss_b[:3]))
         belief = [line for line in lines if BELIEF.search(line)]
-        show("正文底气≥2处", len(belief) >= 2, f"{len(belief)} 处：" + " / ".join(line[:14] for line in belief[:3]))
+        show("正文底气≥3处", len(belief) >= 3, f"{len(belief)} 处：" + " / ".join(line[:14] for line in belief[:4]))
+        ladder = section(setting, "加注阶梯")
+        show("加注阶梯表存在", bool(ladder), "兑现/暴富题必须写「## 加注阶梯」：阶段 / 日期区间 / 注数 / 每天花多少 / 正文锚点")
+        if ladder:
+            lrows = []
+            for line in ladder.splitlines():
+                if not line.startswith("|") or re.match(r"^\|\s*:?-", line):
+                    continue
+                cells = [c.strip().strip("*").strip() for c in line.strip("|").split("|")]
+                if len(cells) < 4 or any(c in {"阶段", "日期区间", "注数", "每天花多少", "正文锚点"} for c in cells):
+                    continue
+                money = max([int(m) if m.isdigit() else _cn_value(m) for m in re.findall(r"(\d+|[零一二两三四五六七八九十]+)\s*(?:元|块)", " ".join(cells))] or [0])
+                lrows.append({"anchor": cells[-1], "money": money})
+            show("加注阶梯≥3行", len(lrows) >= 3, f"{len(lrows)} 行（每天花：{[r['money'] for r in lrows]}）")
+            grew = len(lrows) >= 3 and all(b["money"] > a["money"] for a, b in zip(lrows, lrows[1:]))
+            show("加注逐级变大", grew, " → ".join(f"{r['money']}元" for r in lrows))
+            miss_l = [r["anchor"] for r in lrows if r["anchor"] and r["anchor"] not in text]
+            show("阶梯锚点命中正文", not miss_l, "缺失:" + "、".join(m[:12] for m in miss_l[:3]))
         wang = section(setting, "忘本")
         show("忘本（拒绝与筛选）表", bool(wang), "兑现/暴富题必须写「## 忘本（拒绝与筛选）」：谁来 / 怎么开口 / 你怎么拒 / 他后来 / 正文锚点")
         if wang:
