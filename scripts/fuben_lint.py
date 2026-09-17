@@ -66,6 +66,8 @@ def candidates(index: int, group: set) -> List[str]:
     found: List[str] = []
     for previous in reversed(lines[max(0, index - 8):index + 1]):
         current = [term for term in group if term in previous]
+        # 「大老板」同时包含「老板」，不能当成两个候选；只保留更长的那个。
+        current = [term for term in current if not any(other != term and term in other for other in current)]
         if current:
             for term in current:
                 if term not in found:

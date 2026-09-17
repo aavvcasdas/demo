@@ -17,6 +17,8 @@ v3 的事实闸证明了「没有事实错误」不等于「好看」：新 72 �
 - ≥2 个情绪值 ≥ +5 的大爽点；≥1 个情绪值 ≤ -6 的谷底
 - 相邻爽点实际间距 ≤ 全文 30%（超过就是「年表区」，观众会划走）
 - 结尾锚点落在 ≥85%，且最后 12 行里要有一个数字或器物判词
+- v5 快推结构：首个大事件（≥+5 或 对质/兑现/翻车）≤ 32%，其后仍要有 ≥4 个情绪节点，
+  >50% 处已有 ≥3 个节点；相邻节点间距 ≤ 22%（不许把对质留到 75%）
 """
 from __future__ import annotations
 
@@ -30,7 +32,7 @@ if os.path.join(ROOT, "scripts") not in sys.path:
 from fuben_consistency import read, section  # noqa: E402
 
 HAN = lambda text: len(re.findall(r"[\u4e00-\u9fff]", text))
-RITUAL = re.compile(r"铁盒|账本|药盒|药单|票|凳子|柜台|短信|手机|照片|抽屉|钥匙|门|碗|面|盒子|卡|收据|兑奖单|沙发|车")
+RITUAL = re.compile(r"铁盒|账本|账|药盒|药单|票|凳子|柜台|短信|手机|照片|抽屉|钥匙|门|碗|面|盒子|卡|收据|兑奖单|沙发|车|文件夹|档案|本子|课件")
 
 
 def parse_rows(block: str):
@@ -145,7 +147,23 @@ def main() -> int:
     ordered = sorted(valid, key=lambda r: r["actual"])
     gaps = [(b["actual"] - a["actual"], a, b) for a, b in zip(ordered, ordered[1:])]
     worst = max(gaps, key=lambda g: g[0]) if gaps else (0, None, None)
-    show("无>30%情绪死区", worst[0] <= 30, f"最大间距 {worst[0]:.0f}%（{worst[1]['event'][:12]} → {worst[2]['event'][:12]}）" if gaps else "")
+    show("无>22%情绪死区", worst[0] <= 22, f"最大间距 {worst[0]:.0f}%（{worst[1]['event'][:12]} → {worst[2]['event'][:12]}）" if gaps else "")
+
+    # v5 快推结构：主线大事件必须 ≤32%，之后还要有 ≥4 个节点。
+    # 钩子（结果前置/开场画面）不算大事件——它只是把结论先扔出来，不等于剧情启动。
+    BIG = re.compile(r"对质|兑现|翻车|社死|承认|面试|爆点|峰值|反转|结账")
+    HOOK = re.compile(r"钩子|前置|开场")
+    bigs = [r for r in valid if not HOOK.search(r["type"]) and (r["mood"] >= 5 or BIG.search(r["type"]))]
+    if bigs:
+        first_big = min(bigs, key=lambda r: r["actual"])
+        show("首个大事件≤32%", first_big["actual"] <= 32, f"{first_big['actual']:.0f}% [{first_big['type']}] {first_big['event'][:16]}")
+        after = [r for r in valid if r["actual"] > first_big["actual"] + 1]
+        show("爆点之后≥4节点", len(after) >= 4, f"{len(after)} 个（{after[0]['event'][:10] if after else '—'} …）")
+    else:
+        show("首个大事件≤32%", False, "爽点表里没有任何对质/兑现/≥+5 的大事件")
+        show("爆点之后≥4节点", False, "没有大事件就无法谈后半")
+    second_half = [r for r in valid if r["actual"] > 50]
+    show("后半(>50%)≥3节点", len(second_half) >= 3, f"{len(second_half)} 个：{'、'.join(r['event'][:8] for r in second_half[:4])}")
     show("结尾锚点≥85%", ordered[-1]["actual"] >= 85, f"{ordered[-1]['actual']:.0f}% {ordered[-1]['event'][:18]}")
 
     drift = [r for r in valid if abs(r["actual"] - r["pos"]) > 8]

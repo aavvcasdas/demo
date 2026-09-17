@@ -221,8 +221,8 @@ def draft(directory: str) -> int:
     first = "".join(lines[:12])
     linear = bool(re.search(r"线性|开头不倒叙", setting))
     future_open = bool(re.search(r"^(最后|多年后|七年后|两年后|中奖后|清零后)", "\n".join(lines[:3])))
-    has_time_or_start = bool(re.search(r"\d{4}年|[一二三四五六七八九十]+年|第一天|第二天|小时|早晨|晚上", first))
-    named_object = bool(re.search(r"票|账|盒|号码|母亲|妈妈|老板娘|同事|主管|铁盒|手机|学校|公司", first))
+    has_time_or_start = bool(re.search(r"\d{4}年|\d{1,2}月|[一二三四五六七八九十]+年|[一二三四五六七八九十]+月|第一天|第二天|小时|早晨|晚上|点", first))
+    named_object = bool(re.search(r"票|账|盒|号码|母亲|妈妈|老板娘|同事|主管|铁盒|手机|学校|公司|本子|电脑|文件夹|档案|简历|收据|截图|药|房|车", first))
     need("首屏时间/对象清楚", has_time_or_start and named_object, first[:48])
     need("线性稿不深倒叙", not (linear and future_open), "前3行先写现在/未来结果再倒回，改成第一天或明确回到哪一年")
 
