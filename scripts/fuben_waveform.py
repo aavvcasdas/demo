@@ -174,6 +174,9 @@ def main():
     if mode not in ("--check", "--record") or not targets:
         print(__doc__)
         return 2
+    variant = ""
+    if mode == "--record" and targets and not os.path.isdir(targets[-1]):
+        variant = targets.pop()  # 末位非目录参数 = 变体标签
     rc = 0
     for t in targets:
         directory = t.rstrip("/")
@@ -187,7 +190,7 @@ def main():
         print(f"== {os.path.basename(directory)} ==")
         print("\n".join(msgs))
         if mode == "--record" and code == 0:
-            sig["variant"] = sys.argv[-1] if targets[-1] != sys.argv[-1] else ""
+            sig["variant"] = variant
             import datetime
             sig["date"] = datetime.date.today().isoformat()
             records = [r for r in records if not (r.get("episode") == sig["episode"] and r.get("variant") == sig.get("variant"))]

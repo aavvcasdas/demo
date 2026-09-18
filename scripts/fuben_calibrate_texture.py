@@ -117,11 +117,17 @@ def main():
     for f in sorted(glob.glob(os.path.join(ROOT, "分篇", "*.txt"))):
         orig.append((os.path.basename(f), measure(f)))
     drafts = []
-    # 验收集＝66–72（含 72 三个变体）；60–65 一并打印作观察，不进验收判定
-    acc, obs = [], []
+    # 验收集＝66–72 已知失败批次（含 72 变体）；71 号已按同方重写为合规稿（PR C 实验件），
+    # 从失败验收集移入观察集并按「应 PASS」复核——重写稿若被拦＝阈值过紧，同样报警。
+    acc, obs, redo = [], [], []
     for f in sorted(glob.glob(os.path.join(ROOT, "作品", "6*_*/正文.md")) + glob.glob(os.path.join(ROOT, "作品", "7*_*/正文.md"))):
         rel = os.path.relpath(f, ROOT)
-        (acc if re.search(r"作品/(6[6-9]|7[0-2])_", rel) else obs).append((rel, measure(f)))
+        if "作品/71_" in rel:
+            redo.append((rel, measure(f)))
+        elif re.search(r"作品/(6[6-9]|7[0-2])_", rel):
+            acc.append((rel, measure(f)))
+        else:
+            obs.append((rel, measure(f)))
     drafts = acc
 
     print("=== 39 篇原稿指标与命中（≥2 项失败=FAIL） ===")
@@ -140,6 +146,11 @@ def main():
         dfail += len(f) >= 2
         print(f"{'FAIL' if len(f)>=2 else 'pass!?'} {name[:44]:46} n={m['n']:>5} sens={m['sens']:>4} digits={m['digits']:>3} ratio={m['ratio']:>4} dlg={m['dlg']:>4}  ← {','.join(f)}")
     print(f"\n验收集（66–72）拦截率: {dfail}/{len(drafts)}")
+    rpass = 0
+    for name, m in redo:
+        f = failures(m)
+        rpass += len(f) < 2
+        print(f"重做合规件 {'PASS' if len(f)<2 else 'FAIL!?'} {name[:44]:44} ← {','.join(f) if f else '全绿'}")
     if obs:
         print("\n=== 60–65 观察集（不进验收判定） ===")
         for name, m in obs:
@@ -156,7 +167,7 @@ def main():
     out = {
         "version": "2026-09-19",
         "source": "分篇/*.txt 39 篇 ASR 原稿 + 作品/66–72 成稿实测（本脚本可复跑重生成）",
-        "acceptance": "39 篇原稿复合通过率 ≥80%（单篇硬指标失败 <2 项）且 66–72 全部 ≥2 项失败",
+        "acceptance": "39 篇原稿复合通过率 ≥80%（单篇硬指标失败 <2 项）且 66–72 已知失败批次（71 已重写除外）全部 ≥2 项失败；71 号重写件应 PASS（被拦＝阈值过紧）",
         "thresholds": TH,
         "样本来源": {
             "word_count": "39 篇 p10=2375、median=2999、max=4479 → 硬边界 [2200,4200]、目标带 [2400,3600]",
@@ -173,7 +184,7 @@ def main():
     with open(os.path.join(ROOT, "scripts", "fuben_texture_thresholds.json"), "w", encoding="utf-8") as fh:
         json.dump(out, fh, ensure_ascii=False, indent=2)
     print("\nthresholds 已落盘 scripts/fuben_texture_thresholds.json")
-    ok = opass / len(orig) >= 0.8 and dfail == len(drafts)
+    ok = opass / len(orig) >= 0.8 and dfail == len(drafts) and (not redo or rpass == len(redo))
     print("验收双标准:", "PASS" if ok else "FAIL")
     return 0 if ok else 1
 
