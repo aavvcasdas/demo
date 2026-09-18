@@ -1,0 +1,49 @@
+{
+  "version": "2026-09-19",
+  "source": "分篇/*.txt 39 篇 ASR 原稿 + 作品/66–72 成稿实测（本脚本可复跑重生成）",
+  "acceptance": "39 篇原稿复合通过率 ≥80%（单篇硬指标失败 <2 项）且 66–72 全部 ≥2 项失败",
+  "thresholds": {
+    "word_count": {
+      "min": 2200,
+      "max": 4200
+    },
+    "sens_per_kk": {
+      "min": 1.8
+    },
+    "digits_total": {
+      "min": 8
+    },
+    "digit_density_per_kk": {
+      "min": 3.5
+    },
+    "arabic_ratio": {
+      "min": 0.5
+    },
+    "price_count": {
+      "min": 1
+    },
+    "brand_count": {
+      "min": 1
+    },
+    "dialogue_pct": {
+      "max": 3.0
+    },
+    "meme_count": {
+      "max": 0
+    },
+    "opener_hit": {
+      "required": true
+    }
+  },
+  "样本来源": {
+    "word_count": "39 篇 p10=2375、median=2999、max=4479 → 硬边界 [2200,4200]、目标带 [2400,3600]",
+    "sens_per_kk": "p10=1.8、p20=2.4、median=4.2 → 下限取 p10 的 1.8（旧阈值 6.0 失准：仅 36% 原稿能过）",
+    "digits_total": "p10=11、median=30 → 下限 8",
+    "digit_density_per_kk": "p10=3.7、p20=4.1、median=10.0 → 下限 3.5",
+    "arabic_ratio": "原稿非零最低 0.67、median≈0.9；66–71 成稿=0.00（汉字漂移） → 下限 0.5",
+    "price_count": "p20=1、median=4；非钱题天然 0 → 计入复合容错而非单独 FAIL",
+    "brand_count": "p20=1、median=1；民俗/校园题天然 0 → 同上",
+    "dialogue_pct": "39 篇 max=2.0%、median=0%；成稿实测 6.7–13.3% → 上限 3.0",
+    "opener_hit": "跳过开场白行后前 10 行须有感官词或阿拉伯数字（旧定义把固定开场白当正文且不认裸数字，39 篇仅 5 篇过）"
+  }
+}
