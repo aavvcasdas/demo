@@ -42,6 +42,25 @@ import sys
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+NEG_HEAD = re.compile(r"(?:不|没|无|别|勿|非|莫|未)[^\n]{0,3}$")
+NEG_LINE = re.compile(r"禁止|不得|不许|不写|不是|避免|反事实|防错|不出现|不人格化|不强行")
+
+def count_positively(pattern: "re.Pattern", text: str) -> int:
+    """v5.1 否定窗口：与 fuben_consistency._locked_game 同构——「不写到账神话」
+    这类反事实清单行不得计入兑现/习惯题触发数（75 号踩坑：否定句 ×4 误开钱的去向门）。"""
+    n = 0
+    for m in pattern.finditer(text):
+        line_start = text.rfind("\n", 0, m.start()) + 1
+        line_end = text.find("\n", m.start())
+        line = text[line_start:line_end if line_end != -1 else len(text)]
+        ctx = text[max(0, m.start() - 6):m.start()]
+        if NEG_LINE.search(line) or NEG_HEAD.search(ctx):
+            continue
+        n += 1
+    return n
+
+
 if os.path.join(ROOT, "scripts") not in sys.path:
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from fuben_consistency import read, section  # noqa: E402
@@ -241,7 +260,7 @@ def main() -> int:
             rows.append({"anchor": cells[-1], "cells": cells})
         return rows
 
-    if len(FULFILL.findall(setting)) >= 4:
+    if count_positively(FULFILL, setting) >= 4:
         base = section(setting, "花光的底气", "底气")
         show("花光的底气表存在", bool(base), "兑现/暴富题必须写「## 花光的底气」：他的底气（一句话）/ 依据 / 正文锚点")
         if base:
@@ -339,7 +358,7 @@ def main() -> int:
         print("---- 非长期跨度题，跳过「转场表」门")
 
     # ---------- v6：习惯漂移（习惯/成瘾题） ----------
-    if len(HABIT.findall(setting)) >= 3:
+    if count_positively(HABIT, setting) >= 3:
         drift_block = section(setting, "习惯漂移")
         show("习惯漂移表存在", bool(drift_block), "习惯/成瘾题必须写「## 习惯漂移」：旧做法 → 新做法 → 他的说法 → 正文锚点")
         if drift_block:
