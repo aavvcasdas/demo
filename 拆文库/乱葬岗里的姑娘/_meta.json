@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 10134,
+  "word_count": 17312,
   "genre_detected": "民俗",
   "created_at": "2026-09-14T00:40:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 6,
@@ -12,5 +18,6 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "word_count_note": "2026-09-19 按 原文/乱葬岗里的姑娘.txt 实测 17312 字重计（剔除空白）。旧值 10134 系录入错误，audit_analyze_lib.py 容差±15% 实测偏差 71% 触发 BAD 后修正。"
 }

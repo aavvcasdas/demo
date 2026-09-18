@@ -1,0 +1,38 @@
+name: fuben-gates
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 拆文库契约审计（范围感知，BAD 即失败）
+        run: python3 scripts/audit_analyze_lib.py
+
+      - name: 门禁脚本单元测试
+        run: |
+          pip install pytest
+          python3 -m pytest tests/ -q
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 闸门白名单作品全管检（新作品进库前必须登记）
+        run: |
+          while IFS= read -r d; do
+            case "$d" in ''|\#*) continue;; esac
+            echo "===== fuben_run 作品/$d ====="
+            python3 scripts/fuben_run.py "作品/$d/"
+          done < 作品/_ci_闸门.txt
+
+      - name: 存量作品质地/颗粒度体检（观察用，不阻塞；输出供数据复盘）
+        continue-on-error: true
+        run: python3 scripts/fuben_texture_batch.py || true
