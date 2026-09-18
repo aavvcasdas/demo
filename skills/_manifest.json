@@ -1,0 +1,11 @@
+{
+  "version": "2026-09-19",
+  "说明": "跨 skill 依赖锁：scripts/ 对 skills/ 内部文件的引用在此登记 sha256。上游 skill 包更新后必须人工复核并 relock（重跑：python3 -c \"import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())\" <path>），禁止静默断链。fuben_run.py 在调用前校验。",
+  "locked": {
+    "skills/story-review/scripts/check-ai-patterns.js": {
+      "sha256": "f58254b35af44e004e1a08252d210866647e50c011f6edd1aade4e154af12382",
+      "consumers": ["scripts/fuben_run.py", "skills/fuben-review/SKILL.md"],
+      "note": "story-review 的去AI味检查器；fuben L2.7 依赖其 --check 输出中的 [blocking] 标记"
+    }
+  }
+}

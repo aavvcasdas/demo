@@ -1,9 +1,11 @@
 ---
 name: fuben-review
-version: 3.0.0
+version: 3.1.0
 description: "人生副本成稿三方审核：事实锁/因果台账 + 爽点密度与节奏 + 拆书机制 + 联网事实复核 + 普通观众可读性。VERDICT: PASS 前不交付。"
 ---
-# fuben-review：人生副本三方审核 v3
+# fuben-review：人生副本三方审核 v3.1
+
+> v3.1（2026-09-19）修订：Phase 0 补齐旧版漏接的三道闸——L2.8 质地（校准版）/ L2.9 颗粒度 / L3.0 波形反收敛（v3 及更早只跑七道，导致 66–72「机检全绿、质地全灭」）；§2.1 引用版本更正（骨架 v3→v7、实录 v4→v11，旧引用漂移自 2026-09-18 起失效）。
 
 你是审核员，不是作者。审核的第一目标是找出「前后事实不一致」和「观众看不下去（没有爽点、节奏太慢）」，不是把所有稿子压成同一种八拍。
 
@@ -16,7 +18,7 @@ description: "人生副本成稿三方审核：事实锁/因果台账 + 爽点�
 ## Phase 0：机械预检
 
 ```bash
-python3 scripts/fuben_run.py 作品/NN_xxx/
+python3 scripts/fuben_run.py 作品/NN_xxx/   # 含 L2.7 依赖锁校验 / L2.8 质地 / L2.9 颗粒度 / L3.0 波形
 # 或逐项：
 python3 scripts/fuben_loop.py design 作品/NN_xxx/设定.md
 python3 scripts/fuben_loop.py facts 作品/NN_xxx/
@@ -25,7 +27,12 @@ python3 scripts/fuben_loop.py review 作品/NN_xxx/
 python3 scripts/fuben_hype.py 作品/NN_xxx/
 python3 scripts/fuben_lint.py 作品/NN_xxx/ --fix-list
 node skills/story-review/scripts/check-ai-patterns.js --check 作品/NN_xxx/正文.md
+python3 scripts/check_fuben_texture.py 作品/NN_xxx/正文.md        # v3.1 补接（旧版漏）
+python3 scripts/fuben_granularity.py 作品/NN_xxx/正文.md          # v3.1 新增：测正文不测声明表
+python3 scripts/fuben_waveform.py --check 作品/NN_xxx/             # v3.1 新增：连续三篇同签名 BLOCK
 ```
+
+质地/颗粒度阈值一律以 `scripts/fuben_texture_thresholds.json`（39 篇原稿实测校准）为准，**审核员无权为放行而降阈值**；波形 BLOCK 只认「换骨架」，不认「改措辞」。
 
 任一 `BAD` 或 blocking，报告至少 S2；事实、玩法、日期、票数、金额、人物知情面矛盾为 S1。
 
@@ -46,7 +53,7 @@ node skills/story-review/scripts/check-ai-patterns.js --check 作品/NN_xxx/正�
 
 ### 2.1 人生副本骨架
 
-读取 `skills/story-short-write/references/genre-styles/人生副本_通用骨架.md` v3 与 `人生副本实录.md` v4，逐节列：位置%、情绪值、正文行号、触发、状态变化、拍尾动作。**逐条核对爽点表**：锚点是否真的落在那句话上、声明位置与实际位置是否相差 ≤8%、第一个爽点是否 ≤22%、峰值（≥+5）是否落在 25%–48%、相邻爽点间距是否 ≤30%、结尾是否落在数字或器物判词上。不得只写「都是八拍所以像」，也不得只写「参考了 04」而没有机制落地行号。
+读取 `skills/story-short-write/references/genre-styles/人生副本_通用骨架.md` v7 与 `人生副本实录.md` v11，逐节列：位置%、情绪值、正文行号、触发、状态变化、拍尾动作。**逐条核对爽点表**：锚点是否真的落在那句话上、声明位置与实际位置是否相差 ≤8%、第一个爽点是否 ≤22%、峰值（≥+5）是否落在 25%–48%、相邻爽点间距是否 ≤30%、结尾是否落在数字或器物判词上。不得只写「都是八拍所以像」，也不得只写「参考了 04」而没有机制落地行号。
 
 ### 2.2 供体手法
 

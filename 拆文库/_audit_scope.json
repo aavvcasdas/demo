@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "created_at": "2026-09-19",
+  "说明": "拆文库审计范围清单。audit_analyze_lib.py 读取本文件：未列出的目录默认走 story-short-analyze 短篇五件套契约（拆文报告/情节节点/写作手法/原文/_meta.json，结构计数阈值）；scope=long-analyze 的目录走 story-long-analyze 长篇管道契约（原文/ + 阶段产物），不套短篇五件套。status=in-progress 的长篇条目记为 PENDING（不算 OK 也不算 BAD），但 reason 必填；有人想把一切标成 in-progress 绕过 CI 时，review PR 的人应当拒绝。",
+  "entries": {
+    "什么叫我洗白后，她们全部黑化了": {
+      "scope": "long-analyze",
+      "status": "complete",
+      "reason": "长篇分析管道产物（拆文报告.md + 快速预览.md + 文风.md + 剧情/ 章节摘要），从未进入短篇五件套契约"
+    },
+    "全国没几个正常人？朕要杀疯了": {
+      "scope": "long-analyze",
+      "status": "complete",
+      "reason": "长篇分析管道产物（拆文报告.md + 快速预览.md + 概要.md + 剧情/），从未进入短篇五件套契约"
+    },
+    "希腊神话：从成为微风之神开始 - 霜火": {
+      "scope": "long-analyze",
+      "status": "in-progress",
+      "reason": "长篇拆解进行中（_chunks/ + _progress.md + 概要.md），Stage 未跑完，完成后回改为 complete"
+    },
+    "豪门外的小白花": {
+      "scope": "long-analyze",
+      "status": "in-progress",
+      "reason": "仅有原文与 _stat.py，长篇管道尚未启动；启动产出 _progress.md/快速预览.md 后或删除时复核"
+    }
+  }
+}
