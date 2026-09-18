@@ -1,7 +1,18 @@
 #!/usr/bin/env python3
-"""按 skills/story-short-analyze 输出契约机械校验 拆文库/ 各条目。用法：python3 scripts/audit_analyze_lib.py"""
-import json, os, re, glob
+"""按 skills/story-short-analyze 输出契约机械校验 拆文库/ 各条目。
+用法：python3 scripts/audit_analyze_lib.py [--scope=fuben|long|all]
+口径：数字前缀目录（00_/01_…/28b/46/48a-c）= 人生副本 fuben 条目（本仓库生产合同范围，默认校验对象）；
+非数字前缀目录 = story-long-analyze 管道的长篇网文条目，schema 不同，不得混入 fuben 口径
+（2026-09-10 合规核查只覆盖 45 个 fuben 条目；长篇条目单独用 --scope=long 看）。
+"""
+import json, os, re, glob, sys
 root='拆文库'
+SCOPE='fuben'
+for a in sys.argv[1:]:
+    m=re.fullmatch(r'--scope=(fuben|long|all)',a)
+    if not m: raise SystemExit(f'未知参数: {a}（用法: --scope=fuben|long|all，默认 fuben）')
+    SCOPE=m.group(1)
+is_fuben=lambda name: re.match(r'^\d',name) is not None  # 目录名前缀是唯一能把 54 个条目全分类的判据（5 个 BAD 长篇连 _meta 都缺）
 REQ_FILES=['拆文报告.md','情节节点.md','写作手法.md','_meta.json']
 REQ_META=['version','word_count','genre_detected','created_at','stages_completed','last_stage_in_progress','structure_counts']
 SC={'beats':4,'hooks':3,'setup_clues':3,'character_archetypes':2,'reusable_structures':3}
@@ -11,6 +22,8 @@ WARN_SECTIONS={'节奏速报':r'节奏速报'}
 rows=[]
 for d in sorted(glob.glob(root+'/*/')):
     name=os.path.basename(d.rstrip('/'))
+    if SCOPE=='fuben' and not is_fuben(name): continue
+    if SCOPE=='long' and is_fuben(name): continue
     issues=[]
     for f in REQ_FILES:
         if not os.path.exists(d+f): issues.append(f'缺文件:{f}')
@@ -46,4 +59,8 @@ for d in sorted(glob.glob(root+'/*/')):
 for n,g,i in rows:
     print(f'{"OK " if not i else "BAD"} {n} [{g}]'); 
     for x in i: print('     -',x)
-print('\nBAD count:',sum(1 for r in rows if r[2]),'/',len(rows))
+bad=sum(1 for r in rows if r[2])
+print(f'\nscope={SCOPE}  条目={len(rows)}  BAD count: {bad} / {len(rows)}')
+if SCOPE=='fuben' and bad==0:
+    print('fuben 口径全绿：README/合规核查宣称的 45/45 以本行为准。')
+sys.exit(1 if bad else 0)
