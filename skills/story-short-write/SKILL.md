@@ -17,7 +17,7 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完整读取（分块直到 EOF；`rg` 检索或局部摘读不算读完）：
 
 1. `references/workflow-design.md` + `references/writing-workflow.md`、`references/submission-craft.md`、`references/short-craft.md`、`references/short-reversal.md`
-2. 核心 10 题材再读取一个精确的 `references/genre-styles/{题材}.md`；**抖音口播「人生副本 / 体验 X 种人生 / 沉沦实录」赛道（稿件以「今天体验的人生副本是……」开场、或用途是人生副本号）改读 `references/genre-styles/人生副本实录.md` 并按其 §十五 流水线执行，人称按该包规定用「你」**；冷门题材改读 `references/genre-writing-formulas.md`
+2. 核心 10 题材再读取一个精确的 `references/genre-styles/{题材}.md`；**抖音口播「人生副本 / 体验 X 种人生 / 沉沦实录」赛道（稿件以「今天体验的人生副本是……」开场、或用途是人生副本号）改读 `references/genre-styles/人生副本实录.md` 与同目录 `人生副本_通用骨架.md`，按该包 §0→§5 流程执行，人称按该包规定用「你」**；冷门题材改读 `references/genre-writing-formulas.md`
 3. 有反派或真相揭露设计时再读 `references/villain-and-reveal.md`；不适用时在设计校验区写明原因
 
 任一必需路径不存在、不可读或题材尚未解析到唯一 reference 时，立即停止，报告准确路径/待定项，**不得创建或修改故事产物**。不要把“已读 references”的回执写进故事文件；要把选出的题材招式、反转计算等应用证据写进正常设计字段。Phase 3 写正文前完整读取 `references/workflow-draft.md`，Phase 4 精修前完整读取 `references/workflow-revision.md`，再按各阶段的写前准备和精修检查加载所需资料，不得用早先读过代替当前任务完整回读。
@@ -88,7 +88,7 @@ Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完
 
 #### 构思、设计与验收
 
-完整步骤见 [references/workflow-design.md](references/workflow-design.md)。按首屏 Reference Gate 读完后执行；两份设计文件通过其中的 Phase 2 完成门禁，才可进入 Phase 3。
+完整步骤见 [references/workflow-design.md](references/workflow-design.md)。按首屏 Reference Gate 读完后执行；人生副本还必须先完成 `## 事实锁`、`## 因果/状态台账` 和 `## 结构验收`，并在写正文后运行 `python3 scripts/fuben_run.py 作品/NN_xxx/`；两份设计文件通过其中的 Phase 2 完成门禁，才可进入 Phase 3。
 
 ---
 
