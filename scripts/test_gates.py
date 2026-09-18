@@ -79,6 +79,19 @@ def t_negation(tmp):
     ok2 = "非兑现/暴富题，跳过" not in out2 and "钱的去向" in out2
     return ok1 and ok2, f"否定句不开门={ok1} 肯定句开门={ok2}"
 
+
+def t_stamp(tmp):
+    bad = "今天体验的人生副本是\n测试流水账\n凌晨三点十一\n你删了一段\n二百字\n六点四十 闹钟响\n你打开文档\n一行\n再一行\n你继续做事\n把本子合上\n笔停了\n灯灭了\n手冷了\n你又坐下\n纸还有\n你写下字\n墨淡了\n窗外亮\n你把纸收好\n"
+    good = "今天体验的人生副本是\n测试嵌句\n你删了一段\n时间是凌晨三点十一\n二百字\n闹钟响在第一声\n你打开文档\n一行\n再一行\n你继续做事\n把本子合上\n笔停了\n灯灭了\n手冷了\n你又坐下\n纸还有\n你写下字\n墨淡了\n窗外亮\n你把纸收好\n"
+    st = "# 76 · 测试\n\n- 开头路线：线性\n"
+    d1 = make_work(tmp, "作品戊", bad, st)
+    _, out1 = run(["python3", "scripts/fuben_loop.py", "draft", d1])
+    ok1 = "BAD 开头不堆时戳" in out1
+    d2 = make_work(tmp, "作品己", good, st)
+    _, out2 = run(["python3", "scripts/fuben_loop.py", "draft", d2])
+    ok2 = "OK  开头不堆时戳" in out2
+    return ok1 and ok2, f"钟面账被抓={ok1} 时戳嵌句放行={ok2}"
+
 def t_setting_years(tmp):
     ledger = """## 物件台账
 
@@ -103,7 +116,7 @@ def t_setting_years(tmp):
     ok2 = rc2 == 0
     return ok1 and ok2, f"散文层双出身被抓={ok1} 口径一致放行={ok2}"
 
-GREEN = ["58b_反骨嘉豪_代价版", "66_寝室里什么都不争的那个女生", "67_分手时说「我们不合适」的男生",
+GREEN = ["58b_反骨嘉豪_代价版", "64_活人微死的AI人", "65_寝室里那个人畜无害的女生", "66_寝室里什么都不争的那个女生", "67_分手时说「我们不合适」的男生",
          "70_三次把同一个人推开的女生", "71_只会按字面意思办事的新人", "72_每天买一张彩票的人",
          "73_合影时永远在按快门的人", "75_人生副本作者的一天"]
 
@@ -124,6 +137,7 @@ def main():
     try:
         results.append(("T1 hype 否定窗口",) + t_negation(tmp))
         results.append(("T2 设定散文层对账",) + t_setting_years(tmp))
+        results.append(("T4 反流水账时戳闸",) + t_stamp(tmp))
         if "--works" in sys.argv:
             results.append(("T3 全库七闸回归",) + works_regression())
     finally:

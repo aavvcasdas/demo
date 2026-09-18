@@ -175,6 +175,22 @@ def facts(directory: str) -> int:
     return len(issues)
 
 
+# ---- v6.1 反流水账：时戳不得充当分段器（75 教训：开头「X点+你Y」钟面账）----
+_TIME_HEAD = re.compile(
+    r"^(凌晨|清晨|早上|上午|中午|下午|晚上|夜里|半夜|傍晚"
+    r"|[0-9]{1,2}[:：][0-9]{1,2}"
+    r"|[0-9零一二两三四五六七八九十]{1,3}点"
+    r"|[0-9]{1,2}月[0-9]{1,2}[号日]?)")
+_TIME_ALONE = re.compile(
+    r"^(凌晨|清晨|早上|上午|中午|下午|晚上|夜里|半夜|傍晚)?[0-9零〇一二两三四五六七八九十]{1,4}[:：点][0-9零〇一二两三四五六七八九十]{0,4}$")
+
+def _stamp_report(lines: List[str]) -> Tuple[int, int, int, List[str]]:
+    """(前16行时戳开头数, 整行时戳数, 全篇时戳开头数, 违规行样例)"""
+    head = [l for l in lines[:16] if _TIME_HEAD.match(l)]
+    alone = [l for l in lines if _TIME_HEAD.match(l) and _TIME_ALONE.match(l.strip())]
+    openn = [l for l in lines if _TIME_HEAD.match(l)]
+    return len(head), len(alone), len(openn), [l[:16] for l in (head + alone)[:4]]
+
 INNER = re.compile(r"^(你觉得|你以为|你认为|你知道|你明白|你终于|你意识到|你心里|你感到|你想)")
 VERDICT = re.compile(r"(被孤立|被排挤|疏远了你|没人再|再也没有人|所有人都|大家都不|众叛亲离|自食其果|报应)")
 LYRIC_END = re.compile(r"(是不是也|也许|或许|大概|你在想|不知道.*吗|吧$|呢$)")
@@ -225,6 +241,11 @@ def draft(directory: str) -> int:
     named_object = bool(re.search(r"票|账|盒|号码|母亲|妈妈|老板娘|同事|主管|铁盒|手机|学校|公司|本子|电脑|文件夹|档案|简历|收据|截图|药|房|车", first))
     need("首屏时间/对象清楚", has_time_or_start and named_object, first[:48])
     need("线性稿不深倒叙", not (linear and future_open), "前3行先写现在/未来结果再倒回，改成第一天或明确回到哪一年")
+
+    # v6.1 反流水账：前16行时间开头≤1且无整行时戳；全篇整行时戳≤1；时间开头行≤max(6,3.5%)
+    _h, _a, _o, _ex = _stamp_report(lines)
+    need("开头不堆时戳", _h <= 1 and _a <= 1 and _o <= max(6, int(len(lines) * 0.035)) and not any(_TIME_ALONE.match(l.strip()) for l in lines[:16]),
+         "前16行时间开头 %d、整行时戳 %d、时戳开头行 %d/%d｜例：%s" % (_h, _a, _o, len(lines), " | ".join(_ex)))
 
     inner = [line for line in lines if INNER.search(line)]
     need("主角内心≤6", len(inner) <= 6, " / ".join(line[:14] for line in inner[:5]))
