@@ -1,4 +1,4 @@
-id,目录,version,发布状态,likes,play_pv,like_rate_permille,retention_t5s_pct,complete_rate_pct,avg_watch_sec,first_cliff_sec,source_rec_pct,comments,shares,saves,follow_gain,gate_hype_density,gate_first_big_pct,gate_fail_count,duration_sec,成片版本,data_quality,快照时间,发布时间,备注,字数,呼应对,内心句,宣判句,台词行,抒情收束,误读句,价格数,制度词,人际词
+id,目录,version,发布状态,likes,play_pv,like_rate_permille,retention_t5s_pct,complete_rate_pct,avg_watch_sec,first_cliff_sec,source_rec_pct,comments,shares,saves,follow_gain,gate_hype_density,gate_first_big_pct,gate_fail_count,duration_sec,成片版本,data_quality,快照时间,发布时间,备注,字数,呼应对,内心句,宣判句,台词行,抒情收束,误读句,价格数,制度词,人际词,comment_buckets
 62,62_班委三人组,,published,90,,,,,,,,,,,,,,,,,,legacy_unverified,,,六篇中最好 均未过百（v1 备注原样保留）,2365,0,3,0,4,0,0,0,20,70
 57,57_床帘发光的男生,,published,60,,,,,,,,,,,,,,,,,,legacy_unverified,,,疑似推流（v1 备注原样保留；"过百"争议见 _口径核验与采集计划_v2.md §1.2-2）,2133,2,6,0,1,0,0,1,5,8
 58,58_反骨嘉豪,,published,30,,,,,,,,,,,,,,,,,,legacy_unverified,,,复盘定性：无代价/给糖/嘉豪传套你（见 _数据_v2 58b 对照）,2036,0,6,1,8,0,0,0,0,8

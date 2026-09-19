@@ -14,7 +14,10 @@ def check(path):
     dlg=sum(1 for l in lines if re.search(r'(你说|他说|她说|说 |问 |喊 |：)',l))/len(lines)*100
     meme=re.findall(MEME,txt)
     head=''.join(lines[:3]); head_ok=bool(re.search(SENS+r'|块|元|℃|度',head))
-    rows=[('字数',n,n>=2800,'≥2800'),('感官/千字',round(sens,1),sens>=6,'≥6'),('价格数',price,price>=12,'≥12'),
+    ACT=r'(?:提|推|拽|拎|抓|攥|抄|摸|扣|撂|搬|挪|蹲|跨|踩|踢|敲|拧|掀|扯|扒|咬|嚼|咽|舀|盛|端|递|翻|捋|抹|擦|涮|拖|扫|锁|按|拨|划|瞟|盯|瞥|缩|抖|蹭|靠|扶|探)'
+    act=len(re.findall(ACT,txt))/n*1000
+    rows=[('字数',n,n>=2800,'≥2800'),('感官/千字',round(sens,1),sens>=6,'≥6'),
+          ('动作流/千字(advisory)',round(act,1),sens>=6 or act>=8,'感官或动作流二选一≥6/8'),('价格数',price,price>=12,'≥12'),
           ('品牌数',brand,brand>=4,'≥4'),('对话行%',round(dlg,1),dlg<=3,'≤3'),('热梗',len(meme),len(meme)==0,'=0'),('开篇3行落到皮肤',head_ok,head_ok,'True')]
     bad=0
     for k,v,ok,th in rows:
