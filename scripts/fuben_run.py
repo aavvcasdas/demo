@@ -18,6 +18,7 @@ root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 steps = [
     ("L1 design", ["python3", "scripts/fuben_loop.py", "design", f"{directory}/设定.md"], "先补事实锁、状态台账、主线与八拍路线图"),
     ("L1.5 facts", ["python3", "scripts/fuben_loop.py", "facts", directory], "先统一玩法、单价、频率、日期、数量；不要用润色掩盖矛盾"),
+    ("L1.6 设定卡散文层", ["python3", "scripts/fuben_setting_years.py", directory], "散文层年份与事实锁/正文打架时，改设定口径，别动正文；机械 facts 闸不审散文，这一层必须过"),
     ("L1.8 爽点节奏", ["python3", "scripts/fuben_hype.py", directory], "先补爽点表：位置 / 情绪值 / 正文锚点；峰值 25–48%，无爽点不许进正文"),
     ("L2 draft", ["python3", "scripts/fuben_loop.py", "draft", directory], "按 BAD 对应到具体节；不为凑行数增加对白或环境"),
     ("L2.5 review", ["python3", "scripts/fuben_loop.py", "review", directory], "检查转场触发、状态变化、呼应和结尾动作"),

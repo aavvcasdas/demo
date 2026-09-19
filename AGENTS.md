@@ -50,3 +50,17 @@
 4. 当前章节的情绪/节奏目标
 
 如果存在 `{书名}/追踪/上下文.md`，compact 后首先读取该文件恢复上下文。
+
+## 发布前置（硬规则，二轮会审定，2026-09-19）
+
+任何作品在发布（进 `作品/_发布序列/` 或对外交付平台）之前，必须满足：
+
+```text
+python3 scripts/test_gates.py --works   # GATE-TESTS: PASS（红样 T1–T5 + 全库回归）
+python3 scripts/fuben_run.py 作品/NN_xxx/ # 七闸全绿
+python3 scripts/fuben_setting_years.py 作品/NN_xxx/ # SETTING-PROSE: PASS
+python3 scripts/fuben_density.py 作品/NN_xxx/正文.md # 对账口径密度；OVER 需在审核报告给结论
+```
+另两项人工前置：**TTS 通读听感 QA**（数字硌耳朵当场删，A3 一票制）；**新稿精读行+场面表存在**（缺 = 流程未走完，不发）。
+
+三道全绿才允许 merge/发布；任一 FAIL 先修稿或修闸（补闸不许绕闸），不许带着已知 FAIL 交差。审核报告 VERDICT 为 BLOCK 的稿件同拦。

@@ -175,6 +175,22 @@ def facts(directory: str) -> int:
     return len(issues)
 
 
+# ---- v6.1 反流水账：时戳不得充当分段器（75 教训：开头「X点+你Y」钟面账）----
+_TIME_HEAD = re.compile(
+    r"^(凌晨|清晨|早上|上午|中午|下午|晚上|夜里|半夜|傍晚"
+    r"|[0-9]{1,2}[:：][0-9]{1,2}"
+    r"|[0-9零一二两三四五六七八九十]{1,3}点"
+    r"|[0-9]{1,2}月[0-9]{1,2}[号日]?)")
+_TIME_ALONE = re.compile(
+    r"^(凌晨|清晨|早上|上午|中午|下午|晚上|夜里|半夜|傍晚)?[0-9零〇一二两三四五六七八九十]{1,4}[:：点][0-9零〇一二两三四五六七八九十]{0,4}$")
+
+def _stamp_report(lines: List[str]) -> Tuple[int, int, int, List[str]]:
+    """(前16行时戳开头数, 整行时戳数, 全篇时戳开头数, 违规行样例)"""
+    head = [l for l in lines[:16] if _TIME_HEAD.match(l)]
+    alone = [l for l in lines if _TIME_HEAD.match(l) and _TIME_ALONE.match(l.strip())]
+    openn = [l for l in lines if _TIME_HEAD.match(l)]
+    return len(head), len(alone), len(openn), [l[:16] for l in (head + alone)[:4]]
+
 INNER = re.compile(r"^(你觉得|你以为|你认为|你知道|你明白|你终于|你意识到|你心里|你感到|你想)")
 VERDICT = re.compile(r"(被孤立|被排挤|疏远了你|没人再|再也没有人|所有人都|大家都不|众叛亲离|自食其果|报应)")
 LYRIC_END = re.compile(r"(是不是也|也许|或许|大概|你在想|不知道.*吗|吧$|呢$)")
@@ -205,8 +221,12 @@ def draft(directory: str) -> int:
         if not ok:
             bad.append(label)
 
-    need("字数在目标范围", 2200 <= n <= 3600, f"{n}（不为凑3,000字增加流水账）")
-    need("行数在口播范围", 220 <= len(lines) <= 420, f"{len(lines)} 行")
+    def warn(label: str, ok: bool, info: str = ""):
+        # R17b 语料反向体检降级：报告制不拦截（字数/行数/环境45行 三项，大师稿违例 18–25%）。
+        print(("OK  " if ok else "WARN") + f" {label:22} {info}")
+
+    warn("字数·交付格式", 2200 <= n <= 3600, f"{n}（R17b 报告制：目标随发布形态声明，不拦截）")
+    warn("行数·交付格式", 220 <= len(lines) <= 420, f"{len(lines)} 行（R17b 报告制）")
     long_lines = [line for line in lines if HAN(line) > 24]
     need("单行不过长", len(long_lines) <= 2, f"{len(long_lines)} 行 >24字")
 
@@ -225,6 +245,14 @@ def draft(directory: str) -> int:
     named_object = bool(re.search(r"票|账|盒|号码|母亲|妈妈|老板娘|同事|主管|铁盒|手机|学校|公司|本子|电脑|文件夹|档案|简历|收据|截图|药|房|车", first))
     need("首屏时间/对象清楚", has_time_or_start and named_object, first[:48])
     need("线性稿不深倒叙", not (linear and future_open), "前3行先写现在/未来结果再倒回，改成第一天或明确回到哪一年")
+
+    # v6.2 反流水账+钩子豁免（二轮会审指令4）：前5行允许且仅允许1处独立钟面行（冷开场合法）；
+    # 第6–16行不得出现整行时戳；全篇整行时戳≤2；时间开头行≤max(6,3.5%)。首屏闸的时间词由嵌句满足。
+    _h, _a, _o, _ex = _stamp_report(lines)
+    _alone_head = [l for l in lines[:16] if _TIME_ALONE.match(l.strip())]
+    _alone_mid = [l for l in lines[5:16] if _TIME_ALONE.match(l.strip())]
+    need("开头不堆时戳", _h <= 1 and _a <= 2 and _o <= max(6, int(len(lines) * 0.035)) and len(_alone_head) <= 1 and not _alone_mid,
+         "前16行时间开头 %d（独立钟面仅许第1–5行1处）、整行时戳 %d、时戳开头行 %d/%d｜例：%s" % (_h, _a, _o, len(lines), " | ".join(_ex)))
 
     inner = [line for line in lines if INNER.search(line)]
     need("主角内心≤6", len(inner) <= 6, " / ".join(line[:14] for line in inner[:5]))
@@ -282,7 +310,7 @@ def draft(directory: str) -> int:
     # 环境/身体只做低强度防流水账提醒：不为达标硬塞感官。
     phys = re.compile(r"手|耳朵|后背|喉咙|胃|膝盖|呼吸|汗|发麻|发烫|发凉|嗡|味道|声音|灯|门|窗|风|雨|凉|热|空调|冷气|响|湿|烫|烟味|太阳|水壶")
     gaps = [start + 1 for start in range(0, len(lines), 45) if not any(phys.search(line) for line in lines[start:start + 45])]
-    need("每45行有环境/身体", not gaps, f"空窗起行 {gaps}")
+    warn("每45行环境/身体", not gaps, f"空窗起行 {gaps}（R17b 词表代理降级：语料 11/44 违例，报告不拦截）")
 
     print("\nDRAFT:", "PASS" if not bad else f"FAIL {len(bad)}")
     return len(bad)
