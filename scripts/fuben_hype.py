@@ -72,6 +72,13 @@ CN_DIGITS = {"零": 0, "一": 1, "二": 2, "两": 2, "三": 3, "四": 4, "五": 
 def _cn_value(token: str) -> int:
     if token in CN_DIGITS:
         return CN_DIGITS[token]
+    # R18 修：支持 百/千 位（「二百」原实现只认十位、误返回 2；78 号习惯漂移踩坑）
+    m = re.fullmatch(r"([零一二两三四五六七八九]?)([百千])([零一二两三四五六七八九]?)", token)
+    if m:
+        base = CN_DIGITS.get(m.group(1), 1) if m.group(1) else 1
+        unit = 100 if m.group(2) == "百" else 1000
+        tail = CN_DIGITS.get(m.group(3), 0) if m.group(3) else 0
+        return base * unit + tail
     if "十" in token:
         head, _, tail = token.partition("十")
         tens = CN_DIGITS.get(head, 1) if head else 1
@@ -85,8 +92,8 @@ def scale_signature(text: str):
     def amount(token: str) -> int:
         return int(token) if token.isdigit() else _cn_value(token)
 
-    money = max([amount(m) for m in re.findall(r"(\d+|[零一二两三四五六七八九十]+)\s*(?:元|块)", text)] or [0])
-    notes = max([amount(m) for m in re.findall(r"(\d+|[零一二两三四五六七八九十]+)\s*注", text)] or [0])
+    money = max([amount(m) for m in re.findall(r"(\d+|[零一二两三四五六七八九十百千]+)\s*(?:元|块)", text)] or [0])
+    notes = max([amount(m) for m in re.findall(r"(\d+|[零一二两三四五六七八九十百千]+)\s*注", text)] or [0])
     return money, notes
 RITUAL = re.compile(r"铁盒|账本|账|药盒|药单|票|凳子|柜台|短信|手机|照片|抽屉|钥匙|门|碗|面|盒子|卡|收据|兑奖单|沙发|车|文件夹|档案|本子|课件")
 

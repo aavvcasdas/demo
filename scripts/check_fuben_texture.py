@@ -24,7 +24,7 @@ def check(path):
           ('动作流/千字(原文2.4–13.4)',round(act,1),True,'带位报告·不判定'),
           ('价格数(原文0–310中位4)',price,True,'带位报告·不判定'),
           ('对话行%',round(dlg,1),dlg<=3,'≤3(与语料一致)'),
-          ('热梗',len(meme),len(meme)==0,'=0(语料3篇超标者皆烂样本)')]
+          ('热梗',len(meme),len(meme)<=3,'≤3(R18账号主令:少量合理;堆梗烂样本仍判死)')]
     bad=0
     for k,v,ok,th in rows:
         print(f"{'OK ' if ok else 'BAD'} {k:10} {v}  (门槛 {th})"); bad+= not ok
@@ -35,7 +35,7 @@ def check_comedy(path):
     txt=''.join(lines); n=len(txt); meme=re.findall(MEME,txt)
     # 笑点节点近似：含数字/制度词/误会词/反差词的行
     nodes=sum(1 for l in lines if re.search(r'\d|规定|表格|Excel|公告|举报|以为|其实|居然|一模一样|默认|流程|条例|评分|投票|截图|收到',l))
-    rows=[('字数',n,2100<=n<=3900,'2100–3900'),('制度/数字行占比(advisory)',round(nodes/n*1000,1),True,'参考: 32=3.3 39=11 29=7.6'),('热梗',len(meme),len(meme)==0,'=0')]
+    rows=[('字数',n,2100<=n<=3900,'2100–3900'),('制度/数字行占比(advisory)',round(nodes/n*1000,1),True,'参考: 32=3.3 39=11 29=7.6'),('热梗',len(meme),len(meme)<=3,'≤3(R18)')]
     bad=0
     for k,v,ok,th in rows:
         print(f"{'OK ' if ok else 'BAD'} {k:10} {v}  (门槛 {th})"); bad+= not ok
