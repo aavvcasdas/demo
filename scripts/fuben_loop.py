@@ -221,8 +221,12 @@ def draft(directory: str) -> int:
         if not ok:
             bad.append(label)
 
-    need("字数在目标范围", 2200 <= n <= 3600, f"{n}（不为凑3,000字增加流水账）")
-    need("行数在口播范围", 220 <= len(lines) <= 420, f"{len(lines)} 行")
+    def warn(label: str, ok: bool, info: str = ""):
+        # R17b 语料反向体检降级：报告制不拦截（字数/行数/环境45行 三项，大师稿违例 18–25%）。
+        print(("OK  " if ok else "WARN") + f" {label:22} {info}")
+
+    warn("字数·交付格式", 2200 <= n <= 3600, f"{n}（R17b 报告制：目标随发布形态声明，不拦截）")
+    warn("行数·交付格式", 220 <= len(lines) <= 420, f"{len(lines)} 行（R17b 报告制）")
     long_lines = [line for line in lines if HAN(line) > 24]
     need("单行不过长", len(long_lines) <= 2, f"{len(long_lines)} 行 >24字")
 
@@ -306,7 +310,7 @@ def draft(directory: str) -> int:
     # 环境/身体只做低强度防流水账提醒：不为达标硬塞感官。
     phys = re.compile(r"手|耳朵|后背|喉咙|胃|膝盖|呼吸|汗|发麻|发烫|发凉|嗡|味道|声音|灯|门|窗|风|雨|凉|热|空调|冷气|响|湿|烫|烟味|太阳|水壶")
     gaps = [start + 1 for start in range(0, len(lines), 45) if not any(phys.search(line) for line in lines[start:start + 45])]
-    need("每45行有环境/身体", not gaps, f"空窗起行 {gaps}")
+    warn("每45行环境/身体", not gaps, f"空窗起行 {gaps}（R17b 词表代理降级：语料 11/44 违例，报告不拦截）")
 
     print("\nDRAFT:", "PASS" if not bad else f"FAIL {len(bad)}")
     return len(bad)

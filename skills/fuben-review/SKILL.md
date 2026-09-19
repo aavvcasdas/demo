@@ -125,12 +125,20 @@ Search: N 次
 (规则来源、同题钩子、结尾动作)
 
 ## Phase 4 Findings
-- S1/S2/S3：category / location / evidence / issue / fix
+- S1/S2/S3：category / location(文件+行) / evidence(短引文) / impact(观众侧影响) / fix(必须达到的修订结果) / owner
 
-## VERDICT: PASS | FIX(拍号列表) | BLOCK
+## VERDICT: PASS | NOTES(不阻断建议) | FIX(拍号列表) | BLOCK | PROVISIONAL(关键输入不足，写明缺什么)
 ```
 
-任一 S1 → BLOCK；S2 两项以上 → FIX；修完必须重新跑机械门禁。规律性问题连续出现在两篇以上，回写 `人生副本实录.md` 变更记录和脚本，不只改某一篇。
+任一 S1 → BLOCK；S2 两项以上 → FIX；S3/建议 → NOTES；修完必须重新跑机械门禁。规律性问题连续出现在两篇以上，回写 `人生副本实录.md` 变更记录和脚本，不只改某一篇。
+
+### R17 偷师三条（zenstory drama-skills 2059★ 审查纪律 + shuohao 分级语义，均 advisory）
+
+- **审查与修改分离**：审核报告只定位问题、影响与必须达到的修订结果，不在同一轮替 owner 改来源文件。
+- **独立 reviewer 优先**：条件不允许时自检，但报告首行如实标注「自检」。
+- **无证据不打分**：不许只写「AI 味」「不够电影感」或给无证据分数；每条 finding 必须带位置与短引文，给不出的删。
+- **分级语义映射**：BLOCK=FATAL（结构/设定层，打回重立设定）→ FIX=SEVERE（正文层，改后复跑机械闸）→ NOTES=MINOR（不阻断，下篇吸收）→ PROVISIONAL=关键输入不足（缺信源/缺设定/缺数据），写明缺什么、何时补，不得硬判。
+- **成片阶段（TTS/剪辑后、发布前）**：过 `references/成片逐镜清单.md`——chaosinu7 铁律「渲染成功、脚本零报错、自动质检全绿，但成片是坏的」，逐镜看是唯一兜底，清单是人工项无闸。
 
 
 ## 返修轮回填诚实条款（Round 6 血泪，2026-09-19）
