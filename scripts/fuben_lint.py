@@ -41,6 +41,11 @@ def show(label: str, ok: bool, value: str):
         bad += 1
 
 
+def show_warn(label: str, ok: bool, value: str):
+    # R20 语料反审：与 fuben_loop.draft 的 R17b 降级对齐（draft 侧早已报告制，lint 侧漏改的孤儿行）。
+    print(("OK  " if ok else "WARN") + f" {label:22} {value}")
+
+
 # 1. 对白：直接标记 + 引号；不以「说」字出现次数冒充对白。
 speech = dialogue_units(lines)
 limit = max(8, int(N * 0.04))
@@ -92,18 +97,24 @@ for index, line in enumerate(lines):
 
 show("同指代候选≤1", len(ambiguous) <= max(2, int(N * 0.01)), f"{len(ambiguous)}处: " + " | ".join(f"L{n} {line[:14]}←{who}" for n, line, who in ambiguous[:5]))
 
-# 3. 初中生测试术语。
-jargon = [line for line in lines if re.search(r"评优|综测|推免|经手人|申报|编号|绩点|学分|德育分|OA|KPI|对齐|复盘|赋能|抓手|闭环", line)]
-show("陌生术语≤1", len(jargon) <= 1, " / ".join(line[:18] for line in jargon[:4]))
+# 3. 初中生测试术语（R20 语料反审拆两类）。
+# 行话/制度词是题材事实（02 外卖站长就有 KPI、13 死装努力姐全是综测绩点），不是 AI 腔——报告制；
+# 叙述者黑话腔（赋能/抓手/对齐/闭环/复盘/OA）仍是 AI 与运营腔指纹——保留硬闸 ≤1。
+jargon = [line for line in lines if re.search(r"评优|综测|推免|经手人|申报|编号|绩点|学分|德育分|KPI", line)]
+show_warn("行业词(报告制)", len(jargon) <= 3, " / ".join(line[:18] for line in jargon[:4]) or "无")
+corp = [line for line in lines if re.search(r"赋能|抓手|对齐一下|闭环|复盘|OA", line)]
+show("运营黑话≤1", len(corp) <= 1, " / ".join(line[:18] for line in corp[:4]))
 
 # 4. 人物/物件称呼的首屏检查。
 first = "".join(lines[:12])
 show("首屏没有悬空他物", not bool(re.search(r"^(他|她|这个|那件|那张|那个)", "\n".join(lines[:4]))), first[:45])
 
 # 5. 每45行至少有一次环境/身体；这是防流水账提醒，不要求每行硬塞感官。
+# R20 语料反审：原文 11/44 违例（08 印度高温、12 末日独居等纯事件流同样是 10w+ 爆款文体）——
+# 词表代理测不出「质感」，draft 侧 R17b 已降级，此处系漏改孤儿，同改报告制。
 physical = re.compile(r"手|耳朵|后背|喉咙|胃|膝盖|呼吸|汗|发麻|发烫|发凉|嗡|味道|声音|灯|门|窗|风|雨|凉|热|空调|冷气|响|湿|烫|烟味|太阳|水壶|药盒|桌面")
 gaps = [start + 1 for start in range(0, N, 45) if not any(physical.search(line) for line in lines[start:start + 45])]
-show("每45行有环境/身体", not gaps, f"空窗起行 {gaps}")
+show_warn("每45行环境/身体(报告制)", not gaps, f"空窗起行 {gaps}")
 
 # 6. 过渡和空泛句只提示，不把符合用户事实的短稿逼成模板。
 filler = [line for line in lines if re.search(r"命运的齿轮|时间在不知不觉中推移|周围的空气开始变得稀薄", line)]

@@ -120,6 +120,7 @@ def parse_rows(block: str):
                 "event": cells[3],
                 "type": cells[4],
                 "anchor": cells[5],
+                "who": cells[6] if len(cells) >= 7 else None,
             }
         )
     return rows
@@ -206,6 +207,29 @@ def main() -> int:
     big = len([r for r in valid if r["mood"] >= 5])
     show("大爽点≥2个(≥+5)", big >= 2 or (trough_first and big >= 1), f"{big} 个")
     show("谷底≥1个(≤-6)", len([r for r in valid if r["mood"] <= -6]) >= 1, f"{[r['mood'] for r in valid if r['mood'] <= -6]}")
+
+    # ---------- R21 在场腿（语料解剖：≥+5 节点 78% 在场者≥2；峰值独享＝观众判「不爽」的机械指纹） ----------
+    # 爽点表第 7 列「在场」为版本开关：老表无该列 → WARN 报告制（不追改）；新稿登记了列 → 硬核。
+    # 「无」＝作者自报私享爽点：≥+5 封顶 +4（回血/独处节点落结尾判词可以，报 +5+ 不行）。
+    HOOK = re.compile(r"钩子|前置|开场")
+    if any(r.get("who") is not None for r in rows):
+        STOP = {"你", "它", "自己", "别人", "你们", "我们"}
+        hi_rows = [r for r in valid if r["mood"] >= 5 and not HOOK.search(r["type"] or "")]
+        solo, orphan = [], []
+        for r in hi_rows:
+            who_raw = re.sub(r"（.*?）", "", (r.get("who") or "").strip())
+            names = [t for t in re.split(r"[、，,/;；]", who_raw) if len(t) >= 2 and t not in STOP]
+            if who_raw in {"", "无", "—", "-"} or not names:
+                solo.append(f"{r['event'][:12]}←{who_raw or '未登'}")
+                continue
+            idx = (r.get("line") or 1) - 1
+            window = " ".join(lines[max(0, idx - 10): idx + 11])
+            if not any(n in window for n in names):
+                orphan.append(f"{r['event'][:12]}←{names[0]}")
+        show("无独享高爽点(在场≠无)", not solo, "私享节点≥+5：" + "、".join(solo[:3]) if solo else "")
+        show("见证人落锚点±10行", not orphan, "登记了名字但场面里没人：" + "；".join(orphan[:3]) if orphan else "")
+    else:
+        print("WARN 在场列未登记                    （R21 新规：新稿 ≥+5 爽点须第7列写见证人；老稿豁免）")
 
     ordered = sorted(valid, key=lambda r: r["actual"])
     gaps = [(b["actual"] - a["actual"], a, b) for a, b in zip(ordered, ordered[1:])]

@@ -129,6 +129,57 @@ def t_setting_years(tmp):
     ok2 = rc2 == 0
     return ok1 and ok2, f"散文层双出身被抓={ok1} 口径一致放行={ok2}"
 
+def t_corpus(tmp):
+    """R20 语料反审红绿样：大师写法不得拦（首屏词表代理/围观对位/主体品牌/行业词/一日编年），
+    真病灶必须仍拦（叙述者宣判报应/运营黑话/开头钟面账）。"""
+    green = ("今天体验的人生副本是\n换肾买iPhone的人\n15岁那年冬天\n你还是县一中的初三学生\n每天下午5:50放学铃响\n"
+             "你把兼职赚的260块交给母亲\n所有人都看着你\n你攥紧收据\n灯灭了\n第二天\n"
+             "iPhone的手感是新皮的\n分期36期你在纸上算\n手是抖的\n经理说 完不成KPI就滚\n你把本子合上\n笔停了\n"
+             "早上六点整 闹钟又响\n你把收据收进铁盒\n铁盒满了 你数了一遍\n灯又灭了\n你睡了\n")
+    red = ("今天体验的人生副本是\n测试人\n你每天老实干活\n这就是报应\n你被孤立了\n疏远了你\n"
+           "你开始赋能团队\n你建立闭环\n把手收拢\n灯灭了\n笔停了\n第二天\n你继续干活\n把本子合上\n手是暖的\n")
+    st = "# T6 · 语料红绿样\n"
+    d1 = make_work(tmp, "语料绿", green, st)
+    _, g1 = run(["python3", "scripts/fuben_loop.py", "draft", d1])
+    _, g2 = run(["python3", "scripts/fuben_lint.py", d1])
+    ok_green = ("BAD 叙述者不替观众判决" not in g1 and "BAD 首屏" not in g1
+                and "品牌" not in [x.split()[1] for x in g1.splitlines() if x.startswith("BAD ")]
+                and "BAD 开头不堆时戳" not in g1 and "BAD 陌生术语" not in g2
+                and "BAD 运营黑话" not in g2 and "BAD 每45行" not in g2)
+    d2 = make_work(tmp, "语料红", red, st)
+    _, r1 = run(["python3", "scripts/fuben_loop.py", "draft", d2])
+    _, r2 = run(["python3", "scripts/fuben_lint.py", d2])
+    ok_red = ("BAD 叙述者不替观众判决" in r1 and "BAD 运营黑话≤1" in r2)
+    return ok_green and ok_red, f"大师写法放行={ok_green} 报应/黑话仍拦={ok_red}"
+
+
+def t_witness(tmp):
+    """R21 在场腿红绿样：≥+5 爽点必须登记见证人且名字落在锚点±10行。
+    绿＝卖家在锚点邻近行；红A＝在场填「你」自报独享；红B＝登记了场面里没出现的人名。"""
+    base = SIX_ROWS.replace("| 序 | 位置 | 情绪值 | 事件 | 类型 | 锚点 |",
+                            "| 序 | 位置 | 情绪值 | 事件 | 类型 | 锚点 | 在场 |")
+    green = (base.replace("| 1 | 2% | +7 | 钩子 | 钩子 | 测试用的一条人 |",
+                          "| 1 | 2% | +7 | 钩子 | 钩子 | 测试用的一条人 | —")
+                 .replace("| 2 | 20% | +5 | 买机器 | 兑现 | 买了台二手单反 |",
+                          "| 2 | 20% | +5 | 买机器 | 兑现 | 买了台二手单反 | 卖家")
+                 .replace("| 4 | 55% | +8 | 收柜子 | 收束 | 把它收回柜子 |",
+                          "| 4 | 55% | +8 | 收柜子 | 收束 | 把它收回柜子 | 卖家"))
+    solo = green.replace("| 4 | 55% | +8 | 收柜子 | 收束 | 把它收回柜子 | 卖家",
+                         "| 4 | 55% | +8 | 收柜子 | 收束 | 把它收回柜子 | 你")
+    ghost = green.replace("| 4 | 55% | +8 | 收柜子 | 收束 | 把它收回柜子 | 卖家",
+                          "| 4 | 55% | +8 | 收柜子 | 收束 | 把它收回柜子 | 校长")
+    st = "# T7 · 在场腿\n"
+    res = {}
+    for tag, rows in (("green", green), ("solo", solo), ("ghost", ghost)):
+        d = make_work(tmp, f"在场{tag}", MIN_BODY, st + rows)
+        _, out = run(["python3", "scripts/fuben_hype.py", d])
+        res[tag] = out
+    ok_green = ("OK  无独享高爽点" in res["green"] and "OK  见证人落锚点" in res["green"])
+    ok_solo = "BAD 无独享高爽点" in res["solo"]
+    ok_ghost = "BAD 见证人落锚点" in res["ghost"]
+    return ok_green and ok_solo and ok_ghost, f"绿放行={ok_green} 独享拦={ok_solo} 幽灵见证拦={ok_ghost}"
+
+
 GREEN = ["58b_反骨嘉豪_代价版", "64_活人微死的AI人", "65_寝室里那个人畜无害的女生", "66_寝室里什么都不争的那个女生", "67_分手时说「我们不合适」的男生",
          "70_三次把同一个人推开的女生", "71_只会按字面意思办事的新人", "72_每天买一张彩票的人",
          "73_合影时永远在按快门的人", "75_人生副本作者的一天"]
@@ -152,6 +203,8 @@ def main():
         results.append(("T2 设定散文层对账",) + t_setting_years(tmp))
         results.append(("T4 反流水账时戳闸",) + t_stamp(tmp))
         results.append(("T5 散文层计数对账",) + t_numclaim(tmp))
+        results.append(("T6 语料反审红绿样",) + t_corpus(tmp))
+        results.append(("T7 在场腿红绿样",) + t_witness(tmp))
         if "--works" in sys.argv:
             results.append(("T3 全库七闸回归",) + works_regression())
     finally:

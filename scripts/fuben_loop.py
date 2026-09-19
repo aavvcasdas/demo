@@ -238,26 +238,40 @@ def draft(directory: str) -> int:
         bad.append("事实/时间线一致性")
 
     # 首屏：不以未解释的未来结果开头；线性稿要在前12行交代具体时间/对象。
+    # R20 语料反审（2026-09-19）：旧版此闸 29/44 篇 10w+ 原文被误杀（01「15岁那年冬天/
+    # 你还是县一中的初三学生」被拦）——词表代理判不了「交代是否清楚」。改报告制（WARN），
+    # 首屏质量归 fuben-review「首屏显微镜+钩子评分」人审；词表扩容仅作信息，不作判定。
+    # 「未来结果前置」的线性检查保留硬（0.1/09 事故层）。
     first = "".join(lines[:12])
     linear = bool(re.search(r"线性|开头不倒叙", setting))
     future_open = bool(re.search(r"^(最后|多年后|七年后|两年后|中奖后|清零后)", "\n".join(lines[:3])))
-    has_time_or_start = bool(re.search(r"\d{4}年|\d{1,2}月|[一二三四五六七八九十]+年|[一二三四五六七八九十]+月|第一天|第二天|小时|早晨|晚上|点", first))
-    named_object = bool(re.search(r"票|账|盒|号码|母亲|妈妈|老板娘|同事|主管|铁盒|手机|学校|公司|本子|电脑|文件夹|档案|简历|收据|截图|药|房|车", first))
-    need("首屏时间/对象清楚", has_time_or_start and named_object, first[:48])
+    has_time_or_start = bool(re.search(r"\d{4}年|\d{1,2}月|[一二三四五六七八九十]+年|[一二三四五六七八九十]+月|第一天|第二天|小时|早晨|晚上|上午|下午|中午|傍晚|凌晨|清晨|岁|\d+点|[一二三四五六七八九十]+点|\.?\d{1,2}:\d{2}", first))
+    named_object = bool(re.search(r"票|账|盒|号码|母亲|妈妈|老板娘|同事|主管|铁盒|手机|学校|公司|本子|电脑|文件夹|档案|简历|收据|截图|药|房|车|学生|同学|一中|中学|大学|店|摊|馆|宿舍|寝|车间|工地|村|镇|县|站|铺|机|被|床|门|桌", first))
+    warn("首屏时间/对象(报告制)", has_time_or_start and named_object, first[:48])
     need("线性稿不深倒叙", not (linear and future_open), "前3行先写现在/未来结果再倒回，改成第一天或明确回到哪一年")
 
     # v6.2 反流水账+钩子豁免（二轮会审指令4）：前5行允许且仅允许1处独立钟面行（冷开场合法）；
-    # 第6–16行不得出现整行时戳；全篇整行时戳≤2；时间开头行≤max(6,3.5%)。首屏闸的时间词由嵌句满足。
+    # 第6–16行不得出现整行时戳；时戳开头行≤max(6,3.5%)。首屏闸的时间词由嵌句满足。
+    # R20 语料反审：「整行时戳全篇≤2」被 11《印度婆罗门》（一日编年体，钟点即题材）原文违例——
+    # 「时间只在是信息时保留」机器不可判，整行计数改报告制；占比线保留（75 病灶 6.6%>3.5% 仍可拦）。
     _h, _a, _o, _ex = _stamp_report(lines)
     _alone_head = [l for l in lines[:16] if _TIME_ALONE.match(l.strip())]
     _alone_mid = [l for l in lines[5:16] if _TIME_ALONE.match(l.strip())]
-    need("开头不堆时戳", _h <= 1 and _a <= 2 and _o <= max(6, int(len(lines) * 0.035)) and len(_alone_head) <= 1 and not _alone_mid,
-         "前16行时间开头 %d（独立钟面仅许第1–5行1处）、整行时戳 %d、时戳开头行 %d/%d｜例：%s" % (_h, _a, _o, len(lines), " | ".join(_ex)))
+    need("开头不堆时戳", _h <= 1 and not _alone_mid and _o <= max(6, int(len(lines) * 0.035)),
+         "前16行时间开头 %d（独立钟面仅许第1–5行1处）、时戳开头行 %d/%d｜例：%s" % (_h, _o, len(lines), " | ".join(_ex)))
+    warn("整行时戳计数(报告制)", _a <= 2, "全篇整行时戳 %d｜一日编年/病程钟点题合法（11 先例），流水账交人审" % _a)
 
-    inner = [line for line in lines if INNER.search(line)]
+    # R20 语料反审：「你以为X」是拆文库标准的错位引入钩（02/04 判词结构「你以为…其实…」），
+    # 不计入内心闸；「你觉得/你感到」等惰性直报仍拦（3.9 红线：情绪翻译成动作）。
+    inner = [line for line in lines if re.search(r"^(你觉得|你认为|你知道|你明白|你终于|你意识到|你心里|你感到|你想)", line)]
     need("主角内心≤6", len(inner) <= 6, " / ".join(line[:14] for line in inner[:5]))
-    verdict = [line for line in lines if VERDICT.search(line)]
+    # R20 语料反审：旧判决词表把「围观对位」（所有人都看着你）与「行为事实」（再也没有人回应你）
+    # 当宣判误杀，6/44 原文违例且全部为合法机制（01/17/37 等）。判决闸只拦「旁白宣布因果清算」；
+    # 围观/疏远类场面词改报告制，交人审区分「写行为」与「下判词」。
+    verdict = [line for line in lines if re.search(r"(自食其果|活该|罪有应得|报应|恶有恶报|天道好轮回|你堕落了|这就是命|这就是报应|这就是结局)", line)]
     need("叙述者不替观众判决", not verdict, " / ".join(line[:18] for line in verdict[:3]))
+    scene_judge = [line for line in lines if VERDICT.search(line) and not re.search(r"(自食其果|活该|罪有应得|报应|恶有恶报|天道好轮回|你堕落了|这就是命)", line)]
+    warn("围观/疏远判决词(报告制)", not scene_judge, " / ".join(line[:16] for line in scene_judge[:3]) or "无")
 
     speech = dialogue_units(lines)
     # 人生副本是旁白稿，直接对白默认≤8个功能单位且≤4%；静态记载仍可写进设定。
@@ -304,8 +318,12 @@ def draft(directory: str) -> int:
     tail = lines[-6:]
     need("收束不抒情", not any(LYRIC_END.search(line) for line in tail[:-1]), " / ".join(tail[-3:])[:80])
     need("末句≤25字", HAN(tail[-1]) <= 25, tail[-1][:32])
-    brands = re.findall(r"资生堂|Mac|MAC|空军一号|AJ|耐克|阿迪|苹果|iPhone|华为|小米|星巴克|瑞幸|喜茶|优衣库|ZARA", body)
-    need("无不必要品牌", not brands, set(brands))
+    # R20 语料反审：10/44 原文含品牌且全部是剧情主体（15 卖肾换的就是 iPhone、23 分期买的 Mac、
+    # 01 的 Xiaomi 手机、05 的 AJ）——「品牌≠装饰」机器不可判。改报告制（与 R13b 删除 texture
+    # 品牌行同判）；去品牌红线由 fuben-review 人审执行（64 豆包→那个AI 先例：人审抓得出，闸抓不对）。
+    from collections import Counter as _C
+    brands = _C(re.findall(r"资生堂|Mac|MAC|空军一号|AJ|耐克|阿迪|苹果|iPhone|华为|小米|星巴克|瑞幸|喜茶|优衣库|ZARA", body))
+    warn("品牌出现(报告制)", not brands, f"{dict(brands)}｜主体道具(事实锁登记/出现≥3次)→放行；装饰→删")
 
     # 环境/身体只做低强度防流水账提醒：不为达标硬塞感官。
     phys = re.compile(r"手|耳朵|后背|喉咙|胃|膝盖|呼吸|汗|发麻|发烫|发凉|嗡|味道|声音|灯|门|窗|风|雨|凉|热|空调|冷气|响|湿|烫|烟味|太阳|水壶")
