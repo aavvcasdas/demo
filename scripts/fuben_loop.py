@@ -242,10 +242,13 @@ def draft(directory: str) -> int:
     need("首屏时间/对象清楚", has_time_or_start and named_object, first[:48])
     need("线性稿不深倒叙", not (linear and future_open), "前3行先写现在/未来结果再倒回，改成第一天或明确回到哪一年")
 
-    # v6.1 反流水账：前16行时间开头≤1且无整行时戳；全篇整行时戳≤1；时间开头行≤max(6,3.5%)
+    # v6.2 反流水账+钩子豁免（二轮会审指令4）：前5行允许且仅允许1处独立钟面行（冷开场合法）；
+    # 第6–16行不得出现整行时戳；全篇整行时戳≤2；时间开头行≤max(6,3.5%)。首屏闸的时间词由嵌句满足。
     _h, _a, _o, _ex = _stamp_report(lines)
-    need("开头不堆时戳", _h <= 1 and _a <= 1 and _o <= max(6, int(len(lines) * 0.035)) and not any(_TIME_ALONE.match(l.strip()) for l in lines[:16]),
-         "前16行时间开头 %d、整行时戳 %d、时戳开头行 %d/%d｜例：%s" % (_h, _a, _o, len(lines), " | ".join(_ex)))
+    _alone_head = [l for l in lines[:16] if _TIME_ALONE.match(l.strip())]
+    _alone_mid = [l for l in lines[5:16] if _TIME_ALONE.match(l.strip())]
+    need("开头不堆时戳", _h <= 1 and _a <= 2 and _o <= max(6, int(len(lines) * 0.035)) and len(_alone_head) <= 1 and not _alone_mid,
+         "前16行时间开头 %d（独立钟面仅许第1–5行1处）、整行时戳 %d、时戳开头行 %d/%d｜例：%s" % (_h, _a, _o, len(lines), " | ".join(_ex)))
 
     inner = [line for line in lines if INNER.search(line)]
     need("主角内心≤6", len(inner) <= 6, " / ".join(line[:14] for line in inner[:5]))

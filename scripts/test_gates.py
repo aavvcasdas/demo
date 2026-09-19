@@ -92,6 +92,19 @@ def t_stamp(tmp):
     ok2 = "OK  开头不堆时戳" in out2
     return ok1 and ok2, f"钟面账被抓={ok1} 时戳嵌句放行={ok2}"
 
+
+def t_numclaim(tmp):
+    body = "今天体验的人生副本是\n测试计数\n手册统计页写着 218次\n成功218次 失败0次\n你看着那行数字\n把手机放下\n灯灭了\n第二天还在\n218 没变\n你笑了一下\n把本子合上\n笔停了\n"
+    fake = "# 76 · 测试\n\n## 主线\n\n- 设定：手册统计成功 219 次失败 0 次。\n\n## 事实锁\n\n| 字段 | 已锁事实 |\n|---|---|\n| 频率/次数 | 218 次 |\n"
+    real = fake.replace("219 次", "218 次")
+    d1 = make_work(tmp, "作品庚", body, fake)
+    rc1, out1 = run(["python3", "scripts/fuben_setting_years.py", d1])
+    ok1 = rc1 == 1 and "219" in out1
+    d2 = make_work(tmp, "作品辛", body, real)
+    rc2, out2 = run(["python3", "scripts/fuben_setting_years.py", d2])
+    ok2 = rc2 == 0
+    return ok1 and ok2, f"散文层 219 假账被抓={ok1} 218 口径放行={ok2}"
+
 def t_setting_years(tmp):
     ledger = """## 物件台账
 
@@ -138,6 +151,7 @@ def main():
         results.append(("T1 hype 否定窗口",) + t_negation(tmp))
         results.append(("T2 设定散文层对账",) + t_setting_years(tmp))
         results.append(("T4 反流水账时戳闸",) + t_stamp(tmp))
+        results.append(("T5 散文层计数对账",) + t_numclaim(tmp))
         if "--works" in sys.argv:
             results.append(("T3 全库七闸回归",) + works_regression())
     finally:
