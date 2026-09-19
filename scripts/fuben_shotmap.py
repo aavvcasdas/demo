@@ -13,7 +13,8 @@ def main():
         body=open(os.path.join(d,"正文.md"),encoding="utf-8").read()
         n=len(re.sub(r"[，。、？！：；「」\"'\s]","",body))
         dur=n/cps
-        print(f"## {d}  去标点 {n} 字 ÷ {cps} 字/秒 ≈ **{dur:.0f} 秒（{dur/60:.1f} 分）**")
+        verdict="OK  冷启动带≤90s" if dur<=90 else f"OVER 冷启动带（D0实测：全长TTS 375–497s 的完播proxy仅4–6%，算法不给二级池）→ 切条≤60s 或 3 分钟精选版"
+        print(f"## {d}  去标点 {n} 字 ÷ {cps} 字/秒 ≈ **{dur:.0f} 秒（{dur/60:.1f} 分）**  [{verdict}]")
         sp=os.path.join(d,"设定.md")
         if os.path.exists(sp):
             t=open(sp,encoding="utf-8").read()
