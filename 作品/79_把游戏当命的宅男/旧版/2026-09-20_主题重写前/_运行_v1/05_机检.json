@@ -4,22 +4,31 @@
   "target": "作品/79_把游戏当命的宅男/",
   "findings": [
     {
+      "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "facts",
+      "message": "相邻口播行含 4 汉字，上文称 2 个字；须核实引文边界",
+      "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
+      "line": 15,
+      "evidence": "两个字\n一用 七年"
+    },
+    {
       "rule_id": "ACCOUNT_BRAND_CANDIDATE",
       "severity": "REVIEW",
       "category": "account",
       "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
       "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
-      "line": 35,
-      "evidence": "你的微信好友翻来翻去"
+      "line": 24,
+      "evidence": "你打开微信"
     },
     {
-      "rule_id": "AI_STYLE_period-stutter",
+      "rule_id": "AI_STYLE_overcompressed-prose-tic",
       "severity": "REVIEW",
       "category": "style",
-      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
       "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
-      "line": 107,
-      "evidence": "你说 老刀 她问 那是谁 你想了想 说 网友 她没再问 过了一会儿"
+      "line": 1,
+      "evidence": "你指挥了七年的那个公会 | 今晚掀翻了压你们三年的死对头 | 最后一波团战打完 | 四百个人的语音频道炸了 | 世界频道全在问 | 对面指挥是谁"
     }
   ],
   "tools": [
@@ -52,20 +61,20 @@
     "setting/body consistency: no optional setting supplied"
   ],
   "inputs": {
-    "body_sha256": "b340be30740703deb604a8fa972dc123359509a89944b8cbd11b5803b572ecab",
+    "body_sha256": "2e86074babc63e22e11fe391693a11024b98dbe8fbfd9786823d940a33feae70",
     "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
   },
   "policy_version": "2.0.0",
   "body_path": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
   "metrics": {
-    "characters_repository_convention": 1204,
-    "nonempty_prose_lines": 171,
-    "longest_line_characters": 16,
-    "number_tokens": 7,
-    "number_density_per_1000": 5.8,
-    "density_denominator": 1204,
+    "characters_repository_convention": 1401,
+    "nonempty_prose_lines": 195,
+    "longest_line_characters": 15,
+    "number_tokens": 11,
+    "number_density_per_1000": 7.9,
+    "density_denominator": 1401,
     "assumed_cps": 6.4,
-    "estimated_duration_seconds": 188.12,
+    "estimated_duration_seconds": 218.91,
     "duration_kind": "estimate_not_audio_measurement"
   },
   "status": "PASS_WITH_REVIEW",
