@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-20",
+  "reason": "用户要求按当前创作方法重写56与72；保留重写前版本，不作为新稿审核结果",
+  "source_commit": "c8f02f4b7bfe58da70d29aa6a8a9dbdad54b75e7",
+  "files": [
+    {
+      "file": "正文.md",
+      "sha256": "c0ec077cd4ee563a166ab3f455a2ff594454266e0b3bbafa599aa9882e3503c7"
+    },
+    {
+      "file": "设定.md",
+      "sha256": "492fb491d2212576834b4730333907d6f7445bf14f88bd3e3aea9a925de32a1c"
+    },
+    {
+      "file": "小节大纲.md",
+      "sha256": "a773c7e1775dc747914ffe73936e6f0df7ba9c7a0452f91d8b36f80d4bf7270d"
+    }
+  ]
+}
