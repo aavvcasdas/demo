@@ -9,7 +9,7 @@
       "category": "account",
       "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
       "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
-      "line": 67,
+      "line": 35,
       "evidence": "你的微信好友翻来翻去"
     },
     {
@@ -18,7 +18,7 @@
       "category": "style",
       "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
       "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
-      "line": 163,
+      "line": 107,
       "evidence": "你说 老刀 她问 那是谁 你想了想 说 网友 她没再问 过了一会儿"
     }
   ],
@@ -52,20 +52,20 @@
     "setting/body consistency: no optional setting supplied"
   ],
   "inputs": {
-    "body_sha256": "62dc4ea1f242969c7e5a64a003a7215f815e439cfc2cfe4eca6b568904a093fb",
+    "body_sha256": "b340be30740703deb604a8fa972dc123359509a89944b8cbd11b5803b572ecab",
     "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
   },
   "policy_version": "2.0.0",
   "body_path": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
   "metrics": {
-    "characters_repository_convention": 1565,
-    "nonempty_prose_lines": 218,
+    "characters_repository_convention": 1204,
+    "nonempty_prose_lines": 171,
     "longest_line_characters": 16,
-    "number_tokens": 11,
-    "number_density_per_1000": 7.0,
-    "density_denominator": 1565,
+    "number_tokens": 7,
+    "number_density_per_1000": 5.8,
+    "density_denominator": 1204,
     "assumed_cps": 6.4,
-    "estimated_duration_seconds": 244.53,
+    "estimated_duration_seconds": 188.12,
     "duration_kind": "estimate_not_audio_measurement"
   },
   "status": "PASS_WITH_REVIEW",
