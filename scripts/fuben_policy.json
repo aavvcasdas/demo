@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "version": "2.0.0",
+  "profiles": ["draft", "full", "short", "clip", "reference"],
+  "tool_timeout_seconds": 30,
+  "estimated_chars_per_second": 6.4,
+  "creative_rules": {
+    "required_beat_count": null,
+    "required_emotion_peak_position": null,
+    "required_dialogue_ratio": null,
+    "required_sensory_word_count": null,
+    "required_callback_count": null,
+    "required_word_count": null,
+    "required_tables": [],
+    "ai_style_patterns": "REVIEW",
+    "chronological_order": "REVIEW",
+    "metric_thresholds": "descriptive_only"
+  },
+  "legacy_fact_disposition": {
+    "MISSING_SETTING": "NOTE",
+    "MISSING_BODY": "BLOCK",
+    "NO_FACT_LOCK": "NOTE",
+    "NO_STATE_LEDGER": "NOTE",
+    "WEAK_STATE_LEDGER": "REVIEW",
+    "GAME_MIX": "REVIEW",
+    "UNIT_DRIFT": "REVIEW",
+    "CARD_UNIT_DRIFT": "REVIEW",
+    "FREQUENCY_DRIFT": "REVIEW",
+    "NUMBER_DRIFT": "REVIEW",
+    "OMEN_DRIFT": "REVIEW",
+    "NO_OFFICIAL_CHECK": "REVIEW",
+    "YEAR_BACKTRACK": "REVIEW",
+    "DATE_BACKTRACK": "REVIEW",
+    "DURATION_CONFLICT": "REVIEW",
+    "TICKET_NO_MISMATCH": "REVIEW",
+    "DATE_COUNT_MISMATCH": "BLOCK",
+    "BAD_DATE_LOCK": "BLOCK"
+  },
+  "account_policy": {
+    "brand_candidates": ["资生堂", "Mac", "MAC", "空军一号", "AJ", "耐克", "阿迪", "苹果", "iPhone", "华为", "小米", "星巴克", "瑞幸", "喜茶", "优衣库", "ZARA", "微博", "微信", "朋友圈"],
+    "candidate_disposition": "REVIEW",
+    "note": "保留账号品牌约定，语义确认在发布审核执行；苹果/小米辣等同形词不能机械定罪。原文校准不施加本账号商业约定。"
+  },
+  "review": {
+    "required_for_release": ["facts", "story", "account_policy"],
+    "missing_evidence": "PROVISIONAL",
+    "automatic_release": false
+  },
+  "scope": "机械阻断只用于明确的输入/算术/契约错误；模糊正则命中交给证据化复核，不自动判文笔、事实真假或流量。"
+}

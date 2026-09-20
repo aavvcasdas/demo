@@ -1,0 +1,205 @@
+[
+  {
+    "id": "S01",
+    "source": "evaluations/2026-09-19_轻量试写/01_家长会不用带工具/正文.md",
+    "report": {
+      "schema_version": 2,
+      "profile": "full",
+      "target": "/home/user/demo/evaluations/2026-09-19_轻量试写/01_家长会不用带工具/正文.md",
+      "findings": [
+        {
+          "rule_id": "AI_STYLE_overcompressed-prose-tic",
+          "severity": "REVIEW",
+          "category": "style",
+          "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+          "file": "/home/user/demo/evaluations/2026-09-19_轻量试写/01_家长会不用带工具/正文.md",
+          "line": 3,
+          "evidence": "男主人说，昨天还好好的。 | 你蹲下，两只手扶住抽屉。 | 刚拉开一条缝，男主人就在旁边补充： | 你没接话。 | 你已经看见里面那把卷尺了。 | 卷尺卡..."
+        }
+      ],
+      "tools": [
+        {
+          "name": "ai_style_diagnostics",
+          "command": [
+            "node",
+            "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+            "--json",
+            "--fail-on=blocking",
+            "--profile=fuben",
+            "/home/user/demo/evaluations/2026-09-19_轻量试写/01_家长会不用带工具/正文.md"
+          ],
+          "state": "COMPLETED",
+          "exit_code": 0,
+          "finding_count": 1
+        }
+      ],
+      "checked": [
+        "readable_nonempty_body_and_descriptive_metrics",
+        "explicit_equations_and_literal_character_counts",
+        "style_pattern_candidates_not_literary_judgment"
+      ],
+      "unverified": [
+        "editorial quality",
+        "external factual truth",
+        "TTS listening",
+        "actual media consistency",
+        "platform publication",
+        "setting/body consistency: no optional setting supplied"
+      ],
+      "inputs": {
+        "body_sha256": "2dbd209224459c4dc13d8d0beed61acabe1a78267f3f1e516fad5c566f9fddfc"
+      },
+      "policy_version": "2.0.0",
+      "body_path": "/home/user/demo/evaluations/2026-09-19_轻量试写/01_家长会不用带工具/正文.md",
+      "metrics": {
+        "characters_repository_convention": 1440,
+        "nonempty_prose_lines": 124,
+        "longest_line_characters": 31,
+        "number_tokens": 0,
+        "number_density_per_1000": 0.0,
+        "density_denominator": 1440,
+        "assumed_cps": 6.4,
+        "estimated_duration_seconds": 225.0,
+        "duration_kind": "estimate_not_audio_measurement"
+      },
+      "status": "PASS_WITH_REVIEW",
+      "exit_code": 0,
+      "mechanical_pass": true,
+      "editorially_approved": false,
+      "release_ready": false
+    },
+    "actual_exit": 0
+  },
+  {
+    "id": "S02",
+    "source": "evaluations/2026-09-19_轻量试写/02_这一版已经可以了/正文.md",
+    "report": {
+      "schema_version": 2,
+      "profile": "full",
+      "target": "/home/user/demo/evaluations/2026-09-19_轻量试写/02_这一版已经可以了/正文.md",
+      "findings": [
+        {
+          "rule_id": "AI_STYLE_overcompressed-prose-tic",
+          "severity": "REVIEW",
+          "category": "style",
+          "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+          "file": "/home/user/demo/evaluations/2026-09-19_轻量试写/02_这一版已经可以了/正文.md",
+          "line": 3,
+          "evidence": "晚上十一点，客户说，这版可以。 | 你把那条消息看了两遍。 | 回了一个。 | 然后又点开了工程。 | 最后一句字幕出来得有点早。 | 只有一点。"
+        }
+      ],
+      "tools": [
+        {
+          "name": "ai_style_diagnostics",
+          "command": [
+            "node",
+            "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+            "--json",
+            "--fail-on=blocking",
+            "--profile=fuben",
+            "/home/user/demo/evaluations/2026-09-19_轻量试写/02_这一版已经可以了/正文.md"
+          ],
+          "state": "COMPLETED",
+          "exit_code": 0,
+          "finding_count": 1
+        }
+      ],
+      "checked": [
+        "readable_nonempty_body_and_descriptive_metrics",
+        "explicit_equations_and_literal_character_counts",
+        "style_pattern_candidates_not_literary_judgment"
+      ],
+      "unverified": [
+        "editorial quality",
+        "external factual truth",
+        "TTS listening",
+        "actual media consistency",
+        "platform publication",
+        "setting/body consistency: no optional setting supplied"
+      ],
+      "inputs": {
+        "body_sha256": "ffd6ad047ba381de857426111621e99967d333e0888403b02d6f8b9096c0eb9b"
+      },
+      "policy_version": "2.0.0",
+      "body_path": "/home/user/demo/evaluations/2026-09-19_轻量试写/02_这一版已经可以了/正文.md",
+      "metrics": {
+        "characters_repository_convention": 1565,
+        "nonempty_prose_lines": 132,
+        "longest_line_characters": 37,
+        "number_tokens": 1,
+        "number_density_per_1000": 0.6,
+        "density_denominator": 1565,
+        "assumed_cps": 6.4,
+        "estimated_duration_seconds": 244.53,
+        "duration_kind": "estimate_not_audio_measurement"
+      },
+      "status": "PASS_WITH_REVIEW",
+      "exit_code": 0,
+      "mechanical_pass": true,
+      "editorially_approved": false,
+      "release_ready": false
+    },
+    "actual_exit": 0
+  },
+  {
+    "id": "S03",
+    "source": "evaluations/2026-09-19_轻量试写/03_到了别再看手机了/正文.md",
+    "report": {
+      "schema_version": 2,
+      "profile": "short",
+      "target": "/home/user/demo/evaluations/2026-09-19_轻量试写/03_到了别再看手机了/正文.md",
+      "findings": [],
+      "tools": [
+        {
+          "name": "ai_style_diagnostics",
+          "command": [
+            "node",
+            "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+            "--json",
+            "--fail-on=blocking",
+            "--profile=fuben",
+            "/home/user/demo/evaluations/2026-09-19_轻量试写/03_到了别再看手机了/正文.md"
+          ],
+          "state": "COMPLETED",
+          "exit_code": 0,
+          "finding_count": 0
+        }
+      ],
+      "checked": [
+        "readable_nonempty_body_and_descriptive_metrics",
+        "explicit_equations_and_literal_character_counts",
+        "style_pattern_candidates_not_literary_judgment"
+      ],
+      "unverified": [
+        "editorial quality",
+        "external factual truth",
+        "TTS listening",
+        "actual media consistency",
+        "platform publication",
+        "setting/body consistency: no optional setting supplied"
+      ],
+      "inputs": {
+        "body_sha256": "96fbf926a802eb17ed5b4236e227cac5f9580d8808bdcbeae6de8a201b87775e"
+      },
+      "policy_version": "2.0.0",
+      "body_path": "/home/user/demo/evaluations/2026-09-19_轻量试写/03_到了别再看手机了/正文.md",
+      "metrics": {
+        "characters_repository_convention": 571,
+        "nonempty_prose_lines": 55,
+        "longest_line_characters": 19,
+        "number_tokens": 0,
+        "number_density_per_1000": 0.0,
+        "density_denominator": 571,
+        "assumed_cps": 6.4,
+        "estimated_duration_seconds": 89.22,
+        "duration_kind": "estimate_not_audio_measurement"
+      },
+      "status": "PASS",
+      "exit_code": 0,
+      "mechanical_pass": true,
+      "editorially_approved": false,
+      "release_ready": false
+    },
+    "actual_exit": 0
+  }
+]

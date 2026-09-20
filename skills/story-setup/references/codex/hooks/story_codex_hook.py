@@ -1208,9 +1208,38 @@ def target_paths_from_hook(obj: dict[str, Any]) -> list[Path]:
     return [resolve_target(root, t, base) for t in raw_targets if t]
 
 
+def is_fuben_project(input_path: Path) -> bool:
+    """Mirror story-profile.js; only project-local markers, never parent inheritance."""
+    absolute = Path(input_path).resolve()
+    directory = absolute if absolute.is_dir() else absolute.parent if absolute.is_file() or absolute.suffix else absolute
+    if directory.name in {"正文", "切片"}:
+        directory = directory.parent
+
+    def optional(path):
+        try:
+            return path.read_text(encoding="utf-8")
+        except FileNotFoundError:
+            return ""
+
+    marker = optional(directory / ".fuben.json")
+    if marker:
+        data = json.loads(marker)
+        if not isinstance(data, dict) or type(data.get("schema_version")) is not int or data.get("schema_version") != 1 or data.get("profile") != "fuben":
+            raise ValueError("Invalid .fuben.json: expected schema_version=1, profile=fuben")
+        return True
+    setting = optional(directory / "设定.md")
+    if re.search(r"(?:平台|赛道|题材|模式|profile)[^\n]{0,70}(?:人生副本|抖音口播)|人生副本实录\.md", setting, re.I):
+        return True
+    body = optional(absolute if not absolute.is_dir() and absolute.suffix.lower() in {".md", ".txt"} else directory / "正文.md")
+    return bool(re.search(r"^今天(?:你(?:要|将)?)?体验的人生(?:副本)?是(?:[：:，,\s—-]|$)", body[:800], re.M))
+
+
 def prose_block_reason(root: Path, abs_path: Path) -> str | None:
     base = abs_path.name
     parent = abs_path.parent.name
+    prose_target = re.match(r"^正文(?:_[^/]*)?\.md$", base) or (parent == "正文" and re.match(r"^第.*章.*\.md$", base))
+    if prose_target and is_fuben_project(abs_path):
+        return None
     if base == "正文.md":
         if abs_path.exists():
             return None
@@ -1531,13 +1560,16 @@ def stop_event() -> None:
                 text = abs_path.read_text(encoding="utf-8")
             except Exception:
                 continue
+            if is_fuben_project(abs_path):
+                blocks.append(f"NOTE {safe_rel(root, abs_path)}：人生副本使用 fuben profile，不适用通用句式清零网；未自动审核。")
+                continue
             findings = prose_net_findings(text, load_style_whitelist(abs_path))
             if findings:
                 blocks.append(f"=== {safe_rel(root, abs_path)} ===\n" + "\n".join(findings))
         if blocks:
             emit({
                 "continue": True,
-                "systemMessage": "=== 正文兜底检测（回合结束复扫，模型无关）===\n硬信号命中即回正文改掉、复扫到净：\n"
+                "systemMessage": "=== 正文兜底检测（回合结束复扫，模型无关）===\n通用小说问题按原契约处理；NOTE/副本提示不是硬性改稿指令：\n"
                 + "\n".join(blocks),
             })
             return

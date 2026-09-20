@@ -57,6 +57,14 @@ esac
 BASE="$(basename "$ABS")"
 PARENT="$(basename "$(dirname "$ABS")")"
 
+if [[ "$BASE" == 正文.md || "$BASE" == 正文_*.md || ( "$PARENT" == 正文 && "$BASE" == 第*章*.md ) ]] && node -e "" >/dev/null 2>&1 && [ -f "$CLI" ]; then
+  PROFILE="$(node "$CLI" profile "$ABS")" || { printf '%s\n' 'ERROR: 无法识别写作 profile；本次未验证。' >&2; exit 2; }
+  if [ "$PROFILE" = "fuben" ]; then
+    printf '%s\n' 'NOTE: 人生副本不用小说句式清零网；请运行 fuben_run.py，机械成功不代表审核通过。'
+    exit 0
+  fi
+fi
+
 # 只对「正文」文件兜底，绝不碰代码/细纲/设定/大纲等非正文文件：
 #   - 短篇：{书}/正文.md，且同目录有 设定.md（真短篇工程信号，排除 docs/正文.md 之类）
 #   - 长篇：{书}/正文/第N章*.md（父目录必须是「正文」），且 {书} 有 大纲/追踪/设定（真书结构）

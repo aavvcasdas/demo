@@ -1,0 +1,499 @@
+{
+  "checked_at_utc": "2026-09-19T13:49:39.538375+00:00",
+  "repositories": [
+    {
+      "repository": "alchaincyf/huashu-skills",
+      "url": "https://github.com/alchaincyf/huashu-skills",
+      "stars_observed": 1572,
+      "sha": "49a55ba8a975ebda6bb55ea5ca4388942e3f6f18",
+      "pushed_at": "2026-09-06T14:37:28Z",
+      "license": null,
+      "candidate_files": [
+        "huashu-agent-swarm/SKILL.md",
+        "huashu-agent-swarm/references/agent-prompt-template.md",
+        "huashu-article-edit/SKILL.md",
+        "huashu-article-to-x/SKILL.md",
+        "huashu-data-pro/SKILL.md",
+        "huashu-design/SKILL.md",
+        "huashu-douyin-script/SKILL.md",
+        "huashu-image-upload/SKILL.md",
+        "huashu-info-search/SKILL.md",
+        "huashu-material-search/SKILL.md",
+        "huashu-md-to-pdf/SKILL.md",
+        "huashu-prompt-save/SKILL.md",
+        "huashu-proofreading/SKILL.md",
+        "huashu-research/SKILL.md",
+        "huashu-script-polish/SKILL.md",
+        "huashu-skill-updater/SKILL.md",
+        "huashu-slides/SKILL.md",
+        "huashu-slides/references/prompt-templates.md",
+        "huashu-speech-coach/SKILL.md",
+        "huashu-topic-gen/SKILL.md",
+        "huashu-video-check/SKILL.md",
+        "huashu-video-outline/SKILL.md",
+        "huashu-wechat-image/SKILL.md",
+        "huashu-xhs-image/SKILL.md"
+      ],
+      "read_files": [
+        {
+          "path": "huashu-douyin-script/SKILL.md",
+          "sha256": "b6ca5501cecd2ae189cac70de531daa7afe0d24a06402635e99f16b02ca61068",
+          "url": "https://github.com/alchaincyf/huashu-skills/blob/49a55ba8a975ebda6bb55ea5ca4388942e3f6f18/huashu-douyin-script/SKILL.md",
+          "cached_at": ".cache/skill-research/alchaincyf/huashu-skills/huashu-douyin-script/SKILL.md"
+        }
+      ]
+    },
+    {
+      "repository": "eternityspring/shuohao-skills",
+      "url": "https://github.com/eternityspring/shuohao-skills",
+      "stars_observed": 3566,
+      "sha": "7ebef4f2f53159ee1eaaec2793271a114a8be8cc",
+      "pushed_at": "2026-09-14T00:50:20Z",
+      "license": "Apache-2.0",
+      "candidate_files": [
+        "skills/novel-art/SKILL.md",
+        "skills/novel-characters/SKILL.md",
+        "skills/novel-outline/SKILL.md",
+        "skills/novel-script/SKILL.md",
+        "skills/novel-storyboard/SKILL.md",
+        "skills/novel-storyboard/references/h3-prompt.md"
+      ],
+      "read_files": [
+        {
+          "path": "skills/novel-script/SKILL.md",
+          "sha256": "5e653561304e51593a6bd0c36d134fe7076b6352883752912085d312e1e12b7c",
+          "url": "https://github.com/eternityspring/shuohao-skills/blob/7ebef4f2f53159ee1eaaec2793271a114a8be8cc/skills/novel-script/SKILL.md",
+          "cached_at": ".cache/skill-research/eternityspring/shuohao-skills/skills/novel-script/SKILL.md"
+        },
+        {
+          "path": "skills/novel-script/scripts/novel-script.mjs",
+          "sha256": "833511f3dcc01373687f12065cb8c843e505958fb344d015535ffb4c928bc7bc",
+          "url": "https://github.com/eternityspring/shuohao-skills/blob/7ebef4f2f53159ee1eaaec2793271a114a8be8cc/skills/novel-script/scripts/novel-script.mjs",
+          "cached_at": ".cache/skill-research/eternityspring/shuohao-skills/skills/novel-script/scripts/novel-script.mjs"
+        },
+        {
+          "path": "skills/novel-script/scripts/selftest.mjs",
+          "sha256": "fc91d7e895f8353d4c98980cf0f65366413c4b5fd290a12ce9e5dd4f24ad6c9c",
+          "url": "https://github.com/eternityspring/shuohao-skills/blob/7ebef4f2f53159ee1eaaec2793271a114a8be8cc/skills/novel-script/scripts/selftest.mjs",
+          "cached_at": ".cache/skill-research/eternityspring/shuohao-skills/skills/novel-script/scripts/selftest.mjs"
+        }
+      ]
+    },
+    {
+      "repository": "zenstory-ai/drama-skills",
+      "url": "https://github.com/zenstory-ai/drama-skills",
+      "stars_observed": 2063,
+      "sha": "0e8929881bb59248618c4f402707c64723adc017",
+      "pushed_at": "2026-09-18T17:12:18Z",
+      "license": "MIT",
+      "candidate_files": [
+        "evaluations/content-quality-generation-prompt.md",
+        "evaluations/content-quality-judge-prompt.md",
+        "examples/golden-project/剧集/EP001/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP001/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP001/storyboard/video-prompts.md",
+        "examples/golden-project/剧集/EP002/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP002/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP002/storyboard/video-prompts.md",
+        "examples/golden-project/剧集/EP003/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP003/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP003/storyboard/video-prompts.md",
+        "examples/golden-project/剧集/EP004/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP004/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP004/storyboard/video-prompts.md",
+        "examples/golden-project/剧集/EP005/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP005/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP005/storyboard/video-prompts.md",
+        "examples/golden-project/剧集/EP006/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP006/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP006/storyboard/video-prompts.md",
+        "examples/golden-project/剧集/EP007/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP007/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP007/storyboard/video-prompts.md",
+        "examples/golden-project/剧集/EP008/assets/image-prompts.md",
+        "examples/golden-project/剧集/EP008/storyboard/keyframe-prompts.md",
+        "examples/golden-project/剧集/EP008/storyboard/video-prompts.md",
+        "maintainers/skills/short-drama-knowhow/SKILL.md",
+        "maintainers/skills/short-drama-knowhow/references/prompt-production-learning.md",
+        "skills/short-drama-assets/SKILL.md",
+        "skills/short-drama-develop/SKILL.md",
+        "skills/short-drama-edit/SKILL.md",
+        "skills/short-drama-image-prompts/SKILL.md",
+        "skills/short-drama-image-prompts/assets/image-prompt-spec.jsonl.md",
+        "skills/short-drama-image-prompts/assets/image-prompts.md",
+        "skills/short-drama-image-prompts/assets/lookdev-frame-spec.jsonl.md",
+        "skills/short-drama-image-prompts/assets/lookdev-prompts.md",
+        "skills/short-drama-image-prompts/references/character-and-look.md",
+        "skills/short-drama-image-prompts/references/common-recipe.md",
+        "skills/short-drama-image-prompts/references/edit-and-revision.md",
+        "skills/short-drama-image-prompts/references/location-plate.md",
+        "skills/short-drama-image-prompts/references/look-and-state-variant.md",
+        "skills/short-drama-image-prompts/references/lookdev-frame.md",
+        "skills/short-drama-image-prompts/references/production-sheet-recipes.md",
+        "skills/short-drama-image-prompts/references/prop-plate.md",
+        "skills/short-drama-image-prompts/references/review-and-fixtures.md",
+        "skills/short-drama-image-prompts/references/stage-contract.md",
+        "skills/short-drama-novel-analyze/SKILL.md",
+        "skills/short-drama-produce/SKILL.md",
+        "skills/short-drama-review/SKILL.md",
+        "skills/short-drama-review/references/rubric-assets-prompts.md",
+        "skills/short-drama-storyboard/SKILL.md",
+        "skills/short-drama-storyboard/assets/keyframe-prompts.md",
+        "skills/short-drama-video-prompts/SKILL.md",
+        "skills/short-drama-video-prompts/assets/delivery-container.jsonl.md",
+        "skills/short-drama-video-prompts/assets/motion-spec.jsonl.md",
+        "skills/short-drama-video-prompts/assets/music-spec.jsonl.md",
+        "skills/short-drama-video-prompts/assets/video-prompts.md",
+        "skills/short-drama-video-prompts/references/camera-audio-continuity.md",
+        "skills/short-drama-video-prompts/references/delivery-profile.md",
+        "skills/short-drama-video-prompts/references/generability.md",
+        "skills/short-drama-video-prompts/references/minimax-h3.md",
+        "skills/short-drama-video-prompts/references/motion-recipe.md",
+        "skills/short-drama-video-prompts/references/performance-action-timing.md",
+        "skills/short-drama-video-prompts/references/production-prompt-grammar.md",
+        "skills/short-drama-video-prompts/references/review-and-fixtures.md",
+        "skills/short-drama-video-prompts/references/seedance-2.0.md",
+        "skills/short-drama-video-prompts/references/seedance-2.5.md",
+        "skills/short-drama-video-prompts/references/stage-contract.md",
+        "skills/short-drama-video-prompts/references/target-model-profile.md",
+        "skills/short-drama-write/SKILL.md",
+        "skills/short-drama/SKILL.md"
+      ],
+      "read_files": [
+        {
+          "path": "skills/short-drama-write/SKILL.md",
+          "sha256": "f0a74465dbdd12c06ee7a37b2eda84423d1c8d03d364f0ef42c1e04b586f81cc",
+          "url": "https://github.com/zenstory-ai/drama-skills/blob/0e8929881bb59248618c4f402707c64723adc017/skills/short-drama-write/SKILL.md",
+          "cached_at": ".cache/skill-research/zenstory-ai/drama-skills/skills/short-drama-write/SKILL.md"
+        },
+        {
+          "path": "skills/short-drama-review/SKILL.md",
+          "sha256": "251364f35886455bded0310ac980927a93dd7563dcad53bd5271f83ea211a7c9",
+          "url": "https://github.com/zenstory-ai/drama-skills/blob/0e8929881bb59248618c4f402707c64723adc017/skills/short-drama-review/SKILL.md",
+          "cached_at": ".cache/skill-research/zenstory-ai/drama-skills/skills/short-drama-review/SKILL.md"
+        },
+        {
+          "path": "evaluations/content-quality-generation-prompt.md",
+          "sha256": "12a370e07c3ca12d6e9276067ed5f1accb84c222e48a8a3db8f1439dc5d5c994",
+          "url": "https://github.com/zenstory-ai/drama-skills/blob/0e8929881bb59248618c4f402707c64723adc017/evaluations/content-quality-generation-prompt.md",
+          "cached_at": ".cache/skill-research/zenstory-ai/drama-skills/evaluations/content-quality-generation-prompt.md"
+        },
+        {
+          "path": "evaluations/content-quality-judge-prompt.md",
+          "sha256": "4a7a40043245bb293c30a3146e9796a1ebb0da7fe44a81cb3ac638658dec5714",
+          "url": "https://github.com/zenstory-ai/drama-skills/blob/0e8929881bb59248618c4f402707c64723adc017/evaluations/content-quality-judge-prompt.md",
+          "cached_at": ".cache/skill-research/zenstory-ai/drama-skills/evaluations/content-quality-judge-prompt.md"
+        }
+      ]
+    },
+    {
+      "repository": "A-cat-with-carrots/OnlyShot",
+      "url": "https://github.com/A-cat-with-carrots/OnlyShot",
+      "stars_observed": 282,
+      "sha": "75c57f2fff6e2b3ab14004ce635a445e416c9b27",
+      "pushed_at": "2026-07-07T17:24:47Z",
+      "license": "MIT",
+      "candidate_files": [
+        "SKILL.md",
+        "references/ref-prompt-industrial.md"
+      ],
+      "read_files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "7c37068d45450f680008981a228479158cf3b6c23d2f83a8a90673e0fd30a7da",
+          "url": "https://github.com/A-cat-with-carrots/OnlyShot/blob/75c57f2fff6e2b3ab14004ce635a445e416c9b27/SKILL.md",
+          "cached_at": ".cache/skill-research/A-cat-with-carrots/OnlyShot/SKILL.md"
+        }
+      ]
+    },
+    {
+      "repository": "HBAI-Ltd/Toonflow-app",
+      "url": "https://github.com/HBAI-Ltd/Toonflow-app",
+      "stars_observed": 15786,
+      "sha": "e03cf590eb0cab63534a4040db9acb4ec95b42a6",
+      "pushed_at": "2026-08-26T10:49:08Z",
+      "license": "Apache-2.0",
+      "candidate_files": [
+        "data/modelPrompt/video/seedance2Multi-parameterMode.md",
+        "data/modelPrompt/video/universalFirstAndLastFrameMode.md",
+        "data/modelPrompt/video/universalMulti-parameterMode.md",
+        "data/modelPrompt/video/wan2.6Single-imageFirstFrameMode.md",
+        "data/skills/art_skills/2D_90s_japanese_anime/art_prompt/art_character.md",
+        "data/skills/art_skills/2D_90s_japanese_anime/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/2D_90s_japanese_anime/art_prompt/art_prop.md",
+        "data/skills/art_skills/2D_90s_japanese_anime/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/2D_90s_japanese_anime/art_prompt/art_scene.md",
+        "data/skills/art_skills/2D_90s_japanese_anime/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/2D_90s_japanese_anime/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/2D_chinese_guofeng/art_prompt/art_character.md",
+        "data/skills/art_skills/2D_chinese_guofeng/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/2D_chinese_guofeng/art_prompt/art_prop.md",
+        "data/skills/art_skills/2D_chinese_guofeng/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/2D_chinese_guofeng/art_prompt/art_scene.md",
+        "data/skills/art_skills/2D_chinese_guofeng/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/2D_chinese_guofeng/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/2D_flat_design/art_prompt/art_character.md",
+        "data/skills/art_skills/2D_flat_design/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/2D_flat_design/art_prompt/art_prop.md",
+        "data/skills/art_skills/2D_flat_design/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/2D_flat_design/art_prompt/art_scene.md",
+        "data/skills/art_skills/2D_flat_design/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/2D_flat_design/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/2D_mature_urban_romance/art_prompt/art_character.md",
+        "data/skills/art_skills/2D_mature_urban_romance/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/2D_mature_urban_romance/art_prompt/art_prop.md",
+        "data/skills/art_skills/2D_mature_urban_romance/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/2D_mature_urban_romance/art_prompt/art_scene.md",
+        "data/skills/art_skills/2D_mature_urban_romance/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/2D_mature_urban_romance/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/3D_anime_render/art_prompt/art_character.md",
+        "data/skills/art_skills/3D_anime_render/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/3D_anime_render/art_prompt/art_prop.md",
+        "data/skills/art_skills/3D_anime_render/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/3D_anime_render/art_prompt/art_scene.md",
+        "data/skills/art_skills/3D_anime_render/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/3D_anime_render/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/3D_chinese_traditional/art_prompt/art_character.md",
+        "data/skills/art_skills/3D_chinese_traditional/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/3D_chinese_traditional/art_prompt/art_prop.md",
+        "data/skills/art_skills/3D_chinese_traditional/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/3D_chinese_traditional/art_prompt/art_scene.md",
+        "data/skills/art_skills/3D_chinese_traditional/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/3D_chinese_traditional/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/3D_clay_stopmotion/art_prompt/art_character.md",
+        "data/skills/art_skills/3D_clay_stopmotion/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/3D_clay_stopmotion/art_prompt/art_prop.md",
+        "data/skills/art_skills/3D_clay_stopmotion/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/3D_clay_stopmotion/art_prompt/art_scene.md",
+        "data/skills/art_skills/3D_clay_stopmotion/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/3D_clay_stopmotion/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/3D_guofeng_cyber/art_prompt/art_character.md",
+        "data/skills/art_skills/3D_guofeng_cyber/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/3D_guofeng_cyber/art_prompt/art_prop.md",
+        "data/skills/art_skills/3D_guofeng_cyber/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/3D_guofeng_cyber/art_prompt/art_scene.md",
+        "data/skills/art_skills/3D_guofeng_cyber/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/3D_guofeng_cyber/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/realpeople_ancient_chinese/art_prompt/art_character.md",
+        "data/skills/art_skills/realpeople_ancient_chinese/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/realpeople_ancient_chinese/art_prompt/art_prop.md",
+        "data/skills/art_skills/realpeople_ancient_chinese/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/realpeople_ancient_chinese/art_prompt/art_scene.md",
+        "data/skills/art_skills/realpeople_ancient_chinese/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/realpeople_ancient_chinese/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/realpeople_modern_city/art_prompt/art_character.md",
+        "data/skills/art_skills/realpeople_modern_city/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/realpeople_modern_city/art_prompt/art_prop.md",
+        "data/skills/art_skills/realpeople_modern_city/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/realpeople_modern_city/art_prompt/art_scene.md",
+        "data/skills/art_skills/realpeople_modern_city/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/realpeople_modern_city/art_prompt/art_storyboard_video.md",
+        "data/skills/art_skills/realpeople_urban_modern/art_prompt/art_character.md",
+        "data/skills/art_skills/realpeople_urban_modern/art_prompt/art_character_derivative.md",
+        "data/skills/art_skills/realpeople_urban_modern/art_prompt/art_prop.md",
+        "data/skills/art_skills/realpeople_urban_modern/art_prompt/art_prop_derivative.md",
+        "data/skills/art_skills/realpeople_urban_modern/art_prompt/art_scene.md",
+        "data/skills/art_skills/realpeople_urban_modern/art_prompt/art_scene_derivative.md",
+        "data/skills/art_skills/realpeople_urban_modern/art_prompt/art_storyboard_video.md",
+        "data/skills/production_skills/storyboard_prompt_techniques.md",
+        "src/routes/artStyle/extractStylePrompt.ts",
+        "src/routes/assets/pollingPromptAssets.ts",
+        "src/routes/assetsGenerate/batchPolishAssetsPrompt.ts",
+        "src/routes/assetsGenerate/polishAssetsPrompt.ts",
+        "src/routes/production/workbench/batchGeneratePrompt.ts",
+        "src/routes/production/workbench/checkVideoPrompt.ts",
+        "src/routes/production/workbench/generateVideoPrompt.ts",
+        "src/routes/production/workbench/updateVideoPrompt.ts",
+        "src/routes/setting/modelMap/bindingPrompt.ts",
+        "src/routes/setting/modelMap/deletePrompt.ts",
+        "src/routes/setting/modelMap/getPromptList.ts",
+        "src/routes/setting/modelMap/savePrompt.ts",
+        "src/routes/setting/modelMap/updatePrompt.ts",
+        "src/routes/setting/promptManage/getPrompt.ts",
+        "src/routes/setting/promptManage/updatePrompt.ts",
+        "src/utils/getArtPrompt.ts",
+        "src/utils/getPrompts.ts"
+      ],
+      "read_files": [
+        {
+          "path": "README.md",
+          "sha256": "5c8e5e7b30c9258d86ae61ec0e9a25c7b73c26945b9e30e4936a5a8f0819f3ef",
+          "url": "https://github.com/HBAI-Ltd/Toonflow-app/blob/e03cf590eb0cab63534a4040db9acb4ec95b42a6/README.md",
+          "cached_at": ".cache/skill-research/HBAI-Ltd/Toonflow-app/README.md"
+        },
+        {
+          "path": "data/skills/script_agent_decision.md",
+          "sha256": "d3f5cc18e4a1d251d486692b99757990e066d32e40cedda94eaea6971c9a6f02",
+          "url": "https://github.com/HBAI-Ltd/Toonflow-app/blob/e03cf590eb0cab63534a4040db9acb4ec95b42a6/data/skills/script_agent_decision.md",
+          "cached_at": ".cache/skill-research/HBAI-Ltd/Toonflow-app/data/skills/script_agent_decision.md"
+        },
+        {
+          "path": "data/skills/script_execution_script.md",
+          "sha256": "54667677759fa66a3dcf53182bb7fb2203d141f4930652118ad14064fbd2a426",
+          "url": "https://github.com/HBAI-Ltd/Toonflow-app/blob/e03cf590eb0cab63534a4040db9acb4ec95b42a6/data/skills/script_execution_script.md",
+          "cached_at": ".cache/skill-research/HBAI-Ltd/Toonflow-app/data/skills/script_execution_script.md"
+        },
+        {
+          "path": "src/agents/scriptAgent/index.ts",
+          "sha256": "9cc93791f2ed73a4be38f5d544b0eac362d229c517bb3e4f339ae68abc574ae2",
+          "url": "https://github.com/HBAI-Ltd/Toonflow-app/blob/e03cf590eb0cab63534a4040db9acb4ec95b42a6/src/agents/scriptAgent/index.ts",
+          "cached_at": ".cache/skill-research/HBAI-Ltd/Toonflow-app/src/agents/scriptAgent/index.ts"
+        }
+      ]
+    },
+    {
+      "repository": "1-SKILL/jiaoben",
+      "url": "https://github.com/1-SKILL/jiaoben",
+      "stars_observed": 2,
+      "sha": "f4aae40fd9e19be6589e82bf186e2199d2580663",
+      "pushed_at": "2026-04-16T00:14:14Z",
+      "license": null,
+      "candidate_files": [
+        "SKILL.md"
+      ],
+      "read_files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "3f0e1c79b5fdc4232691fc96ba5d290a0be0ed99d67c6aad5c69a987925a29f5",
+          "url": "https://github.com/1-SKILL/jiaoben/blob/f4aae40fd9e19be6589e82bf186e2199d2580663/SKILL.md",
+          "cached_at": ".cache/skill-research/1-SKILL/jiaoben/SKILL.md"
+        },
+        {
+          "path": "latest-rules.json",
+          "sha256": "294b93342d138cc17672754731ceed6cde9eee4f1a4ea7045bcd07506cd9cc3e",
+          "url": "https://github.com/1-SKILL/jiaoben/blob/f4aae40fd9e19be6589e82bf186e2199d2580663/latest-rules.json",
+          "cached_at": ".cache/skill-research/1-SKILL/jiaoben/latest-rules.json"
+        }
+      ]
+    },
+    {
+      "repository": "samjia12/skill-video-script",
+      "url": "https://github.com/samjia12/skill-video-script",
+      "stars_observed": 0,
+      "sha": "ebbd7dd129349f411cae79793b2a805bf74a170a",
+      "pushed_at": "2026-08-23T16:09:39Z",
+      "license": "MIT",
+      "candidate_files": [
+        "SKILL.md"
+      ],
+      "read_files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "70d29a567d63f291ccc09d9fd5067737143fff359e966851c34da1193cf9da13",
+          "url": "https://github.com/samjia12/skill-video-script/blob/ebbd7dd129349f411cae79793b2a805bf74a170a/SKILL.md",
+          "cached_at": ".cache/skill-research/samjia12/skill-video-script/SKILL.md"
+        },
+        {
+          "path": "src/video_script/generator.py",
+          "sha256": "cf134bb4a824a64ea3d1d8cdafb942f4f01b7c97f7e60fb6fc65ce9bec9a7c7b",
+          "url": "https://github.com/samjia12/skill-video-script/blob/ebbd7dd129349f411cae79793b2a805bf74a170a/src/video_script/generator.py",
+          "cached_at": ".cache/skill-research/samjia12/skill-video-script/src/video_script/generator.py"
+        }
+      ]
+    },
+    {
+      "repository": "RRR666888000/an-video-director",
+      "url": "https://github.com/RRR666888000/an-video-director",
+      "stars_observed": 0,
+      "sha": "cb2fb1e7a530e80eb42f2ceaff4d93575c2f52d4",
+      "pushed_at": "2026-09-07T11:55:16Z",
+      "license": null,
+      "candidate_files": [
+        "SKILL.md",
+        "references/testing.md"
+      ],
+      "read_files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "63cfd066bb85420cd5aeb26044d1b6400d4dff87901209d939ca9f38770d106f",
+          "url": "https://github.com/RRR666888000/an-video-director/blob/cb2fb1e7a530e80eb42f2ceaff4d93575c2f52d4/SKILL.md",
+          "cached_at": ".cache/skill-research/RRR666888000/an-video-director/SKILL.md"
+        },
+        {
+          "path": "references/story-persona.md",
+          "sha256": "cac909eced62bae535c6c9099037ac9ed445c4f883ee8e79016625e912202bf1",
+          "url": "https://github.com/RRR666888000/an-video-director/blob/cb2fb1e7a530e80eb42f2ceaff4d93575c2f52d4/references/story-persona.md",
+          "cached_at": ".cache/skill-research/RRR666888000/an-video-director/references/story-persona.md"
+        },
+        {
+          "path": "references/testing.md",
+          "sha256": "43382ff8ab19b4531e03c715471fa4d3c71f1e6240451a966ec00507bc351a14",
+          "url": "https://github.com/RRR666888000/an-video-director/blob/cb2fb1e7a530e80eb42f2ceaff4d93575c2f52d4/references/testing.md",
+          "cached_at": ".cache/skill-research/RRR666888000/an-video-director/references/testing.md"
+        }
+      ]
+    },
+    {
+      "repository": "openai/skills",
+      "url": "https://github.com/openai/skills",
+      "stars_observed": 27474,
+      "sha": "49f948faa9258a0c61caceaf225e179651397431",
+      "pushed_at": "2026-09-08T20:35:26Z",
+      "license": null,
+      "candidate_files": [
+        "skills/.curated/aspnet-core/SKILL.md",
+        "skills/.curated/chatgpt-apps/SKILL.md",
+        "skills/.curated/cli-creator/SKILL.md",
+        "skills/.curated/cloudflare-deploy/SKILL.md",
+        "skills/.curated/cloudflare-deploy/references/do-storage/testing.md",
+        "skills/.curated/define-goal/SKILL.md",
+        "skills/.curated/figma-code-connect-components/SKILL.md",
+        "skills/.curated/figma-create-design-system-rules/SKILL.md",
+        "skills/.curated/figma-create-new-file/SKILL.md",
+        "skills/.curated/figma-generate-design/SKILL.md",
+        "skills/.curated/figma-generate-library/SKILL.md",
+        "skills/.curated/figma-implement-design/SKILL.md",
+        "skills/.curated/figma-use/SKILL.md",
+        "skills/.curated/figma/SKILL.md",
+        "skills/.curated/figma/references/figma-tools-and-prompts.md",
+        "skills/.curated/gh-address-comments/SKILL.md",
+        "skills/.curated/gh-fix-ci/SKILL.md",
+        "skills/.curated/hatch-pet/SKILL.md",
+        "skills/.curated/jupyter-notebook/SKILL.md",
+        "skills/.curated/linear/SKILL.md",
+        "skills/.curated/migrate-to-codex/SKILL.md",
+        "skills/.curated/netlify-deploy/SKILL.md",
+        "skills/.curated/notion-knowledge-capture/SKILL.md",
+        "skills/.curated/notion-meeting-intelligence/SKILL.md",
+        "skills/.curated/notion-research-documentation/SKILL.md",
+        "skills/.curated/notion-spec-to-implementation/SKILL.md",
+        "skills/.curated/openai-docs/SKILL.md",
+        "skills/.curated/openai-docs/references/prompting-guide.md",
+        "skills/.curated/pdf/SKILL.md",
+        "skills/.curated/playwright-interactive/SKILL.md",
+        "skills/.curated/playwright/SKILL.md",
+        "skills/.curated/render-deploy/SKILL.md",
+        "skills/.curated/screenshot/SKILL.md",
+        "skills/.curated/security-best-practices/SKILL.md",
+        "skills/.curated/security-ownership-map/SKILL.md",
+        "skills/.curated/security-threat-model/SKILL.md",
+        "skills/.curated/security-threat-model/references/prompt-template.md",
+        "skills/.curated/sentry/SKILL.md",
+        "skills/.curated/speech/SKILL.md",
+        "skills/.curated/speech/references/prompting.md",
+        "skills/.curated/speech/references/sample-prompts.md",
+        "skills/.curated/transcribe/SKILL.md",
+        "skills/.curated/vercel-deploy/SKILL.md",
+        "skills/.curated/winui-app/SKILL.md",
+        "skills/.curated/yeet/SKILL.md",
+        "skills/.system/imagegen/SKILL.md",
+        "skills/.system/imagegen/references/prompting.md",
+        "skills/.system/imagegen/references/sample-prompts.md",
+        "skills/.system/openai-docs/SKILL.md",
+        "skills/.system/openai-docs/references/prompting-guide.md",
+        "skills/.system/plugin-creator/SKILL.md",
+        "skills/.system/skill-creator/SKILL.md",
+        "skills/.system/skill-installer/SKILL.md"
+      ],
+      "read_files": [
+        {
+          "path": "skills/.system/skill-creator/SKILL.md",
+          "sha256": "a17383bfb1448637ac1f757ad891ddb9676fa30b0eff620200f0e1cbc0cc0d50",
+          "url": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.system/skill-creator/SKILL.md",
+          "cached_at": ".cache/skill-research/openai/skills/skills/.system/skill-creator/SKILL.md"
+        }
+      ]
+    }
+  ],
+  "note": "Stars are popularity, not quality or validated platform uplift. Source reviewed only; no installation."
+}

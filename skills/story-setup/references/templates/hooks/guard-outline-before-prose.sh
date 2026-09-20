@@ -101,8 +101,14 @@ case "$TARGET" in
   *)  ABS="$ROOT/$TARGET" ;;
 esac
 
+# The explicit fuben profile replaces novel outline/paywall contracts.
 BASE="$(basename "$ABS")"
 PARENT="$(basename "$(dirname "$ABS")")"
+
+if [[ "$BASE" == 正文.md || "$BASE" == 正文_*.md || ( "$PARENT" == 正文 && "$BASE" == 第*章*.md ) ]] && node -e "" >/dev/null 2>&1 && [ -f "$CLI" ]; then
+  PROFILE="$(node "$CLI" profile "$ABS")" || { printf '%s\n' 'ERROR: 无法识别写作 profile；先修复配置。' >&2; exit 2; }
+  [ "$PROFILE" = "fuben" ] && exit 0
+fi
 
 case "$BASE" in
   正文.md)

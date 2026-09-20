@@ -1,6 +1,14 @@
 # Agent 参考资料 Profile 契约
 
-> 本文件是 story-architect 的唯一资料清单。story-architect 自身只描述任务能力，不复制文件清单。每次任务选择 `long` 或 `short` 后，只能加载 `Common + 当前 profile`；表外文件即使存在也不读取。其他 agent 按各自模板的参考表读取，只用本文件的 long / short 选择规则和质量覆盖表。
+> 本文件是 story-architect 的唯一资料清单。story-architect 自身只描述任务能力，不复制文件清单。先识别 `fuben` 并提前分流；普通小说选择 `long` 或 `short` 后，只能加载 `Common + 当前 profile`；表外文件即使存在也不读取。其他 agent 按各自模板的参考表读取，只用本文件的 long / short 选择规则和质量覆盖表。
+
+## Fuben profile（先于 long / short 分流）
+
+明确为人生副本/剧本人生口播时返回 `Reference Profile: fuben`。仅使用调用方给的轻量 profile、本次 brief、当前正文和相关来源；不加载下面 Common、long、short 的小说量表，不因 `正文.md` 或“短篇”二字回落到 short。缺必要材料向调用方说明。审查按实际问题给位置和依据，缺证据标 PROVISIONAL；不要求额外表格。
+
+调用方从人生副本主profile及《人生副本_Agent方法》提取本次任务片段传入：策划用切口竞争与兑现路径，审读用追看断点与分层返工。副本参考不只是一份“绕过小说约束”的豁免；角色仍须执行具体创作职责。审读不要接收作者自评分当证据，也不自行跨宿主搜索方法文件。
+
+以下清单与 long / short 选择只适用于普通小说。
 
 ## 选择规则
 

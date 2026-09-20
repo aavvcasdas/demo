@@ -1,0 +1,116 @@
+test_atomic_roundtrip_decreasing_likes_and_idempotency (test_fuben.DataTests.test_atomic_roundtrip_decreasing_likes_and_idempotency) ... ok
+test_corrupt_active_data_fails_closed (test_fuben.DataTests.test_corrupt_active_data_fails_closed) ... ok
+test_legacy_migration_preserves_raw_and_never_guesses_shifted_rows (test_fuben.DataTests.test_legacy_migration_preserves_raw_and_never_guesses_shifted_rows) ... ok
+test_mean_watch_fraction_is_not_completion (test_fuben.DataTests.test_mean_watch_fraction_is_not_completion) ... ok
+test_old_unsafe_record_command_rejected_without_data_mutation (test_fuben.DataTests.test_old_unsafe_record_command_rejected_without_data_mutation) ... ok
+test_strict_schema_and_missing_values (test_fuben.DataTests.test_strict_schema_and_missing_values) ... ok
+test_asr_uncertainty_does_not_mean_fact_verified (test_fuben.EngineTests.test_asr_uncertainty_does_not_mean_fact_verified) ... ok
+test_bad_profile_marker_is_error (test_fuben.EngineTests.test_bad_profile_marker_is_error) ... ok
+test_character_error_not_forced_into_authorial_truth (test_fuben.EngineTests.test_character_error_not_forced_into_authorial_truth) ... ok
+test_checker_timeout_is_error (test_fuben.EngineTests.test_checker_timeout_is_error) ... ok
+test_clis_share_fact_severity (test_fuben.EngineTests.test_clis_share_fact_severity) ... ok
+test_density_advisory_and_shotmap_argument_parsing (test_fuben.EngineTests.test_density_advisory_and_shotmap_argument_parsing) ... ok
+test_division_zero_is_review_not_crash (test_fuben.EngineTests.test_division_zero_is_review_not_crash) ... ok
+test_empty_heading_binary_and_missing_inputs (test_fuben.EngineTests.test_empty_heading_binary_and_missing_inputs) ... ok
+test_explicit_arithmetic_green_red (test_fuben.EngineTests.test_explicit_arithmetic_green_red) ... ok
+test_explicit_daily_date_count_still_blocks (test_fuben.EngineTests.test_explicit_daily_date_count_still_blocks) ... ok
+test_flashback_and_different_objects_not_hard_errors (test_fuben.EngineTests.test_flashback_and_different_objects_not_hard_errors) ... ok
+test_missing_node_checker_crash_bad_json_and_exit_mismatch (test_fuben.EngineTests.test_missing_node_checker_crash_bad_json_and_exit_mismatch) ... ok
+test_no_novel_or_sensory_quotas (test_fuben.EngineTests.test_no_novel_or_sensory_quotas) ... ok
+test_quoted_counts_including_adjacent_quotes (test_fuben.EngineTests.test_quoted_counts_including_adjacent_quotes) ... ok
+test_review_is_not_self_approval_or_vacuous_callbacks (test_fuben.EngineTests.test_review_is_not_self_approval_or_vacuous_callbacks) ... ok
+test_style_whitelist_never_exempts_math (test_fuben.EngineTests.test_style_whitelist_never_exempts_math) ... ok
+test_new_sources_are_discovered_and_missing_inputs_are_not_skipped (test_fuben.InventoryTests.test_new_sources_are_discovered_and_missing_inputs_are_not_skipped) ... ok
+test_ambiguous_colloquial_requires_opt_in (test_fuben.NumberTests.test_ambiguous_colloquial_requires_opt_in) ... ok
+test_formal_numbers (test_fuben.NumberTests.test_formal_numbers) ... ok
+test_malformed_number_never_guesses_first_digit (test_fuben.NumberTests.test_malformed_number_never_guesses_first_digit) ... ok
+test_changed_body_and_refreshing_manifest_cannot_launder_old_review (test_fuben.ReleaseTests.test_changed_body_and_refreshing_manifest_cannot_launder_old_review) ... ok
+test_explicit_duration_limit_and_reviewer_fix (test_fuben.ReleaseTests.test_explicit_duration_limit_and_reviewer_fix) ... ok
+test_media_tool_failure_is_not_estimated_pass (test_fuben.ReleaseTests.test_media_tool_failure_is_not_estimated_pass) ... ok
+test_missing_evidence_and_template_are_provisional (test_fuben.ReleaseTests.test_missing_evidence_and_template_are_provisional) ... ok
+test_refreshed_media_hash_still_needs_media_review (test_fuben.ReleaseTests.test_refreshed_media_hash_still_needs_media_review) ... ok
+test_setting_media_and_review_hash_changes_block (test_fuben.ReleaseTests.test_setting_media_and_review_hash_changes_block) ... ok
+test_valid_fixture_is_not_publication (test_fuben.ReleaseTests.test_valid_fixture_is_not_publication) ... ok
+test_all_current_fuben_works_are_routed (test_fuben.RouteTests.test_all_current_fuben_works_are_routed) ... ok
+test_deployed_prompt_templates_do_not_reintroduce_novel_quotas (test_fuben.RouteTests.test_deployed_prompt_templates_do_not_reintroduce_novel_quotas) ... ok
+test_deployment_inventory_includes_fuben_review (test_fuben.RouteTests.test_deployment_inventory_includes_fuben_review) ... ok
+test_distributed_sources_are_identical (test_fuben.RouteTests.test_distributed_sources_are_identical) ... ok
+test_generic_ai_styles_still_block_only_novel (test_fuben.RouteTests.test_generic_ai_styles_still_block_only_novel) ... ok
+test_generic_novel_contract_remains_blocking_fuben_is_na (test_fuben.RouteTests.test_generic_novel_contract_remains_blocking_fuben_is_na) ... ok
+test_hook_postwrite_does_not_force_fuben_style_cleanup (test_fuben.RouteTests.test_hook_postwrite_does_not_force_fuben_style_cleanup) ... ok
+test_js_python_and_bash_outline_routes (test_fuben.RouteTests.test_js_python_and_bash_outline_routes) ... ok
+test_nonprose_and_invalid_profile_repair_remain_editable (test_fuben.RouteTests.test_nonprose_and_invalid_profile_repair_remain_editable) ... ok
+test_standalone_tool_deployment_works_outside_source (test_fuben.RouteTests.test_standalone_tool_deployment_works_outside_source) ... ok
+test_global_word_hit_does_not_prove_local_scene (test_fuben.SceneTests.test_global_word_hit_does_not_prove_local_scene) ... ok
+test_missing_optional_table_not_claimed_pass (test_fuben.SceneTests.test_missing_optional_table_not_claimed_pass) ... ok
+test_changed_prompt_and_bad_binding_are_errors (test_fuben_trial.TrialTests.test_changed_prompt_and_bad_binding_are_errors) ... ok
+test_distinct_sessions_nullable_usage_and_valid_schema (test_fuben_trial.TrialTests.test_distinct_sessions_nullable_usage_and_valid_schema) ... ok
+test_empty_text_metadata_leak_and_symlinks_do_not_export (test_fuben_trial.TrialTests.test_empty_text_metadata_leak_and_symlinks_do_not_export) ... ok
+test_export_hides_labels_binds_originals_and_does_not_judge (test_fuben_trial.TrialTests.test_export_hides_labels_binds_originals_and_does_not_judge) ... ok
+test_failed_or_missing_outputs_cannot_be_silently_dropped (test_fuben_trial.TrialTests.test_failed_or_missing_outputs_cannot_be_silently_dropped) ... ok
+test_real_pack_template_is_frozen_and_not_a_completed_experiment (test_fuben_trial.TrialTests.test_real_pack_template_is_frozen_and_not_a_completed_experiment) ... ok
+
+----------------------------------------------------------------------
+Ran 51 tests in 3.566s
+
+OK
+{
+  "software_tests": 51,
+  "software_pass": true,
+  "test_failures": 0,
+  "test_errors": 0,
+  "collections": {
+    "works": {
+      "coverage": {
+        "work": 35,
+        "variant": 3
+      },
+      "statuses": {
+        "PASS_WITH_REVIEW": 33,
+        "PASS": 1,
+        "FAIL": 4
+      },
+      "tool_errors": 0,
+      "creative_style_blocks": [],
+      "content_blocked": [
+        "作品/58b_反骨嘉豪_代价版/正文.md",
+        "作品/67_分手时说「我们不合适」的男生/正文.md",
+        "作品/70_三次把同一个人推开的女生/正文.md",
+        "作品/73_合影时永远在按快门的人/正文.md"
+      ],
+      "unassessed": [
+        "作品/76_辞职回家给爸妈打工的儿子/切条D0/制作单.md（制作单内嵌脚本；未当作独立正文或音频检测）",
+        "作品/78_Codex上瘾的人/切条D0/制作单.md（制作单内嵌脚本；未当作独立正文或音频检测）"
+      ]
+    },
+    "corpus": {
+      "coverage": {
+        "anthology": 1,
+        "individual": 44
+      },
+      "statuses": {
+        "PASS_WITH_REVIEW": 20,
+        "PASS": 25
+      },
+      "tool_errors": 0,
+      "creative_style_blocks": [],
+      "content_blocked": [],
+      "unassessed": [
+        "拆文库/掌控/原文/掌控.txt",
+        "拆文库/乱葬岗里的姑娘/原文/乱葬岗里的姑娘.txt",
+        "拆文库/什么叫我洗白后，她们全部黑化了/原文/原文.txt",
+        "拆文库/偏偏喜欢你/原文/偏偏喜欢你.txt",
+        "拆文库/全国没几个正常人？朕要杀疯了/原文/原文.txt",
+        "拆文库/希腊神话：从成为微风之神开始 - 霜火/原文/原文.txt",
+        "拆文库/泠泠千古调/原文/泠泠千古调.txt",
+        "拆文库/豪门外的小白花/原文/豪门外的小白花.txt",
+        "拆文库/隐娘/原文/隐娘.txt"
+      ]
+    }
+  },
+  "protected_input_changes": [],
+  "software_and_coverage_pass": true,
+  "not_a_release_verdict": true
+}
+SOFTWARE-AND-COVERAGE: PASS
+各稿的内容 BLOCK 和待核实项另列；本结果不是稿件通过或发布批准。

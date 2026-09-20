@@ -1,66 +1,74 @@
-# 剧本人生短篇拆书 — 网文写作工具集（通用 Agent / Web AI）
+# 剧本人生拆文与写作工具集
 
-本项目按通用文件方式接入 oh-story skills。若当前平台没有 Claude Code / OpenCode / Codex / Antigravity / ZCode / OpenClaw 的 hooks 或 custom agents，仍可直接让 Agent 读取 `skills/*/SKILL.md` 和 `skills/*/references/` 执行；只是运行时硬拦截和多 agent 自动协作不会自动生效。
+优先识别任务，再加载对应 Skill。没有 custom agents/hooks 的宿主按 `solo/direct` 执行并说明能力边界；仓库里有模板不代表它们已经部署或运行。
 
-## Skill 路由表
+**先识别用户要做的动作。** “去 GitHub 借鉴/改造 Agent”是方法与实现任务；用户提到爽感、开头或旧稿是在说明验收目标，不等于授权另写样稿。只有明确进入写稿、改稿或审稿任务，才启动创作链。
 
-优先用自然语言点名 skill；如果平台支持自定义命令，也可以把下表映射成命令。
+## 路由
 
-| 意图 | Skill | 说明 |
-|------|-------|------|
-| 写长篇 / 开书 / 续写 | story-long-write | 长篇网文写作（逐章推进） |
-| 写短篇 | story-short-write | 短篇网文写作（情绪驱动）。**本仓库「人生副本/剧本人生」口播仿写项目须让该 skill 加载专项包 `references/genre-styles/人生副本实录.md`**（第二人称沉沦/清算/实录，勿回退到世情打脸/糖水），详见该包识别器 |
-| 长篇拆文 | story-long-analyze | 长篇小说深度拆解 |
-| 短篇拆文 | story-short-analyze | 短篇小说拆文分析 |
-| 长篇扫榜 | story-long-scan | 长篇小说榜单与市场趋势 |
-| 短篇扫榜 | story-short-scan | 短篇小说榜单与情绪风口 |
-| 去 AI 味 | story-deslop | 去除 AI 写作痕迹 |
-| 封面 | story-cover | 生成封面图 |
-| 审查 | story-review | 多视角审查；无 custom agents 时降级为单线程审查 |
-| 导入 | story-import | 逆向导入已有小说到项目结构 |
-| 网文工具箱 | story | 模糊意图自动分发 |
-| 准备写书 / 部署 | story-setup | 通用项目结构与 skill 使用入口 |
-| 浏览器登录态 / 抓取 | browser-cdp | 浏览器 CDP 工具；需平台允许本地脚本/浏览器控制 |
+| 意图 | 入口 |
+|---|---|
+| 人生副本 / 剧本人生 / 第二人称体验类口播 | `story-short-write` 的 **人生副本早期分流** → `references/genre-styles/人生副本实录.md` |
+| 审人生副本（全文、短版、切条、成片） | `fuben-review`；不得落回网文付费点/节拍配额 |
+| 写普通短篇网文 / 盐言故事 | `story-short-write` 的普通小说流程 |
+| 写长篇 / 开书 / 续写 | `story-long-write` |
+| 长篇 / 短篇拆文 | `story-long-analyze` / `story-short-analyze` |
+| 长篇 / 短篇扫榜 | `story-long-scan` / `story-short-scan` |
+| 去 AI 味 | 小说用 `story-deslop`；人生副本按具体问题定点修订，不清零句式计数 |
+| 普通小说审查 | `story-review` |
+| GitHub 借鉴 / 研究或改造 Skill、Agent | 读实际提示词与调用链 → 选择创作方法 → 接入现有入口/角色；不自动写作品，不改做机械校勘 |
+| 封面 / 导入 / 部署 | `story-cover` / `story-import` / `story-setup` |
+| 浏览器 / 模糊意图 | `browser-cdp` / `story` |
 
-## 文件结构
+## 人生副本：先让人想看，再检查交付底线
 
-- `skills/` — 项目本地 skills；Agent 应先读对应 `SKILL.md`，再按需读取 `references/`
-- `拆文库/` — 拆文分析结果存放目录
-- `{书名}/正文/` — 长篇小说正文章节
-- `{书名}/正文.md` — 短篇小说正文
-- `{书名}/设定/` — 角色设定、世界设定
-- `{书名}/大纲/` — 卷纲、细纲
-- `{书名}/追踪/` — `_tracking-state.json` 唯一结构化权威、固定 7 栏 `上下文.md` 续写状态卡、逐章紧凑记录、核心角色独立派生快照、伏笔当前视图、作者与读者双时间线；全部通过追踪工具生成
-- `{书名}/对标/` — 对标作品分析
+现行创作规则仅在 [轻量 profile](skills/story-short-write/references/genre-styles/人生副本实录.md)。**本账号明确要爽感、抓人的开头、牵引下文的伏笔钩子和侧面描写。审稿先找追看与兑现的问题，并交具体改写；不得用计数修补、测试通过或资料包代替创作成果。** 少配额不是降低戏剧性，机检 PASS 不能证明好看。本次用户要求优先；事实与授权仍不可伪造。
 
-## 通用使用约定
+- 写作与创作审稿执行 [副本 Agent 方法](skills/story-short-write/references/genre-styles/人生副本_Agent方法.md)：先比较可兑现的切口，主笔展开关键戏，审读定位断点，再按结构/场面/表达分层返工。
+- 理解 brief，读相近原文，起稿，再按具体问题复核。不强制写设定卡、小节大纲、爽点/场面/呼应表；原文也不因缺制作产物被判失败。
+- 字数、行数、密度、节点数和句式命中只能描述，不能证明好看或是 AI 写的。不执行固定八拍、情绪百分比、感官词频、对白配额或通用花钱剧情。
+- 倒叙、心理、旁白、长短句、明确的角色误信都是表达选择，不能被模糊正则直接定罪。精确算式/引文字数错误仍需查。
+- 不凭文件存在或关键词命中声称“已精读”“三方通过”。独立审稿不可用就标自检。未取得/听取音视频就标未验证。
+- 修规则必须有反例/负例测试；校准时不改 `拆文库/*/原文/`、`uploads/`、`分篇/` 来凑通过。修改作品另按用户授权与版本约定执行，不能把测试脚本当作自动改稿器。
 
-- 写正文前先有大纲：长篇需要 `大纲/细纲_第N章*.md`，短篇需要 `小节大纲.md`。
-- 无 hooks 的平台不会自动拦截越权写正文，Agent 必须在执行写作 skill 时自行检查大纲、上下文和追踪文件。
-- 无 custom agents 的平台按 solo/direct 执行；遇到 skill 要求调用 story-architect、narrative-writer 等 agent 时，改由当前 Agent 直接完成，并在结果里说明降级。
-- **去AI味自锁**（无 hook 平台此条是唯一防线）：每章正文落盘后，同一轮内立即按写作 skill 的「最毒句式速查 + 禁用词扫描」自检并清零（能运行 node 时跑 `check-ai-patterns.js --check --fail-on=blocking`）；写下一章前先复查上一章无欠账。唯一豁免＝用户显式说"本章不去味"，豁免章在标题行下加 `<!-- 去味:跳过 -->`。
-- Compact / 新会话后优先读取 `{书名}/追踪/上下文.md` 恢复当前写作状态。
+### 工具协议（统一实现：`fuben_engine.py`；策略登记：`fuben_policy.json`）
 
-## Compact 后恢复上下文
+| 级别 | 含义 | 行为 |
+|---|---|---|
+| BLOCK | 明确输入、算术或显式契约错误 | 定位证据并修复；不能用润色掩盖 |
+| REVIEW | 依赖语义的可疑项 | 核实上下文，可有理由保留；不自动重写 |
+| NOTE | 描述或未验证 | 不作为创作否决 |
+| ERROR | 工具、输入格式或协议失败 | 非通过，先修工具/输入 |
 
-写作中的关键上下文：
-1. 当前写作项目名称和进度
-2. 最近讨论的角色设定变更
-3. 未完成的伏笔列表
-4. 当前章节的情绪/节奏目标
-
-如果存在 `{书名}/追踪/上下文.md`，compact 后首先读取该文件恢复上下文。
-
-## 发布前置（硬规则，二轮会审定，2026-09-19）
-
-任何作品在发布（进 `作品/_发布序列/` 或对外交付平台）之前，必须满足：
-
-```text
-python3 scripts/test_gates.py --works   # GATE-TESTS: PASS（红样 T1–T5 + 全库回归）
-python3 scripts/fuben_run.py 作品/NN_xxx/ # 七闸全绿
-python3 scripts/fuben_setting_years.py 作品/NN_xxx/ # SETTING-PROSE: PASS
-python3 scripts/fuben_density.py 作品/NN_xxx/正文.md # 对账口径密度；OVER 需在审核报告给结论
+```bash
+python3 scripts/fuben_run.py 作品/NN_主题/ --json
+python3 scripts/fuben_run.py 作品/NN_主题/正文_3分钟版.md --profile short
+python3 scripts/test_gates.py --works --corpus
+python3 scripts/fuben_health.py --corpus
 ```
-另两项人工前置：**TTS 通读听感 QA**（数字硌耳朵当场删，A3 一票制）；**新稿精读行+场面表存在**（缺 = 流程未走完，不发）。
 
-三道全绿才允许 merge/发布；任一 FAIL 先修稿或修闸（补闸不许绕闸），不许带着已知 FAIL 交差。审核报告 VERDICT 为 BLOCK 的稿件同拦。
+正文检查退出码：0 无机械阻断（仍可能需复核），1 BLOCK，2 ERROR。全库报告允许暴露老稿真实问题，不得靠豁免整个目录变绿。软件测试通过不等于每篇稿件通过。
+
+### 发布是另一阶段
+
+只在用户要求制作/发布时读取成片清单，审核实际音频、字幕、画面和素材权限。`字数÷语速` 是估算，ffprobe 是元数据，不等于听感。账号主明确授权之前不代发。
+
+```bash
+python3 scripts/fuben_release.py template 作品/NN_主题/ --body 正文.md
+python3 scripts/fuben_release.py check 作品/NN_主题/
+```
+
+模板初始全为 `UNVERIFIED`，实际完成后才记录具名审核依据与版本哈希；不能替审核者签字。正文、设定或成片变化使旧证据失效。`PROVISIONAL`（退出3）不能交成“可发布”；工具退出0也只代表 `READY_FOR_OWNER_CONFIRMATION`，不代表已经发布或平台通过。
+
+数据用 `scripts/fuben_data.py` 的 schema v3。旧两张 CSV 只读封存，错列/缺来源的历史记录隔离，禁止猜字段归位。均播/时长是平均观看占比，不是完播率；点赞可以撤回或修正，不强制单调增长。
+
+## 普通小说流程不变
+
+- 长篇先有对应细纲；普通短篇先有 `小节大纲.md`，按其 Skill 执行小说契约。
+- 普通小说的去味检查保留原行为；`check-ai-patterns.js --profile=novel` 可显式指定。人生副本由本地 `.fuben.json`（schema_version=1、profile=fuben）、设定的平台字段或副本开场识别，句式只供参考。
+- 无 hooks 时自行检查前置；custom agent 不可用时说明 solo，不把多个审查角度算作多个独立 Agent。
+- Compact 后：小说先读 `{书名}/追踪/上下文.md`；副本恢复本次 brief、当前正文版本和真实未完事项，不重载全部历史规则。
+
+## 目录与历史
+
+`skills/` 是入口，`拆文库/` 是素材/分析，`作品/` 是创作与交付，`scripts/` 是确定性工具。根目录旧面试、复盘、R编号与旧版提示词属于历史记录，不叠加成现行创作约束。现行入口、政策和测试优先。

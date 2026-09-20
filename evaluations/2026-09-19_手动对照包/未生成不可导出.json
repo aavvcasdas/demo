@@ -1,0 +1,107 @@
+{
+  "status": "INCOMPLETE",
+  "expected_outputs": 9,
+  "complete_outputs": 0,
+  "issues": [
+    "尚未记录实际使用的模型选项；不要猜写当前助手的模型身份",
+    "尚未声明：fresh_session_per_output_attested（声明不等于认证）",
+    "尚未声明：same_model_settings_attested（声明不等于认证）",
+    "尚未声明：raw_outputs_unedited_attested（声明不等于认证）",
+    "H01_A: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H01_B: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H01_C: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H02_A: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H02_B: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H02_C: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H03_A: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H03_B: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT",
+    "H03_C: NOT_RUN, SESSION_NOT_RECORDED, MISSING_TEXT"
+  ],
+  "outputs": [
+    {
+      "key": "H01_A",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H01_B",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H01_C",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H02_A",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H02_B",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H02_C",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H03_A",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H03_B",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    },
+    {
+      "key": "H03_C",
+      "states": [
+        "NOT_RUN",
+        "SESSION_NOT_RECORDED",
+        "MISSING_TEXT"
+      ],
+      "sha256": null
+    }
+  ],
+  "quality_assessed": false,
+  "independence_verified": false,
+  "budget_verified": false,
+  "note": "只核对材料/声明/标签，不认证模型、隔离、预算或阅读发生；截断与失败不得静默删去。"
+}

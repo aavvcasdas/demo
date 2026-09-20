@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "model_label": null,
+  "settings": {
+    "temperature": null,
+    "max_output_tokens": null
+  },
+  "fresh_session_per_output_attested": false,
+  "same_model_settings_attested": false,
+  "raw_outputs_unedited_attested": false,
+  "note": "只填实际情况；未知token/参数保留null。九个题目×组别各用一个全新会话。声明不等于工具认证。",
+  "outputs": {
+    "H01_A": {
+      "input_packet_sha256": "3965aced42f632e7d097bb786940970b6671f433eadb105017ae398ebedc8c6c",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H01_B": {
+      "input_packet_sha256": "fa29eeb04a20b117f0e26ec28468cacc3b5744d4e061fccd3b5be57b5da419ce",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H01_C": {
+      "input_packet_sha256": "03ae076f3b293022b35118ead1c47aa31eca367151e3babb2461b53a81e2048e",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H02_A": {
+      "input_packet_sha256": "011fdcbc618cc7737528f1547c88e863b866a2f49a59b17a81b235710b87505f",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H02_B": {
+      "input_packet_sha256": "6f348c1a2d3282af028dd90017fc69e0fc7b42ae9fe3c6424eb589c236b61349",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H02_C": {
+      "input_packet_sha256": "74d8d9f57f5d581e4ff9a2e49751cfe32c28dcd3aa44777e0569375e5bcfd2ad",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H03_A": {
+      "input_packet_sha256": "f084e9e539a18e23f1fd1564e6eead195e11ebc92c49c69ae8bd93089f0d2b34",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H03_B": {
+      "input_packet_sha256": "74f8f3da75f715b60dda66dedf5c73f52b4db61969422aee8cb849c2a00872e3",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    },
+    "H03_C": {
+      "input_packet_sha256": "6ed52603e38bd4dcdef8188db7739875e3726c91684bb1e185aaec69637810d2",
+      "session_label": null,
+      "stop_reason": "NOT_RUN",
+      "actual_input_tokens": null,
+      "actual_output_tokens": null
+    }
+  }
+}

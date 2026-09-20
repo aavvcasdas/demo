@@ -4,8 +4,9 @@
 const fs = require('fs');
 const { loadStyleWhitelist, maskStyleText } = require('./style-whitelist.js');
 const path = require('path');
+const { isFubenProject } = require('./story-profile.js');
 
-const USAGE = `Usage: node check-ai-patterns.js [--check] [--json] [--fail-on=blocking|all] <file...>
+const USAGE = `Usage: node check-ai-patterns.js [--profile=auto|novel|fuben|reference] [--check] [--json] [--fail-on=blocking|all] <file...>
 
 Detect high-risk AI-flavor prose patterns that need human rewrite:
   - negative setup followed by positive flip in the same sentence
@@ -31,6 +32,7 @@ Detect high-risk AI-flavor prose patterns that need human rewrite:
   - 章尾状态总结体 (文末窗口 这一夜注定/这一切都结束了/新的人生才刚刚开始/命运的齿轮)
   - 引号强调滥用 (叙述里 1-4 字短词加引号强调，密度型)
 
+Fuben/reference profiles report all stylistic patterns as advisory (exit 0); tool failures remain exit 2.
 Book-local .deslop-whitelist literal spans are excluded from style scanning (no regex or ancestor inheritance).
 Each finding carries severity: blocking by default for generation/deslop cleanup (not-is-comparison / em-dash / voice-contrast / negation-parade / reverse-not-is / trailer-ending / trailer-summary). This is a local style/readability gate, not an AIGC detector score; functional human text can be marked for review instead of hard-edited for a detector.
 或 advisory (period-stutter / long-paragraph / micro-action-tic / stock-reaction-tic / action-list-tic / abstract-summary-tic / cliche-density-tic / metaphor-density-tic / reasoning-chain-tic / system-notice-formality-tic / overcompressed-prose-tic / low-connective-density-tic / quote-emphasis-tic / formulaic-parallelism，是提示，justified 的长推理/氛围段可保留)。
@@ -270,6 +272,7 @@ const options = {
   json: false,
   files: [],
   failOn: 'all',
+  profile: 'auto',
 };
 
 for (let i = 2; i < process.argv.length; i += 1) {
@@ -278,6 +281,9 @@ for (let i = 2; i < process.argv.length; i += 1) {
     // Accepted for symmetry with normalize-punctuation.js; detection is always check-only.
   } else if (arg === '--json') {
     options.json = true;
+  } else if (arg.startsWith('--profile=')) {
+    options.profile = arg.slice('--profile='.length);
+    if (!['auto', 'novel', 'fuben', 'reference'].includes(options.profile)) die('Unknown profile');
   } else if (arg.startsWith('--fail-on=')) {
     const v = arg.slice('--fail-on='.length);
     if (v !== 'blocking' && v !== 'all') die(`--fail-on must be 'blocking' or 'all'`);
@@ -313,7 +319,15 @@ for (const file of options.files) {
   let whitelist;
   try { whitelist = loadStyleWhitelist(fullPath); }
   catch (error) { die(`${file}: unable to read .deslop-whitelist (${error.message})`); }
-  const findings = scanDocument(maskStyleText(input, whitelist)).map((finding) => ({ file, ...finding }));
+  let profile;
+  try { profile = options.profile === 'auto' ? (isFubenProject(fullPath) ? 'fuben' : 'novel') : options.profile; }
+  catch (error) { die(`${file}: invalid project profile (${error.message})`); }
+  const lightweight = profile === 'fuben' || profile === 'reference';
+  const findings = scanDocument(maskStyleText(input, whitelist)).map((finding) => ({
+    file, ...finding, profile,
+    ...(lightweight ? { originalSeverity: finding.severity, severity: 'advisory',
+      message: `句式候选 [${finding.type}]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。` } : {}),
+  }));
   allFindings.push(...findings);
 }
 
@@ -328,7 +342,7 @@ if (options.json) {
 if (failed) process.exit(2);
 // --fail-on=blocking 只在出现 blocking finding 时退出 1（advisory 仅报告）；默认 all 沿用「有任何 finding 即 1」。
 const hasBlocking = allFindings.some((f) => f.severity === 'blocking');
-if (options.failOn === 'blocking' ? hasBlocking : allFindings.length > 0) process.exit(1);
+if (hasBlocking || (options.failOn === 'all' && allFindings.some(f => !['fuben', 'reference'].includes(f.profile)))) process.exit(1);
 
 function escapeRegExp(text) {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

@@ -1,0 +1,90 @@
+[
+  {
+    "repository": "HBAI-Ltd/Toonflow-app",
+    "commit": "e03cf590eb0cab63534a4040db9acb4ec95b42a6",
+    "path": "data/skills/script_agent_decision.md",
+    "source_sha256": "d3f5cc18e4a1d251d486692b99757990e066d32e40cedda94eaea6971c9a6f02",
+    "url": "https://github.com/HBAI-Ltd/Toonflow-app/blob/e03cf590eb0cab63534a4040db9acb4ec95b42a6/data/skills/script_agent_decision.md",
+    "inspection_scope": "实际读了决策/剧本 Agent 指令，并检查 scriptAgent/index.ts 载入 prompt、工具与子 Agent 的调用。调度与执行分层，执行失败不得冒充完成；但初始化逐项追问和 3-15-45 节奏是它自己的制作策略。",
+    "line": 8,
+    "excerpt": "- **subagent 失败时决策层不得接管**：当执行层或监督层 subagent 运行失败时，决策层必须向用户汇报失败原因并终止当前阶段，绝不可自己代替 subagent 完成任务。"
+  },
+  {
+    "repository": "eternityspring/shuohao-skills",
+    "commit": "7ebef4f2f53159ee1eaaec2793271a114a8be8cc",
+    "path": "skills/novel-script/SKILL.md",
+    "source_sha256": "5e653561304e51593a6bd0c36d134fe7076b6352883752912085d312e1e12b7c",
+    "url": "https://github.com/eternityspring/shuohao-skills/blob/7ebef4f2f53159ee1eaaec2793271a114a8be8cc/skills/novel-script/SKILL.md",
+    "inspection_scope": "读 novel-script/SKILL.md，并检查实际 validate/gateReport 与 selftest 源码：编剧与分镜分离，确定性检查有击穿用例；它仍有10道剧本门和句长/钩子位置限制。",
+    "line": 8,
+    "excerpt": "剧本管戏，分镜管拍——本 skill 不分镜头、无镜号、不写生成提示词，那些是下一层分镜 skill 的活。"
+  },
+  {
+    "repository": "zenstory-ai/drama-skills",
+    "commit": "0e8929881bb59248618c4f402707c64723adc017",
+    "path": "skills/short-drama-write/SKILL.md",
+    "source_sha256": "f0a74465dbdd12c06ee7a37b2eda84423d1c8d03d364f0ef42c1e04b586f81cc",
+    "url": "https://github.com/zenstory-ai/drama-skills/blob/0e8929881bb59248618c4f402707c64723adc017/skills/short-drama-write/SKILL.md",
+    "inspection_scope": "完整读取 short-drama-write 与 review 主入口，并读隔离生成评测提示。默认最小输入、按需知识、没有的叙事机关不强行补；审查与改稿分开，缺输入可 PROVISIONAL。",
+    "line": 54,
+    "excerpt": "默认只读本 SKILL 和直接输入。出现下列明确信号时，在写正文前读取对应知识；同一输入有多个不同问题"
+  },
+  {
+    "repository": "alchaincyf/huashu-skills",
+    "commit": "49a55ba8a975ebda6bb55ea5ca4388942e3f6f18",
+    "path": "huashu-douyin-script/SKILL.md",
+    "source_sha256": "b6ca5501cecd2ae189cac70de531daa7afe0d24a06402635e99f16b02ca61068",
+    "url": "https://github.com/alchaincyf/huashu-skills/blob/49a55ba8a975ebda6bb55ea5ca4388942e3f6f18/huashu-douyin-script/SKILL.md",
+    "inspection_scope": "读取 huashu-douyin-script 主入口：真实竞品视频→视听拆解→公式确认→脚本/分镜→审校；输入偏产品、种草与投放，需要视频、登录和外部模型。",
+    "line": 89,
+    "excerpt": "前3秒 = 文案钩子 + 视觉钩子，两条线都要详细分析。"
+  },
+  {
+    "repository": "A-cat-with-carrots/OnlyShot",
+    "commit": "75c57f2fff6e2b3ab14004ce635a445e416c9b27",
+    "path": "SKILL.md",
+    "source_sha256": "7c37068d45450f680008981a228479158cf3b6c23d2f83a8a90673e0fd30a7da",
+    "url": "https://github.com/A-cat-with-carrots/OnlyShot/blob/75c57f2fff6e2b3ab14004ce635a445e416c9b27/SKILL.md",
+    "inspection_scope": "检查 SKILL 的阶段架构、用户确认与制作边界：创作→分镜图→出片；同时有严格自评分/黑名单与“必爆”式宣传。",
+    "line": 371,
+    "excerpt": "- 用户确认\"可以出片\""
+  },
+  {
+    "repository": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.system/skill-creator/SKILL.md",
+    "source_sha256": "a17383bfb1448637ac1f757ad891ddb9676fa30b0eff620200f0e1cbc0cc0d50",
+    "url": "https://github.com/openai/skills/blob/49f948faa9258a0c61caceaf225e179651397431/skills/.system/skill-creator/SKILL.md",
+    "inspection_scope": "读取 skill-creator 的精简、自由度、渐进加载原则：有多种可行写法的任务留较大自由度，易出错的机械操作用确定工具。",
+    "line": 30,
+    "excerpt": "The context window is a public good. Skills share the context window with everything else Codex needs: system prompt, conversation history, other Skills' metadata, and the actual user request."
+  },
+  {
+    "repository": "RRR666888000/an-video-director",
+    "commit": "cb2fb1e7a530e80eb42f2ceaff4d93575c2f52d4",
+    "path": "references/testing.md",
+    "source_sha256": "43382ff8ab19b4531e03c715471fa4d3c71f1e6240451a966ec00507bc351a14",
+    "url": "https://github.com/RRR666888000/an-video-director/blob/cb2fb1e7a530e80eb42f2ceaff4d93575c2f52d4/references/testing.md",
+    "inspection_scope": "读取 Skill 以及 story-persona/testing 引用。按任务加载，自然内容不强制销售；版本、目的、观察窗口与来源分开，缺失值保留未知。",
+    "line": 40,
+    "excerpt": "后台“整体点击率”不默认等于直播进入率。先读字段定义；自然与付费、支付与净成交、素材归因与全场成交分开。缺失值保留未知，不填零。"
+  },
+  {
+    "repository": "samjia12/skill-video-script",
+    "commit": "ebbd7dd129349f411cae79793b2a805bf74a170a",
+    "path": "src/video_script/generator.py",
+    "source_sha256": "cf134bb4a824a64ea3d1d8cdafb942f4f01b7c97f7e60fb6fc65ce9bec9a7c7b",
+    "url": "https://github.com/samjia12/skill-video-script/blob/ebbd7dd129349f411cae79793b2a805bf74a170a/src/video_script/generator.py",
+    "inspection_scope": "读取 Skill 与实际 generator.py：默认离线模板，明确 template/llm 分支，缺配置或输出数量不符抛错误；固定三种带货风格。",
+    "line": 89,
+    "excerpt": "raise ConfigError(\"LLM backend requested but no enhancer is configured\")"
+  },
+  {
+    "repository": "1-SKILL/jiaoben",
+    "commit": "f4aae40fd9e19be6589e82bf186e2199d2580663",
+    "path": "SKILL.md",
+    "source_sha256": "3f0e1c79b5fdc4232691fc96ba5d290a0be0ed99d67c6aad5c69a987925a29f5",
+    "url": "https://github.com/1-SKILL/jiaoben/blob/f4aae40fd9e19be6589e82bf186e2199d2580663/SKILL.md",
+    "inspection_scope": "读取 SKILL.md 与当前规则文件；包含强模板、商业升级引导与营销式效果说法。"
+  }
+]

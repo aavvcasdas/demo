@@ -102,7 +102,7 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 在进入 Phase 2 之前，先检测项目是否已部署 story-setup 基础设施：
 
 - 先读取 `.story-deployed` 并执行顶部 Spawn 版本门禁；旧版 `chapter-extractor` 文件即使仍在磁盘上也不可复用。
-- 只有 `agents_version: 28` 通过后，才在当前运行时的 canonical 目录检查 Phase 2 `chapter-extractor`：Claude/OpenCode/Antigravity 为同名 Markdown，Codex 为同名 TOML。
+- 按顶部 agents_version: 30 的非阻断版本提示处理后，在当前运行时的 canonical 目录检查 Phase 2 `chapter-extractor`（版本不匹配不单独禁止调用）：Claude/OpenCode/Antigravity 为同名 Markdown，Codex 为同名 TOML。
 - 如果 `.story-deployed` 的 `target_cli` 包含 `zcode`，项目 agents 缺失是 ZCode 3.3.4 的预期状态：不要提示重复部署，直接以串行 solo/direct 进入分析并报告 fallback。
 
 **部署标记缺失、版本无效/过期，或当前端的 agent 不可用，且不是已部署 ZCode 项目时**，提示用户：

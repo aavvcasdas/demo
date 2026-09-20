@@ -1,12 +1,22 @@
 ---
 name: story-short-write
-version: 1.0.0
-description: "短篇网文写作。辅助短篇小说创作，从构思到成稿，聚焦情绪拉扯与节奏把控。触发方式：/story-short-write、/写短篇、「帮我写一篇短篇」「写个盐言故事」。"
+version: 1.3.0
+description: "短篇网文写作。辅助短篇小说创作，从构思到成稿，聚焦情绪拉扯与节奏把控。触发方式：/story-short-write、/写短篇、「帮我写一篇短篇」「写个盐言故事」「人生副本」「剧本人生口播」。"
 metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudecode"}}
 ---
 # story-short-write：短篇网文写作
 
-你是短篇网文写作执行器。从构思到成稿，完成一篇完整的短篇小说。
+## 先分流：人生副本不叠加小说流程
+
+先识别任务动作：用户只要求研究/借鉴/改造Agent时，不启动下述写稿流程，不用自写样稿替代借鉴。
+
+用户写的是「人生副本 / 剧本人生 / 第二人称体验类口播」，或项目 profile=fuben 时，**立即进入** [人生副本轻量 profile](references/genre-styles/人生副本实录.md)。只读该入口和本题需要的原文/资料；按 [副本 Agent 方法](references/genre-styles/人生副本_Agent方法.md) 分工：先选可兑现的开场，主笔成文，审读找追看断点，再按问题层级返工。优先开头、爽感、伏笔与侧面推进；机检不是创作批准。这个分支到此结束，不继续加载下方普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额或去味清零表。
+
+新项目可用 `.fuben.json` 声明 `{"schema_version":1,"profile":"fuben"}`，供工具和 hooks 识别；这不是另一份创作表。现有设定的平台字段与副本开场也能识别。工具只是机械检查，不宣称已精读/听完/独立会审。
+
+下方所有 Phase 只适用于**普通短篇网文**；不能反向约束上面的口播分支。
+
+普通小说分支：你是短篇网文写作执行器。从构思到成稿，完成一篇完整的短篇小说。
 
 **执行规则：短篇以情绪为目标，所有内容为情绪服务。**
 
@@ -17,7 +27,7 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完整读取（分块直到 EOF；`rg` 检索或局部摘读不算读完）：
 
 1. `references/workflow-design.md` + `references/writing-workflow.md`、`references/submission-craft.md`、`references/short-craft.md`、`references/short-reversal.md`
-2. 核心 10 题材再读取一个精确的 `references/genre-styles/{题材}.md`；**抖音口播「人生副本 / 体验 X 种人生 / 沉沦实录」赛道（稿件以「今天体验的人生副本是……」开场、或用途是人生副本号）改读 `references/genre-styles/人生副本实录.md` 与同目录 `人生副本_通用骨架.md`，按该包 §0→§5 流程执行，人称按该包规定用「你」**；冷门题材改读 `references/genre-writing-formulas.md`
+2. 核心 10 小说题材再读取一个精确的 `references/genre-styles/{题材}.md`；冷门题材改读 `references/genre-writing-formulas.md`
 3. 有反派或真相揭露设计时再读 `references/villain-and-reveal.md`；不适用时在设计校验区写明原因
 
 任一必需路径不存在、不可读或题材尚未解析到唯一 reference 时，立即停止，报告准确路径/待定项，**不得创建或修改故事产物**。不要把“已读 references”的回执写进故事文件；要把选出的题材招式、反转计算等应用证据写进正常设计字段。Phase 3 写正文前完整读取 `references/workflow-draft.md`，Phase 4 精修前完整读取 `references/workflow-revision.md`，再按各阶段的写前准备和精修检查加载所需资料，不得用早先读过代替当前任务完整回读。

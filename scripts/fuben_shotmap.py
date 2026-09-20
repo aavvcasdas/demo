@@ -1,29 +1,60 @@
 #!/usr/bin/env python3
-"""秒级节奏图（R9-A2）：把爽点表「位置%」翻译成「第几秒」。
-时长=去标点字数÷语速（默认 4.8 字/秒，口播经验值；D0 真实数据到位后用 --cps 换实测倍率）。
-用法：python3 scripts/fuben_shotmap.py 作品/NN_xxx/ [更长的稿]"""
-import re, sys, os
+"""Estimated spoken duration / anchor positions; never actual TTS alignment.
 
-def main():
-    cps=float(os.environ.get("FUBEN_CPS","4.8"))
-    for a in sys.argv[1:]:
-        if a=="--cps":
-            continue
-        d=a
-        body=open(os.path.join(d,"正文.md"),encoding="utf-8").read()
-        n=len(re.sub(r"[，。、？！：；「」\"'\s]","",body))
-        dur=n/cps
-        verdict="OK  冷启动带≤90s" if dur<=90 else f"OVER 冷启动带（D0实测：全长TTS 375–497s 的完播proxy仅4–6%，算法不给二级池）→ 切条≤60s 或 3 分钟精选版"
-        print(f"## {d}  去标点 {n} 字 ÷ {cps} 字/秒 ≈ **{dur:.0f} 秒（{dur/60:.1f} 分）**  [{verdict}]")
-        sp=os.path.join(d,"设定.md")
-        if os.path.exists(sp):
-            t=open(sp,encoding="utf-8").read()
-            seg=t.split("## 爽点表")
-            if len(seg)>1:
-                rows=re.findall(r"^\| (\d+) \| (\d+)% \| ([+\-]\d+) \| (.*?) \|",seg[1].split("##")[0],re.M)
-                print("| 秒 | % | 情绪 | 事件 |")
-                print("|---|---|---|---|")
-                for o,pc,mo,ev in rows:
-                    print("| %3.0fs | %3s%% | %s | %s |"%(dur*int(pc)/100,pc,mo,ev.strip()[:38]))
-        print()
-main()
+python3 scripts/fuben_shotmap.py 作品/NN_xxx/ --cps 6.4 --anchor '某句原文'
+No platform-distribution or completion prediction is made from a speed estimate.
+"""
+import argparse
+import json
+import math
+import os
+from pathlib import Path
+from fuben_engine import char_count, load_policy
+
+
+def positive(value):
+    number = float(value)
+    if not math.isfinite(number) or number <= 0:
+        raise argparse.ArgumentTypeError('cps 必须是正有限数')
+    return number
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('paths', nargs='+')
+    parser.add_argument('--cps', type=positive, default=os.environ.get('FUBEN_CPS', str(load_policy()['estimated_chars_per_second'])))
+    parser.add_argument('--anchor', action='append', default=[])
+    parser.add_argument('--json', action='store_true')
+    args = parser.parse_args(argv)
+    rows = []
+    for name in args.paths:
+        path = Path(name)
+        if path.is_dir():
+            path /= '正文.md'
+        try:
+            text = path.read_text(encoding='utf-8-sig')
+            n = char_count(text)
+            if n == 0:
+                raise ValueError('empty prose')
+            anchors = []
+            for anchor in args.anchor:
+                if not anchor:
+                    raise ValueError('empty anchor')
+                positions = []
+                offset = text.find(anchor)
+                while offset != -1:
+                    positions.append(round(char_count(text[:offset]) / args.cps, 2))
+                    offset = text.find(anchor, offset + 1)
+                anchors.append({'literal': anchor, 'estimated_seconds': positions,
+                                'state': 'ESTIMATED' if positions else 'NOT_FOUND'})
+            rows.append({'path': str(path), 'state': 'ESTIMATED', 'characters': n, 'cps': args.cps,
+                         'estimated_duration_seconds': round(n / args.cps, 2), 'anchors': anchors,
+                         'note': '没有生成/聆听音频；不含停顿、英文和数字实际念法，不等于前15秒已兑现。'})
+        except (OSError, ValueError) as exc:
+            rows.append({'path': str(path), 'state': 'ERROR', 'error': str(exc)})
+    print(json.dumps(rows, ensure_ascii=False, indent=2) if args.json else '\n'.join(str(row) for row in rows))
+    return 2 if any(row['state'] == 'ERROR' for row in rows) else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

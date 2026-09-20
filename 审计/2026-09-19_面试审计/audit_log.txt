@@ -1,0 +1,1391 @@
+
+=== git head ===
+$ git rev-parse HEAD
+exit=0
+c064a61fe81edf8b8bb5a784f44e162815249f2d
+
+
+
+=== git branch ===
+$ git branch --show-current
+exit=0
+arena/01a0b9d8-demo
+
+
+
+=== existing tests ===
+$ /usr/bin/python3 scripts/test_gates.py --works
+exit=0
+OK   T1 hype 否定窗口  否定句不开门=True 肯定句开门=True
+OK   T2 设定散文层对账  散文层双出身被抓=True 口径一致放行=True
+OK   T4 反流水账时戳闸  钟面账被抓=True 时戳嵌句放行=True
+OK   T5 散文层计数对账  散文层 219 假账被抓=True 218 口径放行=True
+OK   T3 全库七闸回归  应绿 10 篇，失败 0：[]
+GATE-TESTS: PASS
+
+
+
+=== fuben corpus contract ===
+$ /usr/bin/python3 scripts/audit_analyze_lib.py
+exit=0
+OK  00_8月16日_合集本体 [合集·人生副本连续体]
+OK  01_无辣不欢的一生 [世情]
+OK  02_外卖员的一生 [世情]
+OK  03_雇佣兵的一生 [悬疑]
+OK  04_中10亿彩票的人生 [世情]
+OK  05_县城精神小伙的沉沦之路 [世情]
+OK  06_职高生毕业后的残酷现实 [世情]
+OK  07_精神小妹纹身找不到工作去做团播 [世情]
+OK  08_印度贫民窟高温下的人生 [世情]
+OK  09_贷款买恒大房0首付哪吒车老婆开中药奶茶店 [世情]
+OK  10_一辈子不结婚的人生 [世情]
+OK  11_印度婆罗门高温下的生活 [世情]
+OK  12_世界上只剩下你一个人 [沙雕脑洞]
+OK  13_高中死装努力姐 [世情]
+OK  14_江浙沪顶级独生女的人生 [世情]
+OK  15_卖肾买iPhone4的人生 [世情]
+OK  16_你有一个县城刀枪炮的父亲 [世情]
+OK  17_外耗型人格的人生 [世情]
+OK  18_极度性压抑的男大学生 [世情]
+OK  19_矮个子男生的人生 [世情]
+OK  20_男生又挫又丑的人生 [世情]
+OK  21_大学生意外接触PG电子游戏 [世情]
+OK  22_先天性聋哑人的人生 [世情]
+OK  23_买什么都喜欢分期的大学生 [世情]
+OK  24_没有公主命却有公主病的女生 [世情]
+OK  25_减肥圈传来噩耗 [世情]
+OK  26_你娶了大你10岁的邻家姐姐 [世情]
+OK  27_对军训教官一见钟情的女大学生 [世情]
+OK  28_你有一个长得不好看但很爱你的女朋友 [世情]
+OK  28b_青春期满脸痘痘的男生 [世情]
+OK  29_愤怒的普通人 [世情]
+OK  30_喜欢小众的小众哥 [世情]
+OK  31_卖完游戏账号又找回的找回哥 [世情]
+OK  32_你有一个打呼噜跟水牛叫一样的室友 [世情]
+OK  33_先婚后爱的人生 [世情]
+OK  34_朋友眼中的人生赢家 [世情]
+OK  35_你有一个高壮男的男朋友 [世情]
+OK  36_误入色途一事无成后幡然醒悟 [世情]
+OK  37_班级里那个没有边界感的女生 [世情]
+OK  38_小时候去浏览器玩游戏意外发现新世界的男生 [世情]
+OK  39_班里的蛀虫上大学了 [迷因荒诞志]
+OK  46_赚够200万回小县城 [世情]
+OK  48a_大一军训闷骚女友 [世情]
+OK  48b_高中同桌闷骚女友 [世情]
+OK  48c_大学洗稿闷骚女友 [世情]
+
+scope=fuben  条目=45  BAD count: 0 / 45
+fuben 口径全绿：README/合规核查宣称的 45/45 以本行为准。
+
+
+
+=== long corpus compared with short contract (not long validator) ===
+$ /usr/bin/python3 scripts/audit_analyze_lib.py --scope=long
+exit=1
+BAD 乱葬岗里的姑娘 [民俗]
+     - word_count=10134 vs 原文实测17312
+BAD 什么叫我洗白后，她们全部黑化了 [None]
+     - 缺文件:情节节点.md
+     - 缺文件:写作手法.md
+     - 缺文件:_meta.json
+     - meta缺version
+     - meta缺word_count
+     - meta缺genre_detected
+     - meta缺created_at
+     - meta缺stages_completed
+     - meta缺last_stage_in_progress
+     - meta缺structure_counts
+     - sc缺beats
+     - sc缺hooks
+     - sc缺setup_clues
+     - sc缺character_archetypes
+     - sc缺reusable_structures
+     - reversal_type非枚举:None
+     - stages=None
+     - 报告缺段:故事核/结构划分/情感曲线/五维/共鸣/话题性/爆点性
+OK  偏偏喜欢你 [甜宠]
+BAD 全国没几个正常人？朕要杀疯了 [None]
+     - 缺文件:情节节点.md
+     - 缺文件:写作手法.md
+     - 缺文件:_meta.json
+     - meta缺version
+     - meta缺word_count
+     - meta缺genre_detected
+     - meta缺created_at
+     - meta缺stages_completed
+     - meta缺last_stage_in_progress
+     - meta缺structure_counts
+     - sc缺beats
+     - sc缺hooks
+     - sc缺setup_clues
+     - sc缺character_archetypes
+     - sc缺reusable_structures
+     - reversal_type非枚举:None
+     - stages=None
+     - 报告缺段:故事核/结构划分/情感曲线/爆点/人物/共鸣/可复用/话题性/爆点性
+BAD 希腊神话：从成为微风之神开始 - 霜火 [None]
+     - 缺文件:拆文报告.md
+     - 缺文件:情节节点.md
+     - 缺文件:写作手法.md
+     - 缺文件:_meta.json
+     - meta缺version
+     - meta缺word_count
+     - meta缺genre_detected
+     - meta缺created_at
+     - meta缺stages_completed
+     - meta缺last_stage_in_progress
+     - meta缺structure_counts
+     - sc缺beats
+     - sc缺hooks
+     - sc缺setup_clues
+     - sc缺character_archetypes
+     - sc缺reusable_structures
+     - reversal_type非枚举:None
+     - stages=None
+OK  掌控 [悬疑]
+OK  泠泠千古调 [宫斗宅斗]
+BAD 豪门外的小白花 [None]
+     - 缺文件:拆文报告.md
+     - 缺文件:情节节点.md
+     - 缺文件:写作手法.md
+     - 缺文件:_meta.json
+     - meta缺version
+     - meta缺word_count
+     - meta缺genre_detected
+     - meta缺created_at
+     - meta缺stages_completed
+     - meta缺last_stage_in_progress
+     - meta缺structure_counts
+     - sc缺beats
+     - sc缺hooks
+     - sc缺setup_clues
+     - sc缺character_archetypes
+     - sc缺reusable_structures
+     - reversal_type非枚举:None
+     - stages=None
+OK  隐娘 [死人文学]
+
+scope=long  条目=9  BAD count: 5 / 9
+
+
+
+=== reverse corpus (read-only) ===
+$ /usr/bin/python3 scripts/fuben_health.py --corpus
+exit=0
+# 语料反向体检：44 篇大师稿 × 正文文本闸
+
+检查                        违例  违例作品
+字数2200–3600             11/44  雇佣兵的一生、中10亿彩票的人生、卖肾买iPhone4的人、男生又挫又丑的人生、你有一个打呼噜跟水牛叫一、朋友眼中的人生赢家… （R17b已降级报告制）
+行数220–420                8/44  中10亿彩票的人生、卖肾买iPhone4的人、男生又挫又丑的人生、你有一个打呼噜跟水牛叫一、朋友眼中的人生赢家、赚够200万回小县城… （R17b已降级报告制）
+单行>24字≤2                 0/44   
+开头不堆时戳                   1/44  印度婆罗门高温下的生活 
+主角内心≤6                   1/44  外卖员的一生 
+叙述者不替观众判决                6/44  无辣不欢的一生、精神小妹纹身找不到工作去、外耗型人格的人生、没有公主命却有公主病的女、误入色途一事无成后幡然醒、班级里那个没有边界感的女 
+对白稀缺≤max(8,4%)           0/44   
+无空回应                     0/44   
+时间顺序不倒退                  0/44   
+年份锚点≤12                  0/44   
+跨度不用年表罗列                 0/44   
+收束不抒情                    0/44   
+末句≤25字                   0/44   
+每45行环境/身体               11/44  雇佣兵的一生、印度贫民窟高温下的人生、世界上只剩下你一个人、江浙沪顶级独生女的人生、极度性压抑的男大学生、喜欢小众的小众哥… （R17b已降级报告制）
+数字密度≤25                  3/44  中10亿彩票的人生、印度贫民窟高温下的人生、买什么都喜欢分期的大学生 
+无不必要品牌                  10/44  无辣不欢的一生、县城精神小伙的沉沦之路、职高生毕业后的残酷现实、精神小妹纹身找不到工作去、江浙沪顶级独生女的人生、卖肾买iPhone4的人… （账号红线·豁免）
+
+裁决尺：风格类违例率 ≥30% = 多余硬约束嫌疑（R13b 伪阈值同款）；≤10% = 大师稿默认操作，保留。
+
+
+
+=== work 46_带着50万回二线治愈的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/46_带着50万回二线治愈的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 47_大专生独来独往的一生_重置加长版 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/47_大专生独来独往的一生_重置加长版
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 48_校园跑微醺闷骚女友 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/48_校园跑微醺闷骚女友
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   BAD 参考来源已标  ← 至少写一个实际读取过的拆文库案例，不得只写手法名
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 15 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 49_假快递拿反书闷骚女友 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/49_假快递拿反书闷骚女友
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   BAD 参考来源已标  ← 至少写一个实际读取过的拆文库案例，不得只写手法名
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 15 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 49_拿快递吃醋闷骚女友 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/49_拿快递吃醋闷骚女友
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   BAD 参考来源已标  ← 至少写一个实际读取过的拆文库案例，不得只写手法名
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 15 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 50_中一百万彩票的一生_重置加长版 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/50_中一百万彩票的一生_重置加长版
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 51_反向拿捏极品亲戚的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/51_反向拿捏极品亲戚的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 52_中百万彩票隐瞒扮猪吃虎的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   BAD 参考来源已标  ← 至少写一个实际读取过的拆文库案例，不得只写手法名
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 15 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 53_中大奖扮猪吃虎护妻的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 54_理智暴富与清醒护妻的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/54_理智暴富与清醒护妻的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   BAD 参考来源已标  ← 至少写一个实际读取过的拆文库案例，不得只写手法名
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 15 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 55_机修工油转电翻盘 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/55_机修工油转电翻盘
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 无对手题写明不用反杀  ← 沉沦/规则题用结果、核对和状态改变收束
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 13 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 56_赝品哥社死 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/56_赝品哥社死
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   OK  因果/状态台账存在
+   BAD 状态台账≥5条  ← 当前 0 行（含表头）
+   BAD 台账有触发与状态变化  ← 因果链不能只列年份
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   OK  对手与升级触发
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 57_床帘发光的男生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/57_床帘发光的男生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 无对手题写明不用反杀  ← 沉沦/规则题用结果、核对和状态改变收束
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 13 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 58_反骨嘉豪 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/58_反骨嘉豪
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 无对手题写明不用反杀  ← 沉沦/规则题用结果、核对和状态改变收束
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 13 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 58b_反骨嘉豪_代价版 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/58b_反骨嘉豪_代价版
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 59_精神小伙的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/59_精神小伙的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 60_职高精神小伙的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/60_职高精神小伙的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 61_县城第一名的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/61_县城第一名的一生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   OK  参考来源已标
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 14 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 62_班委三人组 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/62_班委三人组
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   BAD 主线四字段  ← 主线必须回答谁、一直做什么、等什么、最后变成什么
+   BAD 参考来源已标  ← 至少写一个实际读取过的拆文库案例，不得只写手法名
+   BAD 节拍表≥8行  ← 写情绪节拍表：位置 / 情绪值 / 事件 / 状态前后；八拍不是必填形式
+   BAD 每节有情绪或状态  ← 至少六节写清情绪值、峰值/谷底或状态变化，不能只写年份
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   BAD 呼应表≥5对  ← 每一对都要有前置和后半回收
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   BAD 开头路线已锁  ← 默认从第一件事开始；若倒叙必须标回到哪一天
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   
+   DESIGN: FAIL 15 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 64_活人微死的AI人 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/64_活人微死的AI人
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 65_寝室里那个人畜无害的女生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/65_寝室里那个人畜无害的女生
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 66_寝室里什么都不争的那个女生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/66_寝室里什么都不争的那个女生
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 67_分手时说「我们不合适」的男生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/67_分手时说「我们不合适」的男生
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 68_家庭群里叫「一家三口」的女儿 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/68_家庭群里叫「一家三口」的女儿
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   OK  主线四字段
+   OK  参考来源已标
+   OK  节拍表≥8行
+   OK  每节有情绪或状态
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   OK  呼应表≥5对
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   OK  开头路线已锁
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   OK  同题差异已说明
+   
+   DESIGN: FAIL 9 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 69_酒桌上第一个站起来的男生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/69_酒桌上第一个站起来的男生
+exit=1
+[L1 design] FAIL
+   BAD 事实锁存在  ← 先写 ## 事实锁，不得只写散落的 L0 资料
+   BAD 因果/状态台账存在  ← 写每拍的触发、动作、状态前/后、下一步
+   OK  主线四字段
+   OK  参考来源已标
+   OK  节拍表≥8行
+   OK  每节有情绪或状态
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   BAD 贯穿物件/人物台账  ← 首次出现、再次碰到、回收动作要有名字
+   OK  呼应表≥5对
+   BAD 对白预算已锁  ← 写总行数/场景上限/允许保留的功能
+   OK  开头路线已锁
+   BAD 结构验收节存在  ← 加 ## 结构验收：首屏、时间线、因果、称呼、事实、对白
+   BAD 对手与升级触发  ← 人物题须明确谁做了什么、何时改变
+   BAD 报应/反转对应表  ← 人物题才要求一一对应，不能把规则题硬套成反杀
+   OK  事实锁内部无金额冲突
+   BAD 事实来源≥2  ← 当前 0 个链接
+   OK  同题差异已说明
+   
+   DESIGN: FAIL 9 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 70_三次把同一个人推开的女生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/70_三次把同一个人推开的女生
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 71_只会按字面意思办事的新人 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/71_只会按字面意思办事的新人
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 72_每天买一张彩票的人 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/72_每天买一张彩票的人
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 72_每天买一张彩票的人_爽点紧凑版 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/72_每天买一张彩票的人_爽点紧凑版
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 72_每天买一张彩票的人_重生成基线 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/72_每天买一张彩票的人_重生成基线
+exit=1
+[L1 design] FAIL
+   OK  事实锁存在
+   OK  事实锁·规则/玩法
+   OK  事实锁·频率/次数
+   OK  事实锁·单价/金额
+   OK  事实锁·对象/号码
+   OK  事实锁·结果/判定
+   OK  事实锁·禁止越界
+   OK  因果/状态台账存在
+   OK  状态台账≥5条
+   OK  台账有触发与状态变化
+   OK  主线四字段
+   OK  参考来源已标
+   OK  节拍表≥8行
+   OK  每节有情绪或状态
+   BAD 爽点表≥6行  ← 爽点是硬要求：位置 / 情绪值 / 事件 / 类型 / 正文锚点，缺了就写不出爽点稿
+   OK  贯穿物件/人物台账
+   OK  呼应表≥5对
+   OK  对白预算已锁
+   OK  开头路线已锁
+   OK  一遍读懂测试
+   OK  因果测试
+   OK  数字/事实测试
+   OK  无对手题写明不用反杀
+   OK  事实锁内部无金额冲突
+   OK  事实来源≥2
+   
+   DESIGN: FAIL 1 → 先改设定.md，再写正文
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 73_合影时永远在按快门的人 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/73_合影时永远在按快门的人
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 75_人生副本作者的一天 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/75_人生副本作者的一天
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 76_辞职回家给爸妈打工的儿子 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/76_辞职回家给爸妈打工的儿子
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== work 77_出道即巅峰却泯然众人的一生 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/77_出道即巅峰却泯然众人的一生
+exit=1
+[L1 design] FAIL
+   BAD 设定.md  ← 文件不存在或为空
+   ↳ 先补事实锁、状态台账、主线与八拍路线图
+   停在 L1 design。改完重跑本命令。
+
+
+
+=== work 78_Codex上瘾的人 ===
+$ /usr/bin/python3 scripts/fuben_run.py /home/user/demo/作品/78_Codex上瘾的人
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== environment gap: draft ===
+$ /usr/bin/python3 scripts/fuben_loop.py draft /tmp/fuben_readonly_audit_3p4pohxc
+exit=2
+WARN 字数·交付格式                304（R17b 报告制：目标随发布形态声明，不拦截）
+WARN 行数·交付格式                48 行（R17b 报告制）
+OK  单行不过长                    0 行 >24字
+BAD 首屏时间/对象清楚                今天体验的人生副本是测试的人你整理材料今天体验的人生副本是测试的人你整理材料今天体验的人生副本是
+OK  线性稿不深倒叙                  前3行先写现在/未来结果再倒回，改成第一天或明确回到哪一年
+OK  开头不堆时戳                   前16行时间开头 0（独立钟面仅许第1–5行1处）、整行时戳 0、时戳开头行 0/48｜例：
+OK  主角内心≤6                   
+OK  叙述者不替观众判决                
+OK  对白稀缺                     0 / 8：
+OK  无空回应                     
+OK  时间顺序不倒退                  []
+OK  时间锚点不过载                  0 个年份锚点
+OK  跨度不用年表罗列                 0 行以「第N年」开头：
+BAD 主线贯穿≥5/8段                0/8 ['额度', '窗口', '重置', '说明书']
+OK  收束不抒情                    今天体验的人生副本是 / 测试的人 / 你整理材料
+OK  末句≤25字                   你整理材料
+OK  无不必要品牌                   set()
+WARN 每45行环境/身体              空窗起行 [1, 46]（R17b 词表代理降级：语料 11/44 违例，报告不拦截）
+
+DRAFT: FAIL 2
+
+
+
+=== environment gap: lint ===
+$ /usr/bin/python3 scripts/fuben_lint.py /tmp/fuben_readonly_audit_3p4pohxc
+exit=1
+OK  对白单位≤8且≤4%               0/8: 
+OK  空回应=0                    
+OK  同指代候选≤1                  0处: 
+OK  陌生术语≤1                   
+OK  首屏没有悬空他物                 今天体验的人生副本是测试的人你整理材料今天体验的人生副本是测试的人你整理材料今天体验的人生
+BAD 每45行有环境/身体               空窗起行 [1, 46]
+OK  模板过渡句≤1                  
+
+LINT: FAIL 1
+
+
+
+=== mechanical gate ignores human artifacts ===
+$ /usr/bin/python3 scripts/fuben_run.py /tmp/fuben_readonly_audit_3p4pohxc
+exit=0
+[L1 design] PASS
+[L1.5 facts] PASS
+[L1.6 设定卡散文层] PASS
+[L1.8 爽点节奏] PASS
+[L2 draft] PASS
+[L2.5 review] PASS
+[L2.6 lint] PASS
+[AI-patterns] PASS
+   advisory only: 已通读，短行体不因 advisory 机械注水。
+
+全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。
+
+
+
+=== missing scene no date classification ===
+$ /usr/bin/python3 scripts/fuben_scene_check.py /tmp/fuben_readonly_audit_3p4pohxc
+exit=0
+SKIP fuben_readonly_audit_3p4pohxc：设定.md 无「场面表」（老件按 3.3 豁免，见 SKILL 备案制）
+
+
+
+=== documented --cps flag ===
+$ /usr/bin/python3 scripts/fuben_shotmap.py /home/user/demo/作品/78_Codex上瘾的人 --cps 6.4
+exit=1
+## /home/user/demo/作品/78_Codex上瘾的人  去标点 2341 字 ÷ 4.8 字/秒 ≈ **488 秒（8.1 分）**  [OVER 冷启动带（D0实测：全长TTS 375–497s 的完播proxy仅4–6%，算法不给二级池）→ 切条≤60s 或 3 分钟精选版]
+| 秒 | % | 情绪 | 事件 |
+|---|---|---|---|
+|  10s |   2% | +7 | 闹钟不标起床 标着重置 精确到分 |
+|  29s |   6% | +6 | 窗口翻新一秒挂上任务 像抢到票 |
+|  39s |   8% | +3 | 群里都在蹲 手指悬在屏幕上 |
+|  68s |  14% | +4 | 两年前你还亲手写代码 |
+|  83s |  17% | +5 | 屎山交接文档一句话 不要动 我试过 |
+| 102s |  21% | +8 | 两千个测试全绿 没看就合 |
+| 112s |  23% | +4 | 那种爽 比发工资还清楚 |
+| 127s |  26% | +3 | 说明书第一条 先说请帮忙 |
+| 137s |  28% | +4 | 你不是客气 你是怕它摆烂 |
+| 151s |  31% | +3 | 额度成了日程表 日历记的是重置 |
+| 176s |  36% | -3 | 三十七个仓库 全停在雏形 |
+| 185s |  38% | -4 | 你的马上 平均时长四个小时 |
+| 210s |  43% | +6 | 中转站第一周快得飞起 安利全组 |
+| 224s |  46% | -3 | 第二周降智 回一半别人项目的变量名 |
+| 239s |  49% | -6 | 周一充值页面 404 群解散 |
+| 249s |  51% | +3 | 你先想到的居然是任务 |
+| 254s |  52% | +4 | 拼车均摊 便宜 群规没人遵守 |
+| 298s |  61% | -7 | 夜里额度往下淌 早全车 429 连坐 |
+| 302s |  62% | -3 | 走了六公里 没打车 |
+| 351s |  72% | -6 | 一条消息 额度百分之百掉到零 |
+| 366s |  75% | -8 | 任务死了 计价器没停 幽灵额度 |
+| 371s |  76% | -5 | 在我这里是通过的——八年前就听过 |
+| 380s |  78% | -7 | 第九轮 它认输 我处理不了了 |
+| 395s |  81% | +5 | 两张重置卡躺着 用不完 |
+| 410s |  84% | +4 | 拇指悬在兑换页 没按下去 |
+| 429s |  88% | +4 | 指尖生 第三行手自己知道往哪去 |
+| 434s |  89% | +6 | 删第九轮 自己三行 绿了 |
+| 444s |  91% | +4 | 注释五个字 这里我有数 |
+| 449s |  92% | +4 | 最熟练的语言变成了中文/许愿 |
+| 488s | 100% | +5 | 回车键 它按几万次 昨晚三下你自己按 |
+
+
+Traceback (most recent call last):
+  File "/home/user/demo/scripts/fuben_shotmap.py", line 29, in <module>
+    main()
+  File "/home/user/demo/scripts/fuben_shotmap.py", line 13, in main
+    body=open(os.path.join(d,"正文.md"),encoding="utf-8").read()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '6.4/正文.md'
+
+
+=== isolated probes summary ===
+{
+  "review_argument_order": {
+    "returncode": 0,
+    "stdout": "OK  转场有因果词                   False\nOK  呼应后半有回收                  0/0\nOK  不强制反杀现场                  True\nOK  结尾有状态动作                  False\nOK  结局没有越过事实锁                True\n\nREVIEW: PASS\n",
+    "false_condition_printed_ok": true
+  },
+  "environment_gap_draft": {
+    "command": [
+      "/usr/bin/python3",
+      "scripts/fuben_loop.py",
+      "draft",
+      "/tmp/fuben_readonly_audit_3p4pohxc"
+    ],
+    "returncode": 2,
+    "stdout": "WARN 字数·交付格式                304（R17b 报告制：目标随发布形态声明，不拦截）\nWARN 行数·交付格式                48 行（R17b 报告制）\nOK  单行不过长                    0 行 >24字\nBAD 首屏时间/对象清楚                今天体验的人生副本是测试的人你整理材料今天体验的人生副本是测试的人你整理材料今天体验的人生副本是\nOK  线性稿不深倒叙                  前3行先写现在/未来结果再倒回，改成第一天或明确回到哪一年\nOK  开头不堆时戳                   前16行时间开头 0（独立钟面仅许第1–5行1处）、整行时戳 0、时戳开头行 0/48｜例：\nOK  主角内心≤6                   \nOK  叙述者不替观众判决                \nOK  对白稀缺                     0 / 8：\nOK  无空回应                     \nOK  时间顺序不倒退                  []\nOK  时间锚点不过载                  0 个年份锚点\nOK  跨度不用年表罗列                 0 行以「第N年」开头：\nBAD 主线贯穿≥5/8段                0/8 ['额度', '窗口', '重置', '说明书']\nOK  收束不抒情                    今天体验的人生副本是 / 测试的人 / 你整理材料\nOK  末句≤25字                   你整理材料\nOK  无不必要品牌                   set()\nWARN 每45行环境/身体              空窗起行 [1, 46]（R17b 词表代理降级：语料 11/44 违例，报告不拦截）\n\nDRAFT: FAIL 2\n",
+    "stderr": ""
+  },
+  "environment_gap_lint": {
+    "command": [
+      "/usr/bin/python3",
+      "scripts/fuben_lint.py",
+      "/tmp/fuben_readonly_audit_3p4pohxc"
+    ],
+    "returncode": 1,
+    "stdout": "OK  对白单位≤8且≤4%               0/8: \nOK  空回应=0                    \nOK  同指代候选≤1                  0处: \nOK  陌生术语≤1                   \nOK  首屏没有悬空他物                 今天体验的人生副本是测试的人你整理材料今天体验的人生副本是测试的人你整理材料今天体验的人生\nBAD 每45行有环境/身体               空窗起行 [1, 46]\nOK  模板过渡句≤1                  \n\nLINT: FAIL 1\n",
+    "stderr": ""
+  },
+  "node_failure_runner_fail_open": {
+    "node_returncode": 1,
+    "node_stdout": "",
+    "node_stderr": "node:internal/modules/cjs/loader:1433\n  throw err;\n  ^\n\nError: Cannot find module '/tmp/fuben_readonly_audit_3p4pohxc/does-not-exist.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1430:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v22.22.3\n",
+    "runner_returncode": 0,
+    "runner_stdout": "[L1 design] PASS\n[L1.5 facts] PASS\n[L1.6 设定卡散文层] PASS\n[L1.8 爽点节奏] PASS\n[L2 draft] PASS\n[L2.5 review] PASS\n[L2.6 lint] PASS\n[AI-patterns] PASS\n   advisory only: 已通读，短行体不因 advisory 机械注水。\n\n全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。\n"
+  },
+  "mechanical_gate_not_release_gate": {
+    "command": [
+      "/usr/bin/python3",
+      "scripts/fuben_run.py",
+      "/tmp/fuben_readonly_audit_3p4pohxc"
+    ],
+    "returncode": 0,
+    "stdout": "[L1 design] PASS\n[L1.5 facts] PASS\n[L1.6 设定卡散文层] PASS\n[L1.8 爽点节奏] PASS\n[L2 draft] PASS\n[L2.5 review] PASS\n[L2.6 lint] PASS\n[AI-patterns] PASS\n   advisory only: 已通读，短行体不因 advisory 机械注水。\n\n全部机械闸 PASS。现在调用 fuben-review 做人工三方审核；审核前不要宣称成稿通过。\n",
+    "stderr": ""
+  },
+  "missing_scene_legacy_exemption": {
+    "command": [
+      "/usr/bin/python3",
+      "scripts/fuben_scene_check.py",
+      "/tmp/fuben_readonly_audit_3p4pohxc"
+    ],
+    "returncode": 0,
+    "stdout": "SKIP fuben_readonly_audit_3p4pohxc：设定.md 无「场面表」（老件按 3.3 豁免，见 SKILL 备案制）\n",
+    "stderr": ""
+  },
+  "legacy_record_schema_drift": {
+    "existing_header": [
+      "id",
+      "目录",
+      "点赞",
+      "播放",
+      "备注",
+      "字数",
+      "呼应对",
+      "内心句",
+      "宣判句",
+      "台词行",
+      "抒情收束",
+      "误读句",
+      "价格数",
+      "制度词",
+      "人际词"
+    ],
+    "new_row": [
+      "78",
+      "78_Codex上瘾的人",
+      "10",
+      "100",
+      "",
+      "2333",
+      "7",
+      "1",
+      "0",
+      "3",
+      "0",
+      "0",
+      "0",
+      "3"
+    ],
+    "header_columns": 15,
+    "row_columns": 14,
+    "record_stdout": "已记录 → /tmp/fuben_readonly_audit_3p4pohxc/_数据.csv\n{\"字数\": 2333, \"呼应对\": 7, \"内心句\": 1, \"宣判句\": 0, \"台词单位\": 3, \"抒情收束\": 0, \"年份锚点\": 0, \"价格数\": 0, \"因果词\": 3}\n",
+    "report_error": {
+      "type": "TypeError",
+      "message": "unsupported format string passed to NoneType.__format__"
+    }
+  },
+  "hype_chinese_number_parser": [
+    {
+      "input": "二百",
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "input": "二百五十",
+      "expected": 250,
+      "actual": 10
+    },
+    {
+      "input": "三百六十",
+      "expected": 360,
+      "actual": 10
+    },
+    {
+      "input": "一千二百",
+      "expected": 1200,
+      "actual": 1
+    },
+    {
+      "input": "一万",
+      "expected": 10000,
+      "actual": 1
+    }
+  ],
+  "shotmap_cps_cli": {
+    "command": [
+      "/usr/bin/python3",
+      "scripts/fuben_shotmap.py",
+      "/home/user/demo/作品/78_Codex上瘾的人",
+      "--cps",
+      "6.4"
+    ],
+    "returncode": 1,
+    "stdout": "## /home/user/demo/作品/78_Codex上瘾的人  去标点 2341 字 ÷ 4.8 字/秒 ≈ **488 秒（8.1 分）**  [OVER 冷启动带（D0实测：全长TTS 375–497s 的完播proxy仅4–6%，算法不给二级池）→ 切条≤60s 或 3 分钟精选版]\n| 秒 | % | 情绪 | 事件 |\n|---|---|---|---|\n|  10s |   2% | +7 | 闹钟不标起床 标着重置 精确到分 |\n|  29s |   6% | +6 | 窗口翻新一秒挂上任务 像抢到票 |\n|  39s |   8% | +3 | 群里都在蹲 手指悬在屏幕上 |\n|  68s |  14% | +4 | 两年前你还亲手写代码 |\n|  83s |  17% | +5 | 屎山交接文档一句话 不要动 我试过 |\n| 102s |  21% | +8 | 两千个测试全绿 没看就合 |\n| 112s |  23% | +4 | 那种爽 比发工资还清楚 |\n| 127s |  26% | +3 | 说明书第一条 先说请帮忙 |\n| 137s |  28% | +4 | 你不是客气 你是怕它摆烂 |\n| 151s |  31% | +3 | 额度成了日程表 日历记的是重置 |\n| 176s |  36% | -3 | 三十七个仓库 全停在雏形 |\n| 185s |  38% | -4 | 你的马上 平均时长四个小时 |\n| 210s |  43% | +6 | 中转站第一周快得飞起 安利全组 |\n| 224s |  46% | -3 | 第二周降智 回一半别人项目的变量名 |\n| 239s |  49% | -6 | 周一充值页面 404 群解散 |\n| 249s |  51% | +3 | 你先想到的居然是任务 |\n| 254s |  52% | +4 | 拼车均摊 便宜 群规没人遵守 |\n| 298s |  61% | -7 | 夜里额度往下淌 早全车 429 连坐 |\n| 302s |  62% | -3 | 走了六公里 没打车 |\n| 351s |  72% | -6 | 一条消息 额度百分之百掉到零 |\n| 366s |  75% | -8 | 任务死了 计价器没停 幽灵额度 |\n| 371s |  76% | -5 | 在我这里是通过的——八年前就听过 |\n| 380s |  78% | -7 | 第九轮 它认输 我处理不了了 |\n| 395s |  81% | +5 | 两张重置卡躺着 用不完 |\n| 410s |  84% | +4 | 拇指悬在兑换页 没按下去 |\n| 429s |  88% | +4 | 指尖生 第三行手自己知道往哪去 |\n| 434s |  89% | +6 | 删第九轮 自己三行 绿了 |\n| 444s |  91% | +4 | 注释五个字 这里我有数 |\n| 449s |  92% | +4 | 最熟练的语言变成了中文/许愿 |\n| 488s | 100% | +5 | 回车键 它按几万次 昨晚三下你自己按 |\n\n",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/user/demo/scripts/fuben_shotmap.py\", line 29, in <module>\n    main()\n  File \"/home/user/demo/scripts/fuben_shotmap.py\", line 13, in main\n    body=open(os.path.join(d,\"正文.md\"),encoding=\"utf-8\").read()\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '6.4/正文.md'\n"
+  }
+}
+
+=== generic short Phase 2 vs latest fuben ===
+$ node skills/story-short-write/scripts/check-phase2-contract.js --json /home/user/demo/作品/78_Codex上瘾的人
+exit=1
+{
+  "schema_version": 1,
+  "verifier": "story-short-write.phase2-contract",
+  "project": "/home/user/demo/作品/78_Codex上瘾的人",
+  "ok": false,
+  "checks": [
+    {
+      "id": "phase2.settings-readable",
+      "ok": true,
+      "severity": "blocking",
+      "file": "设定.md",
+      "evidence": "文件存在且非空",
+      "expected": "项目目录下存在非空的 设定.md",
+      "references": [
+        "references/writing-workflow.md"
+      ],
+      "repair": "只补建或补全 设定.md，不改动已通过的 小节大纲.md。"
+    },
+    {
+      "id": "phase2.outline-readable",
+      "ok": false,
+      "severity": "blocking",
+      "file": "小节大纲.md",
+      "evidence": "ENOENT: no such file or directory, open '/home/user/demo/作品/78_Codex上瘾的人/小节大纲.md'",
+      "expected": "项目目录下存在非空的 小节大纲.md",
+      "references": [
+        "references/writing-workflow.md"
+      ],
+      "repair": "只补建或补全 小节大纲.md，不改动已通过的 设定.md。"
+    }
+  ],
+  "failures": [
+    {
+      "id": "phase2.outline-readable",
+      "ok": false,
+      "severity": "blocking",
+      "file": "小节大纲.md",
+      "evidence": "ENOENT: no such file or directory, open '/home/user/demo/作品/78_Codex上瘾的人/小节大纲.md'",
+      "expected": "项目目录下存在非空的 小节大纲.md",
+      "references": [
+        "references/writing-workflow.md"
+      ],
+      "repair": "只补建或补全 小节大纲.md，不改动已通过的 设定.md。"
+    }
+  ],
+  "repair_scope": [
+    {
+      "id": "phase2.outline-readable",
+      "file": "小节大纲.md",
+      "evidence": "ENOENT: no such file or directory, open '/home/user/demo/作品/78_Codex上瘾的人/小节大纲.md'",
+      "expected": "项目目录下存在非空的 小节大纲.md",
+      "references": [
+        "references/writing-workflow.md"
+      ],
+      "repair": "只补建或补全 小节大纲.md，不改动已通过的 设定.md。"
+    }
+  ]
+}
+
+
+
+=== variant AI style check ===
+$ node skills/story-review/scripts/check-ai-patterns.js --json --fail-on=blocking /home/user/demo/作品/75_人生副本作者的一天/正文_3分钟版.md
+exit=0
+{
+  "findings": []
+}
+
+
+
+=== variant AI style check ===
+$ node skills/story-review/scripts/check-ai-patterns.js --json --fail-on=blocking /home/user/demo/作品/76_辞职回家给爸妈打工的儿子/切条D0/条1_工资三人发/正文.md
+exit=0
+{
+  "findings": []
+}
+
+
+
+=== variant AI style check ===
+$ node skills/story-review/scripts/check-ai-patterns.js --json --fail-on=blocking /home/user/demo/作品/76_辞职回家给爸妈打工的儿子/切条D0/条2_婚宴三秒/正文.md
+exit=0
+{
+  "findings": []
+}
+
+
+
+=== variant AI style check ===
+$ node skills/story-review/scripts/check-ai-patterns.js --json --fail-on=blocking /home/user/demo/作品/76_辞职回家给爸妈打工的儿子/切条D0/条3_扣下的两千/正文.md
+exit=0
+{
+  "findings": []
+}
+
+
+
+=== variant AI style check ===
+$ node skills/story-review/scripts/check-ai-patterns.js --json --fail-on=blocking /home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md
+exit=1
+{
+  "findings": [
+    {
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+      "line": 53,
+      "column": 1,
+      "type": "not-is-comparison",
+      "severity": "blocking",
+      "message": "高频 AI 对比句式；删掉否定铺垫，直接写后项，或改成动作/细节呈现。",
+      "excerpt": "不是被抓死 是走不掉"
+    }
+  ]
+}
+
+
+
+=== variant AI style check ===
+$ node skills/story-review/scripts/check-ai-patterns.js --json --fail-on=blocking /home/user/demo/作品/78_Codex上瘾的人/正文_3分钟版.md
+exit=0
+{
+  "findings": []
+}
+
+
+
+=== variant AI style check ===
+$ node skills/story-review/scripts/check-ai-patterns.js --json --fail-on=blocking /home/user/demo/作品/78_Codex上瘾的人/切条D0/条1_罚单是全车的/正文.md
+exit=0
+{
+  "findings": []
+}
+
+

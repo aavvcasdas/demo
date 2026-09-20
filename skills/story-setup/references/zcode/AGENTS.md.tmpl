@@ -1,5 +1,10 @@
 # {项目名} — 网文写作工具集（ZCode）
 
+## 人生副本优先分流（本仓扩展）
+
+人生副本 / 剧本人生 / 第二人称体验类口播先走 `story-short-write` 的轻量 profile；审稿走 `fuben-review`。这个分支不执行后文普通小说的细纲、付费点、追踪、去味配额与必读表，也不要求部署独立 Agent 才能写。只有实际可调用时才委派，solo 不冒称独立审核。
+新建口播项目若已启用小说 hooks，且尚无可识别的正文/设定，在**作品目录**放 `.fuben.json`：`{"schema_version":1,"profile":"fuben"}`，避免首次写入被当普通小说；不要标到混合书库根。未启用 hooks 的直接创作不要求这个文件。普通小说分支保持原合同。
+
 本项目已通过 oh-story 接入 ZCode。优先用 `$skill-name` 调用 Skill，也可从 `/` 面板选择同名 Skill 或 Command。
 
 ## Skill 路由表
@@ -35,7 +40,7 @@
 
 ## ZCode 项目约定
 
-- 写正文前必须先有对应大纲：长篇需要 `大纲/细纲_第N章*.md`，短篇需要 `小节大纲.md`。PreToolUse Hook 会做机械守卫，Skill 流程本身也必须遵守。
+- 普通小说写正文前必须先有对应大纲：长篇需要 `大纲/细纲_第N章*.md`，短篇需要 `小节大纲.md`。PreToolUse Hook 会做机械守卫，Skill 流程本身也必须遵守。
 - 正文写入后，PostToolUse Hook 会检查落盘、截断、占位符、工程词泄漏、复读和标题重复；字数只由写作流程最终的一次 `chapter check` 测量。
 - ZCode 3.3.4 不执行项目/plugin 自定义 Agent。遇到 `story-architect`、`narrative-writer`、`consistency-checker` 等角色调用时，由当前 Agent 按同一规则直接完成，并在结果中报告 `Fallback: project custom agents unavailable -> solo`。
 - 不读取 `.zcode/rules` 或嵌套 `AGENTS.md`；关键规则以本文件和对应 Skill 为准。

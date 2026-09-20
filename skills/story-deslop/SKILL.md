@@ -4,6 +4,9 @@ version: 1.0.0
 description: "网文去AI味。检测并清除文本中的AI写作痕迹，让文字回归自然、非模板化。触发方式：/story-deslop、/去AI味、「去AI味」「这篇太AI了」「网文去AI味」。"
 metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudecode"}}
 ---
+
+> **人生副本早期分流**：若本次对象是人生副本/剧本人生口播或 profile=fuben，转 `skills/fuben-review/SKILL.md` 做按证据的定点审核/修订，不继续执行下方普通小说的句式清零、默认结构或多 Agent 配额。模式不改变工具故障必须报错的要求。
+
 # story-deslop：网文去AI味
 
 **文风裁决**：正文写作、改写或审稿前先读 [references/style-resolution.md](references/style-resolution.md)，加载本书文风并形成 `style_resolution`；无作者记忆也执行。当前请求、本书文风和 active 偏好按维度覆盖通用 references；同一裁决交给后续执行者。

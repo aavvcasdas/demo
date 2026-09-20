@@ -1,5 +1,10 @@
 # {项目名} — 网文写作工具集（Reasonix）
 
+## 人生副本优先分流（本仓扩展）
+
+人生副本 / 剧本人生 / 第二人称体验类口播先走 `story-short-write` 的轻量 profile；审稿走 `fuben-review`。这个分支不执行后文普通小说的细纲、付费点、追踪、去味配额与必读表，也不要求部署独立 Agent 才能写。只有实际可调用时才委派，solo 不冒称独立审核。
+新建口播项目若已启用小说 hooks，且尚无可识别的正文/设定，在**作品目录**放 `.fuben.json`：`{"schema_version":1,"profile":"fuben"}`，避免首次写入被当普通小说；不要标到混合书库根。未启用 hooks 的直接创作不要求这个文件。普通小说分支保持原合同。
+
 本项目已部署 oh-story skills 的 Reasonix 兼容层（skills-only）。
 
 ## Skill 路由表
@@ -43,7 +48,7 @@ Reasonix 会从项目 `.agents/skills`（部署时创建的指向 `skills/` 的 
 
 ## 写作约束
 
-- 写正文前必须先有对应大纲：长篇 `大纲/细纲_第N章*.md`，短篇 `小节大纲.md`。
+- 普通小说写正文前必须先有对应大纲：长篇 `大纲/细纲_第N章*.md`，短篇 `小节大纲.md`。
 - Reasonix 未部署硬 hook 拦截；执行写作 skill 时必须由 skill 流程自行检查大纲、上下文和追踪文件，不得跳过。
 - 无 custom agents 时按 solo/direct 执行；遇到 skill 要求调用 story-architect、narrative-writer 等 agent 时，改由当前 Agent 直接完成，并在结果里说明降级。
 - **去AI味自锁**（本平台无 hook 兜底，此条是唯一防线）：每章正文落盘后，同一轮内立即按写作 skill 的「最毒句式速查 + 禁用词扫描」自检并清零（能运行 node 时跑 `check-ai-patterns.js --check --fail-on=blocking`）；写下一章前先复查上一章无欠账。唯一豁免＝用户显式说"本章不去味"，豁免章在标题行下加 `<!-- 去味:跳过 -->`。
