@@ -1,0 +1,92 @@
+{
+  "name": "arena-runtime",
+  "version": "1.0.0",
+  "description": "把本仓库的 Skill / Agent 定义绑定到 Arena 内置执行通道。本仓库在 Arena 会话中打开时，Arena Agent Mode 主会话即执行器：按本配置加载角色文件与 profile，逐阶段执行并落可核查的产物文件。",
+  "runtime": {
+    "type": "arena-inprocess",
+    "executor": "Arena Agent Mode 主会话（本会话）",
+    "invocation_evidence": [
+      "每个阶段读取的角色文件路径",
+      "作品目录 _运行/ 下按阶段编号的产物文件",
+      "机检命令的实际输出（05_机检.json）"
+    ],
+    "forbidden": [
+      "未加载角色文件与 profile、未落阶段产物就直接生成正文",
+      "伪造外部会话 ID / 任务 ID / 独立审核结论",
+      "把读取 SKILL.md 或复制模板当作已调用",
+      "把机检 PASS 说成好看或审核通过"
+    ]
+  },
+  "skill_root": "skills",
+  "role_root": "skills/story-setup/references/templates/agents",
+  "routing": "AGENTS.md#路由",
+  "executors": {
+    "preferred_if_authenticated": ["codex", "claude-code", "opencode", "gemini-cli"],
+    "active": "arena-inprocess",
+    "active_reason": "当前环境未安装或未认证任何外部执行器；Arena 主会话是本仓库在此环境下的认证执行通道（用户指定）。外部执行器接通后可经本配置切换 preferred。"
+  },
+  "pipelines": {
+    "fuben-write": {
+      "when": "人生副本 / 剧本人生 / 第二人称人生体验口播的写作、改写、试写",
+      "skill": "skills/story-short-write",
+      "branch": "人生副本早期分流",
+      "profile": "skills/story-short-write/references/genre-styles/人生副本实录.md",
+      "method": "skills/story-short-write/references/genre-styles/人生副本_Agent方法.md",
+      "artifact_dir": "作品/{NN_主题}/_运行",
+      "stages": [
+        {
+          "id": "00_brief",
+          "actor": "主控",
+          "output": "00_简报.md",
+          "do": "记录用户题面原话与创作要求；读一篇相近真实原文，记录借用的蓄势→兑现机制；判断材料够用即可，不要求设定卡"
+        },
+        {
+          "id": "01_architect",
+          "role_file": "skills/story-setup/references/templates/agents/story-architect.md",
+          "role_branch": "人生副本优先分流 · 副本职责（策划）",
+          "output": "01_策划_切口比较.md",
+          "do": "比较两个驱动力不同的短开场及各自兑现路径，写淘汰理由；确定选中切口、主角要争取的事、核心兑现、必须先落进正文的伏笔清单"
+        },
+        {
+          "id": "02_write",
+          "role_file": "skills/story-setup/references/templates/agents/narrative-writer.md",
+          "role_branch": "人生副本优先分流 · 副本职责（成稿）",
+          "output": "02_初稿.md",
+          "do": "把选中开场、主角目标、核心兑现与伏笔清单写成正文；关键交锋连续发生、换招改变局面；侧面反应影响后续；伏笔先落正文再揭示；只交正文"
+        },
+        {
+          "id": "03_review",
+          "role_file": "skills/story-setup/references/templates/agents/story-architect.md",
+          "role_branch": "人生副本优先分流 · 副本职责（审读）",
+          "skill": "skills/fuben-review",
+          "output": "03_审读.md",
+          "do": "只接收当前初稿、简报与必要事实（不给自评）；引用原句回答：开场使观众等什么、哪里最早失去追看、哪个兑现没演出、侧面改变了什么；按结构/场面/表达给返工层级"
+        },
+        {
+          "id": "04_revise",
+          "role_file": "skills/story-setup/references/templates/agents/narrative-writer.md",
+          "output": "04_返工.md 与作品目录下 正文.md",
+          "do": "按审读的分层范围返工（结构回策划口径重构、场面展开、表达局部修）；保留有效段落；定稿为 正文.md"
+        },
+        {
+          "id": "05_gate",
+          "run": "python3 scripts/fuben_run.py 作品/{NN_主题}/ --profile full --json",
+          "output": "05_机检.json",
+          "do": "实际执行并保存原始输出；BLOCK 定位修复；REVIEW 结合语境裁决；机检结果不写成好看或审核通过"
+        }
+      ],
+      "final_artifacts": ["正文.md", "审核报告.md"]
+    },
+    "fuben-review-only": {
+      "when": "只审不写",
+      "skill": "skills/fuben-review",
+      "do": "按 skills/fuben-review/SKILL.md 执行；独立审不可用时在产物中注明由主控以审读角色自检"
+    }
+  },
+  "protocol_notes": [
+    "阶段即调用：主会话进入某阶段时，必须先读该阶段 role_file 对应分支与 profile，再执行其职责；产物文件是调用已发生的证据，缺失阶段产物视为未调用。",
+    "主控负责路由、交接与事实核对，不越过角色直接产出正文。",
+    "所有阶段在同一 Arena 会话内顺序完成；产物含实际读取与判断记录，用户可逐文件核查。",
+    "本配置不改变 AGENTS.md 的事实与授权底线；评测、发布仍须用户明确指令。"
+  ]
+}

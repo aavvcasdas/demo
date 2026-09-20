@@ -1,0 +1,39 @@
+# Arena 运行时说明 —— 本会话怎样读懂并运行本仓库的 Skill / Agent
+
+对应机器可读配置：[arena.runtime.json](../arena.runtime.json)（路由与契约见 [AGENTS.md](../AGENTS.md)）。
+
+## 这是什么
+
+本仓库的 `skills/*/SKILL.md` 和 `skills/story-setup/references/templates/agents/*.md`
+原本是写给 codex / Claude Code / opencode 这类外部执行器读的。当前环境没有这些执行器，
+而 **Arena Agent Mode 主会话本身就是执行器**。`arena.runtime.json` 是绑定配置：
+它告诉 Arena agent 打开本仓库时怎样把仓库里的角色定义跑起来——不是把 SKILL.md
+当作参考文章读一遍然后随手写，而是按配置逐阶段实例化角色、落产物、过机检。
+
+## 运行方式（以人生副本写作为例）
+
+1. **识别意图** → `AGENTS.md` 路由表 → `fuben-write` 管线。
+2. **逐阶段执行**，每阶段开始时先读配置指定的角色文件分支与 profile，
+   产物写入 `作品/NN_主题/_运行/`：
+
+   | 阶段 | 角色 | 产物 |
+   |---|---|---|
+   | 00 简报 | 主控 | `00_简报.md` |
+   | 01 策划：切口竞争 | story-architect（副本职责·策划） | `01_策划_切口比较.md` |
+   | 02 成稿 | narrative-writer（副本职责·成稿） | `02_初稿.md` |
+   | 03 审读 | story-architect（副本职责·审读）+ fuben-review | `03_审读.md` |
+   | 04 返工定稿 | narrative-writer | `04_返工.md` + `正文.md` |
+   | 05 机检 | `scripts/fuben_run.py` | `05_机检.json` + `审核报告.md` |
+
+3. **调用证据**不是话术而是文件：每个阶段产物真实存在、内容对应其职责、
+   机检JSON是命令的真实输出。缺阶段产物＝调用未发生，不得声称走了管线。
+
+## 诚实边界
+
+- 外部执行器（codex / Claude Code / opencode / gemini-cli）若日后在本环境安装并认证，
+  可在 `arena.runtime.json` 里把 `executors.active` 切过去，产物协议不变。
+- 独立外部审读目前不可用；03 审读由主会话以审读角色在独立步骤执行，产物里注明这一点，
+  不冒充多 Agent 会审、不虚构会话 ID。
+- 机检 PASS 只说明无机械阻断，不说明好看；创作判断以审读阶段与用户验收为准。
+
+首次按本配置执行的产出：`作品/79_把游戏当命的宅男/`（含 `_运行/` 全部阶段产物）。

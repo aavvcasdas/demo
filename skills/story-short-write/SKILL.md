@@ -6,6 +6,15 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 ---
 # story-short-write：短篇网文写作
 
+## 文章生成必须真实调用 Skill / Agent（用户明确要求）
+
+所有正文生成、续写、重写、试写及候选片段，必须由对应 Skill 的真实执行流程调用创作 Agent 完成。主会话只能整理用户要求、调度、核对和保存实际 Agent 返回的内容；不能自己生成文章后补写调用说明。
+
+读过 SKILL.md、存在 Agent 模板、复制部署文件、运行检查脚本，都不等于调用了创作 Agent。必须确实有可用的宿主调用工具或已认证执行器，并收到实际调用结果；不得伪造会话/任务ID或独立审核。
+
+Arena 会话内由仓库根目录 arena.runtime.json 定义执行通道：按配置加载角色文件与 profile 逐阶段执行并落阶段产物，缺产物视为未调用；外部执行器认证后可切换。两者都不可用时停止正文产出并报告阻塞；不经配置通道直接代写正文/候选一律禁止。此条覆盖其它文件中旧的直接写作兜底。仅做研究或明确标注的单人审稿不受此限制，但涉及实质改稿仍须走创作链。
+
+
 ## 先分流：人生副本不叠加小说流程
 
 先识别任务动作：用户只要求研究/借鉴/改造Agent时，不启动下述写稿流程，不用自写样稿替代借鉴。
@@ -34,9 +43,9 @@ Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完
 
 ---
 
-> Agent 只查当前端 canonical 目录（Claude `.claude/agents`、OpenCode `.opencode/agents`、Codex `.codex/agents` TOML、Antigravity `.agents/agents`），不借其他端文件误判。Claude/OpenCode 用 `subagent_type`，Codex 用 `agent_type`，Antigravity 用 `invoke_subagent` + `TypeName`；能力/文件缺失、unknown agent 或 ZCode 3.3.4 时报告 `Fallback: project custom agents unavailable -> solo` 并 solo/direct。
+> Agent 只查当前端 canonical 目录（Claude `.claude/agents`、OpenCode `.opencode/agents`、Codex `.codex/agents` TOML、Antigravity `.agents/agents`），不借其他端文件误判。Claude/OpenCode 用 `subagent_type`，Codex 用 `agent_type`，Antigravity 用 `invoke_subagent` + `TypeName`；能力/文件缺失、unknown agent 或 ZCode 3.3.4 时报告 `BLOCKED: project custom agents unavailable` 并停止正文生成，等待真实执行入口。
 >
-> Spawn 版本提示（不阻断 spawn）：先读取项目根 `.story-deployed` 的 `agents_version`。与本版 `agents_version: 30` 不一致时（标记缺失、字段缺失/非整数、小于或大于 30）**照常按文件存在性检查并 spawn**，同时报告 `Notice: agents bundle 版本不匹配（项目 {N}，本版 30）` 并提示重新运行 `/story-setup` 后新开会话；大于 30 时额外提示先更新 oh-story-claudecode，不要用本地旧版 setup 降级覆盖。只有 agent 文件缺失、或运行时不暴露 custom agent 时才降级 solo/direct，报告 `Fallback: ... -> solo`。
+> Spawn 版本提示（不阻断 spawn）：先读取项目根 `.story-deployed` 的 `agents_version`。与本版 `agents_version: 30` 不一致时（标记缺失、字段缺失/非整数、小于或大于 30）**照常按文件存在性检查并 spawn**，同时报告 `Notice: agents bundle 版本不匹配（项目 {N}，本版 30）` 并提示重新运行 `/story-setup` 后新开会话；大于 30 时额外提示先更新 oh-story-claudecode，不要用本地旧版 setup 降级覆盖。只有 agent 文件缺失、或运行时不暴露 custom agent 时才停止正文生成，报告 `BLOCKED: creative agent unavailable`。
 
 **文风裁决**：正文写作、改写或审稿前先读 [references/style-resolution.md](references/style-resolution.md)，加载本书文风并形成 `style_resolution`；无作者记忆也执行。当前请求、本书文风和 active 偏好按维度覆盖通用 references；同一裁决交给后续执行者。
 
