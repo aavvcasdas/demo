@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/78_Codex上瘾的人/方向D_温情_手忙起来的那一周/正文.md",
+  "findings": [
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/78_Codex上瘾的人/方向D_温情_手忙起来的那一周/正文.md",
+      "line": 114,
+      "evidence": "你说 算急救 第八天早上 账号回来了 窗口满格 绿得发亮"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo/作品/78_Codex上瘾的人/方向D_温情_手忙起来的那一周/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 1
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication",
+    "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+    "body_sha256": "7904f6d440d75b680d4a87cc7ab089e58a703f63f0a71a05a0eff9b0a86c5897",
+    "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo/作品/78_Codex上瘾的人/方向D_温情_手忙起来的那一周/正文.md",
+  "metrics": {
+    "characters_repository_convention": 670,
+    "nonempty_prose_lines": 99,
+    "longest_line_characters": 12,
+    "number_tokens": 5,
+    "number_density_per_1000": 7.5,
+    "density_denominator": 670,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 104.69,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}
