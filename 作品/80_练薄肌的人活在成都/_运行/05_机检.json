@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/80_练薄肌的人活在成都/",
+  "findings": [],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo/作品/80_练薄肌的人活在成都/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 0
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication",
+    "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+    "body_sha256": "176f076a7c0cecffcb2b2b710c00c51507f4d094459db7c46d092a9b2f0f96c1",
+    "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo/作品/80_练薄肌的人活在成都/正文.md",
+  "metrics": {
+    "characters_repository_convention": 786,
+    "nonempty_prose_lines": 121,
+    "longest_line_characters": 13,
+    "number_tokens": 7,
+    "number_density_per_1000": 8.9,
+    "density_denominator": 786,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 122.81,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}
