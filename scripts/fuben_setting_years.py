@@ -1,15 +1,8 @@
 #!/usr/bin/env python3
-"""设定卡散文层 × 正文 交叉对账（fuben-review v3.1；v2 增「计数主张」层，二轮会审指令3）。
+"""Optional setting/prose claim diagnostics, never a proof of a contradiction.
 
-只查一件事：设定.md 散文/表格里「具体物件 + 年份」的主张，必须能同时被
-①事实锁同词年份、②正文该词全部出现处的邻近年份锚、③全篇最晚年（终止式表述）
-解释。否则就是 58b(217/218)、73(主线「二手单反从2015」vs 事实锁「2021年购入」)
-这类「同一张卡两个出身」。机械 facts 闸只扫事实锁表格 vs 正文，散文层裸奔——补这层。
-
-物件词 = 物件台账首格的完整中文段 + 尾两/三字（汉语中心词在右：烫金喜糖盒→糖盒）。
-主张 = 含词且含年份的设定行；表格行只看词所在同一单元格；跳过事实锁、
-L0/参考/变更等引用节、http 行、箭头年份链（「2015→2017」是锚点列表非出身主张）。
-退出码：0 一致；1 有冲突；2 用法/缺文件。
+A number absent from prose may be background information; nearby years may concern
+different objects. Findings require contextual review. Raw source text is not edited.
 """
 from __future__ import annotations
 import os, re, sys
@@ -24,35 +17,9 @@ CN_DIG = {"零": 0, "〇": 0, "一": 1, "二": 2, "两": 2, "三": 3, "四": 4, 
 CN_UNIT = {"十": 10, "百": 100, "千": 1000}
 
 def cn2int(tok: str):
-    """一千一百七十六→1176；四千三百二十万→43200000；省略式：一千二→1200、四万五→45000。
-    纯数字串按逐位念法解析（一八八→188，75 正文口播惯例）。仅认 ≥100。"""
-    core = tok[:-1] if tok.endswith("字") else tok
-    if not core:
-        return None
-    if all(c in CN_DIG for c in core):
-        if len(core) < 3:
-            return None
-        v = int("".join(str(CN_DIG[c]) for c in core))
-        return v if v >= 100 else None
-    if any(c not in CN_DIG and c not in CN_UNIT and c != "万" for c in core):
-        return None
-    total, sec, cur = 0, 0, 0
-    seen = False
-    last_unit = 0
-    for ch in core:
-        if ch in CN_DIG:
-            cur = CN_DIG[ch]; seen = True
-        elif ch in CN_UNIT:
-            sec += (cur if cur else (1 if ch == "十" else 0)) * CN_UNIT[ch]
-            cur = 0; seen = True; last_unit = CN_UNIT[ch]
-        else:  # 万
-            sec += cur
-            total += (sec if sec else 1) * 10000
-            sec = 0; cur = 0; seen = True; last_unit = 10000
-    if cur and last_unit and len(core) >= 2 and core[-1] in CN_DIG and core[-2] in CN_UNIT or (cur and len(core) >= 2 and core[-1] in CN_DIG and core[-2] == "万"):
-        cur = cur * (last_unit // 10) if last_unit else cur  # 一千二→2×百；四万五→5×千；三万六千二→2×百
-    total += sec + cur
-    return total if seen and total >= 100 else None
+    from fuben_numbers import numeric
+    value = numeric(tok.removesuffix("字"), colloquial=True)
+    return value if value is not None and value >= 100 else None
 
 def _cn_tokens(text):
     return re.findall(r"[零〇一二两三四五六七八九十百千万]{2,}(?:万[零〇一二两三四五六七八九十百千]{0,8})?", text)
@@ -119,14 +86,7 @@ def nearest_year_above(lines, idx, back=40):
 def years_in(text):
     return {int(m) for m in YR.findall(text)} | {int(m) for m in BARE.findall(CHAIN.sub(" ", text))}
 
-def main():
-    if len(sys.argv) != 2:
-        print("用法: python3 scripts/fuben_setting_years.py 作品/NN_xxx/")
-        return 2
-    d = sys.argv[1].rstrip("/")
-    setting, body = load(os.path.join(d, "设定.md")), load(os.path.join(d, "正文.md"))
-    if not setting or not body:
-        print("缺少 设定.md 或 正文.md"); return 2
+def _diagnose(setting: str, body: str):
     blines = content_lines(body)
     # —— v2 计数主张层（与年份无关，恒跑）：散文层 ≥100 的主张数字必须在正文有出处
     slines_all = setting.splitlines()
@@ -138,8 +98,6 @@ def main():
         heads_all.append(cur_h)
     bnums = body_numbers(body)
     approx = {v // (10 ** max(0, len(str(v)) - 2)) * (10 ** max(0, len(str(v)) - 2)) for v in bnums}  # 12437→12000
-    for i2, l2 in enumerate(slines_all):
-        pass
     # 合法集扩展：事实锁表内的数字（含来源列算式）算有出处——派生总额合法
     for i, l in enumerate(slines_all):
         if "事实锁" in heads_all[i]:
@@ -230,5 +188,29 @@ def main():
     print("SETTING-PROSE:", "PASS" if not bad else f"FAIL {bad} → 年份/计数任一失守即红；改设定散文口径，不许动正文凑数")
     return 1 if bad else 0
 
+def check_text(setting: str, body: str):
+    import contextlib
+    import io
+    if not setting:
+        return []
+    output = io.StringIO()
+    with contextlib.redirect_stdout(output):
+        _diagnose(setting, body)
+    # Capture the old exploratory algorithm only; do not expose its misleading PASS.
+    return [line.removeprefix("BAD ") + "；待核对对象/语境，不能据此改正文凑数"
+            for line in output.getvalue().splitlines() if line.startswith("BAD ")]
+
+
+def main():
+    import argparse
+    from fuben_engine import inspect_path, emit
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("path")
+    parser.add_argument("--json", action="store_true")
+    args = parser.parse_args()
+    return emit(inspect_path(args.path, run_style=False, components={"setting"}),
+                json_output=args.json, label="SETTING-PROSE")
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

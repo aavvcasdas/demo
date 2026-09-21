@@ -1,0 +1,16 @@
+[
+  {
+    "file": "_数据.csv",
+    "sha256": "121425caa441f0aaee578ddd239befae9ac6763798c1414f74c6de6630e9c69d",
+    "records": 6,
+    "columns": 15,
+    "backup": "legacy_raw/_数据_121425caa441.csv"
+  },
+  {
+    "file": "_数据_v2.csv",
+    "sha256": "c36c8eba681d8557995a49267a76361b05abbbecd195709b283b61636aee835b",
+    "records": 24,
+    "columns": 36,
+    "backup": "legacy_raw/_数据_v2_c36c8eba681d.csv"
+  }
+]

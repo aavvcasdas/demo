@@ -1,0 +1,1395 @@
+{
+  "date": "2026-09-19",
+  "branch": "arena/01a0b9d8-demo",
+  "protected_files_checked": 266,
+  "protected": [
+    {
+      "path": "uploads/8月16日.txt",
+      "sha256": "0bf45980d5fdc2885ac14cb808e43a1361200f99018b17b578fe1992969f5aa2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/40a_顺拐哥_四年打脸版.md",
+      "sha256": "29b8b86de082dedcf56cd22d502208f3a7d834540d7826aed3b3a4d812f2c1b4",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/40b_顺拐哥_大佬版.md",
+      "sha256": "7ebaf87bb4eee109debab6a1b6902932d57a2439c893e466db1ac3c6c65a7efd",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/40c_全职考公儿女_合集体仿写.md",
+      "sha256": "56d45b7c963f35749a6d91be640d9b296519ae997371ef759d5c0d04f0bfa33e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/41a_三战哥_考研三战编年志.md",
+      "sha256": "5a15d921e4eddcb20c6d25df3ba33161c95f1509453b5c2a3f82628c3444b728",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/42_9月4日_仿写合集.md",
+      "sha256": "efb8262b8ea848adc8f1145f68106673b426fc09ea62ca2aeaf1e25b91502236",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/43_同题仿写_第一批.md",
+      "sha256": "a732778d8e5efc86ebc33a90ca20861818e037cec1b52d53c433150330c25422",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/44_班里的蛀虫上大学了_同型仿写.md",
+      "sha256": "c4cf5dcf35b96e9bb8ba3eef97e7ce4a488dee3e19845ab44291828e0678df16",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/45_攒够30万回二线城市的一生.md",
+      "sha256": "7a70da68b76871f7d026dcdee86f749b3cda046abca671353990899ec647ff8f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/46_带着50万回二线治愈的一生/小节大纲.md",
+      "sha256": "e883c79fd1980528993990fc2bd64e46fe2bc70947540e69c4ab4ecbacf3bd7a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/46_带着50万回二线治愈的一生/正文.md",
+      "sha256": "9f8a827d771220587bf36199de54bcd9c4f229be63aadf559ad44bda0fee6d5e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/46_带着50万回二线治愈的一生/设定.md",
+      "sha256": "1373c4244f17405e7bf31db8f10795f2590c6bbfe185edad923a3ea9aed3dce6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/47_大专生独来独往的一生_重置加长版/小节大纲.md",
+      "sha256": "19126c85f50aea7279e634ffce2c3476e91fc48d884ec1ef0fac49d89b173739",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/47_大专生独来独往的一生_重置加长版/正文.md",
+      "sha256": "33d285213f2ea62ceb3252b02508b45a1a795a3f6a3f6c8ba401cf6906e1f1fc",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/47_大专生独来独往的一生_重置加长版/设定.md",
+      "sha256": "5e229033027589d04aff8189fde3efcd3b3d0fcea5a9142178e2ca9e8da731b3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/48_校园跑微醺闷骚女友/小节大纲.md",
+      "sha256": "6ac10200083cb1d1e58e3577d02473154ceab155b74ca3dfbddb69cfbf547ed2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/48_校园跑微醺闷骚女友/正文.md",
+      "sha256": "dc997e627826221eedb176e4d125f4184f8f2cdccce70ad3cea507746cb64de8",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/48_校园跑微醺闷骚女友/设定.md",
+      "sha256": "a0b23db6898b54fd64907d92647e03d5ae9e1e3497298728b9d1c4ee571fba66",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/49_假快递拿反书闷骚女友/小节大纲.md",
+      "sha256": "9b00f10e5fe6a1406e636ba296aeb71c5525ba3995b7ec093b707f464016318a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/49_假快递拿反书闷骚女友/开局钩子金句备选.md",
+      "sha256": "16dc21129a9c3528a42fa9a62028f43a3bf56f2bba0fb26ed21beaad820b8ea5",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/49_假快递拿反书闷骚女友/正文.md",
+      "sha256": "00a855e7f77e6a94301e072d497d7ab144ab274bdc2b4542537958f9aae0113c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/49_假快递拿反书闷骚女友/设定.md",
+      "sha256": "f34b370afc9cac64143a56e7db215932fbdc803dcc42c3381bbbd89b57340bc6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/49_拿快递吃醋闷骚女友/小节大纲.md",
+      "sha256": "6566331ab50151b5153861333dae3e7e751679c377df05ca18ed8fad76214f78",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/49_拿快递吃醋闷骚女友/正文.md",
+      "sha256": "d506d2107c2120a1b731a8f49fefade2c7d5a4ce0ade87506b3c8a51a9790924",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/49_拿快递吃醋闷骚女友/设定.md",
+      "sha256": "ca064b4c48791cbc1de31938e50a2bffff8adfe5498dc0eb497bfcfcf66497dc",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/50_中一百万彩票的一生_重置加长版/小节大纲.md",
+      "sha256": "f1e44a197f7cc7e5e62c1684f3665aa46947b473776aca3a59c5a7e0442d8228",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/50_中一百万彩票的一生_重置加长版/正文.md",
+      "sha256": "f71b0cc545b78bd9a61e42c711633924f0497be2cb4dda4d5385b71f5120c07c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/50_中一百万彩票的一生_重置加长版/设定.md",
+      "sha256": "65e4327557160e9d3584484bdc72cd9e14b1f81110664b6c8e73398769455776",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/51_反向拿捏极品亲戚的一生/小节大纲.md",
+      "sha256": "0b1877b4979a7f253dc5e3e8118dac6f9ad9ae55f6fe2bcc4e898f4320aac31f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/51_反向拿捏极品亲戚的一生/正文.md",
+      "sha256": "7a62473cf611f94b20639098f872821967b2864302c47b872c175dc29aed03c3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/51_反向拿捏极品亲戚的一生/设定.md",
+      "sha256": "fb948efdaf7e895dba73b2af8d39cd4d429ca3b1a521bbfd795209a6224965c3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/52_中百万彩票隐瞒扮猪吃虎的一生/小节大纲.md",
+      "sha256": "3c16e447bbd24da4105ab889d175198b2bd4e73891791e4ab3d1ecebd64e5d99",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md",
+      "sha256": "bb9c5b36bedf5314874519f6864e76ea36c624b021d66521da8ebda2de7a153c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/52_中百万彩票隐瞒扮猪吃虎的一生/设定.md",
+      "sha256": "b971b91c7ecf66804f5c14dd5ffd058a34f863cdcadd0c9e66d38f38cca32813",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/53_中大奖扮猪吃虎护妻的一生/小节大纲.md",
+      "sha256": "b05a4d600d740f9d611f0e37189f3ab2effab42174383d0d815e36c580c84006",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/53_中大奖扮猪吃虎护妻的一生/正文.md",
+      "sha256": "719d7328e6261c705ce1b177e283d03ea034dccba267b47ab9ee7207c0bfda36",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/53_中大奖扮猪吃虎护妻的一生/设定.md",
+      "sha256": "1329bf4827a96157d8de1b557637831e54cfc997000ba8270616a807fe181d48",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/54_理智暴富与清醒护妻的一生/小节大纲.md",
+      "sha256": "58adac1bb9fa585de3e313b817162fd8e23244416cb079465e19ab43d11dc806",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/54_理智暴富与清醒护妻的一生/正文.md",
+      "sha256": "61ee27471d50ef029217415ed3af9f9c7818c728ff73dbc95cb2dbb7eaae1a84",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/54_理智暴富与清醒护妻的一生/设定.md",
+      "sha256": "2187fd4da5c9fe6e02d77f33e32fed87547af6ac68008f52dc5b957dee43e7e9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/55_机修工油转电翻盘/小节大纲.md",
+      "sha256": "e7775b117901d12c11e2d17c794b899243d72b5d34f28416aeebb5c0674412b6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/55_机修工油转电翻盘/正文.md",
+      "sha256": "2a359785476fbd52121329565442807cac6ad7d0d98c66cb6eb8ec41db6b144c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/55_机修工油转电翻盘/设定.md",
+      "sha256": "5b9a0380d71b6183d583e0a5bcaa6278da4d6f0cd7037c14ac0d4d45843247da",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/56_赝品哥社死/小节大纲.md",
+      "sha256": "a773c7e1775dc747914ffe73936e6f0df7ba9c7a0452f91d8b36f80d4bf7270d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/56_赝品哥社死/正文.md",
+      "sha256": "c0ec077cd4ee563a166ab3f455a2ff594454266e0b3bbafa599aa9882e3503c7",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/56_赝品哥社死/设定.md",
+      "sha256": "492fb491d2212576834b4730333907d6f7445bf14f88bd3e3aea9a925de32a1c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/57_床帘发光的男生/小节大纲.md",
+      "sha256": "cc8923e2e3b50ab4734914bd41b42a5605f7f0713382530436554408c1e6f7e9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/57_床帘发光的男生/正文.md",
+      "sha256": "15964155bec822a8f38c9a0d19093bce11d4092fcc1a5a6009f8a636d78f3288",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/57_床帘发光的男生/设定.md",
+      "sha256": "1533c0e2bed6273e2744bc3e1e6ae61a83ff0cd70b9c87b46b90baff82f080bf",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/58_反骨嘉豪/小节大纲.md",
+      "sha256": "daee505037b8dcb9adcf7aeedc41b08ff67092beec767e334e684c611d1e9a2e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/58_反骨嘉豪/正文.md",
+      "sha256": "a3fa34d1d85c90088ab696092c4d0984abdd247e4d48e3a5a93f92e7dcb43cb7",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/58_反骨嘉豪/设定.md",
+      "sha256": "2428e5b8232463f91fc710b941fa3eb3883b790982fe7db8f87be33fefabb57c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/58b_反骨嘉豪_代价版/正文.md",
+      "sha256": "4cd4a4d80ee4e7b3b8e7eab368e3c3fac56ef4381489fe9ebc5a52b66d18e18f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/58b_反骨嘉豪_代价版/自检与假设卡.md",
+      "sha256": "b2431c19e818a87cd1e2ed52e288bc9ee2cf128f63e22c86b1450b042845a277",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/58b_反骨嘉豪_代价版/设定.md",
+      "sha256": "53004effc627fcfb94d67e5bcd944efb3b987b02a36c6af55f87abcb4637ff29",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/59_精神小伙的一生/小节大纲.md",
+      "sha256": "21562f48976f523b32f9b512ef073a6426f382285c04783aad27da4a78462d8d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/59_精神小伙的一生/正文.md",
+      "sha256": "21ece0b60350918a8ac69585dcc2b866eec03e4ae441ad336fd4737b225a8fb6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/59_精神小伙的一生/设定.md",
+      "sha256": "c23475f66f967fe329eef71cc32b4f8c023db53d683ef9d5a108795143ff8bf3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/60_职高精神小伙的一生/小节大纲.md",
+      "sha256": "06c0e57f79808149c477cee0b778b4524f77bacd43f262dd35a2629146a8b87a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/60_职高精神小伙的一生/正文.md",
+      "sha256": "4b1bf62a51c0e213b1a4e842417c843538b8d3ddc737b505c06d21992fa29da8",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/60_职高精神小伙的一生/设定.md",
+      "sha256": "6145d179da6644d79a445da78c619c202ca9e5270ebdce4497d3dea82a857d56",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/61_县城第一名的一生/正文.md",
+      "sha256": "79d818daa67477b8f24abfa499d080eeec104882a1e4b09a96365dc653efff36",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/61_县城第一名的一生/设定.md",
+      "sha256": "b3cb4ef50cc6208723772859a66bfe538053f21e1f3cf55792ffd415a4c54a56",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/62_班委三人组/正文.md",
+      "sha256": "1f03dbdff821555c27b53fcb131352196a1a728c6bd1aee12d9672d3b44a9e05",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/62_班委三人组/设定.md",
+      "sha256": "63be89399926fc553719d8130e88bcc861412507115a36a0040edb24308b402c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/64_活人微死的AI人/审核报告.md",
+      "sha256": "7b4d96674303fb8cbc43ee9c89378601855e16b38c4bc074fc898d73c8b03fd2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/64_活人微死的AI人/正文.md",
+      "sha256": "70cbcc422cefa78e20667e2e33105c171f31bc82b99996449a2198dca851d115",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/64_活人微死的AI人/设定.md",
+      "sha256": "582276d0ee4466cbcf2e56be6fbd33d0320d6c06411b2e3b8702bc5630576ae8",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/65_寝室里那个人畜无害的女生/审核报告.md",
+      "sha256": "6598b94b5b839beea48a8f3a4dfead1458f235557fc2db8eee730a7e01ea59bd",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/65_寝室里那个人畜无害的女生/正文.md",
+      "sha256": "a755a31631dd0b70cb32920a031091615e273bc1753be6876aa8dccbac70faa0",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/65_寝室里那个人畜无害的女生/设定.md",
+      "sha256": "c706ccf579a252d5ddb6c649876e134308e8a6aa931cc5db7913defbddfdea93",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/66_寝室里什么都不争的那个女生/审核报告.md",
+      "sha256": "c24a6cd939f7403bfe72be46b85148e637cd606e9e4774fa231eb86a8d9e7380",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/66_寝室里什么都不争的那个女生/旧版/正文_v3慢热.md",
+      "sha256": "c0681d162f8dac9b4df84401d117d00557bd6f309c3e4229a93d9bdaffe7bd86",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/66_寝室里什么都不争的那个女生/旧版/正文_v5快推.md",
+      "sha256": "c0681d162f8dac9b4df84401d117d00557bd6f309c3e4229a93d9bdaffe7bd86",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/66_寝室里什么都不争的那个女生/旧版/设定_v3慢热.md",
+      "sha256": "d03e2e0e8c68e56fc80f6ad1e721859ec0cf223bd54bdd6337ce96aee3fec1f6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/66_寝室里什么都不争的那个女生/旧版/设定_v5快推.md",
+      "sha256": "d03e2e0e8c68e56fc80f6ad1e721859ec0cf223bd54bdd6337ce96aee3fec1f6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/66_寝室里什么都不争的那个女生/正文.md",
+      "sha256": "a34d243e0df4a8b8108b3d157d95104f8cb8bc830673d472dc6dc859d844b04a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/66_寝室里什么都不争的那个女生/设定.md",
+      "sha256": "f76159f8a209faa8d136d3bf036352373fa78694af8fe555fb6973841e75ee92",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/审核报告.md",
+      "sha256": "708f544b595cb81d780f4db6d17cb0afd00f09d0e7821fadcbfaaab6c8b2ec78",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/审核报告_v2_预发布.md",
+      "sha256": "63795fe1e2f3c77af83fa36118506ab3dca32fd07bdfc77428ab6b6acb7728f2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/审核报告_v3.md",
+      "sha256": "e0ed1e2e7ac4a8c895bf21ad3dac550228bc85a90db2c79604a3dcd17f9e0fde",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/旧版/正文_v3慢热.md",
+      "sha256": "58db7e531634468692a996e988f1884dc16498ea6304bc0345ae89817c5cd3a9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/旧版/正文_v5快推.md",
+      "sha256": "58db7e531634468692a996e988f1884dc16498ea6304bc0345ae89817c5cd3a9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/旧版/设定_v3慢热.md",
+      "sha256": "2817acdb037ac8222f26e0cc1b98a33c3fa5e870c512b4d3ffb6923242f5b423",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/旧版/设定_v5快推.md",
+      "sha256": "2817acdb037ac8222f26e0cc1b98a33c3fa5e870c512b4d3ffb6923242f5b423",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/正文.md",
+      "sha256": "268bdeb44a3ad8e24fa3047e5c380d45110a084877aa4e3dd7e18710f2aae17d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/67_分手时说「我们不合适」的男生/设定.md",
+      "sha256": "23524180b66a1d67c05e095cf3086b18e6ef0a3b61d40704f64c0d74ae2c33aa",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+      "sha256": "01fcb175f058420289940eae45ea41ac8cdc82297915b9965fd5ae9ea53b706b",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/68_家庭群里叫「一家三口」的女儿/设定.md",
+      "sha256": "7e2f60a25785e8eec84c0c276aa4935fd0ac894c8a556b631cccb895443ec62a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/69_酒桌上第一个站起来的男生/正文.md",
+      "sha256": "908cd87cf7072ebc99bb77ae4c7bd469bd1801e41bce4938aab9a96f60899353",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/69_酒桌上第一个站起来的男生/设定.md",
+      "sha256": "296abf2b6e588a9856257a0f14baaa4d4425d0a283ebacb7d7027d48dc494c98",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/70_三次把同一个人推开的女生/审核报告.md",
+      "sha256": "ac251065390d6be2a047b454afd120f6cb58a3f1713b0edbca9a88f6189cf10e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/70_三次把同一个人推开的女生/旧版/正文_v3慢热.md",
+      "sha256": "5d9e2d60cd37bbba468994cc4e4b7762438756e32bf865ec20e6ba3738474228",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/70_三次把同一个人推开的女生/旧版/正文_v5快推.md",
+      "sha256": "5d9e2d60cd37bbba468994cc4e4b7762438756e32bf865ec20e6ba3738474228",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/70_三次把同一个人推开的女生/旧版/设定_v3慢热.md",
+      "sha256": "7553e6688c55079af535b4f5a50a8279d95270e4852355710ed45319a13b2452",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/70_三次把同一个人推开的女生/旧版/设定_v5快推.md",
+      "sha256": "7553e6688c55079af535b4f5a50a8279d95270e4852355710ed45319a13b2452",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/70_三次把同一个人推开的女生/正文.md",
+      "sha256": "053aa2feb6dc08450bdb2b3955353c715a01daf11d0ce5dee53566f2ba2e5314",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/70_三次把同一个人推开的女生/设定.md",
+      "sha256": "6d06bca55735103b537845acce880f2fdc9e8ffea1b5e432bf51acfb99b043c1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/71_只会按字面意思办事的新人/审核报告.md",
+      "sha256": "e47e946ece9a9466c54abd13c3c0b751423c4bd98cbd60459c891161d7ed7d58",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/71_只会按字面意思办事的新人/旧版/正文_v3慢热.md",
+      "sha256": "f5c1a9dedf1bba97402e8a5cc2c7562532b71ff54de65ea0c78ae897ef34a4fc",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/71_只会按字面意思办事的新人/旧版/正文_v5快推.md",
+      "sha256": "f5c1a9dedf1bba97402e8a5cc2c7562532b71ff54de65ea0c78ae897ef34a4fc",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/71_只会按字面意思办事的新人/旧版/设定_v3慢热.md",
+      "sha256": "282a354fa5d1dcefdc07cf3bd8b0a412868daf6ac1578717b0d388541ac4aee9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/71_只会按字面意思办事的新人/旧版/设定_v5快推.md",
+      "sha256": "282a354fa5d1dcefdc07cf3bd8b0a412868daf6ac1578717b0d388541ac4aee9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/71_只会按字面意思办事的新人/正文.md",
+      "sha256": "2235c88d13a77237eb497fdde6987f067112c3c3f44f8a6273a173ae9cbb08dc",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/71_只会按字面意思办事的新人/设定.md",
+      "sha256": "924267f657f30644256985b6ae3ec8186aeac5376bcf0063c16f4f3238471772",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/审核报告.md",
+      "sha256": "0f59fd4c2bd4e87a2e2c44098ca87470ff2b1e2c9341596712b37d987304e27d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/审核报告_v2八拍.md",
+      "sha256": "59ff48427c37f6393b1c9090c1d2ecca39009fe39e24a94dbf5e5990ea82c423",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/正文_v2八拍.md",
+      "sha256": "1ec59d2e7bf1d770a778e3ae8b93f310a3c80e6b040a6399bdc82d883d97131a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/正文_v4慢热.md",
+      "sha256": "f82dcc134aacaba6edffb9da0159bac0f62a560545d581c5075272683f4df7fe",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/正文_v5快推.md",
+      "sha256": "bea9c7206fdc76d8172820be0304c5ce157c4d92268124489822b51729e1aac3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/正文_v6花光.md",
+      "sha256": "3358576e007624483508959a3105adce016caf8badc60f0d5ed094a5357cd8b9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/正文_v7补欠.md",
+      "sha256": "3ccf97a63d4bf95fbe4d3a5e2eefa8950c253bf639cca1e5bf41fd1420b889fb",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/正文_v8拒绝链.md",
+      "sha256": "82b59b1da5db84abce80a0f98a0e2c110c2870f191359c3eb30444d35fae1328",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/正文_v9底气.md",
+      "sha256": "9bfe79fbd1630cb295e8147f52af3255d08891eba65caf9a99ae374e159c29ad",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/设定_v2八拍.md",
+      "sha256": "c545b2ccec8175653fb5295f513f7e997128435642d8100b5e55252d4aacc7e2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/设定_v4慢热.md",
+      "sha256": "a438421882461ba465cbdf4d2a140bbb5bc48e0b7a264097693c33f5ac372f77",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/设定_v5快推.md",
+      "sha256": "a7b71bdc66628f5286bf24ce992450ac143c718ef2cf63bbe1a0a1c83e3ee674",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/设定_v6花光.md",
+      "sha256": "ce32aa5fd2dd78ffdda5cbcea576b1970c6315d3c97f11f56399aa6059540a1e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/设定_v7补欠.md",
+      "sha256": "0dea702f06c57d7e13c6465a26286c6986f0009a95b878f6d459c8e603a3fb1c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/设定_v8拒绝链.md",
+      "sha256": "f5ddf9b6a6dfae569393988fc1373d7373a2942fbdbfdd0ff143826bcf2cb433",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/旧版/设定_v9底气.md",
+      "sha256": "39fba17e5bd99f63a7f55c1805166ac7a5fc3779ca7fd6e816069989f5ffc366",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/正文.md",
+      "sha256": "d88b535599ebfb6346e75b754077a45a64ac3847def6b93b6e12321ce56f9674",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人/设定.md",
+      "sha256": "3cd9c08c37f0a4cc217b73773f0f38718dc11de1e2793a5ac0dabade2f2e881d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/审核报告.md",
+      "sha256": "1b35bfe30223e483e5bd11e6dfe99e5d43600f5b9ba5ce1d3c6b0606e037b029",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/正文_v4慢热.md",
+      "sha256": "f82dcc134aacaba6edffb9da0159bac0f62a560545d581c5075272683f4df7fe",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/正文_v5快推.md",
+      "sha256": "bea9c7206fdc76d8172820be0304c5ce157c4d92268124489822b51729e1aac3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/正文_v6花光.md",
+      "sha256": "3358576e007624483508959a3105adce016caf8badc60f0d5ed094a5357cd8b9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/正文_v7补欠.md",
+      "sha256": "3ccf97a63d4bf95fbe4d3a5e2eefa8950c253bf639cca1e5bf41fd1420b889fb",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/正文_v8拒绝链.md",
+      "sha256": "82b59b1da5db84abce80a0f98a0e2c110c2870f191359c3eb30444d35fae1328",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/设定_v4慢热.md",
+      "sha256": "a438421882461ba465cbdf4d2a140bbb5bc48e0b7a264097693c33f5ac372f77",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/设定_v5快推.md",
+      "sha256": "a7b71bdc66628f5286bf24ce992450ac143c718ef2cf63bbe1a0a1c83e3ee674",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/设定_v6花光.md",
+      "sha256": "ce32aa5fd2dd78ffdda5cbcea576b1970c6315d3c97f11f56399aa6059540a1e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/设定_v7补欠.md",
+      "sha256": "0dea702f06c57d7e13c6465a26286c6986f0009a95b878f6d459c8e603a3fb1c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/旧版/设定_v8拒绝链.md",
+      "sha256": "f5ddf9b6a6dfae569393988fc1373d7373a2942fbdbfdd0ff143826bcf2cb433",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/正文.md",
+      "sha256": "d88b535599ebfb6346e75b754077a45a64ac3847def6b93b6e12321ce56f9674",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_爽点紧凑版/设定.md",
+      "sha256": "3cd9c08c37f0a4cc217b73773f0f38718dc11de1e2793a5ac0dabade2f2e881d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_重生成基线/小节大纲.md",
+      "sha256": "8485dc3d8da2d1f66079a71da2c0cc08081f476b4221ccebaeb0b9b8b0412d31",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_重生成基线/正文.md",
+      "sha256": "517b3b56523493b46f466981dc906cec69217433054258f428e4530025be0bae",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/72_每天买一张彩票的人_重生成基线/设定.md",
+      "sha256": "8764ed96156be72cb0d86495b3fff6d8be95e118760936e82711f79f41047881",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/73_合影时永远在按快门的人/审核报告.md",
+      "sha256": "5906e6f94de81fc334354c23b97034a32d547e5c8952c008f87519737e458bd1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/73_合影时永远在按快门的人/正文.md",
+      "sha256": "e871f3e10421cfb849f5359bbe304f2c11afbd07c65b1e8fb2349f9219324462",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/73_合影时永远在按快门的人/设定.md",
+      "sha256": "1dd2720ecfc30876d3958eb089a047f0604241668076049237fb0601bd13e4ad",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/75_人生副本作者的一天/审核报告.md",
+      "sha256": "cb7663d607d085aefbb72e9ead7b0a8ad182f4f2ffe17a696d400f9f1ef2a81e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/75_人生副本作者的一天/正文.md",
+      "sha256": "48487580af75164c5e2681bb4491cb5d96fc51d082495f407eb417a4f159ed2e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/75_人生副本作者的一天/正文_3分钟版.md",
+      "sha256": "f9e3fa2b1549ea5f1dc74b0b043f6351c2497b0b1fdf76e16ced8c30ae2dda78",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/75_人生副本作者的一天/设定.md",
+      "sha256": "19db680ef618618e159ae394f6bc78e71a2a471caeefac5b732d6161313c9bc9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/75_人生副本作者的一天/评判_人工与面试官.md",
+      "sha256": "2ccd507eff19b1bc0de5800a1b03d5ed8906e208c5fa5f18a9aadf40f8f02690",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/76_辞职回家给爸妈打工的儿子/切条D0/制作单.md",
+      "sha256": "4e254ee736e5689351e3e19f5a802b92412a7204d27de5b5e6559f44151c4f1f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/76_辞职回家给爸妈打工的儿子/切条D0/条1_工资三人发/正文.md",
+      "sha256": "ba16c7fece785b552f2ee05a2d5f02e9ea93929b45d3be9ae67e5e3921494139",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/76_辞职回家给爸妈打工的儿子/切条D0/条2_婚宴三秒/正文.md",
+      "sha256": "8c0fd920748f0c5c4afff95e77f145e48ac12afb060fab018e3360f92c0cefa1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/76_辞职回家给爸妈打工的儿子/切条D0/条3_扣下的两千/正文.md",
+      "sha256": "c9a48bf80c011e527a3ec62e9cdb0cad3166acc9e12d3d849f6d646d41d4137c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/76_辞职回家给爸妈打工的儿子/审核报告.md",
+      "sha256": "14b229a8304b781e85aa110ff44f6978d2c838c6c005949903c18a00acaa5383",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/76_辞职回家给爸妈打工的儿子/正文.md",
+      "sha256": "4627aa0190b16b554eec17bd9e7a4c17755651a79e97c347e7fa385ffb38465b",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/76_辞职回家给爸妈打工的儿子/设定.md",
+      "sha256": "4103299a467e0bcea593924ee00a3a27241ac9bcf14c357e67316c82f9bc343f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/77_出道即巅峰却泯然众人的一生/审核报告.md",
+      "sha256": "8b08d09ae095cf289c6692676e495359f6f4921e26346c18a34d8c80cd3eee61",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "sha256": "373919ea34c9c5064c7493a5a03fe9f4a90ddd7f6eb05f600a260b86165bf485",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+      "sha256": "e9b7d5f0f38cf3d76cc03b8006e66101cdbb5599d9bff1b2bace86a0b3422e76",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/_刻薄短评_R18.md",
+      "sha256": "43a8518eae911e1e2e9ff4ac656b9dd4fb5689027da1a81d56d658bb693b7b56",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/切条D0/制作单.md",
+      "sha256": "80e2df29d70f53737dfef89cdb13873475725517219b4b1643eaeb902d880574",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/切条D0/条1_罚单是全车的/正文.md",
+      "sha256": "4731f90246a6716e6ec105b4b8e5a1ab1d607e2d795b22ff5136862df4ac546f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/发布包.md",
+      "sha256": "d66b6a4a30c885cf9d94f9b6ca7c913e9ff306758a2dfeb9a3c904df4b214873",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/大纲_v2_待账号主确认.md",
+      "sha256": "4446eb772a2b4ba8bc76d816a0c680d425bc33961c7b7963ba5809c8989effb2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/审核报告.md",
+      "sha256": "9f150240f39a5cd3c392f9c39f334f8d483aab8f19453e71f737ee1b73340e4a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/旧版/正文_v1.md",
+      "sha256": "434f61453061f71d43fce2b2aad7c7f5f4852318d0f2905f44cba029afe94387",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/旧版/设定_v1.md",
+      "sha256": "15d33a3bb135ef0fe054e942234640ff9683a63b0e90986485483b6b4ea8bfc8",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/正文.md",
+      "sha256": "a56410e365d30b792749194b21e2ef5e47f717ab173a08a3f6f4db8391ab397e",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/正文_3分钟版.md",
+      "sha256": "acbeea426aa1a1f35d53ab2015d4992e7146a1e8f269897a04a4752fa62b9e70",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/78_Codex上瘾的人/设定.md",
+      "sha256": "2ac0b361246b853e9ac3d2944ee6599e46aa8125e11754abce0afad6c8848605",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/_数据.csv",
+      "sha256": "121425caa441f0aaee578ddd239befae9ac6763798c1414f74c6de6630e9c69d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "作品/_数据_v2.csv",
+      "sha256": "c36c8eba681d8557995a49267a76361b05abbbecd195709b283b61636aee835b",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/01_无辣不欢的一生.txt",
+      "sha256": "c023be3b5ed728d8fe1ee545af0baf76826ad35d80abbf0109c93db6d9cdde3c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/02_外卖员的一生.txt",
+      "sha256": "4c057af32046ca4b5a513282d28dae7552dd836c542d6958e98cf9708671dbeb",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/03_雇佣兵的一生.txt",
+      "sha256": "40a4a0115a9467c7b204dd27c6ce406a530fd4e8f66f439aa241e4b240c10333",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/04_中10亿彩票的人生.txt",
+      "sha256": "27923a3512c7db4d07a45114fe2f80e803895e5b9f2ae8d08a3c6ded9e076dd3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/05_县城精神小伙的沉沦之路.txt",
+      "sha256": "37bb7cea891c546e36ef3222f9d34836cf3c7a5797d72971f27508ab3089280a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/06_职高生毕业后的残酷现实.txt",
+      "sha256": "be92b5ebdffb2c9ee737ec6eded83f2ee516eb9902c5376dda393f7990ba5a93",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/07_精神小妹纹身找不到工作去做团播.txt",
+      "sha256": "3e9405343ae21b726c95944c40a2bfc5dd5d28888072e3f5ecc5dca4a4d3aeaa",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/08_印度贫民窟高温下的人生.txt",
+      "sha256": "d4b0e544bc6e3ccccaaeaa9e148df5ee5b298afb67346899fcb28aa901aaf870",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/09_贷款买恒大房0首付哪吒车老婆开中药奶茶店.txt",
+      "sha256": "3ac0051b70a8086315c6d787c1689977acf5a4176f515c67308ec9a3e35d81f1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/10_一辈子不结婚的人生.txt",
+      "sha256": "47a94fc29980cc004c59fcebe0c191636625eb4cfaddedf5012619a201c253fe",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/11_印度婆罗门高温下的生活.txt",
+      "sha256": "e5786443359963b16374faefc8c27305f21c56865ffa16dcff1f7a77f49325b4",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/12_世界上只剩下你一个人.txt",
+      "sha256": "8b9a9e0bf5f2cfa4987f1ca31e0b4b8fb72dcef116069c6fde01d7e9c4e96e87",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/13_高中死装努力姐.txt",
+      "sha256": "f05a641f7dd516511e260908c4f65e264dec950dddaff43801facdfbe61450e6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/14_江浙沪顶级独生女的人生.txt",
+      "sha256": "204d1e9849c9a71b141f217fb43db6c02d8998a1e83c2f78359a5a79a608e6e3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/15_卖肾买iPhone4的人生.txt",
+      "sha256": "97d1e6990adbbe86ea9a9ba92002f04144c976fe221a5ed3c5497777d8d2a22c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/16_你有一个县城刀枪炮的父亲.txt",
+      "sha256": "9ee583dc5dde652251055ba06069e9e5c1aa86989b981801838f287436a429ac",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/17_外耗型人格的人生.txt",
+      "sha256": "cb95994274af1c0df748734cb4ef078a3c37eaf7d13b9a75a611330c2a22acb3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/18_极度性压抑的男大学生.txt",
+      "sha256": "c96edf841b96c8eb8f9d8f88c1521f65daf19ca93da019cdf1892bf1adf1eab8",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/19_矮个子男生的人生.txt",
+      "sha256": "830e4617f7a99e8c9cd3f73d0413160c58a7ff0418fb0372193c7ce5e0c0db75",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/20_男生又挫又丑的人生.txt",
+      "sha256": "533f833aa7f2e8f0fa16ffc0121710443135058c6711b45e27a43bded4110dc9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/21_大学生意外接触PG电子游戏.txt",
+      "sha256": "9fe7026fbcdda5cc8fada479e2ee6f6e2bb2c4e2e6572283867bc42c4ae00bb1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/22_先天性聋哑人的人生.txt",
+      "sha256": "84d36d5356f0ac9058211f941ebfb97361b08b1446f1f8eb17dae7d421628c2d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/23_买什么都喜欢分期的大学生.txt",
+      "sha256": "8e59b0222f4cb1cf3061717daa42d3d2e93c1e671a6d365f0511955561fbdd2b",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/24_没有公主命却有公主病的女生.txt",
+      "sha256": "ff54702731977da9e888042e38f6da78cebbfa39e9bc29c3cba19cc1dcdfcf78",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/25_减肥圈传来噩耗.txt",
+      "sha256": "ac19f5fd17919192d22e7d03d83595d3bc5cac1e85fcf1cbbdd4d1cb65f61859",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/26_你娶了大你10岁的邻家姐姐.txt",
+      "sha256": "2e5faa56b460dff8dca80b6e0d60260cd12edc1d574f1aca5f0b30ac874ebe68",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/27_对军训教官一见钟情的女大学生.txt",
+      "sha256": "3bc721404357b3a476102127dbcf9324eb245f1205d2235f6883d42f12b95058",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/28_你有一个长得不好看但很爱你的女朋友.txt",
+      "sha256": "759f8d3417b6ac7772a983f50876724d84a588f5a4575254e3960a99b63ecc00",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/28b_青春期满脸痘痘的男生.txt",
+      "sha256": "9774f8172c41cc8508b37df52db0b18914dcff460d2576ea50c96e199e855bad",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/29_愤怒的普通人.txt",
+      "sha256": "a0f87d5077c89e90e3346a03aebcbff0c7b6291105e829d7bee602604551d473",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/30_喜欢小众的小众哥.txt",
+      "sha256": "6f10139f521a42bb17044456b18e280d9e28fdb7881bf7ce24aa17ecfba34c3f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/31_卖完游戏账号又找回的找回哥.txt",
+      "sha256": "65fa14132b72ca36528193d7edadd361672e74b0c5f6d14adbd199d67f899d3c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/32_你有一个打呼噜跟水牛叫一样的室友.txt",
+      "sha256": "45928a9f5bb557ad550c11b7a564b826512cfc37ca3a5ebce835b22b3a61f974",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/33_先婚后爱的人生.txt",
+      "sha256": "008f8949c8dc6981e0f2fdff8f7cdef9b9976f802026f5ca4a281c94404471c7",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/34_朋友眼中的人生赢家.txt",
+      "sha256": "cd2783b230622e058530e07ed8f46025d8f2c991e76c4af691f678bc6236d0ef",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/35_你有一个高壮男的男朋友.txt",
+      "sha256": "55381e0b6c17ad6f2c715aa4170e9e9753b00823aaec812165c7798eed3c5a76",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/36_误入色途一事无成后幡然醒悟.txt",
+      "sha256": "aae927ea52c819b056de42d7c86ec0ed9772dfe7e91c0ec4e93ec20752c4eaa2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/37_班级里那个没有边界感的女生.txt",
+      "sha256": "39d381f332cf11d3ad91d244376c026712d2c36b3e8098a810a6b0afd6c3c2de",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/38_小时候去浏览器玩游戏意外发现新世界的男生.txt",
+      "sha256": "9ff62038d42bd94fd2ac046d0e1e1b4f5f2f6ffb1573ae4dba94ea4a9f2e92da",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/_index.json",
+      "sha256": "8dd1320c515bef9bdee7ea3fc40547ee36adc91846eb25d855c17d96afe2df5d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/_重复/02b_外卖员的一生_重复版本.txt",
+      "sha256": "ff0e54ac26fabdcf8d529edeb812bc000fbfdd6f28a04de196ead0d9b5bf15a1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "分篇/索引.md",
+      "sha256": "caa2b128658deead0190f00fa92c94200f0ecdbc584c6356c9c80b46e8a5353b",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/00_8月16日_合集本体/原文/原文.txt",
+      "sha256": "0bf45980d5fdc2885ac14cb808e43a1361200f99018b17b578fe1992969f5aa2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/01_无辣不欢的一生/原文/原文.txt",
+      "sha256": "c023be3b5ed728d8fe1ee545af0baf76826ad35d80abbf0109c93db6d9cdde3c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/02_外卖员的一生/原文/原文.txt",
+      "sha256": "4c057af32046ca4b5a513282d28dae7552dd836c542d6958e98cf9708671dbeb",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/03_雇佣兵的一生/原文/原文.txt",
+      "sha256": "40a4a0115a9467c7b204dd27c6ce406a530fd4e8f66f439aa241e4b240c10333",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/04_中10亿彩票的人生/原文/原文.txt",
+      "sha256": "27923a3512c7db4d07a45114fe2f80e803895e5b9f2ae8d08a3c6ded9e076dd3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/05_县城精神小伙的沉沦之路/原文/原文.txt",
+      "sha256": "37bb7cea891c546e36ef3222f9d34836cf3c7a5797d72971f27508ab3089280a",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/06_职高生毕业后的残酷现实/原文/原文.txt",
+      "sha256": "be92b5ebdffb2c9ee737ec6eded83f2ee516eb9902c5376dda393f7990ba5a93",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/07_精神小妹纹身找不到工作去做团播/原文/原文.txt",
+      "sha256": "3e9405343ae21b726c95944c40a2bfc5dd5d28888072e3f5ecc5dca4a4d3aeaa",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/08_印度贫民窟高温下的人生/原文/原文.txt",
+      "sha256": "d4b0e544bc6e3ccccaaeaa9e148df5ee5b298afb67346899fcb28aa901aaf870",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/09_贷款买恒大房0首付哪吒车老婆开中药奶茶店/原文/原文.txt",
+      "sha256": "3ac0051b70a8086315c6d787c1689977acf5a4176f515c67308ec9a3e35d81f1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/10_一辈子不结婚的人生/原文/原文.txt",
+      "sha256": "47a94fc29980cc004c59fcebe0c191636625eb4cfaddedf5012619a201c253fe",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/11_印度婆罗门高温下的生活/原文/原文.txt",
+      "sha256": "e5786443359963b16374faefc8c27305f21c56865ffa16dcff1f7a77f49325b4",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/12_世界上只剩下你一个人/原文/原文.txt",
+      "sha256": "8b9a9e0bf5f2cfa4987f1ca31e0b4b8fb72dcef116069c6fde01d7e9c4e96e87",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/13_高中死装努力姐/原文/原文.txt",
+      "sha256": "f05a641f7dd516511e260908c4f65e264dec950dddaff43801facdfbe61450e6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/14_江浙沪顶级独生女的人生/原文/原文.txt",
+      "sha256": "204d1e9849c9a71b141f217fb43db6c02d8998a1e83c2f78359a5a79a608e6e3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/15_卖肾买iPhone4的人生/原文/原文.txt",
+      "sha256": "97d1e6990adbbe86ea9a9ba92002f04144c976fe221a5ed3c5497777d8d2a22c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/16_你有一个县城刀枪炮的父亲/原文/原文.txt",
+      "sha256": "9ee583dc5dde652251055ba06069e9e5c1aa86989b981801838f287436a429ac",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/17_外耗型人格的人生/原文/原文.txt",
+      "sha256": "cb95994274af1c0df748734cb4ef078a3c37eaf7d13b9a75a611330c2a22acb3",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/18_极度性压抑的男大学生/原文/原文.txt",
+      "sha256": "c96edf841b96c8eb8f9d8f88c1521f65daf19ca93da019cdf1892bf1adf1eab8",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/19_矮个子男生的人生/原文/原文.txt",
+      "sha256": "830e4617f7a99e8c9cd3f73d0413160c58a7ff0418fb0372193c7ce5e0c0db75",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/20_男生又挫又丑的人生/原文/原文.txt",
+      "sha256": "533f833aa7f2e8f0fa16ffc0121710443135058c6711b45e27a43bded4110dc9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/21_大学生意外接触PG电子游戏/原文/原文.txt",
+      "sha256": "9fe7026fbcdda5cc8fada479e2ee6f6e2bb2c4e2e6572283867bc42c4ae00bb1",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/22_先天性聋哑人的人生/原文/原文.txt",
+      "sha256": "84d36d5356f0ac9058211f941ebfb97361b08b1446f1f8eb17dae7d421628c2d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/23_买什么都喜欢分期的大学生/原文/原文.txt",
+      "sha256": "8e59b0222f4cb1cf3061717daa42d3d2e93c1e671a6d365f0511955561fbdd2b",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/24_没有公主命却有公主病的女生/原文/原文.txt",
+      "sha256": "ff54702731977da9e888042e38f6da78cebbfa39e9bc29c3cba19cc1dcdfcf78",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/25_减肥圈传来噩耗/原文/原文.txt",
+      "sha256": "ac19f5fd17919192d22e7d03d83595d3bc5cac1e85fcf1cbbdd4d1cb65f61859",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/26_你娶了大你10岁的邻家姐姐/原文/原文.txt",
+      "sha256": "2e5faa56b460dff8dca80b6e0d60260cd12edc1d574f1aca5f0b30ac874ebe68",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/27_对军训教官一见钟情的女大学生/原文/原文.txt",
+      "sha256": "3bc721404357b3a476102127dbcf9324eb245f1205d2235f6883d42f12b95058",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/28_你有一个长得不好看但很爱你的女朋友/原文/原文.txt",
+      "sha256": "759f8d3417b6ac7772a983f50876724d84a588f5a4575254e3960a99b63ecc00",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/28b_青春期满脸痘痘的男生/原文/原文.txt",
+      "sha256": "9774f8172c41cc8508b37df52db0b18914dcff460d2576ea50c96e199e855bad",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/29_愤怒的普通人/原文/原文.txt",
+      "sha256": "a0f87d5077c89e90e3346a03aebcbff0c7b6291105e829d7bee602604551d473",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/30_喜欢小众的小众哥/原文/原文.txt",
+      "sha256": "6f10139f521a42bb17044456b18e280d9e28fdb7881bf7ce24aa17ecfba34c3f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/31_卖完游戏账号又找回的找回哥/原文/原文.txt",
+      "sha256": "65fa14132b72ca36528193d7edadd361672e74b0c5f6d14adbd199d67f899d3c",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/32_你有一个打呼噜跟水牛叫一样的室友/原文/原文.txt",
+      "sha256": "45928a9f5bb557ad550c11b7a564b826512cfc37ca3a5ebce835b22b3a61f974",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/33_先婚后爱的人生/原文/原文.txt",
+      "sha256": "008f8949c8dc6981e0f2fdff8f7cdef9b9976f802026f5ca4a281c94404471c7",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/34_朋友眼中的人生赢家/原文/原文.txt",
+      "sha256": "cd2783b230622e058530e07ed8f46025d8f2c991e76c4af691f678bc6236d0ef",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/35_你有一个高壮男的男朋友/原文/原文.txt",
+      "sha256": "55381e0b6c17ad6f2c715aa4170e9e9753b00823aaec812165c7798eed3c5a76",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/36_误入色途一事无成后幡然醒悟/原文/原文.txt",
+      "sha256": "aae927ea52c819b056de42d7c86ec0ed9772dfe7e91c0ec4e93ec20752c4eaa2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/37_班级里那个没有边界感的女生/原文/原文.txt",
+      "sha256": "39d381f332cf11d3ad91d244376c026712d2c36b3e8098a810a6b0afd6c3c2de",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/38_小时候去浏览器玩游戏意外发现新世界的男生/原文/原文.txt",
+      "sha256": "9ff62038d42bd94fd2ac046d0e1e1b4f5f2f6ffb1573ae4dba94ea4a9f2e92da",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/39_班里的蛀虫上大学了/原文/原文.txt",
+      "sha256": "cd111af3796e84ec9d1e11d4e4e4c8090f381c1ec75260268cbef431f384c317",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/46_赚够200万回小县城/原文/原文.txt",
+      "sha256": "74cbebf30529cfbba537a497ba9f83a071c36a97d746daf879e19d8f74d834a2",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/48a_大一军训闷骚女友/原文/原文.txt",
+      "sha256": "3caf16933fa888894dc5539116b7d9a5fe9d94f452dd27c2ea3cfc6939db61f6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/48b_高中同桌闷骚女友/原文/原文.txt",
+      "sha256": "d2399e56c7fab050641b62d847b38e12cb4a3eceb886e63e3a107f6e92210d20",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/48c_大学洗稿闷骚女友/原文/原文.txt",
+      "sha256": "17e559c1a675822bfa536ee84c83673e9ddf36e8982def15f1262cc9fe0f5d0f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/乱葬岗里的姑娘/原文/乱葬岗里的姑娘.txt",
+      "sha256": "171ae85d360b2cb017037c5d321c5a7d18a9cc3dc9c3ceeef0e0759d350cda9f",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/什么叫我洗白后，她们全部黑化了/原文/原文.txt",
+      "sha256": "f6fbb23aa8dbfe42d62b68f4f301a9691d520ac7f0253bc91598f53df4c91791",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/偏偏喜欢你/原文/偏偏喜欢你.txt",
+      "sha256": "4a6346e67f54ef645b2ee4aadf46aa0cc7de3c6655da6fb7a0f7707c37b6f2a6",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/全国没几个正常人？朕要杀疯了/原文/原文.txt",
+      "sha256": "e70efe93852131c5093007ed76bad8201013eff63aa02de039fab523956ab213",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/希腊神话：从成为微风之神开始 - 霜火/原文/原文.txt",
+      "sha256": "e9365f335346b1b7ed27c115f5bb9719e5e34f09e57500a631350b59692f9aca",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/掌控/原文/掌控.txt",
+      "sha256": "effddcab3b6ec1753c4e8dd32fde56fe50a31eaff09023bb18fec551ee1313d9",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/泠泠千古调/原文/泠泠千古调.txt",
+      "sha256": "97a82036c630267068ac679f865ff0bd636ed5870c1157b340ebdc21d5e4d812",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/豪门外的小白花/原文/豪门外的小白花.txt",
+      "sha256": "3d91602ab61a844b1ed111a37204beebb99a0b5da981a6dc03ede2c8e6e81b4d",
+      "matches_previous_git_verified_baseline": true
+    },
+    {
+      "path": "拆文库/隐娘/原文/隐娘.txt",
+      "sha256": "40a6e9ea5ccc532505bba2542a9c689940ef2ba52531c5a062e2a3cc22cb4051",
+      "matches_previous_git_verified_baseline": true
+    }
+  ],
+  "prior_implementation_file_changes": [],
+  "creative_rule_changes_this_round": false,
+  "demo_count": 3,
+  "demo_context_isolated": false,
+  "independent_model_calls": 0,
+  "independent_judgments": 0,
+  "demo_counts": [
+    {
+      "id": "S01",
+      "status": "PASS_WITH_REVIEW",
+      "metrics": {
+        "characters_repository_convention": 1440,
+        "nonempty_prose_lines": 124,
+        "longest_line_characters": 31,
+        "number_tokens": 0,
+        "number_density_per_1000": 0.0,
+        "density_denominator": 1440,
+        "assumed_cps": 6.4,
+        "estimated_duration_seconds": 225.0,
+        "duration_kind": "estimate_not_audio_measurement"
+      }
+    },
+    {
+      "id": "S02",
+      "status": "PASS_WITH_REVIEW",
+      "metrics": {
+        "characters_repository_convention": 1565,
+        "nonempty_prose_lines": 132,
+        "longest_line_characters": 37,
+        "number_tokens": 1,
+        "number_density_per_1000": 0.6,
+        "density_denominator": 1565,
+        "assumed_cps": 6.4,
+        "estimated_duration_seconds": 244.53,
+        "duration_kind": "estimate_not_audio_measurement"
+      }
+    },
+    {
+      "id": "S03",
+      "status": "PASS",
+      "metrics": {
+        "characters_repository_convention": 571,
+        "nonempty_prose_lines": 55,
+        "longest_line_characters": 19,
+        "number_tokens": 0,
+        "number_density_per_1000": 0.0,
+        "density_denominator": 571,
+        "assumed_cps": 6.4,
+        "estimated_duration_seconds": 89.22,
+        "duration_kind": "estimate_not_audio_measurement"
+      }
+    }
+  ],
+  "trial_readiness": "INCOMPLETE",
+  "trial_check_exit": 3,
+  "empty_trial_export_exit": 3,
+  "phantom_judge_packet_created": false,
+  "not_a_quality_uplift_or_publication_verdict": true
+}

@@ -15,6 +15,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const { isFubenProject } = require('./story-profile.js')
 
 const OUTLINE_HEADERS = [
   '结构段/五段功能',
@@ -68,6 +69,11 @@ function makeCheck(id, ok, file, evidence, expected, references, repair) {
 
 function verify(projectDir) {
   const project = path.resolve(projectDir)
+  if (isFubenProject(project)) {
+    const result = report(project, []);
+    return { ...result, profile: 'fuben', applicability: 'not_applicable',
+      note: '人生副本使用轻量 brief→原文→正文流程，不要求网文付费点/12列表头；此项 N/A 不代表稿件或发布通过。' };
+  }
   const skillRoot = path.resolve(__dirname, '..')
   const settingsFile = path.join(project, '设定.md')
   const outlineFile = path.join(project, '小节大纲.md')
@@ -353,7 +359,9 @@ function main(argv) {
     process.stderr.write('用法: node scripts/check-phase2-contract.js --json [project-dir]\n')
     return 2
   }
-  const result = verify(args[0] || '.')
+  let result;
+  try { result = verify(args[0] || '.'); }
+  catch (error) { process.stderr.write(`ERROR: ${error.message}\n`); return 2; }
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`)
   return result.ok ? 0 : 1
 }

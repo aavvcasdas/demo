@@ -1,0 +1,38 @@
+[
+  {
+    "path": "01_家长会不用带工具/正文.md",
+    "review_mode": "same_author_self_review",
+    "before_sha256": "83cef743e360534e4d85ec24e1df0ea8faa0e9c6d64862b8e941a7995f94ad17",
+    "after_sha256": "153f32d772f92126cc05e33e027a50fb83e36bf8a0f05247eafdf82861fb7b90",
+    "before": "学校开家长会。\n她把纸摊在你面前，手指按着时间。",
+    "after": "学校开家长会，这次孩子也参加，要带家长看自己的作业。\n她把纸摊在你面前，手指按着时间。",
+    "reason": "明确是孩子也参加的家长会，让后半段女儿在座位旁的行动有前提。"
+  },
+  {
+    "path": "02_这一版已经可以了/正文.md",
+    "review_mode": "same_author_self_review",
+    "before_sha256": "dbfeba2f5d2dead3aac78c7fb5656c15453744f5fc2c8e8be27ab1ff1a70321f",
+    "after_sha256": "ffd6ad047ba381de857426111621e99967d333e0888403b02d6f8b9096c0eb9b",
+    "before": "有人正在讲他新租的房子，说房东拍照时一定趴在墙上了，照片里明明大得能跑步。",
+    "after": "许成正在给大家看新房子的照片，说房东拍照时一定趴在墙上了，照片里明明大得能跑步。",
+    "reason": "明确新房子的主人，避免“有人/他”与末尾向许成问地址的指代混淆。"
+  },
+  {
+    "path": "03_到了别再看手机了/正文.md",
+    "review_mode": "same_author_self_review",
+    "before_sha256": "aebeb994ebcff4ec2e905f5d391987cdf8ed890366bfc48448c2eb7adae7f0aa",
+    "after_sha256": "96fbf926a802eb17ed5b4236e227cac5f9580d8808bdcbeae6de8a201b87775e",
+    "before": "你把手松开。\n\n第二天早上，你陪他走一次。\n他戴着老花镜，把手机拿得远远的。",
+    "after": "你把手松开。\n他点错了一下，退回了首页。\n\n你刚伸手，他就把手机往回收。\n“你说，我按。”\n\n你看了一眼时间，又把手放回腿上。\n“没事，再来。”\n\n他这回慢慢点，终于找到那条路线。\n临退出前，还自己从头试了一遍。\n\n第二天早上，你陪他走一次。\n他先把菜场找出来，确认了一遍，才点开始。",
+    "reason": "不用老花镜加拿远的套装姿态代表老人；补父亲主动操作、孩子肯等的互动，让学习过程成立。时长仍只估算。"
+  },
+  {
+    "path": "01_家长会不用带工具/正文.md",
+    "review_mode": "same_author_final_read_through",
+    "before_sha256": "153f32d772f92126cc05e33e027a50fb83e36bf8a0f05247eafdf82861fb7b90",
+    "after_sha256": "2dbd209224459c4dc13d8d0beed61acabe1a78267f3f1e516fad5c566f9fddfc",
+    "before": "你刚坐稳，旁边的家长就转过头来。",
+    "after": "你把包挂在椅背上，长包带拖到脚边。\n刚坐稳，旁边的家长就转过头来。",
+    "reason": "最终通读发现：仅踩包带不足以解释椅子挪不动。补包挂椅背、长带到脚边，使结尾动作的物理因果成立。"
+  }
+]

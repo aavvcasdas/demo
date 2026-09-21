@@ -4,6 +4,11 @@ trigger: always_on
 
 # oh-story writing project rules
 
+## 人生副本优先分流（本仓扩展）
+
+人生副本 / 剧本人生 / 第二人称体验类口播先走 `story-short-write` 的轻量 profile；审稿走 `fuben-review`。这个分支不执行后文普通小说的细纲、付费点、追踪、去味配额与必读表，也不要求部署独立 Agent 才能写。只有实际可调用时才委派，solo 不冒称独立审核。
+新建口播项目若已启用小说 hooks，且尚无可识别的正文/设定，在**作品目录**放 `.fuben.json`：`{"schema_version":1,"profile":"fuben"}`，避免首次写入被当普通小说；不要标到混合书库根。未启用 hooks 的直接创作不要求这个文件。普通小说分支保持原合同。
+
 This workspace uses the oh-story web-fiction skill pack. Discover skills from
 `.agents/skills/`; read the selected skill's `SKILL.md` before executing it and
 load its references only when that skill instructs you to do so.
@@ -29,7 +34,7 @@ load its references only when that skill instructs you to do so.
   continue an oh-story book under `~/.gemini/`, Antigravity's `scratch/`, or any
   other directory outside the workspace unless the user explicitly names that
   external destination.
-- Before writing prose, long-form projects require the matching
+- Before writing novel prose, long-form projects require the matching
   `大纲/细纲_第N章*.md`; short-form projects require `小节大纲.md`.
 - Treat `追踪/_tracking-state.json` as the structured source of truth. Do not
   hand-edit its derived Markdown views.

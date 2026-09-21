@@ -1,0 +1,3979 @@
+{
+  "schema_version": 2,
+  "scope": "works",
+  "input_hashes_unchanged": true,
+  "coverage": {
+    "work": 35,
+    "variant": 3
+  },
+  "status_counts": {
+    "PASS_WITH_REVIEW": 33,
+    "PASS": 1,
+    "FAIL": 4
+  },
+  "errors": 0,
+  "blocks": 4,
+  "excluded_or_unassessed": [
+    "作品/76_辞职回家给爸妈打工的儿子/切条D0/制作单.md（制作单内嵌脚本；未当作独立正文或音频检测）",
+    "作品/78_Codex上瘾的人/切条D0/制作单.md（制作单内嵌脚本；未当作独立正文或音频检测）"
+  ],
+  "rows": [
+    {
+      "source": "作品/46_带着50万回二线治愈的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/46_带着50万回二线治愈的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/46_带着50万回二线治愈的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/46_带着50万回二线治愈的一生/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L10 [短篇核心框架]: 数字主张 996 在正文找不到出处（含中文数词式）——「- 起因：被一线城市996摧残，凌晨心悸后辞职」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/46_带着50万回二线治愈的一生/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/46_带着50万回二线治愈的一生/正文.md",
+            "line": 18,
+            "evidence": "微信里那个天天半夜发疯的主管"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/46_带着50万回二线治愈的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "9f8a827d771220587bf36199de54bcd9c4f229be63aadf559ad44bda0fee6d5e",
+          "setting_sha256": "1373c4244f17405e7bf31db8f10795f2590c6bbfe185edad923a3ea9aed3dce6"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/46_带着50万回二线治愈的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1050,
+          "nonempty_prose_lines": 94,
+          "longest_line_characters": 22,
+          "number_tokens": 13,
+          "number_density_per_1000": 12.4,
+          "density_denominator": 1050,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 164.06,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/47_大专生独来独往的一生_重置加长版/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/47_大专生独来独往的一生_重置加长版/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/47_大专生独来独往的一生_重置加长版/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/47_大专生独来独往的一生_重置加长版/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/47_大专生独来独往的一生_重置加长版/正文.md",
+            "line": 11,
+            "evidence": "寝室里就拉了四五个微信群"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/47_大专生独来独往的一生_重置加长版/正文.md",
+            "line": 151,
+            "evidence": "你甚至没有退出那几个早就屏蔽了的微信群"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/47_大专生独来独往的一生_重置加长版/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "33d285213f2ea62ceb3252b02508b45a1a795a3f6a3f6c8ba401cf6906e1f1fc",
+          "setting_sha256": "5e229033027589d04aff8189fde3efcd3b3d0fcea5a9142178e2ca9e8da731b3"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/47_大专生独来独往的一生_重置加长版/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1783,
+          "nonempty_prose_lines": 151,
+          "longest_line_characters": 31,
+          "number_tokens": 13,
+          "number_density_per_1000": 7.3,
+          "density_denominator": 1783,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 278.59,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/48_校园跑微醺闷骚女友/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/48_校园跑微醺闷骚女友/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 7 汉字，上文称 3 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/48_校园跑微醺闷骚女友/正文.md",
+            "line": 19,
+            "evidence": "三个字\n直到有一天晚上"
+          },
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/48_校园跑微醺闷骚女友/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/48_校园跑微醺闷骚女友/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/48_校园跑微醺闷骚女友/正文.md",
+            "line": 17,
+            "evidence": "就顺理成章加了微信"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/48_校园跑微醺闷骚女友/正文.md",
+            "line": 47,
+            "evidence": "你随口在微信上提了一嘴下午有比赛"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/48_校园跑微醺闷骚女友/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "dc997e627826221eedb176e4d125f4184f8f2cdccce70ad3cea507746cb64de8",
+          "setting_sha256": "a0b23db6898b54fd64907d92647e03d5ae9e1e3497298728b9d1c4ee571fba66"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/48_校园跑微醺闷骚女友/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1082,
+          "nonempty_prose_lines": 111,
+          "longest_line_characters": 20,
+          "number_tokens": 1,
+          "number_density_per_1000": 0.9,
+          "density_denominator": 1082,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 169.06,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/49_假快递拿反书闷骚女友/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/49_假快递拿反书闷骚女友/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/49_假快递拿反书闷骚女友/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/49_假快递拿反书闷骚女友/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/49_假快递拿反书闷骚女友/正文.md",
+            "line": 14,
+            "evidence": "你们顺手加了微信"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/49_假快递拿反书闷骚女友/正文.md",
+            "line": 60,
+            "evidence": "一个大一的漂亮学妹跑过来问你要微信"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/49_假快递拿反书闷骚女友/正文.md",
+            "line": 82,
+            "evidence": "加人家微信去啊"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/49_假快递拿反书闷骚女友/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "00a855e7f77e6a94301e072d497d7ab144ab274bdc2b4542537958f9aae0113c",
+          "setting_sha256": "f34b370afc9cac64143a56e7db215932fbdc803dcc42c3381bbbd89b57340bc6"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/49_假快递拿反书闷骚女友/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1087,
+          "nonempty_prose_lines": 117,
+          "longest_line_characters": 21,
+          "number_tokens": 2,
+          "number_density_per_1000": 1.8,
+          "density_denominator": 1087,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 169.84,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/49_拿快递吃醋闷骚女友/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/正文.md",
+            "line": 13,
+            "evidence": "顺手加了微信"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/正文.md",
+            "line": 60,
+            "evidence": "一个大一的漂亮学妹跑过来问你要微信"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/正文.md",
+            "line": 70,
+            "evidence": "他平时不用微信"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/正文.md",
+            "line": 92,
+            "evidence": "我没给别人微信"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/49_拿快递吃醋闷骚女友/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "d506d2107c2120a1b731a8f49fefade2c7d5a4ce0ade87506b3c8a51a9790924",
+          "setting_sha256": "ca064b4c48791cbc1de31938e50a2bffff8adfe5498dc0eb497bfcfcf66497dc"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/49_拿快递吃醋闷骚女友/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1081,
+          "nonempty_prose_lines": 118,
+          "longest_line_characters": 21,
+          "number_tokens": 2,
+          "number_density_per_1000": 1.9,
+          "density_denominator": 1081,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 168.91,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/50_中一百万彩票的一生_重置加长版/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L10 [短篇核心框架]: 数字主张 996 在正文找不到出处（含中文数词式）——「- 起因：996打工人意外中奖100」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/正文.md",
+            "line": 30,
+            "evidence": "你的微信余额通常不会超过两百块"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/正文.md",
+            "line": 63,
+            "evidence": "更没有发什么朋友圈炫耀"
+          },
+          {
+            "rule_id": "AI_STYLE_metaphor-density-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [metaphor-density-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/正文.md",
+            "line": 13,
+            "evidence": "平静得就像只是下楼去丢了一袋垃圾 | 你像一个生锈的齿轮一样准时被闹钟砸醒 | 你没有像疯子一样大喊大叫 | 像往常一样把一沓厚厚的文件狠狠摔在你桌上 |..."
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "f71b0cc545b78bd9a61e42c711633924f0497be2cb4dda4d5385b71f5120c07c",
+          "setting_sha256": "65e4327557160e9d3584484bdc72cd9e14b1f81110664b6c8e73398769455776"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/50_中一百万彩票的一生_重置加长版/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2468,
+          "nonempty_prose_lines": 215,
+          "longest_line_characters": 27,
+          "number_tokens": 25,
+          "number_density_per_1000": 10.1,
+          "density_denominator": 2468,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 385.62,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/51_反向拿捏极品亲戚的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/51_反向拿捏极品亲戚的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 11 汉字，上文称 3 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/51_反向拿捏极品亲戚的一生/正文.md",
+            "line": 36,
+            "evidence": "三个字\n永远是绑架你的最高指令"
+          },
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/51_反向拿捏极品亲戚的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/51_反向拿捏极品亲戚的一生/设定.md"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/51_反向拿捏极品亲戚的一生/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 反向拿捏极品亲戚的一生 | 有一种亲戚 | 但只要你稍微过得好了一点 | 他们就会像闻着味儿的水蛭一样 | 打着一家人的旗号"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/51_反向拿捏极品亲戚的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "7a62473cf611f94b20639098f872821967b2864302c47b872c175dc29aed03c3",
+          "setting_sha256": "fb948efdaf7e895dba73b2af8d39cd4d429ca3b1a521bbfd795209a6224965c3"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/51_反向拿捏极品亲戚的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1622,
+          "nonempty_prose_lines": 154,
+          "longest_line_characters": 28,
+          "number_tokens": 5,
+          "number_density_per_1000": 3.1,
+          "density_denominator": 1622,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 253.44,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L10 [短篇核心框架]: 数字主张 6,000,000 在正文找不到出处（含中文数词式）——「- 起因：普通社畜中奖600万（税后480万），直」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 苹果",
+            "file": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md",
+            "line": 103,
+            "evidence": "举起新买的苹果14 Pro"
+          },
+          {
+            "rule_id": "AI_STYLE_quote-emphasis-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [quote-emphasis-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md",
+            "line": 34,
+            "evidence": "为你好 秘密基地 骑驴找马"
+          },
+          {
+            "rule_id": "AI_STYLE_metaphor-density-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [metaphor-density-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md",
+            "line": 36,
+            "evidence": "像被泼了一盆带冰渣子的冷水 | 婷婷没有像泼妇那样大吵大闹 | 连看你的眼神都像在看一个没有任何价值的累赘 | 更没有像个被绿的怨种一样质问他们为什么 |..."
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 2
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "bb9c5b36bedf5314874519f6864e76ea36c624b021d66521da8ebda2de7a153c",
+          "setting_sha256": "b971b91c7ecf66804f5c14dd5ffd058a34f863cdcadd0c9e66d38f38cca32813"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/52_中百万彩票隐瞒扮猪吃虎的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2149,
+          "nonempty_prose_lines": 184,
+          "longest_line_characters": 30,
+          "number_tokens": 18,
+          "number_density_per_1000": 8.4,
+          "density_denominator": 2149,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 335.78,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/53_中大奖扮猪吃虎护妻的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L10 [短篇核心框架]: 数字主张 5,000,000 在正文找不到出处（含中文数词式）——「- 起因：底层社畜中大奖500万（税后400万），为」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/正文.md",
+            "line": 177,
+            "evidence": "疯狂给你和夏夏发微信道歉"
+          },
+          {
+            "rule_id": "AI_STYLE_quote-emphasis-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [quote-emphasis-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/正文.md",
+            "line": 93,
+            "evidence": "张总 砰 狗咬狗"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "719d7328e6261c705ce1b177e283d03ea034dccba267b47ab9ee7207c0bfda36",
+          "setting_sha256": "1329bf4827a96157d8de1b557637831e54cfc997000ba8270616a807fe181d48"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/53_中大奖扮猪吃虎护妻的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2039,
+          "nonempty_prose_lines": 183,
+          "longest_line_characters": 24,
+          "number_tokens": 7,
+          "number_density_per_1000": 3.4,
+          "density_denominator": 2039,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 318.59,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/54_理智暴富与清醒护妻的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/54_理智暴富与清醒护妻的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/54_理智暴富与清醒护妻的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/54_理智暴富与清醒护妻的一生/设定.md"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/54_理智暴富与清醒护妻的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "61ee27471d50ef029217415ed3af9f9c7818c728ff73dbc95cb2dbb7eaae1a84",
+          "setting_sha256": "2187fd4da5c9fe6e02d77f33e32fed87547af6ac68008f52dc5b957dee43e7e9"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/54_理智暴富与清醒护妻的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2188,
+          "nonempty_prose_lines": 54,
+          "longest_line_characters": 114,
+          "number_tokens": 22,
+          "number_density_per_1000": 10.1,
+          "density_denominator": 2188,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 341.88,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/55_机修工油转电翻盘/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/55_机修工油转电翻盘/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/55_机修工油转电翻盘/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/55_机修工油转电翻盘/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L27 [Phase 2 设计校验]: 数字主张 2,100 在正文找不到出处（含中文数词式）——「· ASR 语感 · ~2100 字 · 无付费点）」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/55_机修工油转电翻盘/设定.md"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/55_机修工油转电翻盘/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 18岁辍学的机修工 | 赶上油车大退潮翻盘的一生 | 那年你中考落榜 | 你舅舅蹲在院子里 | 抽着烟对你爸说"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/55_机修工油转电翻盘/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "2a359785476fbd52121329565442807cac6ad7d0d98c66cb6eb8ec41db6b144c",
+          "setting_sha256": "5b9a0380d71b6183d583e0a5bcaa6278da4d6f0cd7037c14ac0d4d45843247da"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/55_机修工油转电翻盘/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1724,
+          "nonempty_prose_lines": 213,
+          "longest_line_characters": 18,
+          "number_tokens": 13,
+          "number_density_per_1000": 7.5,
+          "density_denominator": 1724,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 269.38,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/56_赝品哥社死/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/56_赝品哥社死/设定.md"
+          },
+          {
+            "rule_id": "WEAK_STATE_LEDGER",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "候选（待确认对象/语境）：因果/状态台账缺少触发词或状态变化字段",
+            "file": "/home/user/demo/作品/56_赝品哥社死/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L52 [Phase 2 设计校验]: 数字主张 2,600 在正文找不到出处（含中文数词式）——「(第二人称·ASR语感·2600–3200字·反诈导」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/56_赝品哥社死/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L52 [Phase 2 设计校验]: 数字主张 3,200 在正文找不到出处（含中文数词式）——「·ASR语感·2600–3200字·反诈导向)」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/56_赝品哥社死/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 2,
+            "evidence": "朋友圈装富三年的赝品哥"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 5,
+            "evidence": "朋友圈真是个好东西"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 10,
+            "evidence": "全朋友圈都知道你是富二代"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 12,
+            "evidence": "你的朋友圈常年只有三样东西"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 37,
+            "evidence": "你不敢让朋友圈知道"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 171,
+            "evidence": "点开朋友圈 那个熟悉的 今天到货"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 朋友圈装富三年的赝品哥 | 差点卷钱跑路的一生 | 朋友圈真是个好东西 | 它让你不用真有钱 | 就能让所有人以为你有钱"
+          },
+          {
+            "rule_id": "AI_STYLE_quote-emphasis-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [quote-emphasis-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+            "line": 89,
+            "evidence": "投资 想投 到货"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/56_赝品哥社死/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 2
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "c0ec077cd4ee563a166ab3f455a2ff594454266e0b3bbafa599aa9882e3503c7",
+          "setting_sha256": "492fb491d2212576834b4730333907d6f7445bf14f88bd3e3aea9a925de32a1c"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2070,
+          "nonempty_prose_lines": 167,
+          "longest_line_characters": 29,
+          "number_tokens": 19,
+          "number_density_per_1000": 9.2,
+          "density_denominator": 2070,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 323.44,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/57_床帘发光的男生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/57_床帘发光的男生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/57_床帘发光的男生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/57_床帘发光的男生/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L50 [Phase 2 设计校验]: 数字主张 2,200 在正文找不到出处（含中文数词式）——「· ASR 语感 · 2200–2600 字 ·」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/57_床帘发光的男生/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L50 [Phase 2 设计校验]: 数字主张 2,600 在正文找不到出处（含中文数词式）——「R 语感 · 2200–2600 字 · 无付费点）」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/57_床帘发光的男生/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/57_床帘发光的男生/正文.md",
+            "line": 120,
+            "evidence": "临走前你发了个朋友圈"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/57_床帘发光的男生/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 9月初 你拖着行李箱推开寝室门 | 你顺手看了一眼手机 | 屏幕使用时间 今日2小时03分 | 你还挺得意 | 这一切看起来都非常正常"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/57_床帘发光的男生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "15964155bec822a8f38c9a0d19093bce11d4092fcc1a5a6009f8a636d78f3288",
+          "setting_sha256": "1533c0e2bed6273e2744bc3e1e6ae61a83ff0cd70b9c87b46b90baff82f080bf"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/57_床帘发光的男生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2204,
+          "nonempty_prose_lines": 206,
+          "longest_line_characters": 25,
+          "number_tokens": 38,
+          "number_density_per_1000": 17.2,
+          "density_denominator": 2204,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 344.38,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/58_反骨嘉豪/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/58_反骨嘉豪/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/58_反骨嘉豪/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/58_反骨嘉豪/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L42 [Phase 2 设计校验]: 数字主张 2,200 在正文找不到出处（含中文数词式）——「· ASR 语感 · 2200–2600 字）」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/58_反骨嘉豪/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L42 [Phase 2 设计校验]: 数字主张 2,600 在正文找不到出处（含中文数词式）——「R 语感 · 2200–2600 字）」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/58_反骨嘉豪/设定.md"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/58_反骨嘉豪/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 干什么都反骨的嘉豪 | 你叫嘉豪 | 穿上 冻死你 | 你穿着短裤冲进了雪地 | 站了半个小时"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/58_反骨嘉豪/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "a3fa34d1d85c90088ab696092c4d0984abdd247e4d48e3a5a93f92e7dcb43cb7",
+          "setting_sha256": "2428e5b8232463f91fc710b941fa3eb3883b790982fe7db8f87be33fefabb57c"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/58_反骨嘉豪/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2065,
+          "nonempty_prose_lines": 210,
+          "longest_line_characters": 26,
+          "number_tokens": 21,
+          "number_density_per_1000": 10.2,
+          "density_denominator": 2065,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 322.66,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/58b_反骨嘉豪_代价版/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/58b_反骨嘉豪_代价版/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 11 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/58b_反骨嘉豪_代价版/正文.md",
+            "line": 82,
+            "evidence": "两个字\n灯管的反光落在签字栏上"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 9 汉字，上文称 4 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/58b_反骨嘉豪_代价版/正文.md",
+            "line": 159,
+            "evidence": "四个字\n她这次发来一段语音"
+          },
+          {
+            "rule_id": "QUOTED_CHARACTER_COUNT",
+            "severity": "BLOCK",
+            "category": "facts",
+            "message": "引文有 3 个汉字，附近声称 4 个字（混合文字需确认计数口径）",
+            "file": "/home/user/demo/作品/58b_反骨嘉豪_代价版/设定.md",
+            "line": 178,
+            "evidence": "四个字「别谢了」 "
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/58b_反骨嘉豪_代价版/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "4cd4a4d80ee4e7b3b8e7eab368e3c3fac56ef4381489fe9ebc5a52b66d18e18f",
+          "setting_sha256": "53004effc627fcfb94d67e5bcd944efb3b987b02a36c6af55f87abcb4637ff29"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/58b_反骨嘉豪_代价版/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2384,
+          "nonempty_prose_lines": 282,
+          "longest_line_characters": 22,
+          "number_tokens": 49,
+          "number_density_per_1000": 20.6,
+          "density_denominator": 2384,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 372.5,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "FAIL",
+        "exit_code": 1,
+        "mechanical_pass": false,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/59_精神小伙的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/59_精神小伙的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/59_精神小伙的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/59_精神小伙的一生/设定.md"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/59_精神小伙的一生/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 精神小伙的一生 | 14岁那年暑假 | 你在镇上的理发店花了15块钱 | 剪了一个锅盖头 | 刘海齐眉 后脑勺推青"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/59_精神小伙的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "21ece0b60350918a8ac69585dcc2b866eec03e4ae441ad336fd4737b225a8fb6",
+          "setting_sha256": "c23475f66f967fe329eef71cc32b4f8c023db53d683ef9d5a108795143ff8bf3"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/59_精神小伙的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1921,
+          "nonempty_prose_lines": 173,
+          "longest_line_characters": 25,
+          "number_tokens": 36,
+          "number_density_per_1000": 18.7,
+          "density_denominator": 1921,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 300.16,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/60_职高精神小伙的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/60_职高精神小伙的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/60_职高精神小伙的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/60_职高精神小伙的一生/设定.md"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/60_职高精神小伙的一生/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 职高精神小伙的一生 | 15岁 你中考考了213分 | 你在院子里给鬼火换排气管 | 汽修班 41个人 | 第一节课 他扫了一圈教室"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/60_职高精神小伙的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "4b1bf62a51c0e213b1a4e842417c843538b8d3ddc737b505c06d21992fa29da8",
+          "setting_sha256": "6145d179da6644d79a445da78c619c202ca9e5270ebdce4497d3dea82a857d56"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/60_职高精神小伙的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 1948,
+          "nonempty_prose_lines": 163,
+          "longest_line_characters": 25,
+          "number_tokens": 59,
+          "number_density_per_1000": 30.3,
+          "density_denominator": 1948,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 304.38,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/61_县城第一名的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/61_县城第一名的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/61_县城第一名的一生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/61_县城第一名的一生/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L12 [故事核]: 数字主张 211 在正文找不到出处（含中文数词式）——「爸的蓝白编织袋去省会读 211，从英语分级 C 班」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/61_县城第一名的一生/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: iPhone",
+            "file": "/home/user/demo/作品/61_县城第一名的一生/正文.md",
+            "line": 38,
+            "evidence": "她的父亲穿着polo衫 用最新的iPhone在给她拍照"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 优衣库",
+            "file": "/home/user/demo/作品/61_县城第一名的一生/正文.md",
+            "line": 120,
+            "evidence": "你的西装是在优衣库买的 599 是你在北京买过最贵的一件衣服"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/61_县城第一名的一生/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 县城第一名的一生 | 你穿着拖鞋跑过去 | 你的名字用黄色的字印在正中间 | 他说是校长交代的 | 鞭炮炸了两分钟 你站在纸屑里"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/61_县城第一名的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "79d818daa67477b8f24abfa499d080eeec104882a1e4b09a96365dc653efff36",
+          "setting_sha256": "b3cb4ef50cc6208723772859a66bfe538053f21e1f3cf55792ffd415a4c54a56"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/61_县城第一名的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2735,
+          "nonempty_prose_lines": 193,
+          "longest_line_characters": 41,
+          "number_tokens": 82,
+          "number_density_per_1000": 30.0,
+          "density_denominator": 2735,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 427.34,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/62_班委三人组/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/62_班委三人组/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 6 汉字，上文称 4 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/62_班委三人组/正文.md",
+            "line": 229,
+            "evidence": "四个字\n允许一切发生"
+          },
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/62_班委三人组/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/62_班委三人组/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L4 [设定：你和班委三人组一个小组（v5 · 单事件 · 32 骨架 · 梗密集）]: 数字主张 2,500 在正文找不到出处（含中文数词式）——「②梗密集的段子号风格 ③2500–3000 字」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/62_班委三人组/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L14 [设定：你和班委三人组一个小组（v5 · 单事件 · 32 骨架 · 梗密集）]: 数字主张 404 在正文找不到出处（含中文数词式）——「| 404 递归正义 | 三人被」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/62_班委三人组/设定.md"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 华为",
+            "file": "/home/user/demo/作品/62_班委三人组/正文.md",
+            "line": 42,
+            "evidence": "你们组比华为还先进"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/62_班委三人组/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 你和班委三人组分到了一个小组 | 大二上 专业课 小组作业 | 老师说自由组队 三分钟 | 你去了趟厕所 | 剩下四个"
+          },
+          {
+            "rule_id": "AI_STYLE_low-connective-density-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [low-connective-density-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/62_班委三人组/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 大二上 专业课 小组作业 | 老师说自由组队 三分钟 | 你去了趟厕所 | 剩下四个 | 班长 副班长 纪律委员"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/62_班委三人组/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 2
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "1f03dbdff821555c27b53fcb131352196a1a728c6bd1aee12d9672d3b44a9e05",
+          "setting_sha256": "63be89399926fc553719d8130e88bcc861412507115a36a0040edb24308b402c"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/62_班委三人组/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2476,
+          "nonempty_prose_lines": 233,
+          "longest_line_characters": 36,
+          "number_tokens": 55,
+          "number_density_per_1000": 22.2,
+          "density_denominator": 2476,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 386.88,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/64_活人微死的AI人/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/64_活人微死的AI人/正文.md",
+        "findings": [
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/64_活人微死的AI人/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 把命交给AI的嘉豪 | 它说 建议23点前入睡哦 | 你说 好哒 | 然后你俩聊到了三点 | 你22岁 大四"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/64_活人微死的AI人/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "70cbcc422cefa78e20667e2e33105c171f31bc82b99996449a2198dca851d115",
+          "setting_sha256": "582276d0ee4466cbcf2e56be6fbd33d0320d6c06411b2e3b8702bc5630576ae8"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/64_活人微死的AI人/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2809,
+          "nonempty_prose_lines": 255,
+          "longest_line_characters": 23,
+          "number_tokens": 49,
+          "number_density_per_1000": 17.4,
+          "density_denominator": 2809,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 438.91,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/65_寝室里那个人畜无害的女生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/65_寝室里那个人畜无害的女生/正文.md",
+        "findings": [
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/65_寝室里那个人畜无害的女生/正文.md",
+            "line": 98,
+            "evidence": "朋友圈分组可见 对外那一组你发的是"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/65_寝室里那个人畜无害的女生/正文.md",
+            "line": 129,
+            "evidence": "六人寝 到大二下 有五个微信群"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/65_寝室里那个人畜无害的女生/正文.md",
+            "line": 171,
+            "evidence": "第三张 是你朋友圈的两张截图 并排 左边"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/65_寝室里那个人畜无害的女生/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 寝室里那个人畜无害的女生 | 晚上十点半 寝室里只剩你一个人 | 你的声音又粗又快 带着家乡的卷舌 | 我看了三个月了 | 你妈..."
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/65_寝室里那个人畜无害的女生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "a755a31631dd0b70cb32920a031091615e273bc1753be6876aa8dccbac70faa0",
+          "setting_sha256": "c706ccf579a252d5ddb6c649876e134308e8a6aa931cc5db7913defbddfdea93"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/65_寝室里那个人畜无害的女生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2862,
+          "nonempty_prose_lines": 230,
+          "longest_line_characters": 23,
+          "number_tokens": 23,
+          "number_density_per_1000": 8.0,
+          "density_denominator": 2862,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 447.19,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/66_寝室里什么都不争的那个女生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/66_寝室里什么都不争的那个女生/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 3 汉字，上文称 1 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/66_寝室里什么都不争的那个女生/正文.md",
+            "line": 159,
+            "evidence": "一个字\n第三件"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/66_寝室里什么都不争的那个女生/正文.md",
+            "line": 10,
+            "evidence": "她加你微信"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+            "file": "/home/user/demo/作品/66_寝室里什么都不争的那个女生/正文.md",
+            "line": 372,
+            "evidence": "她加你微信"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/66_寝室里什么都不争的那个女生/正文.md",
+            "line": 1,
+            "evidence": "###1. | 今天体验的人生副本是 | 寝室里什么都不争的那个女生 | 九月十七号 公示前一周 | 她告了你 | 六件事"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/66_寝室里什么都不争的那个女生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "a34d243e0df4a8b8108b3d157d95104f8cb8bc830673d472dc6dc859d844b04a",
+          "setting_sha256": "f76159f8a209faa8d136d3bf036352373fa78694af8fe555fb6973841e75ee92"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/66_寝室里什么都不争的那个女生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2777,
+          "nonempty_prose_lines": 380,
+          "longest_line_characters": 21,
+          "number_tokens": 20,
+          "number_density_per_1000": 7.2,
+          "density_denominator": 2777,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 433.91,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/67_分手时说「我们不合适」的男生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 8 汉字，上文称 1 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md",
+            "line": 133,
+            "evidence": "一个字\n她翻到第二页问你"
+          },
+          {
+            "rule_id": "QUOTED_CHARACTER_COUNT",
+            "severity": "BLOCK",
+            "category": "facts",
+            "message": "引文有 5 个汉字，附近声称 4 个字（混合文字需确认计数口径）",
+            "file": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/设定.md",
+            "line": 157,
+            "evidence": "「不是一路人」四个字"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md",
+            "line": 52,
+            "evidence": "你没发过一条有她的朋友圈"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md",
+            "line": 260,
+            "evidence": "她朋友圈里有张照片"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md",
+            "line": 1,
+            "evidence": "###1. | 今天体验的人生副本是 | 分手时说的男生 | 大三那年你用四十秒甩了她 | 三句话 提前背好的 | 三年后你投了七十四份简历"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md",
+            "line": 425,
+            "evidence": "一张打印纸 一张收据 一个空杯子 二十八块 你用了三年 才把它还清"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 2
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "268bdeb44a3ad8e24fa3047e5c380d45110a084877aa4e3dd7e18710f2aae17d",
+          "setting_sha256": "23524180b66a1d67c05e095cf3086b18e6ef0a3b61d40704f64c0d74ae2c33aa"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/67_分手时说「我们不合适」的男生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2825,
+          "nonempty_prose_lines": 417,
+          "longest_line_characters": 15,
+          "number_tokens": 31,
+          "number_density_per_1000": 11.0,
+          "density_denominator": 2825,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 441.41,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "FAIL",
+        "exit_code": 1,
+        "mechanical_pass": false,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L16 [主线（故事核）]: 数字主张 116,000 在正文找不到出处（含中文数词式）——「- 一句话：八年记了十一万六的账，摊开那天你」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/设定.md"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 家庭群里叫的女儿 | 八年 你记了一本账 | 十一万六千四百 | 摊开那天 你妈只看了一眼 | 说 你是姐姐"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+            "line": 200,
+            "evidence": "你说 家用 你走出银行 太阳很大 手心是湿的 本子上 二万八 弟"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+            "line": 277,
+            "evidence": "五千八 房租一千六 弟弟上大学 学费四万一 你打了 四万一 弟"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+            "line": 288,
+            "evidence": "加了个括号 谢 生活费两千 每月 两千 弟 第二年"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+            "line": 418,
+            "evidence": "没有回 你打开本子 想写点什么 笔停在纸上 停了很久 你写了"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+            "line": 451,
+            "evidence": "那天晚上 你打开本子 最后一页 三十个十六 字已经淡了 中间"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 6
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "01fcb175f058420289940eae45ea41ac8cdc82297915b9965fd5ae9ea53b706b",
+          "setting_sha256": "7e2f60a25785e8eec84c0c276aa4935fd0ac894c8a556b631cccb895443ec62a"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/68_家庭群里叫「一家三口」的女儿/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2811,
+          "nonempty_prose_lines": 491,
+          "longest_line_characters": 14,
+          "number_tokens": 59,
+          "number_density_per_1000": 21.0,
+          "density_denominator": 2811,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 439.22,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/69_酒桌上第一个站起来的男生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md",
+        "findings": [
+          {
+            "rule_id": "NO_FACT_LOCK",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+            "file": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/设定.md"
+          },
+          {
+            "rule_id": "NO_STATE_LEDGER",
+            "severity": "NOTE",
+            "category": "facts",
+            "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+            "file": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/设定.md"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 酒桌上第一个站起来的男生 | 四年 两百多杯酒 | 全是敬给一个人的 | 他一次都没笑 | 九月 迎新聚餐"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md",
+            "line": 123,
+            "evidence": "喝了一口 没有笑 你回座位 菜凉了 你吃两口 又站起来"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md",
+            "line": 272,
+            "evidence": "他坐着 没笑 第二个 笑声小了 他在看手机 第三个"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md",
+            "line": 299,
+            "evidence": "你走过去 一排人 膝盖往里收 让你过 没有人抬头 经过他"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md",
+            "line": 382,
+            "evidence": "照片下面 他回了一句 下次还这家 你想发一句 下次叫我 打了"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 5
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "908cd87cf7072ebc99bb77ae4c7bd469bd1801e41bce4938aab9a96f60899353",
+          "setting_sha256": "296abf2b6e588a9856257a0f14baaa4d4425d0a283ebacb7d7027d48dc494c98"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/69_酒桌上第一个站起来的男生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2788,
+          "nonempty_prose_lines": 496,
+          "longest_line_characters": 15,
+          "number_tokens": 7,
+          "number_density_per_1000": 2.5,
+          "density_denominator": 2788,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 435.62,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/70_三次把同一个人推开的女生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 6 汉字，上文称 18 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 177,
+            "evidence": "十八个字\n删了一个小时"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 3 汉字，上文称 7 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 231,
+            "evidence": "七个字\n你删了"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 9 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 336,
+            "evidence": "两个字\n从你三岁说到十八岁"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 4 汉字，上文称 5 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 415,
+            "evidence": "五个字\n我信一次"
+          },
+          {
+            "rule_id": "QUOTED_CHARACTER_COUNT",
+            "severity": "BLOCK",
+            "category": "facts",
+            "message": "引文有 6 个汉字，附近声称 7 个字（混合文字需确认计数口径）",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/设定.md",
+            "line": 84,
+            "evidence": "「今天没回消息」七个字"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 247,
+            "evidence": "那天晚上你翻他的朋友圈"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 1,
+            "evidence": "###1. | 今天体验的人生副本是 | 三次把同一个人推开的女生 | 你给他建了一份 | 他要走的证据档案 | 三条收满你就先走"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 8,
+            "evidence": "第四次 他先动的 三条 两个括号 三十七个字 第二年十月"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+            "line": 111,
+            "evidence": "他抄的 三条 连括号 他看过 打印店那天 门卫没看"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 3
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "053aa2feb6dc08450bdb2b3955353c715a01daf11d0ce5dee53566f2ba2e5314",
+          "setting_sha256": "6d06bca55735103b537845acce880f2fdc9e8ffea1b5e432bf51acfb99b043c1"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/70_三次把同一个人推开的女生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2741,
+          "nonempty_prose_lines": 414,
+          "longest_line_characters": 18,
+          "number_tokens": 14,
+          "number_density_per_1000": 5.1,
+          "density_denominator": 2741,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 428.28,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "FAIL",
+        "exit_code": 1,
+        "mechanical_pass": false,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/71_只会按字面意思办事的新人/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 5 汉字，上文称 4 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md",
+            "line": 16,
+            "evidence": "四个字\n自己人 格式"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 3 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md",
+            "line": 105,
+            "evidence": "两个字\n看情况"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 6 汉字，上文称 3 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md",
+            "line": 266,
+            "evidence": "三个字\n你说那是好事"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 5 汉字，上文称 4 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md",
+            "line": 385,
+            "evidence": "四个字\n自己人 格式"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md",
+            "line": 1,
+            "evidence": "###1. | 今天体验的人生副本是 | 只会按字面意思办事的新人 | 第一天主管说咱们都是自己人 | 你在合同第八页找到乙方 | 试用期九十天"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "2235c88d13a77237eb497fdde6987f067112c3c3f44f8a6273a173ae9cbb08dc",
+          "setting_sha256": "924267f657f30644256985b6ae3ec8186aeac5376bcf0063c16f4f3238471772"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/71_只会按字面意思办事的新人/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2870,
+          "nonempty_prose_lines": 418,
+          "longest_line_characters": 15,
+          "number_tokens": 35,
+          "number_density_per_1000": 12.2,
+          "density_denominator": 2870,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 448.44,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/72_每天买一张彩票的人/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/72_每天买一张彩票的人/正文.md",
+        "findings": [
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/72_每天买一张彩票的人/正文.md",
+            "line": 263,
+            "evidence": "半个月后他在朋友圈发了一辆新车"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/72_每天买一张彩票的人/正文.md",
+            "line": 1,
+            "evidence": "###1. | 今天体验的人生副本是 | 每天买一张彩票的人 | 七年 2558张 5116块 | 换来一张五百万的头奖 | 到账四百万"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/72_每天买一张彩票的人/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "d88b535599ebfb6346e75b754077a45a64ac3847def6b93b6e12321ce56f9674",
+          "setting_sha256": "3cd9c08c37f0a4cc217b73773f0f38718dc11de1e2793a5ac0dabade2f2e881d"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/72_每天买一张彩票的人/正文.md",
+        "metrics": {
+          "characters_repository_convention": 3052,
+          "nonempty_prose_lines": 404,
+          "longest_line_characters": 17,
+          "number_tokens": 73,
+          "number_density_per_1000": 23.9,
+          "density_denominator": 3052,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 476.88,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/72_每天买一张彩票的人_爽点紧凑版/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/72_每天买一张彩票的人_爽点紧凑版/正文.md",
+        "findings": [
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+            "file": "/home/user/demo/作品/72_每天买一张彩票的人_爽点紧凑版/正文.md",
+            "line": 263,
+            "evidence": "半个月后他在朋友圈发了一辆新车"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/72_每天买一张彩票的人_爽点紧凑版/正文.md",
+            "line": 1,
+            "evidence": "###1. | 今天体验的人生副本是 | 每天买一张彩票的人 | 七年 2558张 5116块 | 换来一张五百万的头奖 | 到账四百万"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/72_每天买一张彩票的人_爽点紧凑版/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "d88b535599ebfb6346e75b754077a45a64ac3847def6b93b6e12321ce56f9674",
+          "setting_sha256": "3cd9c08c37f0a4cc217b73773f0f38718dc11de1e2793a5ac0dabade2f2e881d"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/72_每天买一张彩票的人_爽点紧凑版/正文.md",
+        "metrics": {
+          "characters_repository_convention": 3052,
+          "nonempty_prose_lines": 404,
+          "longest_line_characters": 17,
+          "number_tokens": 73,
+          "number_density_per_1000": 23.9,
+          "density_denominator": 3052,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 476.88,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/72_每天买一张彩票的人_重生成基线/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/72_每天买一张彩票的人_重生成基线/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 8 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/72_每天买一张彩票的人_重生成基线/正文.md",
+            "line": 59,
+            "evidence": "两个字\n只有一个小小的叉"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/72_每天买一张彩票的人_重生成基线/正文.md",
+            "line": 1,
+            "evidence": "###1. | 你每天只买一张 | 每张只花两块钱 | 你守着同一组号码 | 一守就是七年 | 不加倍"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/72_每天买一张彩票的人_重生成基线/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "517b3b56523493b46f466981dc906cec69217433054258f428e4530025be0bae",
+          "setting_sha256": "8764ed96156be72cb0d86495b3fff6d8be95e118760936e82711f79f41047881"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/72_每天买一张彩票的人_重生成基线/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2718,
+          "nonempty_prose_lines": 334,
+          "longest_line_characters": 20,
+          "number_tokens": 75,
+          "number_density_per_1000": 27.6,
+          "density_denominator": 2718,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 424.69,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/73_合影时永远在按快门的人/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/73_合影时永远在按快门的人/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 3 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/73_合影时永远在按快门的人/正文.md",
+            "line": 236,
+            "evidence": "两个字\n自家人"
+          },
+          {
+            "rule_id": "QUOTED_CHARACTER_COUNT",
+            "severity": "BLOCK",
+            "category": "facts",
+            "message": "引文有 3 个汉字，附近声称 2 个字（混合文字需确认计数口径）",
+            "file": "/home/user/demo/作品/73_合影时永远在按快门的人/设定.md",
+            "line": 165,
+            "evidence": "「自家人」两字"
+          },
+          {
+            "rule_id": "QUOTED_CHARACTER_COUNT",
+            "severity": "BLOCK",
+            "category": "facts",
+            "message": "引文有 3 个汉字，附近声称 2 个字（混合文字需确认计数口径）",
+            "file": "/home/user/demo/作品/73_合影时永远在按快门的人/设定.md",
+            "line": 21,
+            "evidence": "两个字「自家人」 "
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/73_合影时永远在按快门的人/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 合影时永远在按快门的人 | 你在画面里的 只有三张 | 三张都是别人抢的 | 那是十一年的年底 | 你把三张照片摊在地板上"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/73_合影时永远在按快门的人/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "e871f3e10421cfb849f5359bbe304f2c11afbd07c65b1e8fb2349f9219324462",
+          "setting_sha256": "1dd2720ecfc30876d3958eb089a047f0604241668076049237fb0601bd13e4ad"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/73_合影时永远在按快门的人/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2345,
+          "nonempty_prose_lines": 285,
+          "longest_line_characters": 18,
+          "number_tokens": 32,
+          "number_density_per_1000": 13.6,
+          "density_denominator": 2345,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 366.41,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "FAIL",
+        "exit_code": 1,
+        "mechanical_pass": false,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/75_人生副本作者的一天/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/75_人生副本作者的一天/正文.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 1 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/75_人生副本作者的一天/正文.md",
+            "line": 116,
+            "evidence": "两个字\n弃"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 5 汉字，上文称 6 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/75_人生副本作者的一天/正文.md",
+            "line": 154,
+            "evidence": "六个字\n替她谢谢你"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 9 汉字，上文称 4 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/75_人生副本作者的一天/正文.md",
+            "line": 187,
+            "evidence": "四个字\n这半行你没发出去过"
+          },
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 3 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/75_人生副本作者的一天/正文.md",
+            "line": 301,
+            "evidence": "两个字\n你自己"
+          },
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/75_人生副本作者的一天/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 人生副本作者的一天 | 凌晨三点十一 | 你从今天的稿子里删了一段 | 二百一十七个字 | 那是第一八八篇"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/75_人生副本作者的一天/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "48487580af75164c5e2681bb4491cb5d96fc51d082495f407eb417a4f159ed2e",
+          "setting_sha256": "19db680ef618618e159ae394f6bc78e71a2a471caeefac5b732d6161313c9bc9"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/75_人生副本作者的一天/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2734,
+          "nonempty_prose_lines": 342,
+          "longest_line_characters": 17,
+          "number_tokens": 67,
+          "number_density_per_1000": 24.5,
+          "density_denominator": 2734,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 427.19,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/75_人生副本作者的一天/正文_3分钟版.md",
+      "kind": "variant",
+      "result": {
+        "schema_version": 2,
+        "profile": "short",
+        "target": "/home/user/demo/作品/75_人生副本作者的一天/正文_3分钟版.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 3 汉字，上文称 2 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/75_人生副本作者的一天/正文_3分钟版.md",
+            "line": 109,
+            "evidence": "两个字\n你自己"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L54 [场面表（R13 v2 定稿反抽——表随文，每行引语/器物已 grep 正文）]: 数字主张 8,712 在正文找不到出处（含中文数词式）——「看了六遍→像我妈→点赞八千七百一十二→你到底是谁呀→」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/75_人生副本作者的一天/设定.md"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/75_人生副本作者的一天/正文_3分钟版.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "f9e3fa2b1549ea5f1dc74b0b043f6351c2497b0b1fdf76e16ced8c30ae2dda78",
+          "setting_sha256": "19db680ef618618e159ae394f6bc78e71a2a471caeefac5b732d6161313c9bc9"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/75_人生副本作者的一天/正文_3分钟版.md",
+        "metrics": {
+          "characters_repository_convention": 1148,
+          "nonempty_prose_lines": 134,
+          "longest_line_characters": 18,
+          "number_tokens": 27,
+          "number_density_per_1000": 23.5,
+          "density_denominator": 1148,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 179.38,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/76_辞职回家给爸妈打工的儿子/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/76_辞职回家给爸妈打工的儿子/正文.md",
+        "findings": [
+          {
+            "rule_id": "AI_STYLE_overcompressed-prose-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/76_辞职回家给爸妈打工的儿子/正文.md",
+            "line": 1,
+            "evidence": "今天体验的人生副本是 | 辞职回家给爸妈打工的儿子 | 这份工作发工资的一共有三个人 | 你妈 你爸 | 还有你爷 | 1号先交账 再一起给你结工资"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/76_辞职回家给爸妈打工的儿子/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "4627aa0190b16b554eec17bd9e7a4c17755651a79e97c347e7fa385ffb38465b",
+          "setting_sha256": "4103299a467e0bcea593924ee00a3a27241ac9bcf14c357e67316c82f9bc343f"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/76_辞职回家给爸妈打工的儿子/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2853,
+          "nonempty_prose_lines": 350,
+          "longest_line_characters": 17,
+          "number_tokens": 34,
+          "number_density_per_1000": 11.9,
+          "density_denominator": 2853,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 445.78,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+        "findings": [
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微博",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 15,
+            "evidence": "那天晚上你发了一条微博。你想了想，打了七个字：现在我就是世一中！"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微博",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 33,
+            "evidence": "那天晚上你回到酒店，手机像着了魔一样震个不停。你点开微博，那条 \"现在我就是世一中\" 下面已经多了几十万条评论。热评第一条：就你也配叫世一中？下面跟着几万条回复，全是笑的。你往下翻，有人做了 GIF，截的是你第五局死的那一下，循环播放；有人把你之前的采访剪在一起，标题是 \"脸疼吗\"；有人扒出你基地迟到的照片，说你膨胀、不配打职业。你退出微博，打开论坛，首页全"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 1,
+            "evidence": "验的人生副本是 —— 出道即巅峰却泯"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 5,
+            "evidence": "，喉结动了一下 —— 就这？"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 9,
+            "evidence": "觉怎么样，你说 —— 还好吧，没什么"
+          },
+          {
+            "rule_id": "AI_STYLE_long-paragraph",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 13,
+            "evidence": "MSI 在冰岛。飞机上你睡了十二个小时，醒来舷窗外是白茫茫的云。欧洲的赛场比国内"
+          },
+          {
+            "rule_id": "AI_STYLE_long-paragraph",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 17,
+            "evidence": "发送键按下去的时候你甚至没什么犹豫。评论区秒秒钟炸了，有人说你狂，有人说你配，有"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 17,
+            "evidence": "样，你笑一下说 —— 随便打打就赢了"
+          },
+          {
+            "rule_id": "AI_STYLE_not-is-comparison",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [not-is-comparison]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 27,
+            "evidence": "不是被抓死的，是走不掉 —— 对面五个人从草丛里冒出来的那一刻，你看见屏幕上密密麻麻的头像，手一抖，闪现交慢了半拍"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 27,
+            "evidence": "死的，是走不掉 —— 对面五个人从草"
+          },
+          {
+            "rule_id": "AI_STYLE_long-paragraph",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 33,
+            "evidence": "那天晚上你回到酒店，手机像着了魔一样震个不停。你点开微博，那条 \"现在我就是世一"
+          },
+          {
+            "rule_id": "AI_STYLE_long-paragraph",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 37,
+            "evidence": "对线还是那些人，但你压不动了。补刀的时候你的手会抖，技能交出去之前你会犹豫半秒"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 37,
+            "evidence": "前你会犹豫半秒 —— 你怕又失误。对"
+          },
+          {
+            "rule_id": "AI_STYLE_not-is-comparison",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [not-is-comparison]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 37,
+            "evidence": "不是反打，是跑"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 37,
+            "evidence": "子，上面四个字 —— 菜就退役。"
+          },
+          {
+            "rule_id": "AI_STYLE_em-dash",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 43,
+            "evidence": "雄，加载，对线 —— 三分钟，对面中"
+          },
+          {
+            "rule_id": "AI_STYLE_trailer-ending",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [trailer-ending]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+            "line": 49,
+            "evidence": "没人知道"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 15
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication",
+          "setting/body consistency: no optional setting supplied"
+        ],
+        "inputs": {
+          "body_sha256": "373919ea34c9c5064c7493a5a03fe9f4a90ddd7f6eb05f600a260b86165bf485"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2485,
+          "nonempty_prose_lines": 25,
+          "longest_line_characters": 218,
+          "number_tokens": 6,
+          "number_density_per_1000": 2.4,
+          "density_denominator": 2485,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 388.28,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+      "kind": "variant",
+      "result": {
+        "schema_version": 2,
+        "profile": "short",
+        "target": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 8 汉字，上文称 7 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+            "line": 35,
+            "evidence": "七个字\n现在我就是世一中"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微博",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+            "line": 35,
+            "evidence": "晚上你发了条微博 七个字"
+          },
+          {
+            "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "account",
+            "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微博",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+            "line": 67,
+            "evidence": "那条微博下面多了几十万条评论"
+          },
+          {
+            "rule_id": "AI_STYLE_not-is-comparison",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [not-is-comparison]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+            "line": 53,
+            "evidence": "不是被抓死 是走不掉"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 1
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication",
+          "setting/body consistency: no optional setting supplied"
+        ],
+        "inputs": {
+          "body_sha256": "e9b7d5f0f38cf3d76cc03b8006e66101cdbb5599d9bff1b2bace86a0b3422e76"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文_3分钟版.md",
+        "metrics": {
+          "characters_repository_convention": 925,
+          "nonempty_prose_lines": 89,
+          "longest_line_characters": 19,
+          "number_tokens": 4,
+          "number_density_per_1000": 4.3,
+          "density_denominator": 925,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 144.53,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/78_Codex上瘾的人/正文.md",
+      "kind": "work",
+      "result": {
+        "schema_version": 2,
+        "profile": "full",
+        "target": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+        "findings": [
+          {
+            "rule_id": "AI_STYLE_metaphor-density-tic",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [metaphor-density-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+            "line": 21,
+            "evidence": "像抢到了票 | 像一层一层的地质年代 | 像三十七个没响过的闹钟 | 任务列表像下饺子 | 像合租的室友 | 说你这季度像换了个人"
+          },
+          {
+            "rule_id": "AI_STYLE_period-stutter",
+            "severity": "REVIEW",
+            "category": "style",
+            "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+            "file": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+            "line": 307,
+            "evidence": "运行 绿了 就三行 没有它快 没有它工整 但是绿的"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/78_Codex上瘾的人/正文.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 2
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "a56410e365d30b792749194b21e2ef5e47f717ab173a08a3f6f4db8391ab397e",
+          "setting_sha256": "2ac0b361246b853e9ac3d2944ee6599e46aa8125e11754abce0afad6c8848605"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+        "metrics": {
+          "characters_repository_convention": 2341,
+          "nonempty_prose_lines": 337,
+          "longest_line_characters": 12,
+          "number_tokens": 23,
+          "number_density_per_1000": 9.8,
+          "density_denominator": 2341,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 365.78,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    },
+    {
+      "source": "作品/78_Codex上瘾的人/正文_3分钟版.md",
+      "kind": "variant",
+      "result": {
+        "schema_version": 2,
+        "profile": "short",
+        "target": "/home/user/demo/作品/78_Codex上瘾的人/正文_3分钟版.md",
+        "findings": [
+          {
+            "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "相邻口播行含 6 汉字，上文称 5 个字；须核实引文边界",
+            "file": "/home/user/demo/作品/78_Codex上瘾的人/正文_3分钟版.md",
+            "line": 80,
+            "evidence": "五个字\n你一个字没写"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L134 [物件台账]: 数字主张 875 在正文找不到出处（含中文数词式）——「（第一条请帮忙） | 第八百七十五行 | 添了「亲」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/78_Codex上瘾的人/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L162 [因果/状态台账]: 数字主张 875 在正文找不到出处（含中文数词式）——「满血复活照旧；说明书 875 行 | 状态页/说明」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/78_Codex上瘾的人/设定.md"
+          },
+          {
+            "rule_id": "SETTING_CLAIM_CANDIDATE",
+            "severity": "REVIEW",
+            "category": "facts",
+            "message": "设定L193 [场面表（表随文，每行引语/器物已 grep 正文）]: 数字主张 875 在正文找不到出处（含中文数词式）——「满血→重置卡躺着→说明书875→摸回车键 | 是你」；待核对对象/语境，不能据此改正文凑数",
+            "file": "/home/user/demo/作品/78_Codex上瘾的人/设定.md"
+          }
+        ],
+        "tools": [
+          {
+            "name": "ai_style_diagnostics",
+            "command": [
+              "node",
+              "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+              "--json",
+              "--fail-on=blocking",
+              "--profile=fuben",
+              "/home/user/demo/作品/78_Codex上瘾的人/正文_3分钟版.md"
+            ],
+            "state": "COMPLETED",
+            "exit_code": 0,
+            "finding_count": 0
+          }
+        ],
+        "checked": [
+          "readable_nonempty_body_and_descriptive_metrics",
+          "explicit_equations_and_literal_character_counts",
+          "optional_fact_lock_diagnostics",
+          "optional_setting_claim_diagnostics",
+          "style_pattern_candidates_not_literary_judgment"
+        ],
+        "unverified": [
+          "editorial quality",
+          "external factual truth",
+          "TTS listening",
+          "actual media consistency",
+          "platform publication"
+        ],
+        "inputs": {
+          "body_sha256": "acbeea426aa1a1f35d53ab2015d4992e7146a1e8f269897a04a4752fa62b9e70",
+          "setting_sha256": "2ac0b361246b853e9ac3d2944ee6599e46aa8125e11754abce0afad6c8848605"
+        },
+        "policy_version": "2.0.0",
+        "body_path": "/home/user/demo/作品/78_Codex上瘾的人/正文_3分钟版.md",
+        "metrics": {
+          "characters_repository_convention": 913,
+          "nonempty_prose_lines": 135,
+          "longest_line_characters": 12,
+          "number_tokens": 10,
+          "number_density_per_1000": 11.0,
+          "density_denominator": 913,
+          "assumed_cps": 6.4,
+          "estimated_duration_seconds": 142.66,
+          "duration_kind": "estimate_not_audio_measurement"
+        },
+        "status": "PASS_WITH_REVIEW",
+        "exit_code": 0,
+        "mechanical_pass": true,
+        "editorially_approved": false,
+        "release_ready": false
+      }
+    }
+  ],
+  "interpretation": "No software finding is a claim of literary quality, completed human review, TTS listening or publication readiness."
+}
+

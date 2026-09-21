@@ -1,0 +1,109 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/56_赝品哥社死/",
+  "findings": [
+    {
+      "rule_id": "NO_FACT_LOCK",
+      "severity": "NOTE",
+      "category": "facts",
+      "message": "未提供事实锁；无法进行锁定值对账，不等于事实错误",
+      "file": "/home/user/demo/作品/56_赝品哥社死/设定.md"
+    },
+    {
+      "rule_id": "NO_STATE_LEDGER",
+      "severity": "NOTE",
+      "category": "facts",
+      "message": "未提供可选状态台账；因果关系需按正文语义复核，不要求补表",
+      "file": "/home/user/demo/作品/56_赝品哥社死/设定.md"
+    },
+    {
+      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "account",
+      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+      "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+      "line": 24,
+      "evidence": "朋友圈装富三年的赝品哥"
+    },
+    {
+      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "account",
+      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+      "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+      "line": 29,
+      "evidence": "你在找适合发朋友圈的地方"
+    },
+    {
+      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "account",
+      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+      "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+      "line": 125,
+      "evidence": "重新打开朋友圈"
+    },
+    {
+      "rule_id": "AI_STYLE_overcompressed-prose-tic",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+      "line": 1,
+      "evidence": "你装了三年富二代 | 最怕的不是别人说你穷 | 是你真拿不出钱的时候 | 所有人都说你不可能穷 | 同学聚会上 | 陈默把手机推到你面前"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo/作品/56_赝品哥社死/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 1
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "optional_fact_lock_diagnostics",
+    "optional_setting_claim_diagnostics",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication"
+  ],
+  "inputs": {
+    "body_sha256": "a09b2552385f45f7ba8ccbf5d63f13cf09d20f27fa9596284df86b132b0043d4",
+    "setting_sha256": "3b342ed0773b6bb6b16b37a059373ef8f59c51dd65aa46cbd7c8d40ff398192b"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo/作品/56_赝品哥社死/正文.md",
+  "metrics": {
+    "characters_repository_convention": 2277,
+    "nonempty_prose_lines": 292,
+    "longest_line_characters": 18,
+    "number_tokens": 21,
+    "number_density_per_1000": 9.2,
+    "density_denominator": 2277,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 355.78,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}

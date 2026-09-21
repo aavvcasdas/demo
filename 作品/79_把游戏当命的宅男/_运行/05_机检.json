@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/79_把游戏当命的宅男/",
+  "findings": [
+    {
+      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "account",
+      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
+      "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
+      "line": 67,
+      "evidence": "你的微信好友翻来翻去"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
+      "line": 163,
+      "evidence": "你说 老刀 她问 那是谁 你想了想 说 网友 她没再问 过了一会儿"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo/作品/79_把游戏当命的宅男/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 1
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication",
+    "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+    "body_sha256": "62dc4ea1f242969c7e5a64a003a7215f815e439cfc2cfe4eca6b568904a093fb",
+    "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
+  "metrics": {
+    "characters_repository_convention": 1565,
+    "nonempty_prose_lines": 218,
+    "longest_line_characters": 16,
+    "number_tokens": 11,
+    "number_density_per_1000": 7.0,
+    "density_denominator": 1565,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 244.53,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}

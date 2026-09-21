@@ -1,55 +1,76 @@
 #!/usr/bin/env python3
-"""场面表反抽对账（advisory 工具，非闸——遵 R9 冻结令，不进 fuben_run）。
+"""Optional local-span scene evidence. Global word presence is not local consistency.
 
-用法：python3 scripts/fuben_scene_check.py <作品目录>
-读 设定.md 的「## 场面表」，对每行：
-  - 转述引语列：剥「X说：/母：」前缀，按 ，、（）→ 切段，≥4 字段须能在正文（去标点归一化）中找到；
-  - 可拍器物列：顿号切分，≥2 字词条须在正文可找到。
-出处：公司 v10.3 待办#2 点名「表里每个引语/器物必须 grep 得到」，方法有效；
-76 自审用此法又抓到 9 行漂移（见 76 审核报告 R11 节）。做成脚本而非闸：
-单稿教训不升格为机械闸（R9 C2），但每次交审必跑（fuben-review 人工层条目）。
+Optional 场面证据.json:
+  {"schema_version":1,"body_sha256":"...","scenes":[
+    {"name":"饭桌","start_line":8,"end_line":20,"quotes":["原文"],"props":["碗"]}]}
+No evidence supplied => NOT_ASSESSED, not 'scene QA passed'. Lines are physical
+1-based body-file lines. This tool checks literal spans, not scene interpretation.
 """
-import re, sys, pathlib
+import argparse
+import json
+from pathlib import Path
+import re
+from fuben_engine import inspect_path, finding, finish, emit
 
 
-def norm(s: str) -> str:
-    return re.sub(r"[^一-鿿0-9A-Za-z]", "", s)
+def norm(text):
+    return re.sub(r'[^一-鿿0-9A-Za-z]', '', text)
 
 
-def check(work: pathlib.Path) -> int:
-    text = norm((work / "正文.md").read_text(encoding="utf-8"))
-    setting = (work / "设定.md").read_text(encoding="utf-8")
-    m = re.search(r"##\s*场面表", setting)
-    if not m:
-        print(f"SKIP {work.name}：设定.md 无「场面表」（老件按 3.3 豁免，见 SKILL 备案制）")
-        return 0
-    body = setting[m.end():]
-    nxt = re.search(r"^##\s", body, re.M)
-    if nxt:
-        body = body[:nxt.start()]
-    rows = [ln for ln in body.splitlines() if ln.strip().startswith("|")]
-    rows = rows[1:] if rows and "场面" in rows[0] else rows
-    bad = 0
-    for ln in rows:
-        cols = [c.strip() for c in ln.strip().strip("|").split("|")]
-        if len(cols) < 6:
-            continue
-        name, quote, props = cols[0][:14], cols[4], cols[5]
-        for frag in re.split(r"[，、。；→（）\"]", re.sub(r"^[^：]{0,3}：", "", quote)):
-            f = norm(frag)
-            if len(f) >= 4 and f not in text:
-                print(f"MISS 行「{name}」引语片段无正文出处：{frag}")
-                bad += 1
-        for item in re.split(r"[、，;；]", props):
-            p = norm(item)
-            if len(p) >= 2 and p not in text:
-                print(f"MISS 行「{name}」器物无正文出处：{item}")
-                bad += 1
-    print(f"{'FAIL' if bad else 'OK  '} {work.name}：场面表 {len(rows)} 行，漂移 {bad} 处")
-    return 0  # advisory：恒 0 退出，不改任何闸的语义
+def inspect_scenes(work):
+    work = Path(work)
+    report = inspect_path(work, run_style=False, components={'metrics'})
+    report['scene_status'] = 'NOT_ASSESSED'
+    if not report['mechanical_pass']:
+        return report
+    evidence_path = work / '场面证据.json'
+    if not evidence_path.exists():
+        report['findings'].append(finding('SCENE_NOT_ASSESSED', 'NOTE', 'evidence',
+            '未提供可选的逐场行范围证据；不以全篇搜到几个词冒充局部一致，不要求为了创作补表。'))
+        return finish(report)
+    try:
+        data = json.loads(evidence_path.read_text(encoding='utf-8'))
+        if data.get('schema_version') != 1 or not isinstance(data.get('scenes'), list) or not data['scenes']:
+            raise ValueError('场面证据需 schema_version=1 和非空 scenes')
+        if data.get('body_sha256') != report['inputs']['body_sha256']:
+            report['findings'].append(finding('STALE_SCENE_EVIDENCE', 'BLOCK', 'evidence', '场面证据不是当前正文版本'))
+            return finish(report)
+        lines = (work / '正文.md').read_text(encoding='utf-8-sig').splitlines()
+        for scene in data['scenes']:
+            start, end = scene.get('start_line'), scene.get('end_line')
+            if type(start) is not int or type(end) is not int or not 1 <= start <= end <= len(lines):
+                raise ValueError('场面起止行不合法')
+            local = norm('\n'.join(lines[start - 1:end]))
+            count = 0
+            for key in ('quotes', 'props'):
+                entries = scene.get(key, [])
+                if not isinstance(entries, list):
+                    raise ValueError('quotes/props 必须是数组')
+                for value in entries:
+                    if not isinstance(value, str) or not norm(value):
+                        raise ValueError('场面证据不可为空')
+                    count += 1
+                    if norm(value) not in local:
+                        report['findings'].append(finding('SCENE_SPAN_MISS', 'REVIEW', 'facts',
+                            f"{scene.get('name', '未命名场面')} 的 {value!r} 不在 L{start}–{end}；需要上下文核对，不自动改写",
+                            file=work / '正文.md', line=start))
+            if count == 0:
+                raise ValueError('不能用空场面证据获得 0/0 通过')
+        report['scene_status'] = 'LITERAL_SPANS_CHECKED_NOT_SEMANTIC_APPROVAL'
+        report['checked'].append('hash_bound_local_scene_spans')
+    except (OSError, ValueError, TypeError, AttributeError) as exc:
+        report['findings'].append(finding('SCENE_EVIDENCE_ERROR', 'ERROR', 'evidence', str(exc), file=evidence_path))
+    return finish(report)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        sys.exit(__doc__)
-    sys.exit(check(pathlib.Path(sys.argv[1])))
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('path')
+    parser.add_argument('--json', action='store_true')
+    args = parser.parse_args(argv)
+    return emit(inspect_scenes(args.path), json_output=args.json, label='SCENE-LITERAL')
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

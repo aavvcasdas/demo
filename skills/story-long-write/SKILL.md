@@ -6,6 +6,15 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 ---
 # story-long-write：长篇网文写作
 
+## 文章生成必须真实调用 Skill / Agent（用户明确要求）
+
+所有正文生成、续写、重写、试写及候选片段，必须由对应 Skill 的真实执行流程调用创作 Agent 完成。主会话只能整理用户要求、调度、核对和保存实际 Agent 返回的内容；不能自己生成文章后补写调用说明。
+
+读过 SKILL.md、存在 Agent 模板、复制部署文件、运行检查脚本，都不等于调用了创作 Agent。必须确实有可用的宿主调用工具或已认证执行器，并收到实际调用结果；不得伪造会话/任务ID或独立审核。
+
+Arena 会话内由仓库根目录 arena.runtime.json 定义执行通道：按配置加载角色文件与 profile 逐阶段执行并落阶段产物，缺产物视为未调用；外部执行器认证后可切换。两者都不可用时停止正文产出并报告阻塞；不经配置通道直接代写正文/候选一律禁止。此条覆盖其它文件中旧的直接写作兜底。仅做研究或明确标注的单人审稿不受此限制，但涉及实质改稿仍须走创作链。
+
+
 你是网络小说创作教练。你的任务是帮用户从零开始写一本长篇网络小说，从选题确认到大纲搭建再到正文输出。
 
 ## 章节 Reference Gate（强制，先读后写）
@@ -15,7 +24,7 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 必须分块读到 EOF：
 
 1. 开书/补纲先完整读取 `references/workflow-setup.md`；写指定章读取 `references/workflow-chapter.md`；日更/大修先读取 `references/workflow-daily.md` 或 `references/workflow-revision.md`，进入正文前再完整读取 `workflow-chapter.md`。
-2. 主会话直接写正文时，首次落笔前完整读取 `references/long-format.md`、`references/writing-craft.md`、`references/long-chapter-quality.md`、`references/long-chapter-hooks.md`；交给 narrative-writer 时，由该 agent 按自己的 reference 表完成同等写前读取，主会话不得用未读 reference 的临时 prompt 替代。
+2. 创作 Agent 写正文时，首次落笔前完整读取 `references/long-format.md`、`references/writing-craft.md`、`references/long-chapter-quality.md`、`references/long-chapter-hooks.md`；交给 narrative-writer 时，由该 agent 按自己的 reference 表完成同等写前读取，主会话不得用未读 reference 的临时 prompt 替代。
 3. 悬疑、惊悚、异常线索章加读 `references/long-suspense.md`；身份/认知/立场反转章加读 `references/long-reversal.md`。
 4. references 读完后立即重读当前用户请求、本章细纲和卷纲，在上下文内建立 **Constraint Lock**：原样记录用户明确字数范围、必发生、禁止发生、精确时间锚与本章停笔点、章尾新债。references 只提供技法，不得覆盖这些项目事实；用户明确范围优先于自动 ± 比例带。交付前逐项复核：字数带外按 `workflow-chapter.md` 的收口流程交用户处置，不自动补字；其余项越界不算完成。
 
@@ -23,9 +32,9 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 
 ---
 
-> 内置适配 Claude Code / OpenCode / Codex / Antigravity / ZCode / OpenClaw。专业 agent 只查当前端 canonical 目录（`.claude/agents`、`.opencode/agents`、`.codex/agents` TOML、`.agents/agents`）；Antigravity 用 `invoke_subagent` + 同名 `TypeName`。文件或运行时能力缺失、返回 unknown agent，或当前为不执行 custom agents 的 ZCode 3.3.4 时，报告 fallback 并 solo/direct 执行。
+> 内置适配 Claude Code / OpenCode / Codex / Antigravity / ZCode / OpenClaw。专业 agent 只查当前端 canonical 目录（`.claude/agents`、`.opencode/agents`、`.codex/agents` TOML、`.agents/agents`）；Antigravity 用 `invoke_subagent` + 同名 `TypeName`。文件或运行时能力缺失、返回 unknown agent，或当前为不执行 custom agents 的 ZCode 3.3.4 时，报告调用阻塞并停止正文生成。
 >
-> Spawn 版本提示（不阻断 spawn）：先读取项目根 `.story-deployed` 的 `agents_version`。与本版 `agents_version: 30` 不一致时（标记缺失、字段缺失/非整数、小于或大于 30）**照常按文件存在性检查并 spawn**，但只检查当前运行时的 canonical 目录；同时报告 `Notice: agents bundle 版本不匹配（项目 {N}，本版 30）` 并提示重新运行 `/story-setup` 后新开会话；大于 30 时额外提示先更新 oh-story-claudecode，不要用本地旧版 setup 降级覆盖。只有 agent 文件缺失、或运行时不暴露 custom agent 时才降级 solo/direct，报告 `Fallback: ... -> solo`。
+> Spawn 版本提示（不阻断 spawn）：先读取项目根 `.story-deployed` 的 `agents_version`。与本版 `agents_version: 30` 不一致时（标记缺失、字段缺失/非整数、小于或大于 30）**照常按文件存在性检查并 spawn**，但只检查当前运行时的 canonical 目录；同时报告 `Notice: agents bundle 版本不匹配（项目 {N}，本版 30）` 并提示重新运行 `/story-setup` 后新开会话；大于 30 时额外提示先更新 oh-story-claudecode，不要用本地旧版 setup 降级覆盖。只有 agent 文件缺失、或运行时不暴露 custom agent 时才停止正文生成，报告 `BLOCKED: creative agent unavailable`。
 
 **文风裁决**：正文写作、改写或审稿前先读 [references/style-resolution.md](references/style-resolution.md)，加载本书文风并形成 `style_resolution`；无作者记忆也执行。当前请求、本书文风和 active 偏好按维度覆盖通用 references；同一裁决交给后续执行者。
 

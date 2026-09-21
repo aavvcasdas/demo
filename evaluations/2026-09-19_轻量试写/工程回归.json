@@ -1,0 +1,58 @@
+{
+  "software_tests": 51,
+  "software_pass": true,
+  "test_failures": 0,
+  "test_errors": 0,
+  "collections": {
+    "works": {
+      "coverage": {
+        "work": 35,
+        "variant": 3
+      },
+      "statuses": {
+        "PASS_WITH_REVIEW": 33,
+        "PASS": 1,
+        "FAIL": 4
+      },
+      "tool_errors": 0,
+      "creative_style_blocks": [],
+      "content_blocked": [
+        "作品/58b_反骨嘉豪_代价版/正文.md",
+        "作品/67_分手时说「我们不合适」的男生/正文.md",
+        "作品/70_三次把同一个人推开的女生/正文.md",
+        "作品/73_合影时永远在按快门的人/正文.md"
+      ],
+      "unassessed": [
+        "作品/76_辞职回家给爸妈打工的儿子/切条D0/制作单.md（制作单内嵌脚本；未当作独立正文或音频检测）",
+        "作品/78_Codex上瘾的人/切条D0/制作单.md（制作单内嵌脚本；未当作独立正文或音频检测）"
+      ]
+    },
+    "corpus": {
+      "coverage": {
+        "anthology": 1,
+        "individual": 44
+      },
+      "statuses": {
+        "PASS_WITH_REVIEW": 20,
+        "PASS": 25
+      },
+      "tool_errors": 0,
+      "creative_style_blocks": [],
+      "content_blocked": [],
+      "unassessed": [
+        "拆文库/掌控/原文/掌控.txt",
+        "拆文库/乱葬岗里的姑娘/原文/乱葬岗里的姑娘.txt",
+        "拆文库/什么叫我洗白后，她们全部黑化了/原文/原文.txt",
+        "拆文库/偏偏喜欢你/原文/偏偏喜欢你.txt",
+        "拆文库/全国没几个正常人？朕要杀疯了/原文/原文.txt",
+        "拆文库/希腊神话：从成为微风之神开始 - 霜火/原文/原文.txt",
+        "拆文库/泠泠千古调/原文/泠泠千古调.txt",
+        "拆文库/豪门外的小白花/原文/豪门外的小白花.txt",
+        "拆文库/隐娘/原文/隐娘.txt"
+      ]
+    }
+  },
+  "protected_input_changes": [],
+  "software_and_coverage_pass": true,
+  "not_a_release_verdict": true
+}

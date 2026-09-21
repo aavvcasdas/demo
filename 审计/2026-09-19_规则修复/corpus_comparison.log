@@ -1,0 +1,22 @@
+{
+  "individuals": 44,
+  "anthologies": 1,
+  "legacy_text_proxy_violations": 25,
+  "legacy_lint_rejections": 13,
+  "legacy_ai_style_rejections": 1,
+  "legacy_any_style_or_proxy_flag": 26,
+  "legacy_text_rule_counts": {
+    "叙述者不替观众判决": 6,
+    "主角内心≤6": 1,
+    "字数2200–3600": 11,
+    "每45行环境/身体": 11,
+    "行数220–420": 8,
+    "数字密度≤25": 3,
+    "开头不堆时戳": 1
+  },
+  "note": "Text proxy tally includes already-advisory old checks; not equal to full pipeline failure or a quality score.",
+  "current_individuals_with_block": 0,
+  "current_draft_text_fact_blocks": 0,
+  "current_tool_errors": 0,
+  "current_creative_style_blocks": 0
+}

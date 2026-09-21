@@ -1,0 +1,146 @@
+{
+  "name": "arena-runtime",
+  "version": "1.2.0",
+  "changelog": {
+    "1.2.0": "按用户裁决升级阶段一：①搜索必须一次并行多次（>=6路，按批留档）；②先深度理解主题再策划；③产出多个分类型的剧情方向（爽/搞笑/扎心/温情等按主题适配），交用户选定后才动笔。用户吐槽批次数不足，本版抬高下限并逐条留档。 用户追问“为什么只有2次搜索”：v1.2.0 起下限抬到 8 路并强制单批并发，逐条留批号可核查。",
+    "1.1.0": "阶段一研究门：>=3 路真实检索并留档，无检索记录判任务失败；题面主题是边界。"
+  },
+  "description": "把本仓库的 Skill / Agent 定义绑定到 Arena 内置执行通道。本仓库在 Arena 会话中打开时，Arena Agent Mode 主会话即执行器：按本配置加载角色文件与 profile，逐阶段执行并落可核查的产物文件。",
+  "runtime": {
+    "type": "arena-inprocess",
+    "executor": "Arena Agent Mode 主会话（本会话）",
+    "invocation_evidence": [
+      "每个阶段读取的角色文件路径",
+      "01 阶段的主题深读、分批真实检索记录、分类型剧情方向与用户选定记录",
+      "作品目录 _运行/ 下按阶段编号的产物文件",
+      "机检命令的实际输出（05_机检.json）"
+    ],
+    "forbidden": [
+      "未加载角色文件与 profile、未落阶段产物就直接生成正文",
+      "阶段一不做检索或编造检索结果",
+      "伪造外部会话 ID / 任务 ID / 独立审核结论",
+      "把读取 SKILL.md 或复制模板当作已调用",
+      "把机检 PASS 说成好看或审核通过"
+    ]
+  },
+  "skill_root": "skills",
+  "role_root": "skills/story-setup/references/templates/agents",
+  "routing": "AGENTS.md#路由",
+  "executors": {
+    "preferred_if_authenticated": [
+      "codex",
+      "claude-code",
+      "opencode",
+      "gemini-cli"
+    ],
+    "active": "arena-inprocess",
+    "active_reason": "当前环境未安装或未认证任何外部执行器；Arena 主会话是本仓库在此环境下的认证执行通道（用户指定）。外部执行器接通后可经本配置切换 preferred。"
+  },
+  "pipelines": {
+    "fuben-write": {
+      "when": "人生副本 / 剧本人生 / 第二人称人生体验口播的写作、改写、试写",
+      "skill": "skills/story-short-write",
+      "branch": "人生副本早期分流",
+      "profile": "skills/story-short-write/references/genre-styles/人生副本实录.md",
+      "method": "skills/story-short-write/references/genre-styles/人生副本_Agent方法.md",
+      "artifact_dir": "作品/{NN_主题}/_运行",
+      "stages": [
+        {
+          "id": "00_brief",
+          "actor": "主控",
+          "output": "00_简报.md",
+          "do": "记录用户题面原话与创作要求；读一篇相近真实原文，记录借用的蓄势→兑现机制；判断材料够用即可，不要求设定卡"
+        },
+        {
+          "id": "01_theme_research_directions",
+          "role_file": "skills/story-setup/references/templates/agents/story-architect.md",
+          "role_branch": "人生副本优先分流 · 副本职责（策划）",
+          "output": "01_主题深读_检索与剧情方向.md",
+          "theme_deepread": {
+            "required_fields": [
+              "题面的题眼是什么（一个字/词）",
+              "谁在受这个处境的罪、受众替谁共情",
+              "情感核：观众要在这里得到什么情绪",
+              "冲突池：这个主题天然能长出的 3-5 类冲突",
+              "主题边界：什么写法算跑题"
+            ]
+          },
+          "research_gate": {
+            "required": true,
+            "batching": "一次并行发起多路搜索（用户明示：arena 一次可以调用多个搜索，必须单次一批全部并发，不允许拆成一两路零散发）；批次编号写入 01 产物",
+            "min_search_calls": 8,
+            "must_cover": [
+              "本题现实质感（当事人处境/真实细节）",
+              "同类关系的真实案例",
+              "相邻题材/真实事件",
+              "同类传播内容与钩子形态"
+            ],
+            "record": "逐条记录真实检索词、批序号、来源与取用的质感；借质感不借剧情，不编造来源",
+            "failure": "检索记录缺失或不足批 → 阶段判失败退回"
+          },
+          "directions": {
+            "count": "3-4 个剧情方向",
+            "typing": "按主题给方向分型并打标签：如 爽向/搞笑向/扎心向/温情向/悬念向/燃向；类型集由主题决定，不套死表；'各种类型的都要'为用户明示要求",
+            "each_must_have": [
+              "类型标签",
+              "一句话剧情线",
+              "开场钩子速写（三行内）",
+              "主峰兑现路径",
+              "借用的检索质感",
+              "主要风险"
+            ],
+            "existing_work_option": "对已存在成稿的作品，第一选项固定为【保留现版·校准】，其余方向为另起版本"
+          },
+          "user_selection_gate": {
+            "required": true,
+            "text": "把方向以可选项形式交给用户挑选；未获选定不得开写 02。用户授权'你定'时由主控选择并在 01 记录代选理由。",
+            "failure": "未经用户选定直接成稿 = 流程违规，视为任务失败"
+          }
+        },
+        {
+          "id": "02_write",
+          "role_file": "skills/story-setup/references/templates/agents/narrative-writer.md",
+          "role_branch": "人生副本优先分流 · 副本职责（成稿）",
+          "output": "02_初稿.md",
+          "do": "只写用户选定的那个方向；把选中开场、检索质感、主角目标、核心兑现与伏笔清单写成正文；关键交锋连续发生、换招改变局面；侧面反应影响后续；伏笔先落正文再揭示；只交正文"
+        },
+        {
+          "id": "03_review",
+          "role_file": "skills/story-setup/references/templates/agents/story-architect.md",
+          "role_branch": "人生副本优先分流 · 副本职责（审读）",
+          "skill": "skills/fuben-review",
+          "output": "03_审读.md",
+          "do": "只接收当前初稿、简报与必要事实（不给自评）；引用原句回答：开场使观众等什么、哪里最早失去追看、哪个兑现没演出、侧面改变了什么、主题边界是否守住；按结构/场面/表达给返工层级"
+        },
+        {
+          "id": "04_revise",
+          "role_file": "skills/story-setup/references/templates/agents/narrative-writer.md",
+          "output": "04_返工.md 与作品目录下 正文.md",
+          "do": "按审读的分层范围返工（结构回策划口径重构、场面展开、表达局部修）；保留有效段落；定稿为 正文.md"
+        },
+        {
+          "id": "05_gate",
+          "run": "python3 scripts/fuben_run.py 作品/{NN_主题}/ --profile full --json",
+          "output": "05_机检.json",
+          "do": "实际执行并保存原始输出；BLOCK 定位修复；REVIEW 结合语境裁决；机检结果不写成好看或审核通过"
+        }
+      ],
+      "final_artifacts": [
+        "正文.md",
+        "审核报告.md"
+      ]
+    },
+    "fuben-review-only": {
+      "when": "只审不写",
+      "skill": "skills/fuben-review",
+      "do": "按 skills/fuben-review/SKILL.md 执行；独立审不可用时在产物中注明由主控以审读角色自检"
+    }
+  },
+  "protocol_notes": [
+    "阶段即调用：主会话进入某阶段时，必须先读该阶段 role_file 对应分支与 profile，再执行其职责；产物文件是调用已发生的证据，缺失阶段产物视为未调用。",
+    "阶段一的检索必须真实调用搜索工具；记录检索词与来源供用户核查。",
+    "主控负责路由、交接与事实核对，不越过角色直接产出正文。",
+    "所有阶段在同一 Arena 会话内顺序完成；产物含实际读取与判断记录，用户可逐文件核查。",
+    "本配置不改变 AGENTS.md 的事实与授权底线；评测、发布仍须用户明确指令。"
+  ]
+}

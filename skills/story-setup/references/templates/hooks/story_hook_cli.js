@@ -103,6 +103,9 @@ if (command === "extract-target") {
     process.stderr.write(`[story-guard] Bash 正文目标解析失败，已降级放行：${detail}`)
     process.exit(3)
   }
+} else if (command === "profile") {
+  try { process.stdout.write(core.isFubenProject(args[0]) ? "fuben" : "novel") }
+  catch (error) { process.stderr.write(`ERROR profile: ${error.message}`); process.exit(2) }
 } else if (command === "prose-net") {
   // 轻量确定性网（含毒句式）。字数只由 storyctl 的公开命令测量，不在 Adapter 内复制。
   // 读文件失败静默退出（兜底不反噬流程）。
@@ -111,6 +114,10 @@ if (command === "extract-target") {
   try {
     text = fs.readFileSync(absolute, "utf8")
   } catch {
+    process.exit(0)
+  }
+  if (core.isFubenProject(absolute)) {
+    process.stdout.write("NOTE 人生副本不适用通用句式/段长网；请按 fuben profile 审核（不是已通过）。")
     process.exit(0)
   }
   const out = core.proseNetFindings(text)
@@ -122,6 +129,7 @@ if (command === "extract-target") {
   const absolute = args[0]
   try {
     const text = fs.readFileSync(absolute, "utf8")
+    if (core.isFubenProject(absolute)) process.exit(0) // N/A, not a clean-prose assertion
     const out = core.toxicPhraseFindings(text)
     if (out.length) process.stdout.write(out.join("\n"))
   } catch {

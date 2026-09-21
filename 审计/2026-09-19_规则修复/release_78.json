@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "scope": "release_evidence_only",
+  "issues": [
+    {
+      "severity": "MISSING",
+      "code": "RELEASE_EVIDENCE_ABSENT",
+      "message": "缺少可选发布阶段的 .发布证据.json；不影响起草，但不能宣称可发布"
+    }
+  ],
+  "checked": [],
+  "published": false,
+  "automatic_publication": false,
+  "attestation_identity_verified": false,
+  "mechanical": {
+    "schema_version": 2,
+    "profile": "full",
+    "target": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+    "findings": [
+      {
+        "rule_id": "AI_STYLE_metaphor-density-tic",
+        "severity": "REVIEW",
+        "category": "style",
+        "message": "句式候选 [metaphor-density-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+        "file": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+        "line": 21,
+        "evidence": "像抢到了票 | 像一层一层的地质年代 | 像三十七个没响过的闹钟 | 任务列表像下饺子 | 像合租的室友 | 说你这季度像换了个人"
+      },
+      {
+        "rule_id": "AI_STYLE_period-stutter",
+        "severity": "REVIEW",
+        "category": "style",
+        "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+        "file": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+        "line": 307,
+        "evidence": "运行 绿了 就三行 没有它快 没有它工整 但是绿的"
+      }
+    ],
+    "tools": [
+      {
+        "name": "ai_style_diagnostics",
+        "command": [
+          "node",
+          "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+          "--json",
+          "--fail-on=blocking",
+          "--profile=fuben",
+          "/home/user/demo/作品/78_Codex上瘾的人/正文.md"
+        ],
+        "state": "COMPLETED",
+        "exit_code": 0,
+        "finding_count": 2
+      }
+    ],
+    "checked": [
+      "readable_nonempty_body_and_descriptive_metrics",
+      "explicit_equations_and_literal_character_counts",
+      "optional_fact_lock_diagnostics",
+      "optional_setting_claim_diagnostics",
+      "style_pattern_candidates_not_literary_judgment"
+    ],
+    "unverified": [
+      "editorial quality",
+      "external factual truth",
+      "TTS listening",
+      "actual media consistency",
+      "platform publication"
+    ],
+    "inputs": {
+      "body_sha256": "a56410e365d30b792749194b21e2ef5e47f717ab173a08a3f6f4db8391ab397e",
+      "setting_sha256": "2ac0b361246b853e9ac3d2944ee6599e46aa8125e11754abce0afad6c8848605"
+    },
+    "policy_version": "2.0.0",
+    "body_path": "/home/user/demo/作品/78_Codex上瘾的人/正文.md",
+    "metrics": {
+      "characters_repository_convention": 2341,
+      "nonempty_prose_lines": 337,
+      "longest_line_characters": 12,
+      "number_tokens": 23,
+      "number_density_per_1000": 9.8,
+      "density_denominator": 2341,
+      "assumed_cps": 6.4,
+      "estimated_duration_seconds": 365.78,
+      "duration_kind": "estimate_not_audio_measurement"
+    },
+    "status": "PASS_WITH_REVIEW",
+    "exit_code": 0,
+    "mechanical_pass": true,
+    "editorially_approved": false,
+    "release_ready": false
+  },
+  "status": "PROVISIONAL",
+  "exit_code": 3,
+  "note": "哈希仅防止旧版证据误用，不认证签字人，也不证明观看/独立审核发生；最终发布由账号主决定。"
+}

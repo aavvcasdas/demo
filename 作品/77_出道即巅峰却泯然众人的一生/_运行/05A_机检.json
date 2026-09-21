@@ -1,0 +1,210 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/77_出道即巅峰却泯然众人的一生/",
+  "findings": [
+    {
+      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "account",
+      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微博",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 15,
+      "evidence": "那天晚上你发了一条微博。你想了想，打了七个字：现在我就是世一中！"
+    },
+    {
+      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "account",
+      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微博",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 33,
+      "evidence": "那天晚上你回到酒店，手机像着了魔一样震个不停。你点开微博，那条 \"现在我就是世一中\" 下面已经多了几十万条评论。热评第一条：就你也配叫世一中？下面跟着几万条回复，全是笑的。你往下翻，有人做了 GIF，截的是你第五局死的那一下，循环播放；有人把你之前的采访剪在一起，标题是 \"脸疼吗\"；有人扒出你基地迟到的照片，说你膨胀、不配打职业。你退出微博，打开论坛，首页全"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 1,
+      "evidence": "验的人生副本是 —— 出道即巅峰却泯"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 5,
+      "evidence": "，喉结动了一下 —— 就这？"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 9,
+      "evidence": "觉怎么样，你说 —— 还好吧，没什么"
+    },
+    {
+      "rule_id": "AI_STYLE_long-paragraph",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 13,
+      "evidence": "MSI 在欧洲。飞机上你睡了十二个小时，醒来舷窗外是白茫茫的云。欧洲的赛场比国内"
+    },
+    {
+      "rule_id": "AI_STYLE_long-paragraph",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 17,
+      "evidence": "发送键按下去的时候你甚至没什么犹豫。评论区秒秒钟炸了，有人说你狂，有人说你配，有"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 17,
+      "evidence": "样，你笑一下说 —— 随便打打就赢了"
+    },
+    {
+      "rule_id": "AI_STYLE_not-is-comparison",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [not-is-comparison]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 27,
+      "evidence": "不是被抓死的，是走不掉 —— 对面五个人从草丛里冒出来的那一刻，你看见屏幕上密密麻麻的头像，手一抖，闪现交慢了半拍"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 27,
+      "evidence": "死的，是走不掉 —— 对面五个人从草"
+    },
+    {
+      "rule_id": "AI_STYLE_long-paragraph",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 33,
+      "evidence": "那天晚上你回到酒店，手机像着了魔一样震个不停。你点开微博，那条 \"现在我就是世一"
+    },
+    {
+      "rule_id": "AI_STYLE_long-paragraph",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [long-paragraph]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 37,
+      "evidence": "对线还是那些人，但你压不动了。补刀的时候你的手会抖，技能交出去之前你会犹豫半秒"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 37,
+      "evidence": "前你会犹豫半秒 —— 你怕又失误。对"
+    },
+    {
+      "rule_id": "AI_STYLE_not-is-comparison",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [not-is-comparison]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 37,
+      "evidence": "不是反打，是跑"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 37,
+      "evidence": "子，上面四个字 —— 菜就退役。"
+    },
+    {
+      "rule_id": "AI_STYLE_em-dash",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [em-dash]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 43,
+      "evidence": "雄，加载，对线 —— 三分钟，对面中"
+    },
+    {
+      "rule_id": "AI_STYLE_trailer-ending",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [trailer-ending]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+      "line": 49,
+      "evidence": "没人知道"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 15
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication",
+    "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+    "body_sha256": "32caad87e71999c5248107dd2c94b01fa9c06ff49a72b3fc4a7dca37e78abb3c"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo/作品/77_出道即巅峰却泯然众人的一生/正文.md",
+  "metrics": {
+    "characters_repository_convention": 2482,
+    "nonempty_prose_lines": 25,
+    "longest_line_characters": 218,
+    "number_tokens": 6,
+    "number_density_per_1000": 2.4,
+    "density_denominator": 2482,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 387.81,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}
