@@ -1,0 +1,33 @@
+name: Fuben software and corpus compatibility
+
+on:
+  pull_request:
+  push:
+    branches: [main, 'arena/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit, failure-injection, corpus and all-work coverage
+        run: python3 scripts/test_gates.py --works --corpus --output /tmp/fuben-regression.json
+      - name: Assert source originals and raw legacy data were not rewritten
+        run: git diff --exit-code -- 拆文库 uploads 分篇 作品/_数据.csv 作品/_数据_v2.csv
+      - name: Save explicit content-block and unverified results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: software-and-coverage-not-release-approval
+          path: /tmp/fuben-regression.json
