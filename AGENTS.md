@@ -33,6 +33,8 @@
 
 现行创作规则仅在 [轻量 profile](skills/story-short-write/references/genre-styles/人生副本实录.md)。**本账号明确要爽感、抓人的开头、牵引下文的伏笔钩子和侧面描写。审稿先找追看与兑现的问题，并交具体改写；不得用计数修补、测试通过或资料包代替创作成果。** 少配额不是降低戏剧性，机检 PASS 不能证明好看。本次用户要求优先；事实与授权仍不可伪造。
 
+三把锁分工：**事实锁**管数字真伪（金额/算式/玩法/字数主张，`fuben_run` BLOCK 级）；**爽感**归审稿读通判断（`fuben-review` 追看四问）；**连续性锁**管题眼、器物、人物、时间前后一致（`fuben_entity.py` 挂在 `fuben_run`，S2=交付前必修；实体台账必须 `--ledger` 实测回填，新稿缺 `## 实体台账`/`## 题眼锚` 交不了审）。机检全绿不等于读得通。
+
 - 写作与创作审稿执行 [副本 Agent 方法](skills/story-short-write/references/genre-styles/人生副本_Agent方法.md)：策划阶段先深度理解主题，再一次并行多路检索（≥8 路，单次一批并发，分批留档），产出 3-4 个**分类型**（爽/搞笑/扎心/温情等按主题定）的剧情方向交用户选定——**未获选定不得动笔；不调用搜索即任务失败**。选定后：主笔展开关键戏，审读定位断点，按结构/场面/表达分层返工。题面主题是边界（如题面是人生，题材元素只做质感，不得抢走主线）。
 - 理解 brief，读相近原文，起稿，再按具体问题复核。不强制写设定卡、小节大纲、爽点/场面/呼应表；原文也不因缺制作产物被判失败。
 - 字数、行数、密度、节点数和句式命中只能描述，不能证明好看或是 AI 写的。不执行固定八拍、情绪百分比、感官词频、对白配额或通用花钱剧情。
@@ -52,6 +54,7 @@
 ```bash
 python3 scripts/fuben_run.py 作品/NN_主题/ --json
 python3 scripts/fuben_run.py 作品/NN_主题/正文_3分钟版.md --profile short
+python3 scripts/fuben_entity.py 作品/NN_主题/ --ledger   # 实体台账实测回填
 python3 scripts/test_gates.py --works --corpus
 python3 scripts/fuben_health.py --corpus
 ```

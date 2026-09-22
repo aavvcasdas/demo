@@ -107,7 +107,7 @@ Phase 2 必须在第一次写入 `设定.md` / `小节大纲.md` 前按顺序完
 
 #### 构思、设计与验收
 
-完整步骤见 [references/workflow-design.md](references/workflow-design.md)。按首屏 Reference Gate 读完后执行；人生副本还必须先完成 `## 事实锁`、`## 因果/状态台账` 和 `## 结构验收`，并在写正文后运行 `python3 scripts/fuben_run.py 作品/NN_xxx/`；两份设计文件通过其中的 Phase 2 完成门禁，才可进入 Phase 3。
+完整步骤见 [references/workflow-design.md](references/workflow-design.md)。按首屏 Reference Gate 读完后执行。**人生副本不进入本 Phase 及后续 Phase 3/4 的普通小说流程**（事实锁/因果状态台账/结构验收、Reference Gate、付费点、十二列表格都不适用）；副本只用专用三件套：①阶段一带 `## 题眼锚`（核心词/现实翻译/三个可见事件压力类型/判定）+ 8 行故事合同；②成稿带 `## 实体台账`（`python3 scripts/fuben_entity.py 作品/NN_主题/ --ledger` 实测回填）；③审稿走 `fuben-review` 的读通专项 + `python3 scripts/fuben_run.py 作品/NN_主题/`。细则见 [人生副本轻量 profile](references/genre-styles/人生副本实录.md) 的「连续性锁」一节。
 
 ---
 

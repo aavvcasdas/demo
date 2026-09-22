@@ -7,10 +7,173 @@ different objects. Findings require contextual review. Raw source text is not ed
 from __future__ import annotations
 import os, re, sys
 
-SKIP_HEAD = re.compile(r"L0|核查|拆书|参考|借用|变更|评判|来源")
+SKIP_HEAD = re.compile(r"L0|核查|拆书|参考|借用|变更|评判|来源|实体台账|题眼锚|故事合同")
 YR = re.compile(r"(?<!\d)(20\d\d)年")
 BARE = re.compile(r"(?<!\d)20\d\d(?![\d%\-]|\-\d)")
 CHAIN = re.compile(r"20\d\d年?(?=[\-—~→]\s*20\d\d)|(?<=[\-—~→]\s)20\d\d年?")
+
+# —— v3 口播字数主张层（连续性锁 D1）：不依赖引号的「N字」主张 ——
+# 「人生就两字 练完再耍」这类口播主张没有引号，老的两条引文规则管不到。
+# 声明一个数 → 实测一个数 → 比对：去标点后数汉字，对不上就是纯文本错误。
+PAT_CHAR_CLAIM = re.compile(
+    r"(?P<pre>人生就|总结成|总结|回复了?|回了?|回的|说了?|说的|写了?|写的|答了?|念了?|备注了?|备注|蹦出|甩出|闪出|闪过|跟了?|补了?|就是|就)"
+    r"(?P<n>[一二两三四五六七八九十百零〇\d]+|仨|俩)\s*个?\s*字"
+)
+# 主张后面跟的不是被数的内容，而是叙述继续：跳过，不判。
+CLAIM_FUNC_HEADS = {"说完", "之后", "以后", "的时候", "的话", "以来", "以前", "完了", "后来", "接着", "然后", "跟着", "早已", "已经"}
+# 「的/了」开头永远不是引文（「只会说四个字 的人」是描述不是主张）。
+CLAIM_HARD_LEAD = re.compile(r"^[的了]")
+# 代词/副词开头可能是引文（「我信一次」），只在长度对不上主张时才当叙述跳过。
+CLAIM_FUNC_LEAD = re.compile(r"^[他她你我它就都又也才还但而且不没再便却仍那这]")
+# 「人生就两字，就是耍起」：数的是“耍起”，系词不算内容。
+CLAIM_COPULA = re.compile(r"^(就是|算是|叫做|叫|才是|是)")
+CLAIM_SEPARATORS = " \t，、：:；;—…"
+CLAIM_SENTENCE_END = "。！？!?"
+CLAIM_MAX_N = 30
+
+
+def _claim_number(token: str):
+    """两/仨/俩/十二/9 → int；解析不了返回 None。"""
+    if token in ("仨",):
+        return 3
+    if token in ("俩",):
+        return 2
+    from fuben_numbers import numeric
+    value = numeric(token, colloquial=True)
+    if value is None or value != int(value):
+        return None
+    return int(value)
+
+
+def _han_runs(text: str, start: int, need: int):
+    """从 start 起收集汉字段（跨轻分隔符），直到累计 ≥ need 个汉字或遇到硬边界。
+
+    硬边界：句末标点、空行、非汉字非分隔字符。轻分隔符：空格、顿逗号、单个换行。
+    「回了九个字 / 人生就两字 / 练完再耍」要拼两段才数得齐。
+    """
+    runs, i, total = [], start, 0
+    while i < len(text) and len(runs) < 4:
+        ch = text[i]
+        if ch == "\n":
+            if text.startswith("\n\n", i):
+                break  # 空行 = 段界
+            i += 1
+            continue
+        if ch in CLAIM_SEPARATORS or ch == "\r":
+            i += 1
+            continue
+        if ch in CLAIM_SENTENCE_END:
+            break
+        j = i
+        while j < len(text) and "\u4e00" <= text[j] <= "\u9fff":
+            j += 1
+        if j == i:
+            break
+        runs.append(text[i:j])
+        total += j - i
+        i = j
+        if total >= need:
+            break
+    return runs
+
+
+# 续段以代词/指示/副词开头 → 是叙述不是引文，停止拼接（「别谢了/她收到」只数「别谢了」）。
+CLAIM_CONT_LEAD = re.compile(r"^[的他她你我它就都又也才还但而且不没再便却仍那这]")
+
+
+def _effective_phrase(runs, claimed):
+    """返回 (计数用段列表, 边界是否确定)。
+
+    去掉开头的纯系词段，剥首段系词，累计到 ≥ claimed 为止；
+    续段以代词/叙述词开头就停。补缺补过头的（弃/像一张嘴）边界不确定，
+    交 REVIEW 人核，不硬判 BLOCK。
+    """
+    items = list(runs)
+    while items and not CLAIM_COPULA.sub("", items[0]):
+        items.pop(0)
+    if not items:
+        return [], True
+    items[0] = CLAIM_COPULA.sub("", items[0])
+    out, total = [], 0
+    for idx, run in enumerate(items):
+        if idx > 0 and CLAIM_CONT_LEAD.match(run):
+            break
+        out.append(run)
+        total += len(run)
+        if total >= claimed:
+            break
+    if not out:
+        return [], True
+    deterministic = True
+    if len(out) >= 2:
+        before = sum(len(r) for r in out[:-1])
+        if before < claimed and len(out[-1]) > claimed - before and total != claimed:
+            deterministic = False  # 补缺补进了下一段叙述，边界不明
+    return out, deterministic
+
+
+def spoken_char_claims(text: str):
+    """返回 [(claim, claimed, actual, phrase, line_no, certain)]。
+
+    certain=False 时（语境自称误算等）降为 REVIEW 交人核。
+    声明一个数 → 实测一个数 → 比对；只审「主张后紧跟内容」的形态，
+    后接叙述（代词/副词/序数开头）不判，避免把没亮出的引文误杀。
+    """
+    out = []
+    fallible = re.compile(r"误算|算错|错算|错写|故意写错|故意说错|谎称|误以为|错误示例")
+    ordinal = re.compile(r"^第[一二两三四五六七八九十]")
+    for m in PAT_CHAR_CLAIM.finditer(text):
+        if m.group("pre") == "就" and not re.search(r"(?:^|[\s，。：；！？])就$", text[:m.start()]):
+            continue  # 「就」必须是独立小句开头，避免吞掉词中字
+        line_head = text.rfind("\n", 0, m.start()) + 1
+        if text[line_head:].lstrip().startswith("|"):
+            continue  # 表格行里的「N字」是描述字段，不是口播主张
+        claimed = _claim_number(m.group("n"))
+        if claimed is None or claimed < 1 or claimed > CLAIM_MAX_N:
+            continue
+        if text[:m.start()].rstrip().endswith("第"):
+            continue  # 「第5个字」是定位，不是长度主张
+        line_no = text.count("\n", 0, m.start()) + 1
+        line_end = text.find("\n", m.end())
+        line = text[line_head: line_end if line_end != -1 else len(text)]
+        fallible_hit = bool(fallible.search(line))
+        # 找主张后面的内容起点：最多跨一个空行（两个换行）
+        i, newlines = m.end(), 0
+        while i < len(text):
+            ch = text[i]
+            if ch == "\n":
+                newlines += 1
+                if newlines > 2:
+                    break
+                i += 1
+                continue
+            if ch in CLAIM_SEPARATORS or ch == "\r":
+                i += 1
+                continue
+            break
+        if newlines > 2 or i >= len(text) or text[i] in CLAIM_SENTENCE_END:
+            continue  # 隔太远或后面没有内容，无法实测，不判
+        if text[i] in "“「\"'‘":
+            continue  # 引号内容交给 QUOTED_CHARACTER_COUNT
+        runs = _han_runs(text, i, claimed + 3)
+        if not runs:
+            continue
+        items, deterministic = _effective_phrase(runs, claimed)
+        if not items:
+            continue
+        phrase = "".join(items)
+        actual = len(re.findall(r"[\u4e00-\u9fff]", phrase))
+        first = CLAIM_COPULA.sub("", runs[0])
+        if runs[0] in CLAIM_FUNC_HEADS or ordinal.match(first) or CLAIM_HARD_LEAD.match(first):
+            continue  # 后面是叙述/描述字段，不是引文
+        if CLAIM_FUNC_LEAD.match(first) and abs(actual - claimed) > 2:
+            continue  # 代词/副词开头且长度对不上主张：更像叙述，不判
+        certain = deterministic and not fallible_hit and bool(re.fullmatch(r"[\u4e00-\u9fff]+", phrase))
+        if actual != claimed:
+            out.append((m.group(0), claimed, actual, phrase, line_no, certain))
+    return out
+
+
 
 
 CN_DIG = {"零": 0, "〇": 0, "一": 1, "二": 2, "两": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}

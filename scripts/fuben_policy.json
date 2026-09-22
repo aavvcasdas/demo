@@ -1,9 +1,22 @@
 {
   "schema_version": 1,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "profiles": ["draft", "full", "short", "clip", "reference"],
   "tool_timeout_seconds": 30,
   "estimated_chars_per_second": 6.4,
+  "continuity_disposition": {
+    "SPOKEN_CHARACTER_COUNT": "BLOCK",
+    "THEME_ANCHOR_MISMATCH": "REVIEW",
+    "ENTITY_STATE_DRIFT": "REVIEW",
+    "ORPHAN_NOUN": "REVIEW",
+    "SPAN_CONFLICT": "REVIEW",
+    "PRONOUN_UNRESOLVED": "REVIEW",
+    "SEQUENCE_SOURCE_MISMATCH": "REVIEW",
+    "ENTITY_LEDGER_STALE": "REVIEW",
+    "SCENE_STATE_NULL": "NOTE",
+    "UNRECOVERED_DETAIL": "NOTE",
+    "ENTITY_LEDGER_MISSING": "NOTE"
+  },
   "creative_rules": {
     "required_beat_count": null,
     "required_emotion_peak_position": null,
@@ -46,5 +59,5 @@
     "missing_evidence": "PROVISIONAL",
     "automatic_release": false
   },
-  "scope": "机械阻断只用于明确的输入/算术/契约错误；模糊正则命中交给证据化复核，不自动判文笔、事实真假或流量。"
+  "scope": "机械阻断只用于明确的输入/算术/契约错误；模糊正则命中交给证据化复核，不自动判文笔、事实真假或流量。连续性锁（continuity_*）只报可复现的前后不一致并引用原句，S2=交付前必修（可有理由地保留须在审核报告留痕），S3=留观；SPOKEN_CHARACTER_COUNT 属纯文本计数错误，按 S1 拦交付。"
 }

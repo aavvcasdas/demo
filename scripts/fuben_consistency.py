@@ -4,6 +4,10 @@
 No mandatory design/ledger fields. Explicit date/count arithmetic is checked only
 when the author actually locks a daily frequency. Nonlinear time is allowed.
 CLI and aggregate runner share fuben_policy.json dispositions.
+
+实体漂移（同一物件位置/称呼前后不一）自 2026-09 起由 fuben_entity.py 承接，
+复用本模块的 NEGATION/_has_positive 否定句处理与 section() 分节工具——
+金额漂移与实体漂移共用同一套“越界须未被否定”的口径，反事实清单不误报。
 """
 from __future__ import annotations
 

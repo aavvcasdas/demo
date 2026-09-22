@@ -169,6 +169,17 @@ def literal_checks(text, path, profile):
             result.append(finding('UNQUOTED_COUNT_CANDIDATE', 'REVIEW', 'facts',
                                   f'相邻口播行含 {actual} 汉字，上文称 {count} 个字；须核实引文边界',
                                   file=path, line=text.count('\n', 0, m.start()) + 1, evidence=m[0]))
+    # Continuity lock D1: spoken character-count claims without quotes.
+    # 「人生就两字 练完再耍」——声明一个数，实测一个数，纯文本错误直接 BLOCK。
+    from fuben_setting_years import spoken_char_claims
+    for claim, claimed, actual, phrase, line_no, certain in spoken_char_claims(text):
+        if actual is None:
+            continue
+        sure = certain and profile != 'reference'
+        result.append(finding('SPOKEN_CHARACTER_COUNT', 'BLOCK' if sure else 'REVIEW', 'facts',
+                              f'「{claim}」主张 {claimed} 个字，实测 {actual} 个（{phrase}）；'
+                              f'修订主张或引文，不许拿「口误」糊弄计数',
+                              file=path, line=line_no, evidence=claim))
     return result
 
 
@@ -226,10 +237,30 @@ def inspect_path(path, *, profile='draft', run_style=True, components=None, chec
         report['checked'].append('readable_nonempty_body_and_descriptive_metrics')
         if '\ufffd' in body:
             report['findings'].append(finding('REPLACEMENT_CHARACTER', 'REVIEW', 'input', '存在替换字符，可能是转写/编码损坏', file=body_path))
-        selected = components or {'facts', 'setting', 'style', 'account'}
+        selected = components or {'facts', 'setting', 'style', 'account', 'entity'}
         if 'facts' in selected:
             report['findings'].extend(literal_checks(body, body_path, profile))
             report['checked'].append('explicit_equations_and_literal_character_counts')
+        if 'entity' in selected:
+            # 连续性锁（第三把锁）：题眼、器物、人物、时间。纯正文检查，
+            # 有设定时顺带对账 实体台账/题眼锚。全部引用冲突原句。
+            try:
+                from fuben_entity import check_text as continuity_check
+                entity_setting_path = body_path.parent / '设定.md'
+                setting_text = entity_setting_path.read_text(encoding='utf-8-sig') if entity_setting_path.is_file() else ''
+                disposition = policy.get('continuity_disposition', {})
+                for _, code, message in continuity_check(setting_text, body):
+                    severity = disposition.get(code, 'REVIEW')
+                    if severity not in SEVERITIES:
+                        severity = 'REVIEW'
+                    if severity == 'REVIEW':
+                        message = '候选（待确认语境）：' + message
+                    line_match = re.search(r'(?:^|[：; ）(])L(\d+)', message)
+                    report['findings'].append(finding(code, severity, 'continuity', message, file=body_path,
+                                                      line=int(line_match[1]) if line_match else None))
+                report['checked'].append('continuity_lock_theme_entity_pronoun_span')
+            except ImportError as exc:
+                report['findings'].append(finding('CONTINUITY_TOOL_ERROR', 'ERROR', 'tool', str(exc), file=path))
         profile_path = body_path.parent / '.fuben.json'
         if profile != 'reference' and profile_path.exists():
             config = json.loads(profile_path.read_text(encoding='utf-8'))
